@@ -1,0 +1,40 @@
+\select@language {english}
+\select@language {dutch}
+\select@language {english}
+\select@language {dutch}
+\select@language {english}
+\select@language {english}
+\select@language {english}
+\select@language {dutch}
+\select@language {english}
+\addvspace {10pt}
+\addvspace {10pt}
+\select@language {dutch}
+\addvspace {10pt}
+\select@language {english}
+\addvspace {10pt}
+\addvspace {10pt}
+\addvspace {10pt}
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Session management}}{4}{figure.2.1}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {via cookies}}}{4}{subfigure.1.1}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {via URL rewriting}}}{4}{subfigure.1.2}
+\addvspace {10pt}
+\contentsline {figure}{\numberline {3.1}{\ignorespaces The cross-site scripting attack}}{10}{figure.3.1}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {persistent}}}{10}{subfigure.1.1}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {non-persistent}}}{10}{subfigure.1.2}
+\contentsline {figure}{\numberline {3.2}{\ignorespaces The session hijacking attack}}{13}{figure.3.2}
+\contentsline {figure}{\numberline {3.3}{\ignorespaces The session fixation attack}}{15}{figure.3.3}
+\contentsline {figure}{\numberline {3.4}{\ignorespaces The cross site request forgery attack}}{18}{figure.3.4}
+\addvspace {10pt}
+\addvspace {10pt}
+\addvspace {10pt}
+\select@language {dutch}
+\select@language {english}
+\select@language {dutch}
+\select@language {english}
+\select@language {dutch}
+\select@language {english}
+\select@language {dutch}
+\select@language {english}
+\select@language {dutch}
+\select@language {english}

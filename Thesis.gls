@@ -1,0 +1,42 @@
+\glossarysection[\glossarytoctitle]{\glossarytitle}\glossarypreamble
+\begin{theglossary}\glossaryheader
+\glsgroupheading{C}\relax \glsresetentrylist %
+\glossaryentryfield{cookie}{\glsnamefont{cookie}}{A piece of text made up of one or more name-value pairs stored by a website in the browser. Cookies are set by a website upon first visit, and sent by the browser on every request.}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter{page}\glsnumberformat{3}}}\glsgroupskip
+\glsgroupheading{D}\relax \glsresetentrylist %
+\glossaryentryfield{dom}{\glsnamefont{DOM}}{Document Object Model, used by programming languages like JavaScript to access elements in an XML document or on a web page}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter{page}\glsnumberformat{5}}}\glsgroupskip
+\glsgroupheading{H}\relax \glsresetentrylist %
+\glossaryentryfield{http}{\glsnamefont{HTTP}}{HyperText Transfer Protocol, the protocol which is used by web browsers to communicate with web servers}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter{page}\glsnumberformat{3}}}\glsgroupskip
+\glsgroupheading{L}\relax \glsresetentrylist %
+\glossaryentryfield{lcg}{\glsnamefont{LCG}}{Linear Congruential Generator, a generator for pseudorandom numbers based on recurrence}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter{page}\glsnumberformat{6}}}\glsgroupskip
+\glsgroupheading{M}\relax \glsresetentrylist %
+\glossaryentryfield{mac}{\glsnamefont{MAC}}{Message Authentication Code, a short piece of information providing data integrity and authenticity for a message}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter{page}\glsnumberformat{7}}}%
+\glossaryentryfield{mitm}{\glsnamefont{MitM}}{Man in the Middle, used to describe an attacker that is able to intercept traffic between the victim and some other principal}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter{page}\glsnumberformat{13}}}\glsgroupskip
+\glsgroupheading{S}\relax \glsresetentrylist %
+\glossaryentryfield{session cookie}{\glsnamefont{session cookie}}{A cookie containing a session identifier}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter{page}\glsnumberformat{4}}}%
+\glossaryentryfield{session fixation}{\glsnamefont{session fixation}}{An attack in which the attacker tries to enforce a \gls {sid} upon the victim, so he is able to take over the session later on}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter{page}\glsnumberformat{5}}}%
+\glossaryentryfield{session hijacking}{\glsnamefont{session hijacking}}{An attack in which the attacker tries to capture the victim's \gls {sid}, to be able to take over his session}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter{page}\glsnumberformat{4}}}%
+\glossaryentryfield{session id}{\glsnamefont{session ID}}{Session Identifier, a unique string of text used by the server to identify a user}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter{page}\glsnumberformat{3}\delimN 
+		\setentrycounter{page}\glsnumberformat{12}}}%
+\glossaryentryfield{sid}{\glsnamefont{SID}}{see `session ID'}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter{page}\glsnumberformat{3}}}%
+\glossaryentryfield{sop}{\glsnamefont{SOP}}{Same Origin Policy, the policy which states that \gls {dom} objects may only be accessed by principals having the same origin as the object}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter{page}\glsnumberformat{5}\delimN 
+		\setentrycounter{page}\glsnumberformat{12}}}\glsgroupskip
+\glsgroupheading{U}\relax \glsresetentrylist %
+\glossaryentryfield{url}{\glsnamefont{URL}}{Uniform Resource Locator, a string that specifies the location of a resource}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter{page}\glsnumberformat{4}}}\glsgroupskip
+\glsgroupheading{X}\relax \glsresetentrylist %
+\glossaryentryfield{xss}{\glsnamefont{XSS}}{Cross-Site Scripting, an attack whereby the attacker injects JavaScript into a legitimate page that will be executed by another user's browser when the user visits the page}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter{page}\glsnumberformat{6}\delimN 
+		\setentrycounter{page}\glsnumberformat{9}}}%
+\end{theglossary}\glossarypostamble

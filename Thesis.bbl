@@ -1,0 +1,168 @@
+\begin{thebibliography}{10}
+
+\bibitem{Adida2008}
+Ben Adida.
+\newblock {Sessionlock: securing web sessions against eavesdropping}.
+\newblock In {\em Proceeding of the 17th international conference on World Wide
+  Web}, pages 517--524. ACM, 2008.
+
+\bibitem{Barth2008}
+Adam Barth, Collin Jackson, and John~C. Mitchell.
+\newblock {Robust defenses for cross-site request forgery}.
+\newblock {\em Proceedings of the 15th ACM conference on Computer and
+  communications security - CCS '08}, page~75, 2008.
+
+\bibitem{Bontrager2005}
+Will Bontrager.
+\newblock {Form Submissions Without Submit Buttons}, 2005.
+
+\bibitem{Butler2010}
+Eric Butler.
+\newblock {Firesheep}, 2010.
+
+\bibitem{Condit2006}
+Craig Condit.
+\newblock {JSESSIONID considered harmful}, 2006.
+
+\bibitem{DiLucca2005}
+G.A. {Di Lucca}, AR~Fasolino, M.~Mastoianni, and P.~Tramontana.
+\newblock {\em {Identifying cross site scripting vulnerabilities in Web
+  applications}}, volume 1550-4441.
+\newblock IEEE Comput. Soc, 2005.
+
+\bibitem{rfc4086}
+D.~{Eastlake 3rd}, J.~Schiller, and S.~Crocker.
+\newblock {Randomness Requirements for Security}.
+\newblock RFC 4086 (Best Current Practice), June 2005.
+
+\bibitem{Farrell2011}
+Stephen Farrell.
+\newblock {Leaky or Guessable Session Identifiers}.
+\newblock {\em IEEE Internet Computing}, (December 2009):88--91, 2011.
+
+\bibitem{rfc2616}
+R.~Fielding, J.~Gettys, J.~Mogul, H.~Frystyk, L.~Masinter, P.~Leach, and
+  T.~Berners-Lee.
+\newblock {Hypertext Transfer Protocol -- HTTP/1.1}.
+\newblock RFC 2616 (Draft Standard), June 1999.
+\newblock Updated by RFCs 2817, 5785.
+
+\bibitem{Fu2001}
+Kevin Fu, Emil Sit, Kendra Smith, and Nick Feamster.
+\newblock {Dos and don'ts of client authentication on the web}.
+\newblock In {\em Proceedings of the 10th conference on USENIX Security
+  Symposium-Volume 10}, pages 19--19. USENIX Association, 2001.
+
+\bibitem{Graham2007}
+Robert Graham.
+\newblock {SideJacking with Hamster}, 2007.
+
+\bibitem{Holovaty2008}
+Adrian Holovaty and Jacob Kaplan-Moss.
+\newblock {\em {The Definitive Guide to Django: Web Development Done Right}},
+  chapter~19.
+\newblock Apress, 2008.
+
+\bibitem{Ishida2010}
+Richard Ishida.
+\newblock {Declaring character encodings in HTML}, 2010.
+
+\bibitem{Jim2007}
+Trevor Jim, Nikhil Swamy, and Michael Hicks.
+\newblock {Defeating script injection attacks with browser-enforced embedded
+  policies}.
+\newblock {\em Proceedings of the 16th international conference on World Wide
+  Web - WWW '07}, pages 601--610, 2007.
+
+\bibitem{Johns2006}
+Martin Johns.
+\newblock {SessionSafe: Implementing XSS immune session handling}.
+\newblock {\em Computer Security--ESORICS 2006}, pages 444--460, 2006.
+
+\bibitem{Johns2011}
+Martin Johns, Bastian Braun, Michael Schrank, and Joachim Posegga.
+\newblock {Reliable Protection Against Session Fixation Attacks}.
+\newblock {\em ACM Symposium on Applied Computing}, 2011.
+
+\bibitem{Johnston2004}
+Paul Johnston.
+\newblock {Authentication and Session Management on the Web}.
+\newblock {\em SANS Institute InfoSec Reading Room}, 2004.
+
+\bibitem{Jovanovic2006}
+Nenad Jovanovic, Engin Kirda, and Christopher Kruegel.
+\newblock {Preventing cross site request forgery attacks}.
+\newblock In {\em Securecomm and Workshops, 2006}, pages 1--10. IEEE, August
+  2007.
+
+\bibitem{Kirda2006}
+Engin Kirda, Christopher Kruegel, Giovanni Vigna, and Nenad Jovanovic.
+\newblock {Noxes: a client-side solution for mitigating cross-site scripting
+  attacks}.
+\newblock In {\em Proceedings of the 2006 ACM symposium on Applied computing},
+  pages 330--337. ACM, 2006.
+
+\bibitem{Klein2002}
+Amit Klein.
+\newblock {Cross site scripting explained}.
+\newblock {\em Sanctum White Paper}, (June), 2002.
+
+\bibitem{Klein2004}
+Amit Klein.
+\newblock {“Divide and Conquer” - HTTP Response Splitting, Web Cache
+  Poisoning Attacks, and Related Topics}.
+\newblock {\em Whitepaper, Sanctum Inc.}, January 2004.
+
+\bibitem{Kolsek2002}
+M~Kol\v{s}ek.
+\newblock {Session fixation vulnerability in web-based applications}.
+\newblock {\em Acros Security}, (Id):1--16, 2002.
+
+\bibitem{rfc2109}
+D.~Kristol and L.~Montulli.
+\newblock {HTTP State Management Mechanism}.
+\newblock RFC 2109 (Proposed Standard), February 1997.
+\newblock Obsoleted by RFC 2965.
+
+\bibitem{Kristol2001}
+David~M. Kristol.
+\newblock {HTTP Cookies: Standards, privacy, and politics}.
+\newblock {\em ACM Transactions on Internet Technology (TOIT)}, 1(2):151--198,
+  November 2001.
+
+\bibitem{Kurose2008}
+James~F. Kurose and Keith~W. Ross.
+\newblock {\em {Computer networking: a top-down approach}}.
+\newblock Pearson/Addison-Wesley, 4th edition, 2008.
+
+\bibitem{Nikiforakis2010}
+Nick Nikiforakis, Wannes Meert, Yves Younan, Martin Johns, and Wouter Joosen.
+\newblock {SessionShield: Lightweight Protection against Session Hijacking}.
+\newblock {\em securitee.org}, pages 1--14, 2010.
+
+\bibitem{OWASP2009a}
+OWASP.
+\newblock {Insufficient Session-ID Length}, 2009.
+
+\bibitem{Park2000}
+Joon~S. Park and Ravi Sandhu.
+\newblock {Secure cookies on the Web}.
+\newblock {\em IEEE Internet Computing}, 4(4):36--44, 2000.
+
+\bibitem{rfc2818}
+E.~Rescorla.
+\newblock {HTTP Over TLS}.
+\newblock RFC 2818 (Informational), May 2000.
+\newblock Updated by RFC 5785.
+
+\bibitem{Shiflett2004}
+Chris Shiflett.
+\newblock {Session Fixation}, 2004.
+
+\bibitem{Singh2010}
+Kapil Singh, Alexander Moshchuk, HJ~Wang, and W.~Lee.
+\newblock {On the incoherencies in web browser access control policies}.
+\newblock In {\em 2010 IEEE Symposium on Security and Privacy}, pages 463--478.
+  IEEE, 2010.
+
+\end{thebibliography}

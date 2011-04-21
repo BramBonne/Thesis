@@ -2,7 +2,7 @@
 
 When a user visits a website, it is often needed for the web application to remember which user it is interacting with. For this reason, the concept of a `web session' was invented. In this chapter we will see how web sessions work, and how their security can be improved.
 
-\section{How web sessions work}
+\section{How web sessions work}\label{session-management}
 
 To understand the need for web sessions, we first have to look at how web browsers communicate with web servers. The browser requests web pages by issuing \gls{http} requests to a web server \cite{Kurose2008}. The server subsequently responds to every request with an HTTP response containing the requested page. Unfortunately, HTTP is a stateless protocol, which means that the web server has no way of knowing whether two different requests have the same origin or not. Because of this, a mechanism is needed on top of HTTP to enable stateful communication between a web server and a client. This mechanism is known as the web session.
 
@@ -29,7 +29,7 @@ There are three ways in which session identifiers can be attached to requests an
 
 The second possibility to include session information is via \emph{\gls{url} rewriting}. In this case, the web server appends the session ID as a parameter to every served URL that points to a page on the same server. Thus, when the user clicks a link on the served page, the request that is made contains the session ID as a parameter, and the server will know who made the request. This process is graphically depicted in Figure \ref{fig:url-rewriting}.
 
-The third possibility is very similar to URL rewriting, but uses POST instead of GET parameters \cite{Johns2006}. Here, the session ID is included as a form element. When the user submits the form, the session ID is sent along with the request. In this text, we will mostly focus on SIDs in cookies, because they are by far the most common. However, when appropriate, we will include information about session IDs in URLs.
+The third possibility is very similar to URL rewriting, but uses POST instead of GET parameters \cite{Johns2006}. Here, the session ID is included as a \texttt{<form>} element. When the user submits the form, the session ID is sent along with the request. In this text, we will mostly focus on SIDs in cookies, because they are by far the most common. However, when appropriate, we will include information about session IDs in URLs.
 
 It is important to note that session ID's are almost\footnote{We use the term `almost' because there is no standardized way of using SIDs. It can however safely be assumed that the majority of the pages encountered on the Web will use SIDs for authentication only.} always used exclusively for authentication. This means that the SID only identifies the client, while all other state is saved at the server side. The server then associates the SID with other information stored for that particular session.
 

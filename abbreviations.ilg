@@ -1,0 +1,25 @@
+This is makeindex, version 2.15 [TeX Live 2009] (kpathsea + Thai support).
+Scanning input file abbreviations.tex...
+!! Input index error (file = abbreviations.tex, line = 1):
+   -- Unknown index keyword \renewcommand.
+!! Input index error (file = abbreviations.tex, line = 2):
+   -- Unknown index keyword \newglossaryentry.
+!! Input index error (file = abbreviations.tex, line = 3):
+   -- Unknown index keyword \newglossaryentry.
+!! Input index error (file = abbreviations.tex, line = 4):
+   -- Unknown index keyword \newglossaryentry.
+!! Input index error (file = abbreviations.tex, line = 5):
+   -- Unknown index keyword \newglossaryentry.
+!! Input index error (file = abbreviations.tex, line = 6):
+   -- Unknown index keyword \newglossaryentry.
+!! Input index error (file = abbreviations.tex, line = 7):
+   -- Unknown index keyword \newglossaryentry.
+!! Input index error (file = abbreviations.tex, line = 8):
+   -- Unknown index keyword \newglossaryentry.
+!! Input index error (file = abbreviations.tex, line = 9):
+   -- Unknown index keyword \newglossaryentry.
+!! Input index error (file = abbreviations.tex, line = 10):
+   -- Unknown index keyword \newglossaryentry.
+done (0 entries accepted, 10 rejected).
+Nothing written in abbreviations.ind.
+Transcript written in abbreviations.ilg.

@@ -57,7 +57,7 @@ An example of this is a search form, where a website returns the term the user s
 Another example of a scenario where a website might return data found in the URL is the `Page not found' error page \cite{Kirda2006}. Here, the name of the page that could not be found is often included as part of the error message. Thus, an attacker can craft a link wherein he requests a page with name \texttt{<script>alert("XSS succeeded");</script>} to make a client's browser execute JavaScript code.
 % Image
 
-\subsection{Including the script code}
+\subsection{Including the script code}\label{injecting-script}
 There are multiple ways in which script code can be included in a web page. Since all of these can be leveraged by an attacker to inject his code into a web page, it is important that web developers are aware of all of them. T. Jim et al. give a good overview of different approaches to including JavaScript code \cite{Jim2007}, of which we will describe the most important ones here:
 \begin{description}
 	\item[between \texttt{<script>} tags] This is the most obvious way of including JavaScript in a web page. All code between these tags will be executed as soon as the browser encounters it.
@@ -131,7 +131,7 @@ This problem, together with the possibility of leaking SIDs via the \texttt{refe
 
 \section{Session fixation}\label{fixation}
 
-In the session fixation attack, as in the session hijacking attack (section \ref{hijacking}), an attacker's goal is to be using the same session as a victim. However, instead of capturing the victim's session ID, the attacker forces the victim to use a SID that is known in advance. We will first describe the steps necessary to execute this attack. Afterwards, we list the ways in which the attacker can force a victim to use a certain session ID.
+In the session fixation attack, as in the \gls{session hijacking} attack (section \ref{hijacking}), an attacker's goal is to be using the same session as a victim. However, instead of capturing the victim's \gls{session id}, the attacker forces the victim to use a SID that is known in advance. We will first describe the steps necessary to execute this attack. Afterwards, we list the ways in which the attacker can force a victim to use a certain session ID.
 
 \subsection{Attack scenario}
 
@@ -155,6 +155,69 @@ These steps are graphically illustrated in figure \ref{fig:fixation}.
 \end{figure}
 
 \subsection{Injecting a session ID}\label{injecting-sid}
-% Klein2004 voor response splitting
+
+In this section, we describe the most important attack vectors the attacker can use to inject a session ID into the victim's browser.
+
+\subsubsection{Via GET or POST parameters}
+
+If the target website accepts session ID's in \glspl{url} (see section \ref{session-management}), the attacker can craft a link of the form \url{http://www.target.com/login.php?PHPSESSID=d9qX4zKbg35}, where he chooses the desired session ID \cite{Johns2011}. He then sends this link to the victim, or places on the target website as part of a \gls{xss} attack. When the victim clicks the link, the request sent to the target server will contain the attacker's SID in the URL, causing the web application to think it is the victim's session ID. Alternatively, the attacker can force the victim to visit the URL by using a HTTP redirect \cite{rfc2616} to make the victim's browser automatically load the page \cite{Shiflett2004}. However, this requires the attacker to be able to perform a XSS attack, or the victim to visit the attacker's page.
+
+In case the target website uses POST instead of GET parameters for session management, the link can be replaced by an automatically submitting form \cite{Kolsek2002,Bontrager2005}.
+
+Note that, for a website to accept session IDs via GET or POST parameters, it doesn't have to do its session management via URL rewriting by default. Indeed, multiple frameworks provide URL rewriting as a fallback for browsers that don't support cookies, causing them to be vulnerable to session fixation via URL rewriting \cite{Condit2006,Holovaty2008}.
+
+\subsubsection{Via cross-site scripting}
+
+If an attacker is able to inject script code into the target site (using one of the methods described in section \ref{injecting-script}), he can use this script code to set or replace the \gls{session cookie} with the desired value. This is done by editing the \texttt{document}'s \texttt{cookie} property \cite{Kolsek2002} or by using the \texttt{cookie.write()} function \cite{Johns2011}.
+
+Alternatively, the attacker can use the HTML \texttt{<meta>} tag to set the cookie. For this, he injects the following line of HTML code into the target web page:
+\begin{lstlisting}
+<meta http-equiv=Set-Cookie content="PHPSESSID=d9qX4zKbg35">
+\end{lstlisting}
+where the name and value of the session cookie are chosen by the attacker \cite{Kolsek2002}.
+
+\subsubsection{Via subdomain cookie setting}
+
+Sometimes, an attacker is able to take over a subdomain of the target website because it is more vulnerable than the parent domain, or because he has legitimate access on the subdomain. Normally, setting a cookie on a subdomain would not have any effect on the parent domain. Indeed, as we described in section \ref{access-control}, cookies will only be used for the same domain as the one that set them, or for one of its subdomains. Thus, a cookie set on a subdomain will not be used for its parent domain. Because of this, it would seem that session fixation is not possible from within a subdomain.
+
+There is, however, a possibility to set a cookie for a parent domain by using the cookie's \texttt{domain} parameter when setting a cookie \cite{rfc2109}. To do this, consider the case where the attacker was able to take over the domain \url{vulnerable.target.com}. He can then use this domain to set a cookie for \url{target.com}, and all of its subdomains, by specifying the cookie as \texttt{PHPSESSID=d9qX4zKbg35;domain=.target.com} (notice the `\texttt{.}' preceding \texttt{target.com}). This effectively allows an attacker that has access to a subdomain to execute a session fixation attack on a parent domain \cite{Kolsek2002}.
+
+\subsubsection{Via HTTP response splitting / header injection}
+
+There is another attack that can be used by an attacker to inject a cookie on the victim's machine. In a HTTP response splitting attack, the attacker tricks the victim's browser (or an in-between proxy) into thinking that two HTTP responses were sent by the target server, whereas both are actually part of the same HTTP response \cite{Klein2004}. The interesting part for the attacker is that the contents of one of the two responses can be chosen by himself. Because of this, an attacker is able to insert a \texttt{Set-Cookie} header containing the desired session identifier, effectively injecting the SID into the client's browser \cite{Johns2011}.
+
+\subsection{Other dangers of session fixation}
+
+It seems that the only benefit an attacker has from performing a session fixation is that he can take over the temporary session of another user. There is, however, another issue: an attacker is also able to force a victim to be logged in under the attacker's account. He can do this by logging in first, and subsequently forcing the victim to use the attacker's session ID. This has two major implications \cite{Barth2008}:
+\begin{itemize}
+	\item An attacker can track the victim's actions on the target web application by making use of logging functionality offered by this application. For example, most major search engines offer the option to log the user's search history\footnote{Google, for example, offers an overview for all terms you searched for at \url{http://www.google.com/searchhistory/}.}, allowing an attacker who is able to perform a session fixation attack to access this highly sensitive information.
+	\item On domains that allow the embedding of trusted scripts, it creates the ability for an attacker to execute \gls{xss} attacks. Until recently, iGoogle\footnote{\url{http://www.google.com/ig}} offered the ability to embed trusted scripts on your own personal homepage \cite{Barth2008}. Because of this, an attacker who is able to perform a session fixation attack has the ability to offer scripts to a victim from within the \texttt{google.com} domain. He does this by adding a script to his own homepage, and subsequently imposing his own SID upon the victim's browser. Thus, the next time the victim visits iGoogle, the attacker's home page will be loaded, and the script will be executed.
+\end{itemize}
+
+As we can see, the session fixation attack is more venomous than would be expected when first looked upon. Because of this, we developed a client-side solution to session fixation, which will be described in chapter \ref{fixation-solution}.
 
 \section{Cross Site Request Forgery}\label{csrf}
+
+The cross site request forgery (also called \gls{csrf} or session riding) attack is different from the \gls{session hijacking} and \gls{session fixation} attacks in the sense that the attacker will not try to completely take over a victim's session. Instead, it leverages the victim's browser's implicit authentication to make requests in the name of the client. The attacker accomplishes this by compelling the victim's browser into issuing the request. This can be useful, for example, when the victim is logged in at the website of his bank. In this case, the attacker can use the victim's implicit authentication to transfer money from the victim's account to his own account.
+Before we see the ways in which the attacker can make a victim's browser issue requests, let us first look at the complete attack scenario.
+
+\subsection{Attack scenario}
+
+The CSRF attack is made up out of the following steps:
+
+\begin{enumerate}
+	\item The attacker forces the victim's browser to send a request to the server (we will see how in section \ref{forcing-request}). It is the attacker that chooses the contents of this request.
+	\item The browser, thinking that it is a legitimate request made by the victim, automatically attaches the victim's authentication information.
+	\item The browser sends the request to the target server. This server uses the request's authentication information to determine that the request was made by the victim. Thus, the server executes any action that was requested by the attacker as if the victim requested it.
+\end{enumerate}
+
+The different steps of the CSRF attack are graphically illustrated in figure \ref{fig:csrf}.
+
+\begin{figure}[ht]
+	\centering
+	\includegraphics[width=0.50\textwidth]{img/csrf.png}
+	\caption{The cross site request forgery attack}
+	\label{fig:csrf}
+\end{figure}
+
+\subsection{Forcing the browser to make a request}\label{forcing-request}
