@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2011.4.11)  21 APR 2011 12:31
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2011.4.11)  21 APR 2011 19:58
 entering extended mode
  %&-line parsing enabled.
 **\nonstopmode \input{"/home/bram/School/Masterproef/Thesis/Thesis.tex"}
@@ -947,20 +947,20 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <5> on input line 15.
  [3]
-<img/Sessions.png, id=251, 803.47235pt x 508.72412pt>
+<img/Sessions.png, id=288, 803.47235pt x 508.72412pt>
 File: img/Sessions.png Graphic file (type png)
  <use img/Sessions.png>
-<img/url-rewriting.png, id=252, 803.47235pt x 508.72412pt>
+<img/url-rewriting.png, id=289, 803.47235pt x 508.72412pt>
 File: img/url-rewriting.png Graphic file (type png)
 
 <use img/url-rewriting.png> [4 </home/bram/School/Masterproef/Thesis/img/Sessio
 ns.png (PNG copy)> </home/bram/School/Masterproef/Thesis/img/url-rewriting.png 
 (PNG copy)>] [5] [6] [7]) (/home/bram/School/Masterproef/Thesis/attacks.tex
-[8] <img/persistent-xss.png, id=336, 802.0553pt x 522.8947pt>
+[8] <img/persistent-xss.png, id=373, 802.0553pt x 522.8947pt>
 File: img/persistent-xss.png Graphic file (type png)
 
 <use img/persistent-xss.png>
-<img/nonpersistent-xss.png, id=337, 802.0553pt x 522.8947pt>
+<img/nonpersistent-xss.png, id=374, 802.0553pt x 522.8947pt>
 File: img/nonpersistent-xss.png Graphic file (type png)
 
 <use img/nonpersistent-xss.png> [9
@@ -981,11 +981,11 @@ Overfull \hbox (29.48691pt too wide) in paragraph at lines 65--66
 ;}</style>
  []
 
-[11] <img/hijacking.png, id=386, 802.0553pt x 522.8947pt>
+[11] <img/hijacking.png, id=425, 802.0553pt x 522.8947pt>
 File: img/hijacking.png Graphic file (type png)
 
 <use img/hijacking.png> [12] [13 </home/bram/School/Masterproef/Thesis/img/hija
-cking.png (PNG copy)>] [14] <img/fixation.png, id=436, 801.394pt x 570.13pt>
+cking.png (PNG copy)>] [14] <img/fixation.png, id=474, 801.394pt x 570.13pt>
 File: img/fixation.png Graphic file (type png)
 
 <use img/fixation.png>
@@ -999,29 +999,40 @@ Overfull \hbox (12.8222pt too wide) in paragraph at lines 163--164
 Underfull \vbox (badness 3907) has occurred while \output is active []
 
  [16]
-[17] <img/csrf.png, id=505, 611.28375pt x 421.575pt>
+[17] <img/csrf.png, id=546, 611.28375pt x 421.575pt>
 File: img/csrf.png Graphic file (type png)
- <use img/csrf.png>)
-(/home/bram/School/Masterproef/Thesis/countermeasures.tex [18 </home/bram/Schoo
-l/Masterproef/Thesis/img/csrf.png (PNG copy)>]
-LaTeX Font Info:    Font shape `T1/lmtt/bx/n' in size <12> not available
-(Font)              Font shape `T1/lmtt/b/n' tried instead on input line 9.
-)
-(/home/bram/School/Masterproef/Thesis/session_fixation.tex [19
+ <use img/csrf.png>
+[18 </home/bram/School/Masterproef/Thesis/img/csrf.png (PNG copy)>]
+<img/mao2009a.png, id=568, 131.5314pt x 158.994pt>
+File: img/mao2009a.png Graphic file (type png)
+ <use img/mao2009a.png>
+<img/mao2009b.png, id=569, 131.5314pt x 158.994pt>
+File: img/mao2009b.png Graphic file (type png)
+ <use img/mao2009b.png>
+[19]
+Underfull \vbox (badness 1354) has occurred while \output is active []
 
-] [20
+ [20 </home/bram/School/Masterproef/Thesis/img/mao2009a.png> </home/bram/School
+/Masterproef/Thesis/img/mao2009b.png>])
+(/home/bram/School/Masterproef/Thesis/countermeasures.tex [21] [22
+
+]
+LaTeX Font Info:    Font shape `T1/lmtt/bx/n' in size <12> not available
+(Font)              Font shape `T1/lmtt/b/n' tried instead on input line 11.
+)
+(/home/bram/School/Masterproef/Thesis/session_fixation.tex [23] [24
 
 ])
-(/home/bram/School/Masterproef/Thesis/conclusion.tex [21] [22
+(/home/bram/School/Masterproef/Thesis/conclusion.tex [25] [26
 
-]) [23] [24
+]) [27] [28
 
 ]
 (/home/bram/School/Masterproef/Thesis/Thesis.bbl
 bibitemlist
-[25
+[29
 
-] [26]) [27] [28
+] [30]) [31] [32
 
 ]
 \tf@toc=\write7
@@ -1035,15 +1046,15 @@ bibitemlist
 
  (/home/bram/School/Masterproef/Thesis/Thesis.aux) ) 
 Here is how much of TeX's memory you used:
- 14126 strings out of 495061
- 212455 string characters out of 1182621
- 367368 words of memory out of 3000000
- 16731 multiletter control sequences out of 15000+50000
- 89521 words of font info for 125 fonts, out of 3000000 for 9000
+ 14226 strings out of 495061
+ 213853 string characters out of 1182621
+ 373961 words of memory out of 3000000
+ 16786 multiletter control sequences out of 15000+50000
+ 90048 words of font info for 130 fonts, out of 3000000 for 9000
  28 hyphenation exceptions out of 8191
- 48i,11n,83p,1229b,845s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 48i,11n,83p,1229b,872s stack positions out of 5000i,500n,10000p,200000b,50000s
 pdfTeX warning (dest): name
-{glo:csrf} has been referenced but does not exist, replaced by a fixed one
+{glo:html} has been referenced but does not exist, replaced by a fixed one
 
 {/usr/share/texmf/fonts/enc/dvips/lm/lm-ec.enc}{/usr/share/texmf/fonts/enc/dvip
 s/lm/lm-mathit.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}{/usr/share/t
@@ -1060,9 +1071,9 @@ mf/fonts/type1/public/lm/lmtk10.pfb></usr/share/texmf/fonts/type1/public/lm/lmt
 t10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt9.pfb></usr/share/texmf-tex
 live/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/share/texmf-texlive/fonts/type1/
 urw/helvetic/uhvr8a.pfb>
-Output written on Thesis.pdf (38 pages, 737332 bytes).
+Output written on Thesis.pdf (42 pages, 808011 bytes).
 PDF statistics:
- 657 PDF objects out of 1000 (max. 8388607)
- 171 named destinations out of 1000 (max. 500000)
- 23259 words of extra memory for PDF output out of 24883 (max. 10000000)
+ 764 PDF objects out of 1000 (max. 8388607)
+ 204 named destinations out of 1000 (max. 500000)
+ 23277 words of extra memory for PDF output out of 24883 (max. 10000000)
 

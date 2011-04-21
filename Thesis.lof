@@ -25,6 +25,9 @@
 \contentsline {figure}{\numberline {3.2}{\ignorespaces The session hijacking attack}}{13}{figure.3.2}
 \contentsline {figure}{\numberline {3.3}{\ignorespaces The session fixation attack}}{15}{figure.3.3}
 \contentsline {figure}{\numberline {3.4}{\ignorespaces The cross site request forgery attack}}{18}{figure.3.4}
+\contentsline {figure}{\numberline {3.5}{\ignorespaces Tricking a user into submitting a form \cite {Mao2009}}}{20}{figure.3.5}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {the original form}}}{20}{subfigure.5.1}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {a malicious page including only parts of the form in an iframe and trying to trick a user into clicking the button}}}{20}{subfigure.5.2}
 \addvspace {10pt}
 \addvspace {10pt}
 \addvspace {10pt}

@@ -6,6 +6,10 @@ Ben Adida.
 \newblock In {\em Proceeding of the 17th international conference on World Wide
   Web}, pages 517--524. ACM, 2008.
 
+\bibitem{Barbaro2006}
+Michael Barbaro and Tom {Zeller Jr.}
+\newblock {A Face Is Exposed for AOL Searcher No. 4417749}, 2006.
+
 \bibitem{Barth2008}
 Adam Barth, Collin Jackson, and John~C. Mitchell.
 \newblock {Robust defenses for cross-site request forgery}.
@@ -84,6 +88,12 @@ Martin Johns, Bastian Braun, Michael Schrank, and Joachim Posegga.
 \newblock {Reliable Protection Against Session Fixation Attacks}.
 \newblock {\em ACM Symposium on Applied Computing}, 2011.
 
+\bibitem{Johns2006b}
+Martin Johns and Justus Winter.
+\newblock {RequestRodeo: client side protection against session riding}.
+\newblock In {\em Proceedings of the OWASP Europe 2006 Conference, refereed
+  papers track, Report CW448}, pages 5--17, 2006.
+
 \bibitem{Johnston2004}
 Paul Johnston.
 \newblock {Authentication and Session Management on the Web}.
@@ -135,6 +145,12 @@ James~F. Kurose and Keith~W. Ross.
 \newblock {\em {Computer networking: a top-down approach}}.
 \newblock Pearson/Addison-Wesley, 4th edition, 2008.
 
+\bibitem{Mao2009}
+Ziqing Mao, Ninghui Li, and Ian Molloy.
+\newblock {Defeating cross-site request forgery attacks with browser-enforced
+  authenticity protection}.
+\newblock {\em Financial Cryptography and Data Security}, pages 238--255, 2009.
+
 \bibitem{Nikiforakis2010}
 Nick Nikiforakis, Wannes Meert, Yves Younan, Martin Johns, and Wouter Joosen.
 \newblock {SessionShield: Lightweight Protection against Session Hijacking}.
@@ -164,5 +180,20 @@ Kapil Singh, Alexander Moshchuk, HJ~Wang, and W.~Lee.
 \newblock {On the incoherencies in web browser access control policies}.
 \newblock In {\em 2010 IEEE Symposium on Security and Privacy}, pages 463--478.
   IEEE, 2010.
+
+\bibitem{Binny2010}
+Binny {V A}.
+\newblock {Using POST method in XMLHTTPRequest(Ajax)}, 2010.
+
+\bibitem{Kesteren:09:X}
+Anne van Kesteren.
+\newblock {XMLHttpRequest}.
+\newblock Last call {WD}, W3C, November 2009.
+\newblock http://www.w3.org/TR/2009/WD-XMLHttpRequest-20091119/.
+
+\bibitem{Zeller2008}
+William Zeller and Edward~W Felten.
+\newblock {Cross-Site Request Forgeries: Exploitation and Prevention}.
+\newblock pages 1--13, 2008.
 
 \end{thebibliography}

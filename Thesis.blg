@@ -1,51 +1,57 @@
 This is BibTeX, Version 0.99c (TeX Live 2009/Debian)
-The top-level auxiliary file: School/Masterproef/Thesis/Thesis.aux
+The top-level auxiliary file: /home/bram/School/Masterproef/Thesis/Thesis.aux
 The style file: plain.bst
 Database file #1: /home/bram/Documenten/library.bib
+Repeated entry---line 638 of file /home/bram/Documenten/library.bib
+ : @misc{Zeller2008
+ :                 ,
+I'm skipping whatever remains of this entry
 Database file #2: /home/bram/Documenten/rfc.bib
+Database file #3: /home/bram/Documenten/extra.bib
 Warning--can't use both volume and number fields in DiLucca2005
 Warning--there's a number but no volume in Farrell2011
 Warning--there's a number but no volume in Klein2002
 Warning--there's a number but no volume in Kolsek2002
-You've used 31 entries,
+Warning--empty journal in Zeller2008
+You've used 37 entries,
             2118 wiz_defined-function locations,
-            696 strings with 8526 characters,
-and the built_in function-call counts, 9550 in all, are:
-= -- 938
-> -- 417
-< -- 11
-+ -- 167
-- -- 136
-* -- 561
-:= -- 1553
-add.period$ -- 94
-call.type$ -- 31
-change.case$ -- 159
+            730 strings with 9425 characters,
+and the built_in function-call counts, 11382 in all, are:
+= -- 1122
+> -- 488
+< -- 14
++ -- 195
+- -- 158
+* -- 655
+:= -- 1843
+add.period$ -- 111
+call.type$ -- 37
+change.case$ -- 189
 chr.to.int$ -- 0
-cite$ -- 35
-duplicate$ -- 380
-empty$ -- 793
-format.name$ -- 136
-if$ -- 2056
+cite$ -- 42
+duplicate$ -- 457
+empty$ -- 947
+format.name$ -- 158
+if$ -- 2458
 int.to.chr$ -- 0
-int.to.str$ -- 31
-missing$ -- 23
-newline$ -- 154
-num.names$ -- 62
-pop$ -- 226
+int.to.str$ -- 37
+missing$ -- 26
+newline$ -- 183
+num.names$ -- 74
+pop$ -- 268
 preamble$ -- 1
-purify$ -- 130
+purify$ -- 153
 quote$ -- 0
-skip$ -- 303
+skip$ -- 373
 stack$ -- 0
-substring$ -- 460
-swap$ -- 106
-text.length$ -- 11
+substring$ -- 560
+swap$ -- 130
+text.length$ -- 14
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 118
-warning$ -- 4
-while$ -- 95
-width$ -- 33
-write$ -- 326
-(There were 4 warnings)
+type$ -- 142
+warning$ -- 5
+while$ -- 116
+width$ -- 39
+write$ -- 387
+(There was 1 error message)

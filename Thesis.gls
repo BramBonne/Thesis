@@ -2,13 +2,19 @@
 \begin{theglossary}\glossaryheader
 \glsgroupheading{C}\relax \glsresetentrylist %
 \glossaryentryfield{cookie}{\glsnamefont{cookie}}{A piece of text made up of one or more name-value pairs stored by a website in the browser. Cookies are set by a website upon first visit, and sent by the browser on every request.}{\relax }{\glossaryentrynumbers{\relax 
-		\setentrycounter{page}\glsnumberformat{3}}}\glsgroupskip
+		\setentrycounter{page}\glsnumberformat{3}}}%
+\glossaryentryfield{csrf}{\glsnamefont{CSRF}}{Cross-Site Request Forgery, an attack in which JavaScript is used to execute malicious code in the victim's browser}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter{page}\glsnumberformat{17}}}\glsgroupskip
 \glsgroupheading{D}\relax \glsresetentrylist %
 \glossaryentryfield{dom}{\glsnamefont{DOM}}{Document Object Model, used by programming languages like JavaScript to access elements in an XML document or on a web page}{\relax }{\glossaryentrynumbers{\relax 
-		\setentrycounter{page}\glsnumberformat{5}}}\glsgroupskip
+		\setentrycounter{page}\glsnumberformat{vii}\delimN 
+		\setentrycounter{page}\glsnumberformat{5}\delimN 
+		\setentrycounter{page}\glsnumberformat{13}}}\glsgroupskip
 \glsgroupheading{H}\relax \glsresetentrylist %
 \glossaryentryfield{http}{\glsnamefont{HTTP}}{HyperText Transfer Protocol, the protocol which is used by web browsers to communicate with web servers}{\relax }{\glossaryentrynumbers{\relax 
-		\setentrycounter{page}\glsnumberformat{3}}}\glsgroupskip
+		\setentrycounter{page}\glsnumberformat{3}}}%
+\glossaryentryfield{https}{\glsnamefont{HTTPS}}{HyperText Transfer Protocol Secure, a secure variant of \gls {http}, which uses encryption when transmitting data}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter{page}\glsnumberformat{viii}}}\glsgroupskip
 \glsgroupheading{L}\relax \glsresetentrylist %
 \glossaryentryfield{lcg}{\glsnamefont{LCG}}{Linear Congruential Generator, a generator for pseudorandom numbers based on recurrence}{\relax }{\glossaryentrynumbers{\relax 
 		\setentrycounter{page}\glsnumberformat{6}}}\glsgroupskip
@@ -19,24 +25,37 @@
 		\setentrycounter{page}\glsnumberformat{13}}}\glsgroupskip
 \glsgroupheading{S}\relax \glsresetentrylist %
 \glossaryentryfield{session cookie}{\glsnamefont{session cookie}}{A cookie containing a session identifier}{\relax }{\glossaryentrynumbers{\relax 
-		\setentrycounter{page}\glsnumberformat{4}}}%
+		\setentrycounter{page}\glsnumberformat{4}\delimN 
+		\setentrycounter{page}\glsnumberformat{16}}}%
 \glossaryentryfield{session fixation}{\glsnamefont{session fixation}}{An attack in which the attacker tries to enforce a \gls {sid} upon the victim, so he is able to take over the session later on}{\relax }{\glossaryentrynumbers{\relax 
-		\setentrycounter{page}\glsnumberformat{5}}}%
+		\setentrycounter{page}\glsnumberformat{5}\delimN 
+		\setentrycounter{page}\glsnumberformat{17}}}%
 \glossaryentryfield{session hijacking}{\glsnamefont{session hijacking}}{An attack in which the attacker tries to capture the victim's \gls {sid}, to be able to take over his session}{\relax }{\glossaryentrynumbers{\relax 
-		\setentrycounter{page}\glsnumberformat{4}}}%
+		\setentrycounter{page}\glsnumberformat{4}\delimN 
+		\setentrycounter{page}\glsnumberformat{14}\delimN 
+		\setentrycounter{page}\glsnumberformat{17}}}%
 \glossaryentryfield{session id}{\glsnamefont{session ID}}{Session Identifier, a unique string of text used by the server to identify a user}{\relax }{\glossaryentrynumbers{\relax 
 		\setentrycounter{page}\glsnumberformat{3}\delimN 
-		\setentrycounter{page}\glsnumberformat{12}}}%
+		\setentrycounter{page}\glsnumberformat{12}\delimN 
+		\setentrycounter{page}\glsnumberformat{14}}}%
 \glossaryentryfield{sid}{\glsnamefont{SID}}{see `session ID'}{\relax }{\glossaryentrynumbers{\relax 
-		\setentrycounter{page}\glsnumberformat{3}}}%
+		\setentrycounter{page}\glsnumberformat{vii}\delimN 
+		\setentrycounter{page}\glsnumberformat{3}\delimN 
+		\setentrycounter{page}\glsnumberformat{18}}}%
 \glossaryentryfield{sop}{\glsnamefont{SOP}}{Same Origin Policy, the policy which states that \gls {dom} objects may only be accessed by principals having the same origin as the object}{\relax }{\glossaryentrynumbers{\relax 
 		\setentrycounter{page}\glsnumberformat{5}\delimN 
-		\setentrycounter{page}\glsnumberformat{12}}}\glsgroupskip
+		\setentrycounter{page}\glsnumberformat{12}}}%
+\glossaryentryfield{ssl}{\glsnamefont{SSL}}{Secure Socket Layer, used in \gls {https} to encrypt traffic between a client and a server}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter{page}\glsnumberformat{18}}}\glsgroupskip
 \glsgroupheading{U}\relax \glsresetentrylist %
 \glossaryentryfield{url}{\glsnamefont{URL}}{Uniform Resource Locator, a string that specifies the location of a resource}{\relax }{\glossaryentrynumbers{\relax 
-		\setentrycounter{page}\glsnumberformat{4}}}\glsgroupskip
+		\setentrycounter{page}\glsnumberformat{4}\delimN 
+		\setentrycounter{page}\glsnumberformat{15}}}\glsgroupskip
 \glsgroupheading{X}\relax \glsresetentrylist %
 \glossaryentryfield{xss}{\glsnamefont{XSS}}{Cross-Site Scripting, an attack whereby the attacker injects JavaScript into a legitimate page that will be executed by another user's browser when the user visits the page}{\relax }{\glossaryentrynumbers{\relax 
 		\setentrycounter{page}\glsnumberformat{6}\delimN 
-		\setentrycounter{page}\glsnumberformat{9}}}%
+		\setentrycounter{page}\glsnumberformat{9}\delimN 
+		\setentrycounter{page}\glsnumberformat{13}\delimN 
+		\setentrycounter{page}\glsnumberformat{15}\delimN 
+		\setentrycounter{page}\glsnumberformat{17}}}%
 \end{theglossary}\glossarypostamble

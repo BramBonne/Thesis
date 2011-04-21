@@ -15,7 +15,8 @@
 \BOOKMARK [1][-]{section.3.4}{Cross Site Request Forgery}{chapter.3}
 \BOOKMARK [0][-]{chapter.4}{Session attack countermeasures}{}
 \BOOKMARK [1][-]{section.4.1}{Session security in web frameworks}{chapter.4}
-\BOOKMARK [1][-]{section.4.2}{Other Solutions \(and their problems\)}{chapter.4}
+\BOOKMARK [1][-]{section.4.2}{Cross Site Request Forgery countermeasures}{chapter.4}
+\BOOKMARK [1][-]{section.4.3}{Other Solutions \(and their problems\)}{chapter.4}
 \BOOKMARK [0][-]{chapter.5}{A client-side solution to session fixation}{}
 \BOOKMARK [0][-]{chapter.6}{Conclusion}{}
-\BOOKMARK [0][-]{section*.24}{Bibliography}{}
+\BOOKMARK [0][-]{section*.29}{Bibliography}{}

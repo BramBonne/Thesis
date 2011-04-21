@@ -52,14 +52,21 @@
 \contentsline {section}{\numberline {3.4}Cross Site Request Forgery}{17}{section.3.4}
 \contentsline {subsection}{\numberline {3.4.1}Attack scenario}{18}{subsection.3.4.1}
 \contentsline {subsection}{\numberline {3.4.2}Forcing the browser to make a request}{18}{subsection.3.4.2}
-\contentsline {chapter}{\chapternumberline {4}Session attack countermeasures}{19}{chapter.4}
-\contentsline {section}{\numberline {4.1}Session security in web frameworks}{19}{section.4.1}
-\contentsline {section}{\numberline {4.2}Other Solutions (and their problems)}{19}{section.4.2}
-\contentsline {subsection}{\numberline {4.2.1}Secure connections}{19}{subsection.4.2.1}
-\contentsline {subsection}{\numberline {4.2.2}\texttt {HttpOnly} cookies}{19}{subsection.4.2.2}
-\contentsline {chapter}{\chapternumberline {5}A client-side solution to session fixation}{21}{chapter.5}
-\contentsline {chapter}{\chapternumberline {6}Conclusion}{23}{chapter.6}
-\contentsline {chapter}{Bibliography}{25}{section*.24}
+\contentsline {subsubsection}{Via crafted URLs}{19}{section*.23}
+\contentsline {subsubsection}{Via the \texttt {<img>} tag}{19}{section*.24}
+\contentsline {subsubsection}{Via forms}{19}{section*.25}
+\contentsline {subsubsection}{Via asynchronous requests}{20}{section*.26}
+\contentsline {subsubsection}{Via active network attacks}{21}{section*.27}
+\contentsline {subsection}{\numberline {3.4.3}CSRF from within a different domain}{21}{subsection.3.4.3}
+\contentsline {chapter}{\chapternumberline {4}Session attack countermeasures}{23}{chapter.4}
+\contentsline {section}{\numberline {4.1}Session security in web frameworks}{23}{section.4.1}
+\contentsline {section}{\numberline {4.2}Cross Site Request Forgery countermeasures}{23}{section.4.2}
+\contentsline {section}{\numberline {4.3}Other Solutions (and their problems)}{23}{section.4.3}
+\contentsline {subsection}{\numberline {4.3.1}Secure connections}{23}{subsection.4.3.1}
+\contentsline {subsection}{\numberline {4.3.2}\texttt {HttpOnly} cookies}{23}{subsection.4.3.2}
+\contentsline {chapter}{\chapternumberline {5}A client-side solution to session fixation}{25}{chapter.5}
+\contentsline {chapter}{\chapternumberline {6}Conclusion}{27}{chapter.6}
+\contentsline {chapter}{Bibliography}{29}{section*.29}
 \select@language {dutch}
 \select@language {english}
 \select@language {dutch}
