@@ -29,10 +29,12 @@ Craig Condit.
 \newblock {JSESSIONID considered harmful}, 2006.
 
 \bibitem{DiLucca2005}
-G.A. {Di Lucca}, AR~Fasolino, M.~Mastoianni, and P.~Tramontana.
-\newblock {\em {Identifying cross site scripting vulnerabilities in Web
-  applications}}, volume 1550-4441.
-\newblock IEEE Comput. Soc, 2005.
+Giuseppe~A. {Di Lucca}, Anna~Rita Fasolino, M.~Mastroianni, and Porfirio
+  Tramontana.
+\newblock {Identifying cross site scripting vulnerabilities in Web
+  applications}.
+\newblock In {\em Web Site Evolution, Sixth IEEE International Workshop on
+  (WSE'04)}, volume 1550-4441, pages 71--80. IEEE Comput. Soc, 2005.
 
 \bibitem{rfc4086}
 D.~{Eastlake 3rd}, J.~Schiller, and S.~Crocker.
@@ -119,7 +121,7 @@ Amit Klein.
 
 \bibitem{Klein2004}
 Amit Klein.
-\newblock {“Divide and Conquer” - HTTP Response Splitting, Web Cache
+\newblock {``Divide and Conquer'' - HTTP Response Splitting, Web Cache
   Poisoning Attacks, and Related Topics}.
 \newblock {\em Whitepaper, Sanctum Inc.}, January 2004.
 
@@ -170,6 +172,13 @@ E.~Rescorla.
 \newblock {HTTP Over TLS}.
 \newblock RFC 2818 (Informational), May 2000.
 \newblock Updated by RFC 5785.
+
+\bibitem{Schreiber2004}
+T~Schreiber.
+\newblock {Session Riding: A Widespread Vulnerability in Today's Web
+  Applications}.
+\newblock {\em Whitepaper, SecureNet GmbH (December 2004) http://www.
+  securenet. de/papers/Session Riding. pdf}, 2004.
 
 \bibitem{Shiflett2004}
 Chris Shiflett.

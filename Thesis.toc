@@ -57,7 +57,7 @@
 \contentsline {subsubsection}{Via forms}{19}{section*.25}
 \contentsline {subsubsection}{Via asynchronous requests}{20}{section*.26}
 \contentsline {subsubsection}{Via active network attacks}{21}{section*.27}
-\contentsline {subsection}{\numberline {3.4.3}CSRF from within a different domain}{21}{subsection.3.4.3}
+\contentsline {subsection}{\numberline {3.4.3}CSRF and the same origin policy}{21}{subsection.3.4.3}
 \contentsline {chapter}{\chapternumberline {4}Session attack countermeasures}{23}{chapter.4}
 \contentsline {section}{\numberline {4.1}Session security in web frameworks}{23}{section.4.1}
 \contentsline {section}{\numberline {4.2}Cross Site Request Forgery countermeasures}{23}{section.4.2}

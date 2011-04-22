@@ -158,7 +158,7 @@ These steps are graphically illustrated in figure \ref{fig:fixation}.
 
 In this section, we describe the most important attack vectors the attacker can use to inject a session ID into the victim's browser.
 
-\subsubsection{Via GET or POST parameters}
+\subsubsection{Via GET or POST parameters}\label{get-or-post}
 
 If the target website accepts session ID's in \glspl{url} (see section \ref{session-management}), the attacker can craft a link of the form \url{http://www.target.com/login.php?PHPSESSID=d9qX4zKbg35}, where he chooses the desired session ID \cite{Johns2011}. He then sends this link to the victim, or places on the target website as part of a \gls{xss} attack. When the victim clicks the link, the request sent to the target server will contain the attacker's SID in the URL, causing the web application to think it is the victim's session ID. Alternatively, the attacker can force the victim to visit the URL by using a HTTP redirect \cite{rfc2616} to make the victim's browser automatically load the page \cite{Shiflett2004}. However, this requires the attacker to be able to perform a XSS attack, or the victim to visit the attacker's page.
 
@@ -203,7 +203,7 @@ Before we see the ways in which the attacker can make a victim's browser issue r
 
 \subsection{Attack scenario}
 
-The CSRF attack is made up out of the following steps (assuming that the victim is already authenticated at the target website) \cite{Jovanovic2006}:
+The CSRF attack is made up out of the following steps (assuming that the victim is already authenticated at the target website) \cite{Schreiber2004}:
 
 \begin{enumerate}
 	\item The attacker forces the victim's browser to send a request to the server (we will see how in section \ref{forcing-request}). It is the attacker that chooses the contents of this request.
@@ -288,4 +288,8 @@ In case the connection between the client and the server is not encrypted, an ac
 	\label{tab:forcing-request}
 \end{table}
 
-\subsection{CSRF from within a different domain}
+Table \ref{fig:csrf} summarizes for each of the discussed methods whether it can be used to issue GET requests, POST requests, or both. As we noted in section \ref{get-or-post}, however, some websites which normally use one of the two methods also accept requests issued using the other method \cite{Zeller2008}.
+
+\subsection{CSRF and the same origin policy}
+
+The \gls{sop} (described in section \ref{sop}) limits JavaScript access to DOM objects that have the same origin as the page which contains the script. Although this prevents JavaScript from accessing DOM objects from another domain, it does not prevent JavaScript from making requests to another domain \cite{DeRyck2010}. Thus, the same origin policy does not have any effect on CSRF attacks.
