@@ -17,7 +17,7 @@
 \contentsline {chapter}{\chapternumberline {1}Introduction}{1}{chapter.1}
 \contentsline {chapter}{\chapternumberline {2}About web sessions}{3}{chapter.2}
 \contentsline {section}{\numberline {2.1}How web sessions work}{3}{section.2.1}
-\contentsline {section}{\numberline {2.2}Accessibility of session identifiers}{4}{section.2.2}
+\contentsline {section}{\numberline {2.2}Accessibility of session identifiers}{5}{section.2.2}
 \contentsline {section}{\numberline {2.3}Keeping web sessions secure}{5}{section.2.3}
 \contentsline {subsection}{\numberline {2.3.1}Unguessable by an attacker}{5}{subsection.2.3.1}
 \contentsline {subsubsection}{Randomness}{5}{section*.9}
@@ -42,31 +42,49 @@
 \contentsline {subsubsection}{Via the referer header}{14}{section*.17}
 \contentsline {subsubsection}{Via the user}{14}{section*.18}
 \contentsline {section}{\numberline {3.3}Session fixation}{14}{section.3.3}
-\contentsline {subsection}{\numberline {3.3.1}Attack scenario}{14}{subsection.3.3.1}
-\contentsline {subsection}{\numberline {3.3.2}Injecting a session ID}{15}{subsection.3.3.2}
-\contentsline {subsubsection}{Via GET or POST parameters}{15}{section*.19}
+\contentsline {subsection}{\numberline {3.3.1}Attack scenario}{15}{subsection.3.3.1}
+\contentsline {subsection}{\numberline {3.3.2}Injecting a session ID}{16}{subsection.3.3.2}
+\contentsline {subsubsection}{Via GET or POST parameters}{16}{section*.19}
 \contentsline {subsubsection}{Via cross-site scripting}{16}{section*.20}
-\contentsline {subsubsection}{Via subdomain cookie setting}{16}{section*.21}
-\contentsline {subsubsection}{Via HTTP response splitting / header injection}{17}{section*.22}
+\contentsline {subsubsection}{Via the \texttt {<meta>} tag}{16}{section*.21}
+\contentsline {subsubsection}{Via HTTP response splitting / header injection}{16}{section*.22}
+\contentsline {subsubsection}{Via subdomain cookie setting}{17}{section*.23}
 \contentsline {subsection}{\numberline {3.3.3}Other dangers of session fixation}{17}{subsection.3.3.3}
-\contentsline {section}{\numberline {3.4}Cross Site Request Forgery}{17}{section.3.4}
+\contentsline {section}{\numberline {3.4}Cross Site Request Forgery}{18}{section.3.4}
 \contentsline {subsection}{\numberline {3.4.1}Attack scenario}{18}{subsection.3.4.1}
-\contentsline {subsection}{\numberline {3.4.2}Forcing the browser to make a request}{18}{subsection.3.4.2}
-\contentsline {subsubsection}{Via crafted URLs}{19}{section*.23}
-\contentsline {subsubsection}{Via the \texttt {<img>} tag}{19}{section*.24}
-\contentsline {subsubsection}{Via forms}{19}{section*.25}
-\contentsline {subsubsection}{Via asynchronous requests}{20}{section*.26}
-\contentsline {subsubsection}{Via active network attacks}{21}{section*.27}
-\contentsline {subsection}{\numberline {3.4.3}CSRF and the same origin policy}{21}{subsection.3.4.3}
+\contentsline {subsection}{\numberline {3.4.2}Forcing the browser to make a request}{19}{subsection.3.4.2}
+\contentsline {subsubsection}{Via crafted URLs}{19}{section*.24}
+\contentsline {subsubsection}{Via the \texttt {<img>} tag}{19}{section*.25}
+\contentsline {subsubsection}{Via forms}{20}{section*.26}
+\contentsline {subsubsection}{Via asynchronous requests}{20}{section*.27}
+\contentsline {subsubsection}{Via active network attacks}{21}{section*.28}
+\contentsline {subsection}{\numberline {3.4.3}CSRF and the same origin policy}{22}{subsection.3.4.3}
 \contentsline {chapter}{\chapternumberline {4}Session attack countermeasures}{23}{chapter.4}
-\contentsline {section}{\numberline {4.1}Session security in web frameworks}{23}{section.4.1}
-\contentsline {section}{\numberline {4.2}Cross Site Request Forgery countermeasures}{23}{section.4.2}
+\contentsline {section}{\numberline {4.1}Server-side countermeasures}{23}{section.4.1}
+\contentsline {subsection}{\numberline {4.1.1}General solutions}{23}{subsection.4.1.1}
+\contentsline {subsubsection}{Secure connections}{23}{section*.29}
+\contentsline {subsubsection}{Cookies vs. URL rewriting}{23}{section*.30}
+\contentsline {subsection}{\numberline {4.1.2}Session security in web frameworks}{23}{subsection.4.1.2}
+\contentsline {section}{\numberline {4.2}Client-side countermeasures}{23}{section.4.2}
 \contentsline {section}{\numberline {4.3}Other Solutions (and their problems)}{23}{section.4.3}
-\contentsline {subsection}{\numberline {4.3.1}Secure connections}{23}{subsection.4.3.1}
-\contentsline {subsection}{\numberline {4.3.2}\texttt {HttpOnly} cookies}{23}{subsection.4.3.2}
 \contentsline {chapter}{\chapternumberline {5}A client-side solution to session fixation}{25}{chapter.5}
-\contentsline {chapter}{\chapternumberline {6}Conclusion}{27}{chapter.6}
-\contentsline {chapter}{Bibliography}{29}{section*.29}
+\contentsline {section}{\numberline {5.1}Principle}{25}{section.5.1}
+\contentsline {section}{\numberline {5.2}Identifying session identifiers}{27}{section.5.2}
+\contentsline {section}{\numberline {5.3}Implementation}{27}{section.5.3}
+\contentsline {subsection}{\numberline {5.3.1}HTTP proxy or browser extension?}{27}{subsection.5.3.1}
+\contentsline {subsection}{\numberline {5.3.2}The Firefox architecture}{28}{subsection.5.3.2}
+\contentsline {subsection}{\numberline {5.3.3}Implementation as a Firefox add-on}{29}{subsection.5.3.3}
+\contentsline {section}{\numberline {5.4}Evaluation}{30}{section.5.4}
+\contentsline {subsection}{\numberline {5.4.1}Correctness}{30}{subsection.5.4.1}
+\contentsline {subsection}{\numberline {5.4.2}Real-world impact}{30}{subsection.5.4.2}
+\contentsline {subsection}{\numberline {5.4.3}Performance}{30}{subsection.5.4.3}
+\contentsline {section}{\numberline {5.5}Discussion}{30}{section.5.5}
+\contentsline {section}{\numberline {5.6}Extending with session hijacking protection}{31}{section.5.6}
+\contentsline {section}{\numberline {5.7}Related work}{32}{section.5.7}
+\contentsline {subsection}{\numberline {5.7.1}HttpOnly}{32}{subsection.5.7.1}
+\contentsline {subsection}{\numberline {5.7.2}SessionShield}{32}{subsection.5.7.2}
+\contentsline {chapter}{\chapternumberline {6}Conclusion}{33}{chapter.6}
+\contentsline {chapter}{Bibliography}{35}{section*.32}
 \select@language {dutch}
 \select@language {english}
 \select@language {dutch}

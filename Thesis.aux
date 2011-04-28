@@ -95,12 +95,12 @@
 \@writefile{lof}{\contentsline {figure}{\numberline {2.1}{\ignorespaces Session management}}{4}{figure.2.1}}
 \@writefile{lof}{\contentsline {subfigure}{\numberline{(a)}{\ignorespaces {via cookies}}}{4}{subfigure.1.1}}
 \@writefile{lof}{\contentsline {subfigure}{\numberline{(b)}{\ignorespaces {via URL rewriting}}}{4}{subfigure.1.2}}
-\@writefile{toc}{\contentsline {section}{\numberline {2.2}Accessibility of session identifiers}{4}{section.2.2}}
 \citation{Singh2010}
 \citation{Singh2010}
 \citation{Nikiforakis2010}
 \citation{Farrell2011}
 \citation{rfc4086}
+\@writefile{toc}{\contentsline {section}{\numberline {2.2}Accessibility of session identifiers}{5}{section.2.2}}
 \newlabel{access-control}{{\M@TitleReference {2.2}{Accessibility of session identifiers}}{5}{Accessibility of session identifiers\relax }{section.2.2}{}}
 \newlabel{sop}{{\M@TitleReference {2.2}{Accessibility of session identifiers}}{5}{Accessibility of session identifiers\relax }{section.2.2}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {2.3}Keeping web sessions secure}{5}{section.2.3}}
@@ -110,11 +110,13 @@
 \citation{Fu2001}
 \citation{OWASP2009a}
 \citation{OWASP2009a}
-\citation{rfc2818}
+\citation{rfc2246}
 \citation{Fu2001}
 \citation{rfc2109}
+\citation{Nikiforakis2010}
 \@writefile{toc}{\contentsline {subsubsection}{Sufficient length}{6}{section*.10}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.3.2}Unavailable to an attacker}{6}{subsection.2.3.2}}
+\newlabel{secure-flag}{{\M@TitleReference {2.3.2}{Unavailable to an attacker}}{6}{Unavailable to an attacker\relax }{subsection.2.3.2}{}}
 \citation{Fu2001}
 \citation{OWASP2009a}
 \citation{Kolsek2002}
@@ -133,6 +135,7 @@
 \newlabel{xss}{{\M@TitleReference {3.1}{Background: cross-site scripting}}{9}{Background: cross-site scripting\relax }{section.3.1}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.1.1}Variants of cross-site scripting}{9}{subsection.3.1.1}}
 \@writefile{toc}{\contentsline {subsubsection}{Persistent (stored) XSS}{9}{section*.13}}
+\citation{Vogt2007}
 \newlabel{fig:persistent-xss}{{\M@TitleReference {3.1a}{Persistent (stored) XSS}}{10}{Subfigure 3 3.1a\relax }{subfigure.3.1.1}{}}
 \newlabel{sub@fig:persistent-xss}{{(a)}{a}{Subfigure 3 3.1a\relax }{subfigure.3.1.1}{}}
 \newlabel{fig:nonpersistent-xss}{{\M@TitleReference {3.1b}{Persistent (stored) XSS}}{10}{Subfigure 3 3.1b\relax }{subfigure.3.1.2}{}}
@@ -160,145 +163,218 @@
 \citation{Graham2007}
 \citation{Butler2010}
 \citation{Klein2002}
-\citation{Fu2001}
-\citation{rfc2616}
 \@writefile{lof}{\contentsline {figure}{\numberline {3.2}{\ignorespaces The session hijacking attack}}{13}{figure.3.2}}
 \newlabel{fig:hijacking}{{\M@TitleReference {3.2}{The session hijacking attack}}{13}{The session hijacking attack\relax }{figure.3.2}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.2.2}Capturing the session ID}{13}{subsection.3.2.2}}
 \newlabel{capturing}{{\M@TitleReference {3.2.2}{Capturing the session ID}}{13}{Capturing the session ID\relax }{subsection.3.2.2}{}}
 \@writefile{toc}{\contentsline {subsubsection}{Via a (passive) man-in-the-middle attack}{13}{section*.15}}
 \@writefile{toc}{\contentsline {subsubsection}{Via cross-site scripting}{13}{section*.16}}
+\citation{Fu2001}
+\citation{rfc2616}
 \citation{Barth2008}
 \citation{Johnston2004}
-\citation{Kolsek2002}
-\citation{Shiflett2004}
 \@writefile{toc}{\contentsline {subsubsection}{Via the referer header}{14}{section*.17}}
 \@writefile{toc}{\contentsline {subsubsection}{Via the user}{14}{section*.18}}
 \@writefile{toc}{\contentsline {section}{\numberline {3.3}Session fixation}{14}{section.3.3}}
 \newlabel{fixation}{{\M@TitleReference {3.3}{Session fixation}}{14}{Session fixation\relax }{section.3.3}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.3.1}Attack scenario}{14}{subsection.3.3.1}}
+\citation{Kolsek2002}
+\citation{Shiflett2004}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3.1}Attack scenario}{15}{subsection.3.3.1}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.3}{\ignorespaces The session fixation attack}}{15}{figure.3.3}}
+\newlabel{fig:fixation}{{\M@TitleReference {3.3}{The session fixation attack}}{15}{The session fixation attack\relax }{figure.3.3}{}}
 \citation{Johns2011}
 \citation{rfc2616}
 \citation{Shiflett2004}
-\@writefile{lof}{\contentsline {figure}{\numberline {3.3}{\ignorespaces The session fixation attack}}{15}{figure.3.3}}
-\newlabel{fig:fixation}{{\M@TitleReference {3.3}{The session fixation attack}}{15}{The session fixation attack\relax }{figure.3.3}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.3.2}Injecting a session ID}{15}{subsection.3.3.2}}
-\newlabel{injecting-sid}{{\M@TitleReference {3.3.2}{Injecting a session ID}}{15}{Injecting a session ID\relax }{subsection.3.3.2}{}}
-\@writefile{toc}{\contentsline {subsubsection}{Via GET or POST parameters}{15}{section*.19}}
-\newlabel{get-or-post}{{\M@TitleReference {3.3.2}{Via GET or POST parameters}}{15}{Via GET or POST parameters\relax }{section*.19}{}}
 \citation{Kolsek2002}
 \citation{Bontrager2005}
+\citation{PHPURLrewriting}
 \citation{Condit2006}
 \citation{Holovaty2008}
 \citation{Kolsek2002}
 \citation{Johns2011}
 \citation{Kolsek2002}
-\citation{rfc2109}
-\citation{Kolsek2002}
 \citation{Klein2004}
 \citation{Johns2011}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3.2}Injecting a session ID}{16}{subsection.3.3.2}}
+\newlabel{injecting-sid}{{\M@TitleReference {3.3.2}{Injecting a session ID}}{16}{Injecting a session ID\relax }{subsection.3.3.2}{}}
+\@writefile{toc}{\contentsline {subsubsection}{Via GET or POST parameters}{16}{section*.19}}
+\newlabel{get-or-post}{{\M@TitleReference {3.3.2}{Via GET or POST parameters}}{16}{Via GET or POST parameters\relax }{section*.19}{}}
 \@writefile{toc}{\contentsline {subsubsection}{Via cross-site scripting}{16}{section*.20}}
-\@writefile{toc}{\contentsline {subsubsection}{Via subdomain cookie setting}{16}{section*.21}}
+\@writefile{toc}{\contentsline {subsubsection}{Via the \texttt  {<meta>} tag}{16}{section*.21}}
+\@writefile{toc}{\contentsline {subsubsection}{Via HTTP response splitting / header injection}{16}{section*.22}}
+\citation{rfc2109}
+\citation{Kolsek2002}
 \citation{Barth2008}
 \citation{Barbaro2006}
-\citation{Barth2008}
-\@writefile{toc}{\contentsline {subsubsection}{Via HTTP response splitting / header injection}{17}{section*.22}}
+\@writefile{toc}{\contentsline {subsubsection}{Via subdomain cookie setting}{17}{section*.23}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.3.3}Other dangers of session fixation}{17}{subsection.3.3.3}}
-\@writefile{toc}{\contentsline {section}{\numberline {3.4}Cross Site Request Forgery}{17}{section.3.4}}
-\newlabel{csrf}{{\M@TitleReference {3.4}{Cross Site Request Forgery}}{17}{Cross Site Request Forgery\relax }{section.3.4}{}}
+\citation{Barth2008}
 \citation{Schreiber2004}
 \citation{Johns2006b}
 \citation{Zeller2008}
+\@writefile{toc}{\contentsline {section}{\numberline {3.4}Cross Site Request Forgery}{18}{section.3.4}}
+\newlabel{csrf}{{\M@TitleReference {3.4}{Cross Site Request Forgery}}{18}{Cross Site Request Forgery\relax }{section.3.4}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.4.1}Attack scenario}{18}{subsection.3.4.1}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3.4}{\ignorespaces The cross site request forgery attack}}{18}{figure.3.4}}
-\newlabel{fig:csrf}{{\M@TitleReference {3.4}{The cross site request forgery attack}}{18}{The cross site request forgery attack\relax }{figure.3.4}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.4.2}Forcing the browser to make a request}{18}{subsection.3.4.2}}
-\newlabel{forcing-request}{{\M@TitleReference {3.4.2}{Forcing the browser to make a request}}{18}{Forcing the browser to make a request\relax }{subsection.3.4.2}{}}
 \citation{Barth2008}
 \citation{Johns2006b}
 \citation{Barth2008}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.4}{\ignorespaces The cross site request forgery attack}}{19}{figure.3.4}}
+\newlabel{fig:csrf}{{\M@TitleReference {3.4}{The cross site request forgery attack}}{19}{The cross site request forgery attack\relax }{figure.3.4}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.4.2}Forcing the browser to make a request}{19}{subsection.3.4.2}}
+\newlabel{forcing-request}{{\M@TitleReference {3.4.2}{Forcing the browser to make a request}}{19}{Forcing the browser to make a request\relax }{subsection.3.4.2}{}}
+\@writefile{toc}{\contentsline {subsubsection}{Via crafted URLs}{19}{section*.24}}
+\@writefile{toc}{\contentsline {subsubsection}{Via the \texttt  {<img>} tag}{19}{section*.25}}
 \citation{Mao2009}
+\citation{Jovanovic2006}
+\citation{Johns2006}
+\citation{Singh2010}
 \citation{Mao2009}
 \citation{Mao2009}
 \citation{Jovanovic2006}
-\@writefile{toc}{\contentsline {subsubsection}{Via crafted URLs}{19}{section*.23}}
-\@writefile{toc}{\contentsline {subsubsection}{Via the \texttt  {<img>} tag}{19}{section*.24}}
-\@writefile{toc}{\contentsline {subsubsection}{Via forms}{19}{section*.25}}
 \citation{Kesteren:09:X}
 \citation{Binny2010}
+\@writefile{toc}{\contentsline {subsubsection}{Via forms}{20}{section*.26}}
+\newlabel{forms}{{\M@TitleReference {3.4.2}{Via forms}}{20}{Via forms\relax }{section*.26}{}}
+\@writefile{toc}{\contentsline {subsubsection}{Via asynchronous requests}{20}{section*.27}}
 \citation{Barth2008}
-\@writefile{lof}{\contentsline {figure}{\numberline {3.5}{\ignorespaces Tricking a user into submitting a form \cite  {Mao2009}}}{20}{figure.3.5}}
-\newlabel{fig:mao2009}{{\M@TitleReference {3.5}{Tricking a user into submitting a form \cite  {Mao2009}}}{20}{Tricking a user into submitting a form \cite {Mao2009}\relax }{figure.3.5}{}}
-\@writefile{lof}{\contentsline {subfigure}{\numberline{(a)}{\ignorespaces {the original form}}}{20}{subfigure.5.1}}
-\@writefile{lof}{\contentsline {subfigure}{\numberline{(b)}{\ignorespaces {a malicious page including only parts of the form in an iframe and trying to trick a user into clicking the button}}}{20}{subfigure.5.2}}
-\@writefile{toc}{\contentsline {subsubsection}{Via asynchronous requests}{20}{section*.26}}
 \citation{Zeller2008}
-\citation{DeRyck2010}
-\@writefile{toc}{\contentsline {subsubsection}{Via active network attacks}{21}{section*.27}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.5}{\ignorespaces Tricking a user into submitting a form \cite  {Mao2009}}}{21}{figure.3.5}}
+\newlabel{fig:mao2009}{{\M@TitleReference {3.5}{Tricking a user into submitting a form \cite  {Mao2009}}}{21}{Tricking a user into submitting a form \cite {Mao2009}\relax }{figure.3.5}{}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(a)}{\ignorespaces {the original form}}}{21}{subfigure.5.1}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(b)}{\ignorespaces {a malicious page including only parts of the form in an iframe, trying to trick a user into clicking the button}}}{21}{subfigure.5.2}}
+\@writefile{toc}{\contentsline {subsubsection}{Via active network attacks}{21}{section*.28}}
 \@writefile{lot}{\contentsline {table}{\numberline {3.1}{\ignorespaces Different methods for forcing a browser to make a request}}{21}{table.3.1}}
 \newlabel{tab:forcing-request}{{\M@TitleReference {3.1}{Different methods for forcing a browser to make a request}}{21}{Different methods for forcing a browser to make a request\relax }{table.3.1}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.4.3}CSRF and the same origin policy}{21}{subsection.3.4.3}}
+\citation{DeRyck2010}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.4.3}CSRF and the same origin policy}{22}{subsection.3.4.3}}
 \@writefile{lof}{\addvspace {10pt}}
 \@writefile{lot}{\addvspace {10pt}}
 \@writefile{toc}{\contentsline {chapter}{\chapternumberline {4}Session attack countermeasures}{23}{chapter.4}}
-\@writefile{toc}{\contentsline {section}{\numberline {4.1}Session security in web frameworks}{23}{section.4.1}}
-\newlabel{frameworks}{{\M@TitleReference {4.1}{Session security in web frameworks}}{23}{Session security in web frameworks\relax }{section.4.1}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {4.2}Cross Site Request Forgery countermeasures}{23}{section.4.2}}
-\newlabel{csrf-countermeasures}{{\M@TitleReference {4.2}{Cross Site Request Forgery countermeasures}}{23}{Cross Site Request Forgery countermeasures\relax }{section.4.2}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.1}Server-side countermeasures}{23}{section.4.1}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1.1}General solutions}{23}{subsection.4.1.1}}
+\@writefile{toc}{\contentsline {subsubsection}{Secure connections}{23}{section*.29}}
+\newlabel{ssl}{{\M@TitleReference {4.1.1}{Secure connections}}{23}{Secure connections\relax }{section*.29}{}}
+\newlabel{httponly}{{\M@TitleReference {4.1.1}{Secure connections}}{23}{Secure connections\relax }{section*.29}{}}
+\@writefile{toc}{\contentsline {subsubsection}{Cookies vs. URL rewriting}{23}{section*.30}}
+\newlabel{url-vs-cookies}{{\M@TitleReference {4.1.1}{Cookies vs. URL rewriting}}{23}{Cookies vs. URL rewriting\relax }{section*.30}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1.2}Session security in web frameworks}{23}{subsection.4.1.2}}
+\newlabel{frameworks}{{\M@TitleReference {4.1.2}{Session security in web frameworks}}{23}{Session security in web frameworks\relax }{subsection.4.1.2}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.2}Client-side countermeasures}{23}{section.4.2}}
 \@writefile{toc}{\contentsline {section}{\numberline {4.3}Other Solutions (and their problems)}{23}{section.4.3}}
 \newlabel{other-solutions}{{\M@TitleReference {4.3}{Other Solutions (and their problems)}}{23}{Other Solutions (and their problems)\relax }{section.4.3}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.3.1}Secure connections}{23}{subsection.4.3.1}}
-\newlabel{ssl}{{\M@TitleReference {4.3.1}{Secure connections}}{23}{Secure connections\relax }{subsection.4.3.1}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.3.2}\texttt  {HttpOnly} cookies}{23}{subsection.4.3.2}}
-\newlabel{httponly}{{\M@TitleReference {4.3.2}{\texttt  {HttpOnly} cookies}}{23}{\texttt {HttpOnly} cookies\relax }{subsection.4.3.2}{}}
+\newlabel{xss-countermeasures}{{\M@TitleReference {4.3}{Other Solutions (and their problems)}}{23}{Other Solutions (and their problems)\relax }{section.4.3}{}}
+\citation{Williams2010}
+\citation{Brown2010}
 \@writefile{lof}{\addvspace {10pt}}
 \@writefile{lot}{\addvspace {10pt}}
 \@writefile{toc}{\contentsline {chapter}{\chapternumberline {5}A client-side solution to session fixation}{25}{chapter.5}}
 \newlabel{fixation-solution}{{\M@TitleReference {5}{A client-side solution to session fixation}}{25}{\relax }{chapter.5}{}}
-\newlabel{detecting-sids}{{\M@TitleReference {5}{A client-side solution to session fixation}}{25}{\relax }{chapter.5}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {5.1}Principle}{25}{section.5.1}}
+\citation{Nikiforakis2010}
+\newlabel{fig:clientside-request}{{\M@TitleReference {5.1a}{Principle}}{26}{Subfigure 5 5.1a\relax }{subfigure.5.1.1}{}}
+\newlabel{sub@fig:clientside-request}{{(a)}{a}{Subfigure 5 5.1a\relax }{subfigure.5.1.1}{}}
+\newlabel{fig:clientside-response}{{\M@TitleReference {5.1b}{Principle}}{26}{Subfigure 5 5.1b\relax }{subfigure.5.1.2}{}}
+\newlabel{sub@fig:clientside-response}{{(b)}{b}{Subfigure 5 5.1b\relax }{subfigure.5.1.2}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.1}{\ignorespaces Client-side solution to session fixation}}{26}{figure.5.1}}
+\newlabel{fig:clientside-proxy}{{\M@TitleReference {5.1}{Client-side solution to session fixation}}{26}{Client-side solution to session fixation\relax }{figure.5.1}{}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(a)}{\ignorespaces {An incoming response containing a new SID.}}}{26}{subfigure.1.1}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(b)}{\ignorespaces {An outgoing request containing a cookie set via HTTP, and one set via JavaScript. The JavaScript cookie is stripped from the request by the proxy.}}}{26}{subfigure.1.2}}
+\citation{Kaplan2002}
+\citation{Nikiforakis2010}
+\@writefile{lot}{\contentsline {table}{\numberline {5.1}{\ignorespaces The client-side policy for preventing session fixation}}{27}{table.5.1}}
+\newlabel{tab:nofix-policy}{{\M@TitleReference {5.1}{The client-side policy for preventing session fixation}}{27}{The client-side policy for preventing session fixation\relax }{table.5.1}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {5.2}Identifying session identifiers}{27}{section.5.2}}
+\newlabel{detecting-sids}{{\M@TitleReference {5.2}{Identifying session identifiers}}{27}{Identifying session identifiers\relax }{section.5.2}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {5.3}Implementation}{27}{section.5.3}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3.1}HTTP proxy or browser extension?}{27}{subsection.5.3.1}}
+\citation{Barth2010}
+\citation{MozillaObservers}
+\citation{MozillaObservers}
+\citation{MozillaStorage}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3.2}The Firefox architecture}{28}{subsection.5.3.2}}
+\citation{MozillaDevelopers2010}
+\citation{ChromiumWishlist}
+\citation{Zalewski2006}
+\citation{MozillaDevelopers2010}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3.3}Implementation as a Firefox add-on}{29}{subsection.5.3.3}}
+\citation{Singh2010}
+\citation{MozillaXmlHttp}
+\@writefile{toc}{\contentsline {section}{\numberline {5.4}Evaluation}{30}{section.5.4}}
+\newlabel{evaluation}{{\M@TitleReference {5.4}{Evaluation}}{30}{Evaluation\relax }{section.5.4}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.4.1}Correctness}{30}{subsection.5.4.1}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.4.2}Real-world impact}{30}{subsection.5.4.2}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.4.3}Performance}{30}{subsection.5.4.3}}
+\newlabel{performance}{{\M@TitleReference {5.4.3}{Performance}}{30}{Performance\relax }{subsection.5.4.3}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {5.5}Discussion}{30}{section.5.5}}
+\newlabel{discussion}{{\M@TitleReference {5.5}{Discussion}}{30}{Discussion\relax }{section.5.5}{}}
+\citation{Tappenden2009}
+\citation{GoogleAnalytics}
+\citation{Nikiforakis2010}
+\@writefile{toc}{\contentsline {section}{\numberline {5.6}Extending with session hijacking protection}{31}{section.5.6}}
+\@writefile{toc}{\contentsline {section}{\numberline {5.7}Related work}{32}{section.5.7}}
+\newlabel{related-work}{{\M@TitleReference {5.7}{Related work}}{32}{Related work\relax }{section.5.7}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.7.1}HttpOnly}{32}{subsection.5.7.1}}
+\newlabel{httponly}{{\M@TitleReference {5.7.1}{HttpOnly}}{32}{HttpOnly\relax }{subsection.5.7.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.7.2}SessionShield}{32}{subsection.5.7.2}}
+\newlabel{sessionshield}{{\M@TitleReference {5.7.2}{SessionShield}}{32}{SessionShield\relax }{subsection.5.7.2}{}}
 \@writefile{lof}{\addvspace {10pt}}
 \@writefile{lot}{\addvspace {10pt}}
-\@writefile{toc}{\contentsline {chapter}{\chapternumberline {6}Conclusion}{27}{chapter.6}}
+\@writefile{toc}{\contentsline {chapter}{\chapternumberline {6}Conclusion}{33}{chapter.6}}
 \bibdata{/home/bram/Documenten/library,/home/bram/Documenten/rfc,/home/bram/Documenten/extra}
 \bibcite{Adida2008}{1}
 \bibcite{Barbaro2006}{2}
-\bibcite{Barth2008}{3}
-\bibcite{Bontrager2005}{4}
-\bibcite{Butler2010}{5}
-\bibcite{Condit2006}{6}
-\bibcite{DiLucca2005}{7}
-\bibcite{rfc4086}{8}
-\bibcite{Farrell2011}{9}
-\bibcite{rfc2616}{10}
-\bibcite{Fu2001}{11}
-\bibcite{Graham2007}{12}
-\bibcite{Holovaty2008}{13}
-\bibcite{Ishida2010}{14}
-\@writefile{toc}{\contentsline {chapter}{Bibliography}{29}{section*.29}}
-\bibcite{Jim2007}{15}
-\bibcite{Johns2006}{16}
-\bibcite{Johns2011}{17}
-\bibcite{Johns2006b}{18}
-\bibcite{Johnston2004}{19}
-\bibcite{Jovanovic2006}{20}
-\bibcite{Kirda2006}{21}
-\bibcite{Klein2002}{22}
-\bibcite{Klein2004}{23}
-\bibcite{Kolsek2002}{24}
-\bibcite{rfc2109}{25}
-\bibcite{Kristol2001}{26}
-\bibcite{Kurose2008}{27}
-\bibcite{Mao2009}{28}
-\bibcite{Nikiforakis2010}{29}
-\bibcite{OWASP2009a}{30}
-\bibcite{Park2000}{31}
-\bibcite{rfc2818}{32}
-\bibcite{Schreiber2004}{33}
-\bibcite{Shiflett2004}{34}
-\bibcite{Singh2010}{35}
-\bibcite{Binny2010}{36}
-\bibcite{Kesteren:09:X}{37}
-\bibcite{Zeller2008}{38}
+\bibcite{Barth2010}{3}
+\bibcite{Barth2008}{4}
+\bibcite{Bontrager2005}{5}
+\bibcite{Brown2010}{6}
+\bibcite{Butler2010}{7}
+\bibcite{ChromiumWishlist}{8}
+\bibcite{Condit2006}{9}
+\bibcite{DeRyck2010}{10}
+\bibcite{DiLucca2005}{11}
+\bibcite{rfc2246}{12}
+\bibcite{rfc4086}{13}
+\@writefile{toc}{\contentsline {chapter}{Bibliography}{35}{section*.32}}
+\bibcite{Farrell2011}{14}
+\bibcite{rfc2616}{15}
+\bibcite{Fu2001}{16}
+\bibcite{GoogleAnalytics}{17}
+\bibcite{Graham2007}{18}
+\bibcite{Holovaty2008}{19}
+\bibcite{Ishida2010}{20}
+\bibcite{Jim2007}{21}
+\bibcite{Johns2006}{22}
+\bibcite{Johns2011}{23}
+\bibcite{Johns2006b}{24}
+\bibcite{Johnston2004}{25}
+\bibcite{Jovanovic2006}{26}
+\bibcite{Kaplan2002}{27}
+\bibcite{Kirda2006}{28}
+\bibcite{Klein2002}{29}
+\bibcite{Klein2004}{30}
+\bibcite{Kolsek2002}{31}
+\bibcite{rfc2109}{32}
+\bibcite{Kristol2001}{33}
+\bibcite{Kurose2008}{34}
+\bibcite{Mao2009}{35}
+\bibcite{MozillaXmlHttp}{36}
+\bibcite{MozillaDevelopers2010}{37}
+\bibcite{MozillaObservers}{38}
+\bibcite{MozillaStorage}{39}
+\bibcite{Nikiforakis2010}{40}
+\bibcite{OWASP2009a}{41}
+\bibcite{Park2000}{42}
+\bibcite{PHPURLrewriting}{43}
+\bibcite{Schreiber2004}{44}
+\bibcite{Shiflett2004}{45}
+\bibcite{Singh2010}{46}
+\bibcite{Tappenden2009}{47}
+\bibcite{Binny2010}{48}
+\bibcite{Kesteren:09:X}{49}
+\bibcite{Vogt2007}{50}
+\bibcite{Williams2010}{51}
+\bibcite{Zalewski2006}{52}
+\bibcite{Zeller2008}{53}
 \bibstyle{plain}
 \select@language{dutch}
 \@writefile{toc}{\select@language{dutch}}
@@ -340,5 +416,5 @@
 \@writefile{toc}{\select@language{english}}
 \@writefile{lof}{\select@language{english}}
 \@writefile{lot}{\select@language{english}}
-\memsetcounter{lastsheet}{42}
-\memsetcounter{lastpage}{32}
+\memsetcounter{lastsheet}{49}
+\memsetcounter{lastpage}{39}

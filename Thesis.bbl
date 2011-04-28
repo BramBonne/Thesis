@@ -10,6 +10,12 @@ Ben Adida.
 Michael Barbaro and Tom {Zeller Jr.}
 \newblock {A Face Is Exposed for AOL Searcher No. 4417749}, 2006.
 
+\bibitem{Barth2010}
+Adam Barth, Adrienne~Porter Felt, and Prateek Saxena.
+\newblock {Protecting browsers from extension vulnerabilities}.
+\newblock {\em Proceedings of the 17th Network and Distributed System Security
+  Symposium (NDSS), San Diego, CA}, 2010.
+
 \bibitem{Barth2008}
 Adam Barth, Collin Jackson, and John~C. Mitchell.
 \newblock {Robust defenses for cross-site request forgery}.
@@ -20,13 +26,28 @@ Adam Barth, Collin Jackson, and John~C. Mitchell.
 Will Bontrager.
 \newblock {Form Submissions Without Submit Buttons}, 2005.
 
+\bibitem{Brown2010}
+Mason Brown, Bob Martin, and Steve Christey.
+\newblock {CWE/SANS TOP 25 Most Dangerous Software Errors Version 2.0}, 2010.
+
 \bibitem{Butler2010}
 Eric Butler.
 \newblock {Firesheep}, 2010.
 
+\bibitem{ChromiumWishlist}
+{Chromium Developers}.
+\newblock {API Wish List}.
+
 \bibitem{Condit2006}
 Craig Condit.
 \newblock {JSESSIONID considered harmful}, 2006.
+
+\bibitem{DeRyck2010}
+Philippe {De Ryck}, Lieven Desmet, Thomas Heyman, Frank Piessens, and Wouter
+  Joosen.
+\newblock {CsFire: Transparent client-side mitigation of malicious cross-domain
+  requests}.
+\newblock {\em Lecture Notes in Computer Science}, 5965/2010:18--34, 2010.
 
 \bibitem{DiLucca2005}
 Giuseppe~A. {Di Lucca}, Anna~Rita Fasolino, M.~Mastroianni, and Porfirio
@@ -35,6 +56,12 @@ Giuseppe~A. {Di Lucca}, Anna~Rita Fasolino, M.~Mastroianni, and Porfirio
   applications}.
 \newblock In {\em Web Site Evolution, Sixth IEEE International Workshop on
   (WSE'04)}, volume 1550-4441, pages 71--80. IEEE Comput. Soc, 2005.
+
+\bibitem{rfc2246}
+T.~Dierks and C.~Allen.
+\newblock {The TLS Protocol Version 1.0}.
+\newblock RFC 2246 (Proposed Standard), January 1999.
+\newblock Obsoleted by RFC 4346, updated by RFCs 3546, 5746, 6176.
 
 \bibitem{rfc4086}
 D.~{Eastlake 3rd}, J.~Schiller, and S.~Crocker.
@@ -58,6 +85,10 @@ Kevin Fu, Emil Sit, Kendra Smith, and Nick Feamster.
 \newblock {Dos and don'ts of client authentication on the web}.
 \newblock In {\em Proceedings of the 10th conference on USENIX Security
   Symposium-Volume 10}, pages 19--19. USENIX Association, 2001.
+
+\bibitem{GoogleAnalytics}
+{Google Developers}.
+\newblock {Cookies \& Google Analytics}, 2011.
 
 \bibitem{Graham2007}
 Robert Graham.
@@ -107,6 +138,10 @@ Nenad Jovanovic, Engin Kirda, and Christopher Kruegel.
 \newblock In {\em Securecomm and Workshops, 2006}, pages 1--10. IEEE, August
   2007.
 
+\bibitem{Kaplan2002}
+Ian Kaplan.
+\newblock {Shannon Entropy}, 2002.
+
 \bibitem{Kirda2006}
 Engin Kirda, Christopher Kruegel, Giovanni Vigna, and Nenad Jovanovic.
 \newblock {Noxes: a client-side solution for mitigating cross-site scripting
@@ -153,6 +188,22 @@ Ziqing Mao, Ninghui Li, and Ian Molloy.
   authenticity protection}.
 \newblock {\em Financial Cryptography and Data Security}, pages 238--255, 2009.
 
+\bibitem{MozillaXmlHttp}
+{Mozilla Developers}.
+\newblock {XMLHttpRequest allows reading HTTPOnly cookies}, 2009.
+
+\bibitem{MozillaDevelopers2010}
+{Mozilla Developers}.
+\newblock {nsIEffectiveTLDService}, 2010.
+
+\bibitem{MozillaObservers}
+{Mozilla Developers}.
+\newblock {Observer Notifications}, 2010.
+
+\bibitem{MozillaStorage}
+{Mozilla Developers}.
+\newblock {Storage}, 2010.
+
 \bibitem{Nikiforakis2010}
 Nick Nikiforakis, Wannes Meert, Yves Younan, Martin Johns, and Wouter Joosen.
 \newblock {SessionShield: Lightweight Protection against Session Hijacking}.
@@ -167,18 +218,15 @@ Joon~S. Park and Ravi Sandhu.
 \newblock {Secure cookies on the Web}.
 \newblock {\em IEEE Internet Computing}, 4(4):36--44, 2000.
 
-\bibitem{rfc2818}
-E.~Rescorla.
-\newblock {HTTP Over TLS}.
-\newblock RFC 2818 (Informational), May 2000.
-\newblock Updated by RFC 5785.
+\bibitem{PHPURLrewriting}
+{PHP Developers}.
+\newblock {Passing the Session ID}, 2011.
 
 \bibitem{Schreiber2004}
 T~Schreiber.
 \newblock {Session Riding: A Widespread Vulnerability in Today's Web
   Applications}.
-\newblock {\em Whitepaper, SecureNet GmbH (December 2004) http://www.
-  securenet. de/papers/Session Riding. pdf}, 2004.
+\newblock {\em Whitepaper, SecureNet GmbH}, 2004.
 
 \bibitem{Shiflett2004}
 Chris Shiflett.
@@ -190,6 +238,11 @@ Kapil Singh, Alexander Moshchuk, HJ~Wang, and W.~Lee.
 \newblock In {\em 2010 IEEE Symposium on Security and Privacy}, pages 463--478.
   IEEE, 2010.
 
+\bibitem{Tappenden2009}
+Andrew~F. Tappenden and James Miller.
+\newblock {Cookies: A deployment study and the testing implications}.
+\newblock {\em ACM Transactions on the Web (TWEB)}, 3(3):1--49, June 2009.
+
 \bibitem{Binny2010}
 Binny {V A}.
 \newblock {Using POST method in XMLHTTPRequest(Ajax)}, 2010.
@@ -200,9 +253,24 @@ Anne van Kesteren.
 \newblock Last call {WD}, W3C, November 2009.
 \newblock http://www.w3.org/TR/2009/WD-XMLHttpRequest-20091119/.
 
+\bibitem{Vogt2007}
+Philipp Vogt, Florian Nentwich, Nenad Jovanovic, Engin Kirda, Christopher
+  Kruegel, and Giovanni Vigna.
+\newblock {Cross site scripting prevention with dynamic data tainting and
+  static analysis}.
+\newblock In {\em Proceeding of the Network and Distributed System Security
+  Symposium (NDSS)}, volume~42. Citeseer, 2007.
+
+\bibitem{Williams2010}
+Jeff Williams and Dave Wichers.
+\newblock {OWASP top 10}, 2010.
+
+\bibitem{Zalewski2006}
+Michal Zalewski.
+\newblock {Cross Site Cooking}, 2006.
+
 \bibitem{Zeller2008}
-William Zeller and Edward~W Felten.
-\newblock {Cross-Site Request Forgeries: Exploitation and Prevention}.
-\newblock pages 1--13, 2008.
+William Zeller and Edward~W. Felten.
+\newblock {Cross-site request forgeries: Exploitation and prevention}, 2008.
 
 \end{thebibliography}

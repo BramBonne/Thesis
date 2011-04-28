@@ -24,12 +24,15 @@
 \contentsline {subfigure}{\numberline {(b)}{\ignorespaces {non-persistent}}}{10}{subfigure.1.2}
 \contentsline {figure}{\numberline {3.2}{\ignorespaces The session hijacking attack}}{13}{figure.3.2}
 \contentsline {figure}{\numberline {3.3}{\ignorespaces The session fixation attack}}{15}{figure.3.3}
-\contentsline {figure}{\numberline {3.4}{\ignorespaces The cross site request forgery attack}}{18}{figure.3.4}
-\contentsline {figure}{\numberline {3.5}{\ignorespaces Tricking a user into submitting a form \cite {Mao2009}}}{20}{figure.3.5}
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {the original form}}}{20}{subfigure.5.1}
-\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {a malicious page including only parts of the form in an iframe and trying to trick a user into clicking the button}}}{20}{subfigure.5.2}
+\contentsline {figure}{\numberline {3.4}{\ignorespaces The cross site request forgery attack}}{19}{figure.3.4}
+\contentsline {figure}{\numberline {3.5}{\ignorespaces Tricking a user into submitting a form \cite {Mao2009}}}{21}{figure.3.5}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {the original form}}}{21}{subfigure.5.1}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {a malicious page including only parts of the form in an iframe, trying to trick a user into clicking the button}}}{21}{subfigure.5.2}
 \addvspace {10pt}
 \addvspace {10pt}
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Client-side solution to session fixation}}{26}{figure.5.1}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {An incoming response containing a new SID.}}}{26}{subfigure.1.1}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {An outgoing request containing a cookie set via HTTP, and one set via JavaScript. The JavaScript cookie is stripped from the request by the proxy.}}}{26}{subfigure.1.2}
 \addvspace {10pt}
 \select@language {dutch}
 \select@language {english}

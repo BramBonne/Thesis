@@ -1,11 +1,21 @@
 \chapter{Session attack countermeasures}
 
-\section{Session security in web frameworks}\label{frameworks}
+In this chapter, we discuss some general countermeasures to the session hijacking and session fixation attacks. We defer the discussion of more specific countermeasures to section \ref{related-work}, where we talk about countermeasures related to our own solution. % TODO: check of dit nog overeenkomt met uiteindelijke lay-out
 
-\section{Cross Site Request Forgery countermeasures}\label{csrf-countermeasures}
+\section{Server-side countermeasures}
+
+\subsection{General solutions}
+
+\subsubsection{Secure connections}\label{ssl}\label{httponly}
+
+\subsubsection{Cookies vs. URL rewriting}\label{url-vs-cookies}
+% URL parameters zitten in history, in referer, in emailed links,...
+
+\subsection{Session security in web frameworks}\label{frameworks}
+
+\section{Client-side countermeasures}
 
 \section{Other Solutions (and their problems)}\label{other-solutions}
 
-\subsection{Secure connections}\label{ssl}
-
-\subsection{\texttt{HttpOnly} cookies}\label{httponly}
+% Server-side session fixation kan opgelost worden door renewen SID
+\label{xss-countermeasures}

@@ -2,55 +2,54 @@ This is BibTeX, Version 0.99c (TeX Live 2009/Debian)
 The top-level auxiliary file: /home/bram/School/Masterproef/Thesis/Thesis.aux
 The style file: plain.bst
 Database file #1: /home/bram/Documenten/library.bib
-Repeated entry---line 473 of file /home/bram/Documenten/library.bib
- : @misc{Zeller2008
- :                 ,
+Repeated entry---line 154 of file /home/bram/Documenten/library.bib
+ : @article{Zeller2008
+ :                    ,
 I'm skipping whatever remains of this entry
 Database file #2: /home/bram/Documenten/rfc.bib
 Database file #3: /home/bram/Documenten/extra.bib
 Warning--there's a number but no volume in Farrell2011
 Warning--there's a number but no volume in Klein2002
 Warning--there's a number but no volume in Kolsek2002
-Warning--empty journal in Zeller2008
-You've used 38 entries,
+You've used 53 entries,
             2118 wiz_defined-function locations,
-            735 strings with 9649 characters,
-and the built_in function-call counts, 11757 in all, are:
-= -- 1167
-> -- 495
+            811 strings with 11494 characters,
+and the built_in function-call counts, 15339 in all, are:
+= -- 1480
+> -- 687
 < -- 15
-+ -- 198
-- -- 160
-* -- 671
-:= -- 1899
-add.period$ -- 115
-call.type$ -- 38
-change.case$ -- 194
++ -- 275
+- -- 222
+* -- 853
+:= -- 2504
+add.period$ -- 149
+call.type$ -- 53
+change.case$ -- 270
 chr.to.int$ -- 0
-cite$ -- 42
-duplicate$ -- 476
-empty$ -- 980
-format.name$ -- 160
-if$ -- 2547
+cite$ -- 56
+duplicate$ -- 590
+empty$ -- 1310
+format.name$ -- 222
+if$ -- 3296
 int.to.chr$ -- 0
-int.to.str$ -- 38
-missing$ -- 26
-newline$ -- 188
-num.names$ -- 76
-pop$ -- 271
+int.to.str$ -- 53
+missing$ -- 29
+newline$ -- 251
+num.names$ -- 106
+pop$ -- 402
 preamble$ -- 1
-purify$ -- 156
+purify$ -- 217
 quote$ -- 0
-skip$ -- 390
+skip$ -- 506
 stack$ -- 0
-substring$ -- 589
-swap$ -- 138
+substring$ -- 680
+swap$ -- 151
 text.length$ -- 15
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 148
-warning$ -- 4
-while$ -- 121
-width$ -- 40
-write$ -- 399
+type$ -- 208
+warning$ -- 3
+while$ -- 152
+width$ -- 55
+write$ -- 528
 (There was 1 error message)
