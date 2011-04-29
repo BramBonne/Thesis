@@ -2,13 +2,8 @@
 
 In this chapter, we propose a client-side solution to the \gls{session fixation} attack described in section \ref{fixation}. To our knowledge, there exists no other practical client-side solution to this attack.
 %TODO: wetenschappelijke paper vermelden
-%TODO: zeggen waar plugin available is
 
-
-
-Out of the methods for injecting a \gls{session id} described in section \ref{injecting-sid}, we consider \gls{xss} and \texttt{<meta>}-tag injection the most important. These injection attacks have a high severity rating \cite{Williams2010} and lots of websites are vulnerable \cite{Brown2010}. As we saw in section \ref{xss-countermeasures}, solutions to XSS are often lacking. Other attack vectors, such as URL rewriting, subdomain cookie setting and response splitting are considered out of scope because either a client-side solution is unable to distinguish between legitimate SIDs and forged SIDs, or because they exploit a bug at the browser or proxy level.
-
-% TODO: Nvertheless, useful because: XSS groot probleem (cite), maar toch nog lang niet opgelost (zie countermeasures)
+Out of the methods for injecting a \gls{session id} described in section \ref{injecting-sid}, we consider \gls{xss} and \texttt{<meta>}-tag injection the most important. These injection attacks have a high severity rating \cite{Williams2010} and lots of websites are vulnerable \cite{Brown2010}. Ideally, these problems would be solved by finding a solution to XSS attacks. Unfortunately, as we saw in section \ref{xss-countermeasures}, solutions to XSS are often lacking. Other attack vectors, such as URL rewriting, subdomain cookie setting and response splitting are considered out of scope because either a client-side solution would be unable to distinguish between legitimate SIDs and forged SIDs, or because they exploit a bug at the browser or proxy level.
 
 We first discuss the client-side policy that was developed to counter session fixation. Afterwards, we implement this policy as a Firefox add-on, and we provide a thorough evaluation. Lastly, we describe how the add-on was extended to also provide a solution to the session hijacking attack.
 
@@ -124,6 +119,7 @@ Because of the very little real-world impact of this solution, it would even mak
 
 \subsection{Performance}\label{performance}
 
+%TODO: mag hier de evaluatie uit ingediende paper gebruikt worden?
 %To evaluate the add-on's performance, 
 
 \begin{comment}
@@ -165,13 +161,17 @@ If we want our policy to be widely adopted, we should make sure that the previou
 
 The add-on was also extended with a solution to the session hijacking attack. To do this, we made an even stronger distinction between HTTP cookies and JavaScript cookies: in our extended policy, session cookies that are set via HTTP are not allowed to be accessed by JavaScript. This prevents session cookies from being stolen via \gls{xss} attacks.
 
-The policy extension is implemented by adding the \texttt{HttpOnly} flag to every incoming HTTP cookie which is marked as a session cookie. When this flag is enabled, the browser will only allow the cookie to be accessed via HTTP.
+The policy extension is implemented in our add-on by adding the \texttt{HttpOnly} flag to every incoming HTTP cookie which is marked as a session cookie. When this flag is enabled, the browser will only allow the cookie to be read via HTTP (see section \ref{httponly} for more information). Thus, we let the browser handle the blocking of HTTP session cookies over JavaScript.
 
-The extension to our policy is related to the session hijacking solution proposed by Nikiforakis et al. \cite{Nikiforakis2010} (which will be discussed in section \ref{sessionshield}), where HTTP cookies are kept in a separate cookie store, outside of the browser. The difference lies in the fact that our add-on \emph{does} allow the browser access to the cookies.
+The extension to our policy is related to the session hijacking solution proposed by Nikiforakis et al. \cite{Nikiforakis2010} (which will be discussed in section \ref{sessionshield}), where HTTP cookies are kept in a separate cookie store, outside of the browser. The difference lies in the fact that our add-on \emph{does} allow the browser access to the cookies. The only access our extended policy prevents is from JavaScript to session cookies.
 
 \section{Related work}\label{related-work}
 
-\subsection{HttpOnly}\label{httponly}
-% HTTPONLY: Good point about HTTPOnly not preventing writes. 
+\subsection{HttpOnly}\label{httponlyremark}
+
+HttpOnly cookies, as described in section \ref{httponly}, are cookies that are only accessible by HTTP. A reader may assume that setting a cookie using the \texttt{HttpOnly} flag would prevent an attacker from using XSS to inject another value for this cookie. %Hier iets over dat attakcer de eerste kan zijn.
+
+%NALEZEN: Even if the web server is able to set the cookie before the attacker does, this attacker is often still able to set a duplicate cookie for the parent domain. Indeed, as we described in section \ref{subdomain-setting}, an attacker can set a cookie with the same name as the HttpOnly cookie for the parent domain. This causes the browser to send both the parent domain cookie and the subdomain cookie when a page on the subdomain is accessed, while the server has no way of distinguishing between the two cookies.
 
 \subsection{SessionShield}\label{sessionshield}
+% Hoe lost dit javascript cookies op?

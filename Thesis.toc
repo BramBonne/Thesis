@@ -64,7 +64,7 @@
 \contentsline {subsection}{\numberline {4.1.1}General solutions}{23}{subsection.4.1.1}
 \contentsline {subsubsection}{Secure connections}{23}{section*.29}
 \contentsline {subsubsection}{Cookies vs. URL rewriting}{23}{section*.30}
-\contentsline {subsection}{\numberline {4.1.2}Session security in web frameworks}{23}{subsection.4.1.2}
+\contentsline {subsection}{\numberline {4.1.2}Session security in web application frameworks}{23}{subsection.4.1.2}
 \contentsline {section}{\numberline {4.2}Client-side countermeasures}{23}{section.4.2}
 \contentsline {section}{\numberline {4.3}Other Solutions (and their problems)}{23}{section.4.3}
 \contentsline {chapter}{\chapternumberline {5}A client-side solution to session fixation}{25}{chapter.5}
@@ -81,8 +81,7 @@
 \contentsline {section}{\numberline {5.5}Discussion}{30}{section.5.5}
 \contentsline {section}{\numberline {5.6}Extending with session hijacking protection}{31}{section.5.6}
 \contentsline {section}{\numberline {5.7}Related work}{32}{section.5.7}
-\contentsline {subsection}{\numberline {5.7.1}HttpOnly}{32}{subsection.5.7.1}
-\contentsline {subsection}{\numberline {5.7.2}SessionShield}{32}{subsection.5.7.2}
+\contentsline {subsection}{\numberline {5.7.1}SessionShield}{32}{subsection.5.7.1}
 \contentsline {chapter}{\chapternumberline {6}Conclusion}{33}{chapter.6}
 \contentsline {chapter}{Bibliography}{35}{section*.32}
 \select@language {dutch}

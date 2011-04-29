@@ -2,7 +2,7 @@ This is BibTeX, Version 0.99c (TeX Live 2009/Debian)
 The top-level auxiliary file: /home/bram/School/Masterproef/Thesis/Thesis.aux
 The style file: plain.bst
 Database file #1: /home/bram/Documenten/library.bib
-Repeated entry---line 154 of file /home/bram/Documenten/library.bib
+Repeated entry---line 528 of file /home/bram/Documenten/library.bib
  : @article{Zeller2008
  :                    ,
 I'm skipping whatever remains of this entry
@@ -11,45 +11,45 @@ Database file #3: /home/bram/Documenten/extra.bib
 Warning--there's a number but no volume in Farrell2011
 Warning--there's a number but no volume in Klein2002
 Warning--there's a number but no volume in Kolsek2002
-You've used 53 entries,
+You've used 54 entries,
             2118 wiz_defined-function locations,
-            811 strings with 11494 characters,
-and the built_in function-call counts, 15339 in all, are:
-= -- 1480
-> -- 687
+            816 strings with 11567 characters,
+and the built_in function-call counts, 15536 in all, are:
+= -- 1497
+> -- 694
 < -- 15
-+ -- 275
-- -- 222
-* -- 853
-:= -- 2504
-add.period$ -- 149
-call.type$ -- 53
-change.case$ -- 270
++ -- 278
+- -- 224
+* -- 859
+:= -- 2536
+add.period$ -- 151
+call.type$ -- 54
+change.case$ -- 274
 chr.to.int$ -- 0
-cite$ -- 56
-duplicate$ -- 590
-empty$ -- 1310
-format.name$ -- 222
-if$ -- 3296
+cite$ -- 57
+duplicate$ -- 597
+empty$ -- 1332
+format.name$ -- 224
+if$ -- 3339
 int.to.chr$ -- 0
-int.to.str$ -- 53
+int.to.str$ -- 54
 missing$ -- 29
-newline$ -- 251
-num.names$ -- 106
-pop$ -- 402
+newline$ -- 255
+num.names$ -- 108
+pop$ -- 411
 preamble$ -- 1
-purify$ -- 217
+purify$ -- 220
 quote$ -- 0
-skip$ -- 506
+skip$ -- 514
 stack$ -- 0
-substring$ -- 680
-swap$ -- 151
+substring$ -- 685
+swap$ -- 152
 text.length$ -- 15
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 208
+type$ -- 212
 warning$ -- 3
-while$ -- 152
-width$ -- 55
-write$ -- 528
+while$ -- 154
+width$ -- 56
+write$ -- 536
 (There was 1 error message)

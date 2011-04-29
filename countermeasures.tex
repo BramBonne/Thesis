@@ -11,7 +11,13 @@ In this chapter, we discuss some general countermeasures to the session hijackin
 \subsubsection{Cookies vs. URL rewriting}\label{url-vs-cookies}
 % URL parameters zitten in history, in referer, in emailed links,...
 
-\subsection{Session security in web frameworks}\label{frameworks}
+\subsection{Session security in web application frameworks}\label{frameworks}
+
+Often, web applications are built on top of a web application framework. A web application framework (or \gls{waf}) provides a web developer with the core functionality of a web application \cite{Schwartz2010}. This core functionality typically consists of elements like user session management, data persistence, and templating systems used to dynamically render web pages. It is upon the foundations provided by these frameworks that many dynamic web applications are built.
+
+In this section, we describe the measures that are taken in some widely used WAFs to ensure session security against session hijacking and session fixation attacks.
+
+%Some often-used wafs, by no means exhaustive (cite list of appframeworks)
 
 \section{Client-side countermeasures}
 

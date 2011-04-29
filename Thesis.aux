@@ -247,6 +247,7 @@
 \newlabel{tab:forcing-request}{{\M@TitleReference {3.1}{Different methods for forcing a browser to make a request}}{21}{Different methods for forcing a browser to make a request\relax }{table.3.1}{}}
 \citation{DeRyck2010}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.4.3}CSRF and the same origin policy}{22}{subsection.3.4.3}}
+\citation{Schwartz2010}
 \@writefile{lof}{\addvspace {10pt}}
 \@writefile{lot}{\addvspace {10pt}}
 \@writefile{toc}{\contentsline {chapter}{\chapternumberline {4}Session attack countermeasures}{23}{chapter.4}}
@@ -257,8 +258,8 @@
 \newlabel{httponly}{{\M@TitleReference {4.1.1}{Secure connections}}{23}{Secure connections\relax }{section*.29}{}}
 \@writefile{toc}{\contentsline {subsubsection}{Cookies vs. URL rewriting}{23}{section*.30}}
 \newlabel{url-vs-cookies}{{\M@TitleReference {4.1.1}{Cookies vs. URL rewriting}}{23}{Cookies vs. URL rewriting\relax }{section*.30}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.1.2}Session security in web frameworks}{23}{subsection.4.1.2}}
-\newlabel{frameworks}{{\M@TitleReference {4.1.2}{Session security in web frameworks}}{23}{Session security in web frameworks\relax }{subsection.4.1.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1.2}Session security in web application frameworks}{23}{subsection.4.1.2}}
+\newlabel{frameworks}{{\M@TitleReference {4.1.2}{Session security in web application frameworks}}{23}{Session security in web application frameworks\relax }{subsection.4.1.2}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {4.2}Client-side countermeasures}{23}{section.4.2}}
 \@writefile{toc}{\contentsline {section}{\numberline {4.3}Other Solutions (and their problems)}{23}{section.4.3}}
 \newlabel{other-solutions}{{\M@TitleReference {4.3}{Other Solutions (and their problems)}}{23}{Other Solutions (and their problems)\relax }{section.4.3}{}}
@@ -270,7 +271,6 @@
 \@writefile{toc}{\contentsline {chapter}{\chapternumberline {5}A client-side solution to session fixation}{25}{chapter.5}}
 \newlabel{fixation-solution}{{\M@TitleReference {5}{A client-side solution to session fixation}}{25}{\relax }{chapter.5}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {5.1}Principle}{25}{section.5.1}}
-\citation{Nikiforakis2010}
 \newlabel{fig:clientside-request}{{\M@TitleReference {5.1a}{Principle}}{26}{Subfigure 5 5.1a\relax }{subfigure.5.1.1}{}}
 \newlabel{sub@fig:clientside-request}{{(a)}{a}{Subfigure 5 5.1a\relax }{subfigure.5.1.1}{}}
 \newlabel{fig:clientside-response}{{\M@TitleReference {5.1b}{Principle}}{26}{Subfigure 5 5.1b\relax }{subfigure.5.1.2}{}}
@@ -279,6 +279,7 @@
 \newlabel{fig:clientside-proxy}{{\M@TitleReference {5.1}{Client-side solution to session fixation}}{26}{Client-side solution to session fixation\relax }{figure.5.1}{}}
 \@writefile{lof}{\contentsline {subfigure}{\numberline{(a)}{\ignorespaces {An incoming response containing a new SID.}}}{26}{subfigure.1.1}}
 \@writefile{lof}{\contentsline {subfigure}{\numberline{(b)}{\ignorespaces {An outgoing request containing a cookie set via HTTP, and one set via JavaScript. The JavaScript cookie is stripped from the request by the proxy.}}}{26}{subfigure.1.2}}
+\citation{Nikiforakis2010}
 \citation{Kaplan2002}
 \citation{Nikiforakis2010}
 \@writefile{lot}{\contentsline {table}{\numberline {5.1}{\ignorespaces The client-side policy for preventing session fixation}}{27}{table.5.1}}
@@ -290,8 +291,8 @@
 \citation{Barth2010}
 \citation{MozillaObservers}
 \citation{MozillaObservers}
-\citation{MozillaStorage}
 \@writefile{toc}{\contentsline {subsection}{\numberline {5.3.2}The Firefox architecture}{28}{subsection.5.3.2}}
+\citation{MozillaStorage}
 \citation{MozillaDevelopers2010}
 \citation{ChromiumWishlist}
 \citation{Zalewski2006}
@@ -313,10 +314,8 @@
 \@writefile{toc}{\contentsline {section}{\numberline {5.6}Extending with session hijacking protection}{31}{section.5.6}}
 \@writefile{toc}{\contentsline {section}{\numberline {5.7}Related work}{32}{section.5.7}}
 \newlabel{related-work}{{\M@TitleReference {5.7}{Related work}}{32}{Related work\relax }{section.5.7}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.7.1}HttpOnly}{32}{subsection.5.7.1}}
-\newlabel{httponly}{{\M@TitleReference {5.7.1}{HttpOnly}}{32}{HttpOnly\relax }{subsection.5.7.1}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.7.2}SessionShield}{32}{subsection.5.7.2}}
-\newlabel{sessionshield}{{\M@TitleReference {5.7.2}{SessionShield}}{32}{SessionShield\relax }{subsection.5.7.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.7.1}SessionShield}{32}{subsection.5.7.1}}
+\newlabel{sessionshield}{{\M@TitleReference {5.7.1}{SessionShield}}{32}{SessionShield\relax }{subsection.5.7.1}{}}
 \@writefile{lof}{\addvspace {10pt}}
 \@writefile{lot}{\addvspace {10pt}}
 \@writefile{toc}{\contentsline {chapter}{\chapternumberline {6}Conclusion}{33}{chapter.6}}
@@ -366,15 +365,16 @@
 \bibcite{Park2000}{42}
 \bibcite{PHPURLrewriting}{43}
 \bibcite{Schreiber2004}{44}
-\bibcite{Shiflett2004}{45}
-\bibcite{Singh2010}{46}
-\bibcite{Tappenden2009}{47}
-\bibcite{Binny2010}{48}
-\bibcite{Kesteren:09:X}{49}
-\bibcite{Vogt2007}{50}
-\bibcite{Williams2010}{51}
-\bibcite{Zalewski2006}{52}
-\bibcite{Zeller2008}{53}
+\bibcite{Schwartz2010}{45}
+\bibcite{Shiflett2004}{46}
+\bibcite{Singh2010}{47}
+\bibcite{Tappenden2009}{48}
+\bibcite{Binny2010}{49}
+\bibcite{Kesteren:09:X}{50}
+\bibcite{Vogt2007}{51}
+\bibcite{Williams2010}{52}
+\bibcite{Zalewski2006}{53}
+\bibcite{Zeller2008}{54}
 \bibstyle{plain}
 \select@language{dutch}
 \@writefile{toc}{\select@language{dutch}}
