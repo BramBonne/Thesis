@@ -20,70 +20,90 @@
 \contentsline {section}{\numberline {2.2}Accessibility of session identifiers}{5}{section.2.2}
 \contentsline {section}{\numberline {2.3}Keeping web sessions secure}{5}{section.2.3}
 \contentsline {subsection}{\numberline {2.3.1}Unguessable by an attacker}{5}{subsection.2.3.1}
-\contentsline {subsubsection}{Randomness}{5}{section*.9}
+\contentsline {subsubsection}{Randomness}{6}{section*.9}
 \contentsline {subsubsection}{Sufficient length}{6}{section*.10}
 \contentsline {subsection}{\numberline {2.3.2}Unavailable to an attacker}{6}{subsection.2.3.2}
 \contentsline {subsection}{\numberline {2.3.3}Short lifetime}{7}{subsection.2.3.3}
 \contentsline {subsubsection}{Limiting the SID's lifetime}{7}{section*.11}
-\contentsline {subsubsection}{Renewing the SID}{7}{section*.12}
-\contentsline {subsection}{\numberline {2.3.4}Other best practices}{8}{subsection.2.3.4}
+\contentsline {subsubsection}{Renewing the SID}{8}{section*.12}
+\contentsline {subsection}{\numberline {2.3.4}Using a session management framework}{8}{subsection.2.3.4}
 \contentsline {chapter}{\chapternumberline {3}Session attacks}{9}{chapter.3}
 \contentsline {section}{\numberline {3.1}Background: cross-site scripting}{9}{section.3.1}
 \contentsline {subsection}{\numberline {3.1.1}Variants of cross-site scripting}{9}{subsection.3.1.1}
 \contentsline {subsubsection}{Persistent (stored) XSS}{9}{section*.13}
-\contentsline {subsubsection}{Non-persistent (reflected) XSS}{10}{section*.14}
+\contentsline {subsubsection}{Reflected (non-persistent) XSS}{10}{section*.14}
 \contentsline {subsection}{\numberline {3.1.2}Including the script code}{11}{subsection.3.1.2}
 \contentsline {subsection}{\numberline {3.1.3}The danger of cross-site scripting}{12}{subsection.3.1.3}
 \contentsline {section}{\numberline {3.2}Session hijacking}{12}{section.3.2}
-\contentsline {subsection}{\numberline {3.2.1}Attack scenario}{12}{subsection.3.2.1}
+\contentsline {subsection}{\numberline {3.2.1}Attack scenario}{13}{subsection.3.2.1}
 \contentsline {subsection}{\numberline {3.2.2}Capturing the session ID}{13}{subsection.3.2.2}
 \contentsline {subsubsection}{Via a (passive) man-in-the-middle attack}{13}{section*.15}
-\contentsline {subsubsection}{Via cross-site scripting}{13}{section*.16}
+\contentsline {subsubsection}{Via cross-site scripting}{14}{section*.16}
 \contentsline {subsubsection}{Via the referer header}{14}{section*.17}
-\contentsline {subsubsection}{Via the user}{14}{section*.18}
-\contentsline {section}{\numberline {3.3}Session fixation}{14}{section.3.3}
+\contentsline {subsubsection}{Via the user}{15}{section*.18}
+\contentsline {section}{\numberline {3.3}Session fixation}{15}{section.3.3}
 \contentsline {subsection}{\numberline {3.3.1}Attack scenario}{15}{subsection.3.3.1}
 \contentsline {subsection}{\numberline {3.3.2}Injecting a session ID}{16}{subsection.3.3.2}
 \contentsline {subsubsection}{Via GET or POST parameters}{16}{section*.19}
 \contentsline {subsubsection}{Via cross-site scripting}{16}{section*.20}
-\contentsline {subsubsection}{Via the \texttt {<meta>} tag}{16}{section*.21}
-\contentsline {subsubsection}{Via HTTP response splitting / header injection}{16}{section*.22}
+\contentsline {subsubsection}{Via the \texttt {<meta>} tag}{17}{section*.21}
+\contentsline {subsubsection}{Via HTTP response splitting / header injection}{17}{section*.22}
 \contentsline {subsubsection}{Via subdomain cookie setting}{17}{section*.23}
-\contentsline {subsection}{\numberline {3.3.3}Other dangers of session fixation}{17}{subsection.3.3.3}
-\contentsline {section}{\numberline {3.4}Cross Site Request Forgery}{18}{section.3.4}
-\contentsline {subsection}{\numberline {3.4.1}Attack scenario}{18}{subsection.3.4.1}
+\contentsline {subsection}{\numberline {3.3.3}Other dangers of session fixation}{18}{subsection.3.3.3}
+\contentsline {section}{\numberline {3.4}Cross Site Request Forgery}{19}{section.3.4}
+\contentsline {subsection}{\numberline {3.4.1}Attack scenario}{19}{subsection.3.4.1}
 \contentsline {subsection}{\numberline {3.4.2}Forcing the browser to make a request}{19}{subsection.3.4.2}
-\contentsline {subsubsection}{Via crafted URLs}{19}{section*.24}
-\contentsline {subsubsection}{Via the \texttt {<img>} tag}{19}{section*.25}
+\contentsline {subsubsection}{Via the \texttt {<img>} tag}{20}{section*.24}
+\contentsline {subsubsection}{Via cascading style sheets}{20}{section*.25}
 \contentsline {subsubsection}{Via forms}{20}{section*.26}
-\contentsline {subsubsection}{Via asynchronous requests}{20}{section*.27}
-\contentsline {subsubsection}{Via active network attacks}{21}{section*.28}
-\contentsline {subsection}{\numberline {3.4.3}CSRF and the same origin policy}{22}{subsection.3.4.3}
-\contentsline {chapter}{\chapternumberline {4}Session attack countermeasures}{23}{chapter.4}
-\contentsline {section}{\numberline {4.1}Server-side countermeasures}{23}{section.4.1}
-\contentsline {subsection}{\numberline {4.1.1}General solutions}{23}{subsection.4.1.1}
-\contentsline {subsubsection}{Secure connections}{23}{section*.29}
-\contentsline {subsubsection}{Cookies vs. URL rewriting}{23}{section*.30}
-\contentsline {subsection}{\numberline {4.1.2}Session security in web application frameworks}{23}{subsection.4.1.2}
-\contentsline {section}{\numberline {4.2}Client-side countermeasures}{23}{section.4.2}
-\contentsline {section}{\numberline {4.3}Other Solutions (and their problems)}{23}{section.4.3}
-\contentsline {chapter}{\chapternumberline {5}A client-side solution to session fixation}{25}{chapter.5}
-\contentsline {section}{\numberline {5.1}Principle}{25}{section.5.1}
-\contentsline {section}{\numberline {5.2}Identifying session identifiers}{27}{section.5.2}
-\contentsline {section}{\numberline {5.3}Implementation}{27}{section.5.3}
-\contentsline {subsection}{\numberline {5.3.1}HTTP proxy or browser extension?}{27}{subsection.5.3.1}
-\contentsline {subsection}{\numberline {5.3.2}The Firefox architecture}{28}{subsection.5.3.2}
-\contentsline {subsection}{\numberline {5.3.3}Implementation as a Firefox add-on}{29}{subsection.5.3.3}
-\contentsline {section}{\numberline {5.4}Evaluation}{30}{section.5.4}
-\contentsline {subsection}{\numberline {5.4.1}Correctness}{30}{subsection.5.4.1}
-\contentsline {subsection}{\numberline {5.4.2}Real-world impact}{30}{subsection.5.4.2}
-\contentsline {subsection}{\numberline {5.4.3}Performance}{30}{subsection.5.4.3}
-\contentsline {section}{\numberline {5.5}Discussion}{30}{section.5.5}
-\contentsline {section}{\numberline {5.6}Extending with session hijacking protection}{31}{section.5.6}
-\contentsline {section}{\numberline {5.7}Related work}{32}{section.5.7}
-\contentsline {subsection}{\numberline {5.7.1}SessionShield}{32}{subsection.5.7.1}
-\contentsline {chapter}{\chapternumberline {6}Conclusion}{33}{chapter.6}
-\contentsline {chapter}{Bibliography}{35}{section*.32}
+\contentsline {subsection}{\numberline {3.4.3}CSRF and the same origin policy}{21}{subsection.3.4.3}
+\contentsline {section}{\numberline {3.5}Other session security considerations}{22}{section.3.5}
+\contentsline {subsection}{\numberline {3.5.1}Via crafted URLs}{22}{subsection.3.5.1}
+\contentsline {subsection}{\numberline {3.5.2}Via asynchronous requests}{22}{subsection.3.5.2}
+\contentsline {subsection}{\numberline {3.5.3}Via active network attacks}{22}{subsection.3.5.3}
+\contentsline {chapter}{\chapternumberline {4}Session attack countermeasures}{25}{chapter.4}
+\contentsline {section}{\numberline {4.1}Server-side countermeasures}{25}{section.4.1}
+\contentsline {subsection}{\numberline {4.1.1}General security measures}{25}{subsection.4.1.1}
+\contentsline {subsubsection}{Renewing the session identifier}{25}{section*.27}
+\contentsline {subsubsection}{Using HttpOnly cookies}{26}{section*.28}
+\contentsline {subsubsection}{Secure connections}{26}{section*.29}
+\contentsline {subsubsection}{Checking other request headers}{27}{section*.30}
+\contentsline {subsubsection}{Checking the IP address}{27}{section*.31}
+\contentsline {subsubsection}{Cookies vs. URL rewriting and form elements}{28}{section*.32}
+\contentsline {subsubsection}{Using an alternative to web sessions}{29}{section*.33}
+\contentsline {paragraph}{Logging in for every request}{29}{section*.34}
+\contentsline {paragraph}{HTTP-Auth}{29}{section*.35}
+\contentsline {paragraph}{HTTP-Digest}{29}{section*.36}
+\contentsline {paragraph}{TLS client certificates}{29}{section*.37}
+\contentsline {subsection}{\numberline {4.1.2}Session security in web application frameworks}{30}{subsection.4.1.2}
+\contentsline {subsubsection}{Ruby on Rails}{30}{section*.38}
+\contentsline {subsubsection}{Tomcat}{30}{section*.39}
+\contentsline {subsubsection}{Django}{30}{section*.40}
+\contentsline {subsubsection}{PHP}{30}{section*.41}
+\contentsline {subsubsection}{Alfresco}{30}{section*.42}
+\contentsline {subsubsection}{CherryPy}{30}{section*.43}
+\contentsline {subsubsection}{Drupal}{30}{section*.44}
+\contentsline {subsection}{\numberline {4.1.3}Stand-alone server countermeasures}{30}{subsection.4.1.3}
+\contentsline {section}{\numberline {4.2}Client-side countermeasures}{30}{section.4.2}
+\contentsline {section}{\numberline {4.3}Cross site scripting countermeasures}{30}{section.4.3}
+\contentsline {chapter}{\chapternumberline {5}A client-side solution to session fixation}{31}{chapter.5}
+\contentsline {section}{\numberline {5.1}Principle}{31}{section.5.1}
+\contentsline {section}{\numberline {5.2}Identifying session identifiers}{33}{section.5.2}
+\contentsline {section}{\numberline {5.3}Implementation}{33}{section.5.3}
+\contentsline {subsection}{\numberline {5.3.1}HTTP proxy or browser extension?}{33}{subsection.5.3.1}
+\contentsline {subsection}{\numberline {5.3.2}The Firefox architecture}{34}{subsection.5.3.2}
+\contentsline {subsection}{\numberline {5.3.3}Implementation as a Firefox add-on}{35}{subsection.5.3.3}
+\contentsline {section}{\numberline {5.4}Evaluation}{36}{section.5.4}
+\contentsline {subsection}{\numberline {5.4.1}Correctness}{36}{subsection.5.4.1}
+\contentsline {subsection}{\numberline {5.4.2}Real-world impact}{36}{subsection.5.4.2}
+\contentsline {subsection}{\numberline {5.4.3}Performance}{36}{subsection.5.4.3}
+\contentsline {section}{\numberline {5.5}Discussion}{36}{section.5.5}
+\contentsline {section}{\numberline {5.6}Extending with session hijacking protection}{37}{section.5.6}
+\contentsline {section}{\numberline {5.7}Comparison with other session attack countermeasures}{38}{section.5.7}
+\contentsline {subsection}{\numberline {5.7.1}HttpOnly}{38}{subsection.5.7.1}
+\contentsline {subsection}{\numberline {5.7.2}SessionShield}{38}{subsection.5.7.2}
+\contentsline {chapter}{\chapternumberline {6}Conclusion}{39}{chapter.6}
+\contentsline {chapter}{Bibliography}{41}{section*.46}
 \select@language {dutch}
 \select@language {english}
 \select@language {dutch}

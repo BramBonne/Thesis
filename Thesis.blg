@@ -1,55 +1,51 @@
 This is BibTeX, Version 0.99c (TeX Live 2009/Debian)
 The top-level auxiliary file: /home/bram/School/Masterproef/Thesis/Thesis.aux
-The style file: plain.bst
+The style file: plainurl.bst
 Database file #1: /home/bram/Documenten/library.bib
-Repeated entry---line 528 of file /home/bram/Documenten/library.bib
- : @article{Zeller2008
- :                    ,
-I'm skipping whatever remains of this entry
 Database file #2: /home/bram/Documenten/rfc.bib
 Database file #3: /home/bram/Documenten/extra.bib
 Warning--there's a number but no volume in Farrell2011
 Warning--there's a number but no volume in Klein2002
 Warning--there's a number but no volume in Kolsek2002
-You've used 54 entries,
-            2118 wiz_defined-function locations,
-            816 strings with 11567 characters,
-and the built_in function-call counts, 15536 in all, are:
-= -- 1497
-> -- 694
+You've used 70 entries,
+            2760 wiz_defined-function locations,
+            1070 strings with 18489 characters,
+and the built_in function-call counts, 27569 in all, are:
+= -- 3040
+> -- 882
 < -- 15
-+ -- 278
-- -- 224
-* -- 859
-:= -- 2536
-add.period$ -- 151
-call.type$ -- 54
-change.case$ -- 274
++ -- 354
+- -- 284
+* -- 1290
+:= -- 3963
+add.period$ -- 257
+call.type$ -- 70
+change.case$ -- 352
 chr.to.int$ -- 0
-cite$ -- 57
-duplicate$ -- 597
-empty$ -- 1332
-format.name$ -- 224
-if$ -- 3339
+cite$ -- 73
+duplicate$ -- 862
+empty$ -- 2744
+format.name$ -- 284
+if$ -- 7108
 int.to.chr$ -- 0
-int.to.str$ -- 54
-missing$ -- 29
-newline$ -- 255
-num.names$ -- 108
-pop$ -- 411
+int.to.str$ -- 70
+missing$ -- 32
+newline$ -- 392
+num.names$ -- 140
+pop$ -- 827
 preamble$ -- 1
-purify$ -- 220
+purify$ -- 282
 quote$ -- 0
-skip$ -- 514
+skip$ -- 1917
 stack$ -- 0
-substring$ -- 685
-swap$ -- 152
+substring$ -- 773
+swap$ -- 187
 text.length$ -- 15
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 212
+type$ -- 276
 warning$ -- 3
-while$ -- 154
-width$ -- 56
-write$ -- 536
-(There was 1 error message)
+while$ -- 186
+width$ -- 72
+write$ -- 818
+(There were 3 warnings)

@@ -1,27 +1,124 @@
 \chapter{Session attack countermeasures}
 
-In this chapter, we discuss some general countermeasures to the session hijacking and session fixation attacks. We defer the discussion of more specific countermeasures to section \ref{related-work}, where we talk about countermeasures related to our own solution. % TODO: check of dit nog overeenkomt met uiteindelijke lay-out
+In this chapter, we discuss some general countermeasures to the session hijacking and session fixation attacks. We also briefly describe some solutions to cross site scripting attacks, because of their importance in session attacks. The discussion of more specific countermeasures is deferred to section \ref{related-work}, where we talk about countermeasures related to our own solution. % TODO: check of dit nog overeenkomt met uiteindelijke lay-out
 
 \section{Server-side countermeasures}
 
-\subsection{General solutions}
+This section is dedicated to server-side countermeasures against session hijacking and session fixation. We first describe some general security measures that a web developer can take to secure his web application. Afterwards, we inspect different web frameworks to see how they safeguard against the aforementioned session attacks.
 
-\subsubsection{Secure connections}\label{ssl}\label{httponly}
+\subsection{General security measures}\label{general-security}
 
-\subsubsection{Cookies vs. URL rewriting}\label{url-vs-cookies}
-% URL parameters zitten in history, in referer, in emailed links,...
+Different security measures may be taken by web application and web framework developers to secure their web applications. In this section, we discuss to what extent these measures provide security against session hijacking and session fixation attacks.
+
+\subsubsection{Renewing the session identifier}
+
+The practice of renewing the session identifier (see section \ref{renewing-sid}) can provide excellent protection against \gls{login session fixation} attacks. Indeed, if the web application renews the session identifier every time the authentication status of a user changes, the SID which was enforced by the attacker won't be valid anymore once the victim has logged in. As an example, this can be accomplished in PHP by using the following code snippet \cite{PHPregenerate,Johns2011}:
+
+\begin{lstlisting}[language=PHP]
+if ($authentication_successful) {
+    $_session["authenticated"] = true;
+    session_regenerate_id();
+}
+\end{lstlisting}
+
+To make sure that the session identifier is changed on every authentication change, it can be made to contain specific user information (like the username). In this case, when the authentication state changes, the session identifier has to change, too. If this is used in combination with a server \gls{mac} (as described by Fu et al. \cite{Fu2001}), an attacker is not able to include another username in the value himself.
+
+Renewing the session identifier regularly is also benefical for preventing session hijacking attacks. As was discussed in section \ref{lifetime}, the shorter the lifetime of a session identifier, the more difficult it will be to capture, and the less useful it will be if it has been captured \cite{Fu2001}.
+
+Keeping in mind the previous discussion, one might assume that it is best to renew a session identifier as often as possible. Consider, however, the case where the session identifier is renewed on each request. In this case, every request would result in a new session cookie being set at the user's browser, with the old session cookie being invalidated. When issuing concurrent requests, the web application would only acknowledge the first request that arrived at the server. The second request would contain the (by then) invalidated session identifier, causing it to be rejected. Because of this, the browser would be allowed to issue only one request at the same time. Similarly, this would pose a problem when browser plugins communicate with the server, as well as with asynchronous requests.
+
+\subsubsection{Using HttpOnly cookies}\label{httponly}
+
+When setting a cookie in the user's browser, a web server can use the cookie's \texttt{HttpOnly} flag to indicate that the browser should only allow access to this cookie via \gls{http}. As a consequence, script code will not be able to access or edit the value for such cookie, and \gls{xss} attacks can be prevented \cite{HttpOnly}.
+
+Singh et al. have shown that it is sometimes still possible for an attacker to read or manipulate a HttpOnly cookie via JavaScript \cite{Singh2010}. Fortunately, our experiments show that the issue of Firefox allowing cookie writes to HttpOnly cookies has since been solved. However, as we will describe in section \ref{httponlyremark}, we have discovered yet other techniques which allow an attacker to circumvent these browser policies. As such, we must conclude that, while marking a cookie as HttpOnly does prevent an attacker from accessing the cookie via JavaScript, it does not prevent him from using XSS to inject a chosen value for this cookie into the victim's browser.
+
+\subsubsection{Secure connections}\label{ssl}
+
+Secure connections can be used to make sure that a session identifier can not be intercepted by a passive \gls{mitm} attacker. In this case, as already noted in \ref{secure-flag}, care must be taken that cookies can never be sent over an unsecure connection. This can be done by setting the \texttt{secure} flag for cookies that will be used only over a \gls{ssl} connection.
+
+Recently, some work has been done to make deployment of HTTPS more widespread \cite{Hodges2010,Jackson2008}. Unfortunately, there are still some drawbacks to using HTTPS for every page \cite{Adida2008}. At the server side, HTTPS is very costly: every connection needs computationally intensive TLS operations to be performed. At the client side, browser caching works differently under TLS, and websites have to be completely transmitted before they can be rendered (because the validity is checked for the entire page).
+
+\subsubsection{Checking other request headers}
+
+Similar to the \texttt{Cookie} header we discussed in section \ref{cookie-header}, a \gls{http} request can contain many other headers \cite{rfc2616}. Some of these headers provide information that can be used to identify a user. For example, the \texttt{User-Agent} header contains information about a user's browser and operating system, while the \texttt{Accept-Language} header lists the languages the user is willing to receive.
+
+A web server can gain some extra certainty about whether it is interacting with the user corresponding to the session ID in the request by comparing some of the header values to those in the last request with the same session ID. Indeed, because an attacker is probably using a configuration which is different from the victim's, the attacker's requests will have different header values. Thus, when certain header values differ between requests, it is possible that a session hijacking or session fixation attack occurred.
+
+The question is then: which headers could be considered to give enough user-specific information, without changing over time? The \texttt{User-Agent} header is obviously the best candidate. Unfortunately, web proxies are known to modify this header \cite{ShiflettHijacking}. Another header which could be considered is the \texttt{Accept} header, which lists the types of content the user's browser will accept. The problem with this header is that in Internet Explorer, its value can change over time \cite{ShiflettHijacking}. The \texttt{Accept-Language} header could be considered. However, different browsers might have the same default value (\texttt{en-US}) for this header. The same goes for the \texttt{Connection} and \texttt{Cache-Control} headers. Other headers are too susceptible to change, and shouldn't be used.
+
+Another problem with using HTTP headers for this purpose is that they are easily guessed by an attacker. Indeed, for most headers, only few options are possible, with even less options being very probable. Furthermore, even in the case that an attacker would not be able to guess the header values, he only needs to read a single request (to whatever server) from the victim to know what header values to use. He can get a request from the victim by intercepting it, or by tricking the victim into visiting his own website.
+
+Thus, while checking the headers might raise the barrier for attackers, it is by no means a complete solution against any of the described session attacks.
+
+\subsubsection{Checking the IP address}
+
+Similar to request headers, the \gls{ip} address can be used by the web server to ensure it is interacting with the same user as before. Unfortunately, this approach also suffers from some problems. Firstly, IP addresses can be captured in much the same way as HTTP headers. An attacker can then easily change the source IP address for his own packets to impersonate the victim. Secondly, when both the victim and the attacker are behind the same \gls{nat} proxy (as is often the case in session hijacking attacks over a wireless network), they are using the same IP address \cite{Johns2011}. In this case, the server can not distinguish the attacker and the victim based on IP address. Lastly, requiring that the IP address stays the same over time can also cause some problems to the legitimate user: with users changing the location of their notebook or cell phone, the IP addresses of these devices will change when roaming, causing them to be denied access to a web application that checks their IP address. Moreover, some networks only issue dynamic IP addresses to their users. Because of these reasons, it can not be assumed that a user is uniquely tied to a single IP address.
+
+As was the case for checking other request headers, checking the IP address can not be considered a complete solution to any session attack.
+
+\subsubsection{Cookies vs. URL rewriting and form elements}\label{url-vs-cookies}
+
+As we described in section \ref{session-management}, there are three major methods for doing session management: via cookies, via URL rewriting and via form elements. We compare the advantages and disadvantages of these methods here.
+
+A first major disadvantage of URL rewriting was already discussed in section \ref{leaking-via-user}: the session identifier can leak when a link is shared with someone else (for example, via e-mail or a social networking site) \cite{Johnston2004}. A leak can also occur when the \texttt{referer} HTTP header is included in a request to another website: since the URL in the referer header contains the user's session identifier, this identifier is visible to the other website \cite{Fu2001}.
+
+A disadvantage which is shared by both the `URL rewriting' and `form elements' methods is that the injection of a session identifier (with the objective of executing a session fixation attack) requires little effort from an attacker. Indeed, as we saw in section \ref{get-or-post}, such an injection attack is reasonably straightforward.
+
+There is, however, also an advantage of choosing URL rewriting or form elements over cookies, in particular when looking at the cross site request forgery attack. Recall that, to execute a \gls{csrf} attack, an attacker tricks the victim's browser into issuing a request. For this, he  has to create a URL or a form containing the right GET/POST parameters for the attack. However, if the SID is one of the parameters that must be included in the request, the attacker does not know all required parameters, and is therefore not able to create a complete request \cite{Johnston2004}.
+
+It is clear that choosing which method to use for managing sessions requires careful weighing of the advantages and disadvantages of each method. It could be argued that cookies provide more security since they make leaking of session identifiers less likely. Indeed, it is often recommended to use cookies instead of URL rewriting for session management \cite{Zhong2006,Vamosi2006}. An even better option is to use a combination of cookies and POST or GET parameters. As we will see in section \ref{xss-countermeasures}, this is what many CSRF countermeasures try to do \cite{Jovanovic2006,Johns2006}. In addition, some (mobile) web browsers don't support cookies, requiring the use of POST or GET parameters when session management is needed.
+
+\subsubsection{Using an alternative to web sessions}
+
+There are also other -- in some cases more secure -- methods for a web server to know which user it is interacting with. We describe three alternatives to web sessions here.
+
+\paragraph{Logging in for every request}
+Arguably the most secure way to determine whether a user is who he claims to be, is to make him enter his credentials for every request. It is obvious that this is very cumbersome for the user, who has to log in every time he requests a new web page. It is, however, good practice to require the user to log in for certain actions \cite{Webers2008}. Indeed, consider the case where an attacker was able to take over a victim's temporary session. If no login is required to change the user's password, the attacker can completely take over the victim's account by changing the password to a value only he knows. Similarly, if the attacker is able to change the victim's e-mailaddress without having to enter the password, he can use the website's password recovery feature to have a password for the user's account sent to his own inbox.
+
+\paragraph{HTTP-Auth}
+In HTTP Authentication \cite{rfc2617}, a separate HTTP header (called \texttt{Authorization}) is used to transfer the user's credentials on every request. These credentials are often cached by the browser to relieve the user from having to enter them on every request. A disadvantage of this approach is that the username and password are sent encoded (with the Base64 algorithm) but not encrypted, causing them to be available to a passive \gls{mitm} if no secured connection is used. Another disadvantage is that, since HTTP Authentication is completely handled by the HTTP stack, it is a much less flexible approach than web sessions. For example, there is no easy way for the user to log out, and the server-side HTTP stack needs full access to the user database \cite{Adida2008}.
+
+\paragraph{HTTP-Digest}
+HTTP-Digest is a variant of HTTP-Auth that uses encryption instead of just Base64 encoding \cite{rfc2617}.This has the advantage that the user's credentials can not be intercepted by a passive MitM attacker. Unfortunately, this method is vulnerable to \emph{active} MitM attacks. It also suffers from the same inflexibility that is associated with HTTP-Auth.
+
+\paragraph{TLS client certificates}\label{certificates}
+When secure sessions (see section \ref{ssl}) are used, mutual authentication can be achieved when both server and client possess a TLS certificate \cite{Park2000}. The problem with this approach is that many clients don't have certificates, and that certificate management is still too difficult for most regular users \cite{Whitten1999}. Moreover, a user needs to have its certificate installed on every device he wants to use to access the web application, which is not practical in the current world where people use smartphones and public computers to access web applications.
 
 \subsection{Session security in web application frameworks}\label{frameworks}
 
-Often, web applications are built on top of a web application framework. A web application framework (or \gls{waf}) provides a web developer with the core functionality of a web application \cite{Schwartz2010}. This core functionality typically consists of elements like user session management, data persistence, and templating systems used to dynamically render web pages. It is upon the foundations provided by these frameworks that many dynamic web applications are built.
+Often, web applications are built on top of a web application framework. A \gls{web application framework} provides a web developer with the core functionality of a web application \cite{Schwartz2010}. This core functionality typically consists of elements like user session management, data persistence, and templating systems used to dynamically render web pages. It is upon the foundations provided by these frameworks that many dynamic web applications are built.
 
-In this section, we describe the measures that are taken in some widely used WAFs to ensure session security against session hijacking and session fixation attacks.
+In this section, we describe the measures that are taken in some widely used frameworks to ensure security against session hijacking and session fixation attacks. We consider only the renewing of the SID, the use of secure connections, and the use of cookies or GET and POST parameters, because these are the security measures that are most eligible to be included in a web application framework. The list of frameworks is by no means complete \cite{FrameworksComparison}, but gives a good overview of how popular frameworks handle session attacks.
 
-%Some often-used wafs, by no means exhaustive (cite list of appframeworks)
+\subsubsection{Ruby on Rails}
+
+Ruby on Rails\footnote{More information about Ruby on Rails is available on its website: \url{http://rubyonrails.org/}.} (or RoR), is a web framework written in the in 1995 conceived Ruby programming language. It is used in popular web applications like Twitter, Groupon and Github \cite{RailsApps}.
+
+Renewing the session identifier is not automatically done on each authentication state change in RoR. There is, however, a supported method for implementing this: invalidating the SID can be done by adding \texttt{reset\_session} to the \texttt{SessionsController\#create} action \cite{Webers2008}. The official documentation advertises this solution as only requiring one line of code, but mentions that session state must still be manually copied.
+
+RoR supports only cookie-based session management by default. If the web developer wants to use URL rewriting instead, he needs to specifically enable this \cite{McMahon2010}.
+
+To make a RoR web application use secure connections for certain pages, the \texttt{ssl\_requirement} plugin\footnote{The \texttt{ssl\_requirement} plugin is available at \url{https://github.com/rails/ssl_requirement}.} can be used. This plugin allows to specify for which pages the HTTPS protocol should be used \cite{Slater2008}. Making sure that certain cookies are only sent over secured connections only requires the configuration option \texttt{ActionController::Base.session\_options[:secure]} to be set to \texttt{true}.
+
+\subsubsection{Tomcat}
+
+\subsubsection{Django}
+
+\subsubsection{PHP}
+
+\subsubsection{Alfresco}
+
+\subsubsection{CherryPy}
+
+\subsubsection{Drupal}
+
+% Tabelletje met overzicht: default renewing, GET/POST or cookies, easy SSL
+
+\subsection{Stand-alone server countermeasures}\label{standalone-server}
 
 \section{Client-side countermeasures}
 
-\section{Other Solutions (and their problems)}\label{other-solutions}
-
-% Server-side session fixation kan opgelost worden door renewen SID
-\label{xss-countermeasures}
+\section{Cross site scripting countermeasures}\label{xss-countermeasures}
+% Check referrer
+% Use asynch requests XDomainRequest, CORS, PostMessage

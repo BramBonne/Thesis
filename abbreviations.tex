@@ -1,6 +1,9 @@
 %\renewcommand{\glossaryname}{List of Abbreviations}
 \newglossaryentry{csrf}{name=CSRF,description={Cross-Site Request Forgery, an attack in which JavaScript is used to execute malicious code in the victim's browser}}
+\newglossaryentry{css}{name=CSS,description={Cascading Style Sheets, used for defining the appearance of a web page}}
 \newglossaryentry{dom}{name=DOM,description={Document Object Model, used by programming languages like JavaScript to access elements in an XML document or on a web page}}
+\newglossaryentry{ip}{name=IP,description={Internet Protocol, the protocol used for routing datagrams over the internet. An IP address identifies a machine on the internet}}
+\newglossaryentry{nat}{name=NAT,description={Network Address Translation, often used for allowing internet access to multiple machines via the same \gls{ip} address}}
 \newglossaryentry{tld}{name=TLD,description={Top Level Domain, the last part of a \gls{url}, which determines the part of the domain that registered in the name space's root zone. Examples are \texttt{.com}, \texttt{.org} and \texttt{.co.uk}}}
 \newglossaryentry{lcg}{name=LCG,description={Linear Congruential Generator, a generator for pseudorandom numbers based on recurrence}}
 \newglossaryentry{sid}{name=SID,description={see `session ID'}}
@@ -8,15 +11,16 @@
 \newglossaryentry{mitm}{name=MitM,description={Man in the Middle, used to describe an attacker that is able to intercept traffic between the victim and some other principal}}
 \newglossaryentry{psid}{name=PSID,description={Proxy Session Identifier, a second session identifier which is attached and checked by a proxy to counter session fixation attacks}}
 \newglossaryentry{session fixation}{name=session fixation,description={An attack in which the attacker tries to enforce a \gls{sid} upon the victim, so he is able to take over the session later on}}
+\newglossaryentry{login session fixation}{name=login session fixation,description={A popular variation of the \gls{session fixation} attack, in which an attacker tricks the user into logging in with a predefined \gls{sid}}}
 \newglossaryentry{session hijacking}{name=session hijacking,description={An attack in which the attacker tries to capture the victim's \gls{sid}, to be able to take over his session}}
 \newglossaryentry{session id}{name=session ID,description={Session Identifier, a unique string of text used by the server to identify a user}}
 \newglossaryentry{sop}{name=SOP,description={Same Origin Policy, the policy which states that \gls{dom} objects may only be accessed by principals having the same origin as the object}}
 \newglossaryentry{ssl}{name=SSL,description={Secure Socket Layer, used in \gls{https} to encrypt traffic between a client and a server}}
 \newglossaryentry{http}{name=HTTP,description={HyperText Transfer Protocol, the protocol which is used by web browsers to communicate with web servers}}
 \newglossaryentry{https}{name=HTTPS,description={HyperText Transfer Protocol Secure, a secure variant of \gls{http}, which uses encryption when transmitting data}}
-\newglossaryentry{html}{name=HTML,description={HyperText Markup Language}}
+\newglossaryentry{html}{name=HTML,description={HyperText Markup Language, the language used to structure web pages}}
 \newglossaryentry{www}{name=WWW,description={World Wide Web}}
-\newglossaryentry{waf}{name=WAF,description={Web Application Framework, a framework providing the core functionality of web applications, which provides the foundation for web developers when building web applications}}
+\newglossaryentry{web application framework}{name=web application framework,description={a framework providing the core functionality of web applications, which provides the foundation for web developers when building web applications}}
 \newglossaryentry{cookie}{name=cookie,description={A piece of text made up of one or more name-value pairs stored by a website in the browser. Cookies are set by a website upon first visit, and subsequently included in every request made by the browser}}
 \newglossaryentry{session cookie}{name=session cookie,description={A cookie containing a session identifier}}
 \newglossaryentry{url}{name=URL,description={Uniform Resource Locator, a string that specifies the location of a resource}}
