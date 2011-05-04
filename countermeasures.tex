@@ -10,7 +10,7 @@ This section is dedicated to server-side countermeasures against session hijacki
 
 Different security measures may be taken by web application and web framework developers to secure their web applications. In this section, we discuss to what extent these measures provide security against session hijacking and session fixation attacks.
 
-\subsubsection{Renewing the session identifier}
+\subsubsection{Renewing the session identifier}\label{renewing}
 
 The practice of renewing the session identifier (see section \ref{renewing-sid}) can provide excellent protection against \gls{login session fixation} attacks. Indeed, if the web application renews the session identifier every time the authentication status of a user changes, the SID which was enforced by the attacker won't be valid anymore once the victim has logged in. As an example, this can be accomplished in PHP by using the following code snippet \cite{PHPregenerate,Johns2011}:
 
@@ -122,7 +122,7 @@ Django\footnote{More information about Django is available on its website: \url{
 Django renews the session identifier automatically when a user logs in. For this, two possible cases are considered \cite{DjangoLoginCode}:
 \begin{itemize}
 	\item If the login request contained a session identifier that corresponds to another logged in user, a completely new session is created.
-	\item If the login request contained a session identifier that is not yet associated with a logged in user, a new \emph{SID} is created. This SID is then associated with the state corresponding to the previous SID \cite{DjangoSessionsCode}.
+	\item If the login request contained a session identifier that is not yet associated with a logged in user, a new \emph{SID} is created. This SID is then associated with the state corresponding to the old SID \cite{DjangoSessionsCode}. The old SID is removed from the database, so it can not be used in the future to access the session information.
 \end{itemize}
 
 SIDs are only accepted via cookies in Django. This is a very clear-cut design decision \cite{DjangoSessions}, and requires the web developer to write its own middleware if he wants to use POST or GET parameters instead \cite{Fairs2007}.
@@ -134,7 +134,12 @@ Secure connections are handled by the underlying web server, and configuring cer
 % TODO
 
 \subsubsection{PHP}
-% TODO
+
+PHP\footnote{More information about PHP is available on its website: \url{http://php.net/}.} is a scripting language used for web development. We include this discussion of PHP's session module in this section because PHP is estimated to be the server scripting language for over 75\% of all websites \cite{ServerSurvey}.
+
+Since PHP only supports the concept of sessions, and not that of users, there is no way for PHP to know when the authentication state changed. As such, PHP does not renew the session identifier automatically when needed. Session fixation prevention can however be easily implemented by calling the \texttt{session\_regenerate\_id()} function every time a user's authentication state changes, similar to the code snipped provided in section \ref{renewing}.
+
+PHP uses cookies by default for session management, but also accepts session identifiers passed via URLs  \cite{Holovaty2008}. To change this behavior, the line \texttt{php_flag session.use\_trans\_sid\ off} should be set in the \emph{web server's} \texttt{.htaccess} configuration file, or the line \texttt{ini\_set('session.use\_trans\_sid', false)} should be added to the PHP code. Note that the previous example only works when the Apache web server is used to serve the PHP pages (which is most often the case) \cite{PHPdisableURL}.
 
 \subsubsection{Drupal}
 

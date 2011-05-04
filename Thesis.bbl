@@ -21,6 +21,13 @@ Michael Barbaro and Tom {Zeller Jr.}
 \newblock Available from:
   \url{https://www.nytimes.com/2006/08/09/technology/09aol.htm}.
 
+\bibitem{Barnham2009}
+Scott Barnham.
+\newblock {Securing Django with SSL}, 2009.
+\newblock Available from:
+  \url{http://www.redrobotstudios.com/blog/2009/02/18/securing-django-with-ssl%
+/}.
+
 \bibitem{Barth2010}
 Adam Barth, Adrienne~Porter Felt, and Prateek Saxena.
 \newblock {Protecting browsers from extension vulnerabilities}.
@@ -104,6 +111,12 @@ T.~Dierks and C.~Allen.
 \newblock Available from:
   \url{http://code.djangoproject.com/wiki/DjangoPoweredSites?version=540}.
 
+\bibitem{DjangoSessions}
+{Django Developers}.
+\newblock {How to use sessions}, 2010.
+\newblock Available from:
+  \url{http://docs.djangoproject.com/en/dev/topics/http/sessions/}.
+
 \bibitem{DjangoLoginCode}
 {Django Developers}.
 \newblock source: django/trunk/django/contrib/auth/\_\_init\_\_.py, 2011.
@@ -123,6 +136,14 @@ D.~{Eastlake 3rd}, J.~Schiller, and S.~Crocker.
 \newblock {Randomness Requirements for Security}.
 \newblock RFC 4086 (Best Current Practice), June 2005.
 \newblock Available from: \url{http://www.ietf.org/rfc/rfc4086.txt}.
+
+\bibitem{Fairs2007}
+Dan Fairs.
+\newblock {Cookieless Django: Sessions and authentication without cookies},
+  2007.
+\newblock Available from:
+  \url{http://www.stereoplex.com/blog/cookieless-django-sessions-and-authentic%
+ation-with}.
 
 \bibitem{Farrell2011}
 Stephen Farrell.
@@ -183,9 +204,9 @@ Jeff Hodges, Collin Jackson, and Adam Barth.
 \bibitem{Holovaty2008}
 Adrian Holovaty and Jacob Kaplan-Moss.
 \newblock {\em {The Definitive Guide to Django: Web Development Done Right}},
-  chapter~19.
-\newblock Apress, 2008.
-\newblock Available from: \url{http://www.djangobook.com/en/2.0/chapter20/}.
+  chapter 12, 19.
+\newblock Apress, 1 edition, 2008.
+\newblock Available from: \url{http://www.djangobook.com/en/1.0/}.
 
 \bibitem{Huang2010}
 Lin-shung Huang, Zack Weinberg, Chris Evans, and Collin Jackson.

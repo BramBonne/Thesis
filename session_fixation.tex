@@ -53,7 +53,7 @@ Because there is no standardized way of doing session management (see section \r
 
 \section{Implementation}
 
-The solution was first prototyped as a lightweight HTTP proxy written in Python, and later implemented as an add-on for Mozilla Firefox. We first discuss the advantages and disadvantages of an implementation as a browser extension. Afterwards, we discuss the relevant parts of the Firefox architecture. We conclude with the specifics about the implementation itself.
+The solution was first prototyped as a lightweight HTTP proxy written in Python, and later implemented as an add-on for Mozilla Firefox\footnote{This add-on is available for download at \url{https://spideroak.com/share/IJZGC3I/pub/home/bram/Openbaar/NoFix.xpi}.}. We first discuss the advantages and disadvantages of an implementation as a browser extension. Afterwards, we discuss the relevant parts of the Firefox architecture. We conclude with the specifics about the implementation itself.
 
 \subsection{HTTP proxy or browser extension?}
 
@@ -92,7 +92,7 @@ It must be noted that the previously listed `required capabilities' are currentl
 
 \subsection{Implementation as a Firefox add-on}
 
-The proposed policy was implemented as a Firefox add-on, available for Firefox 3.5 or higher\footnote{This add-on is available for download at \url{https://addons.mozilla.org/firefox/addon/nofix/}.}. We describe the internals of the add-on in this section.
+The proposed policy was implemented as a Firefox add-on, available for Firefox 3.5 or higher. We describe the internals of the add-on in this section.
 
 To detect when a trusted session ID is set, the add-on searches for a \texttt{Set-Cookie} header in all incoming HTTP responses. When it finds that a cookie is being set, it checks whether the cookie is a session identifier, using the algorithm described in section \ref{detecting-sids}. If the cookie contains a \texttt{domain} attribute, the value of this attribute is checked for validity in order to prevent cross-site cooking attacks \cite{Zalewski2006} against the add-on. For this, the add-on assures that \texttt{domain} parameters in cookies are always parent domains or subdomains of the website the cookie was received from. Also, Firefox' top-level domain list \cite{MozillaDevelopers2010} is used to make sure no website can set a cookie for a top-level domain (such as \emph{.co.uk}).
 

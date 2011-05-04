@@ -27,7 +27,7 @@
 		\setentrycounter{page}\glsnumberformat{33}}}%
 \glossaryentryfield{https}{\glsnamefont{HTTPS}}{HyperText Transfer Protocol Secure, a secure variant of \gls {http}, which uses encryption when transmitting data}{\relax }{\glossaryentrynumbers{\relax 
 		\setentrycounter{page}\glsnumberformat{viii}\delimN 
-		\setentrycounter{page}\glsnumberformat{35}}}\glsgroupskip
+		\setentrycounter{page}\glsnumberformat{36}}}\glsgroupskip
 \glsgroupheading{I}\relax \glsresetentrylist %
 \glossaryentryfield{ip}{\glsnamefont{IP}}{Internet Protocol, the protocol used for routing datagrams over the internet. An IP address identifies a machine on the internet}{\relax }{\glossaryentrynumbers{\relax 
 		\setentrycounter{page}\glsnumberformat{viii}\delimN 
