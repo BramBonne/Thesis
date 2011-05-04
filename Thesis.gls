@@ -77,6 +77,7 @@
 		\setentrycounter{page}\glsnumberformat{12}\delimN 
 		\setentrycounter{page}\glsnumberformat{21}}}%
 \glossaryentryfield{ssl}{\glsnamefont{SSL}}{Secure Socket Layer, used in \gls {https} to encrypt traffic between a client and a server}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter{page}\glsnumberformat{7}\delimN 
 		\setentrycounter{page}\glsnumberformat{19}\delimN 
 		\setentrycounter{page}\glsnumberformat{26}\delimN 
 		\setentrycounter{page}\glsnumberformat{30}}}\glsgroupskip

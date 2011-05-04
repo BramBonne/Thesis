@@ -139,7 +139,9 @@ PHP\footnote{More information about PHP is available on its website: \url{http:/
 
 Since PHP only supports the concept of sessions, and not that of users, there is no way for PHP to know when the authentication state changed. As such, PHP does not renew the session identifier automatically when needed. Session fixation prevention can however be easily implemented by calling the \texttt{session\_regenerate\_id()} function every time a user's authentication state changes, similar to the code snipped provided in section \ref{renewing}.
 
-PHP uses cookies by default for session management, but also accepts session identifiers passed via URLs  \cite{Holovaty2008}. To change this behavior, the line \texttt{php_flag session.use\_trans\_sid\ off} should be set in the \emph{web server's} \texttt{.htaccess} configuration file, or the line \texttt{ini\_set('session.use\_trans\_sid', false)} should be added to the PHP code. Note that the previous example only works when the Apache web server is used to serve the PHP pages (which is most often the case) \cite{PHPdisableURL}.
+PHP uses cookies by default for session management, but also accepts session identifiers passed via URLs  \cite{Holovaty2008}. To change this behavior, the line \texttt{php\_flag session.use\_trans\_sid\ off} should be set in the \emph{web server's} \texttt{.htaccess} configuration file, or the line \texttt{ini\_set('session.use\_trans\_sid', false)} should be added to the PHP code. Note that the previous example only works when the Apache web server is used to serve the PHP pages (which is most often the case) \cite{PHPdisableURL}.
+
+To use secure connections, PHP must be compiled with the \texttt{--with-openssl} parameter. To make sure that PHP sets the \texttt{secure} flag for all session cookies, the \texttt{session\_set\_cookie\_params()} function must be called with the parameter \texttt{secure} set to \texttt{true} for every request \cite{PHPsessionCookieParams}. By default, cookies don't include the \texttt{secure} flag.
 
 \subsubsection{Drupal}
 

@@ -47,6 +47,12 @@ Adam Barth, Collin Jackson, and John~C. Mitchell.
   {http://dx.doi.org/10.1145/1455770.1455782}
   {\path{doi:10.1145/1455770.1455782}}.
 
+\bibitem{PHPdisableURL}
+Constantin Bejenaru.
+\newblock {Disable session IDs passed via URL}.
+\newblock Available from:
+  \url{http://www.frozenminds.com/disable-sessionid.html}.
+
 \bibitem{Bontrager2005}
 Will Bontrager.
 \newblock {Form Submissions Without Submit Buttons}, 2005.
@@ -98,12 +104,12 @@ Giuseppe~A. {Di Lucca}, Anna~Rita Fasolino, M.~Mastroianni, and Porfirio
   \href {http://dx.doi.org/10.1109/WSE.2004.10013}
   {\path{doi:10.1109/WSE.2004.10013}}.
 
-\bibitem{rfc2246}
-T.~Dierks and C.~Allen.
-\newblock {The TLS Protocol Version 1.0}.
-\newblock RFC 2246 (Proposed Standard), January 1999.
-\newblock Obsoleted by RFC 4346, updated by RFCs 3546, 5746, 6176.
-\newblock Available from: \url{http://www.ietf.org/rfc/rfc2246.txt}.
+\bibitem{rfc4346}
+T.~Dierks and E.~Rescorla.
+\newblock {The Transport Layer Security (TLS) Protocol Version 1.1}.
+\newblock RFC 4346 (Proposed Standard), April 2006.
+\newblock Obsoleted by RFC 5246, updated by RFCs 4366, 4680, 4681, 5746, 6176.
+\newblock Available from: \url{http://www.ietf.org/rfc/rfc4346.txt}.
 
 \bibitem{DjangoPoweredBy}
 {Django Developers}.
@@ -300,7 +306,7 @@ Engin Kirda, Christopher Kruegel, Giovanni Vigna, and Nenad Jovanovic.
 \bibitem{Klein2002}
 Amit Klein.
 \newblock {Cross site scripting explained}.
-\newblock {\em Sanctum White Paper}, (June), 2002.
+\newblock {\em Whitepaper, Sanctum Inc.}, (June), 2002.
 \newblock Available from:
   \url{http://scholar.google.com/scholar?hl=en\&btnG=Search\&q=intitle:Cross+S%
 ite+Scripting+Explained\#0}.
@@ -317,7 +323,7 @@ pdf}.
 \bibitem{Kolsek2002}
 M~Kol\v{s}ek.
 \newblock {Session fixation vulnerability in web-based applications}.
-\newblock {\em Acros Security}, (Id):1--16, 2002.
+\newblock {\em Acros Security}, pages 1--16, 2002.
 \newblock Available from:
   \url{www.acrossecurity.com/papers/session\_fixation.pdfWmxxW5Ow}.
 
@@ -428,6 +434,12 @@ Joon~S. Park and Ravi Sandhu.
 \newblock session\_regenerate\_id(), 2011.
 \newblock Available from: \url{http://www.php.net/
   manual/de/function.session-regenerate-id.php}.
+
+\bibitem{PHPsessionCookieParams}
+{PHP Developers}.
+\newblock session\_set\_cookie\_params, 2011.
+\newblock Available from:
+  \url{http://php.net/manual/en/function.session-set-cookie-params.php}.
 
 \bibitem{RailsApps}
 {Ruby on Rails developers}.
@@ -541,6 +553,12 @@ Philipp Vogt, Florian Nentwich, Nenad Jovanovic, Engin Kirda, Christopher
   \url{http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.129.2063\&amp;%
 rep=rep1\&amp;type=pdf}.
 
+\bibitem{ServerSurvey}
+W3Techs.
+\newblock {Usage of server-side programming languages for websites}, 2010.
+\newblock Available from:
+  \url{http://w3techs.com/technologies/overview/programming\_language/all}.
+
 \bibitem{Wasser2007}
 Daniel Wasser.
 \newblock {HowTo renew the Session id in Tomcat or JBoss after a login}, 2007.
@@ -570,9 +588,6 @@ lication\_frameworks}.
 \bibitem{Williams2010}
 Jeff Williams and Dave Wichers.
 \newblock {OWASP top 10}, 2010.
-\newblock Available from:
-  \url{http://scholar.google.com/scholar?hl=en\&btnG=Search\&q=intitle:No+Titl%
-e\#0}.
 
 \bibitem{Zalewski2006}
 Michal Zalewski.
