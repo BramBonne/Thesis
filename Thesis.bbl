@@ -98,6 +98,26 @@ T.~Dierks and C.~Allen.
 \newblock Obsoleted by RFC 4346, updated by RFCs 3546, 5746, 6176.
 \newblock Available from: \url{http://www.ietf.org/rfc/rfc2246.txt}.
 
+\bibitem{DjangoPoweredBy}
+{Django Developers}.
+\newblock {Django-powered sites}, 2007.
+\newblock Available from:
+  \url{http://code.djangoproject.com/wiki/DjangoPoweredSites?version=540}.
+
+\bibitem{DjangoLoginCode}
+{Django Developers}.
+\newblock source: django/trunk/django/contrib/auth/\_\_init\_\_.py, 2011.
+\newblock Available from:
+  \url{http://code.djangoproject.com/browser/django/trunk/django/contrib/auth/%
+\_\_init\_\_.py}.
+
+\bibitem{DjangoSessionsCode}
+{Django Developers}.
+\newblock source: django/trunk/django/contrib/sessions/backends/base.py, 2011.
+\newblock Available from:
+  \url{http://code.djangoproject.com/browser/django/trunk/django/contrib/sessi%
+ons/backends/base.py}.
+
 \bibitem{rfc4086}
 D.~{Eastlake 3rd}, J.~Schiller, and S.~Crocker.
 \newblock {Randomness Requirements for Security}.
@@ -132,6 +152,13 @@ Kevin Fu, Emil Sit, Kendra Smith, and Nick Feamster.
 \newblock In {\em Proceedings of the 10th conference on USENIX Security
   Symposium-Volume 10}. USENIX Association, 2001.
 \newblock Available from: \url{http://portal.acm.org/citation.cfm?id=1251346}.
+
+\bibitem{Funk2004}
+Tim Funk.
+\newblock {How do I turn off secure cookies for session IDs?}, 2004.
+\newblock Available from:
+  \url{http://www.mail-archive.com/tomcat-user@jakarta.apache.org/msg116570.ht%
+ml}.
 
 \bibitem{GoogleAnalytics}
 {Google Developers}.
@@ -311,6 +338,13 @@ Ziqing Mao, Ninghui Li, and Ian Molloy.
 \newblock Available from:
   \url{http://www.springerlink.com/index/f0507054g3r6630h.pdf}.
 
+\bibitem{McMahon2010}
+Paul McMahon.
+\newblock {Enabling url parameter based sessions in Ruby on Rails}, 2010.
+\newblock Available from:
+  \url{http://www.mobalean.com/blog/2010/04/09/enabling-url-parameter-based-se%
+ssions-in-ruby-on-rails}.
+
 \bibitem{HttpOnly}
 {Microsoft Developers}.
 \newblock {Mitigating Cross-site Scripting With HTTP-only Cookies}.
@@ -410,6 +444,13 @@ Kapil Singh, Alexander Moshchuk, HJ~Wang, and W.~Lee.
 \newblock Available from:
   \url{http://www.computer.org/portal/web/csdl/doi/10.1109/SP.2010.35}.
 
+\bibitem{Slater2008}
+Michael Slater.
+\newblock {Using SSL in Rails Applications}, 2008.
+\newblock Available from:
+  \url{http://www.buildingwebapps.com/articles/6401-using-ssl-in-rails-applica%
+tions}.
+
 \bibitem{Tappenden2009}
 Andrew~F. Tappenden and James Miller.
 \newblock {Cookies: A deployment study and the testing implications}.
@@ -418,6 +459,36 @@ Andrew~F. Tappenden and James Miller.
   \url{http://portal.acm.org/citation.cfm?doid=1541822.1541824}, \href
   {http://dx.doi.org/10.1145/1541822.1541824}
   {\path{doi:10.1145/1541822.1541824}}.
+
+\bibitem{TomcatCookie}
+{Tomcat Developers}.
+\newblock {Class Cookie}.
+\newblock Available from:
+  \url{http://tomcat.apache.org/tomcat-5.5-doc/servletapi/javax/servlet/http/C%
+ookie.html}.
+
+\bibitem{TomcatSSL}
+{Tomcat Developers}.
+\newblock {SSL Configuration HOW-TO}.
+\newblock Available from:
+  \url{http://tomcat.apache.org/tomcat-6.0-doc/ssl-howto.html}.
+
+\bibitem{TomcatAuthentication5}
+{Tomcat Developers}.
+\newblock {The Valve Component (version 5.5)}.
+\newblock Available from:
+  \url{http://tomcat.apache.org/tomcat-5.5-doc/config/valve.html}.
+
+\bibitem{TomcatAuthentication6}
+{Tomcat Developers}.
+\newblock {The Valve Component (version 6)}.
+\newblock Available from:
+  \url{http://tomcat.apache.org/tomcat-6.0-doc/config/valve.html}.
+
+\bibitem{TomcatPoweredBy}
+{Tomcat Developers}.
+\newblock {Sites, Applications, and Systems that are Powered By Tomcat}, 2011.
+\newblock Available from: \url{http://wiki.apache.org/tomcat/PoweredBy}.
 
 \bibitem{Binny2010}
 Binny {V A}.

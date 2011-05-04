@@ -30,9 +30,9 @@
 \contentsline {subfigure}{\numberline {(b)}{\ignorespaces {a malicious page including only parts of the form in an iframe, trying to trick a user into clicking the button}}}{21}{subfigure.5.2}
 \addvspace {10pt}
 \addvspace {10pt}
-\contentsline {figure}{\numberline {5.1}{\ignorespaces Client-side solution to session fixation}}{32}{figure.5.1}
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {An incoming response containing a new SID.}}}{32}{subfigure.1.1}
-\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {An outgoing request containing a cookie set via HTTP, and one set via JavaScript. The JavaScript cookie is stripped from the request by the proxy.}}}{32}{subfigure.1.2}
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Client-side solution to session fixation}}{34}{figure.5.1}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {An incoming response containing a new SID.}}}{34}{subfigure.1.1}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {An outgoing request containing a cookie set via HTTP, and one set via JavaScript. The JavaScript cookie is stripped from the request by the proxy.}}}{34}{subfigure.1.2}
 \addvspace {10pt}
 \select@language {dutch}
 \select@language {english}
