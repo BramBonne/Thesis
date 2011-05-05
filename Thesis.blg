@@ -7,45 +7,45 @@ Database file #3: /home/bram/Documenten/extra.bib
 Warning--empty publisher in Cools2010
 Warning--there's a number but no volume in Farrell2011
 Warning--there's a number but no volume in Klein2002
-You've used 94 entries,
+You've used 100 entries,
             2760 wiz_defined-function locations,
-            1200 strings with 22285 characters,
-and the built_in function-call counts, 35206 in all, are:
-= -- 3841
-> -- 1072
+            1230 strings with 23082 characters,
+and the built_in function-call counts, 37032 in all, are:
+= -- 4033
+> -- 1114
 < -- 17
-+ -- 434
-- -- 340
-* -- 1530
-:= -- 5019
-add.period$ -- 330
-call.type$ -- 94
-change.case$ -- 452
++ -- 452
+- -- 352
+* -- 1584
+:= -- 5273
+add.period$ -- 348
+call.type$ -- 100
+change.case$ -- 476
 chr.to.int$ -- 0
-cite$ -- 97
-duplicate$ -- 1100
-empty$ -- 3618
-format.name$ -- 340
-if$ -- 9152
+cite$ -- 103
+duplicate$ -- 1154
+empty$ -- 3834
+format.name$ -- 352
+if$ -- 9644
 int.to.chr$ -- 0
-int.to.str$ -- 94
+int.to.str$ -- 100
 missing$ -- 35
-newline$ -- 512
-num.names$ -- 188
-pop$ -- 1135
+newline$ -- 542
+num.names$ -- 200
+pop$ -- 1213
 preamble$ -- 1
-purify$ -- 358
+purify$ -- 376
 quote$ -- 0
-skip$ -- 2514
+skip$ -- 2657
 stack$ -- 0
-substring$ -- 928
-swap$ -- 225
+substring$ -- 958
+swap$ -- 231
 text.length$ -- 17
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 370
+type$ -- 394
 warning$ -- 3
-while$ -- 238
-width$ -- 96
-write$ -- 1056
+while$ -- 250
+width$ -- 103
+write$ -- 1116
 (There were 3 warnings)

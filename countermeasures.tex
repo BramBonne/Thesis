@@ -113,7 +113,7 @@ If Alfresco is deployed on top of Tomcat, session management and secure connecti
 
 Ruby on Rails\footnote{More information about Ruby on Rails is available on its website: \url{http://rubyonrails.org/}.} (or RoR) is a web framework written in the in 1995 conceived Ruby programming language. It is used in popular web applications like Twitter, Groupon and Github \cite{RailsApps}.
 
-Renewing the session identifier is not automatically done on each authentication state change in RoR. There is, however, a supported method for implementing this: invalidating the SID can be done by adding \texttt{reset\_session} to the \texttt{SessionsController\#create} action \cite{Webers2008}. The official documentation advertises this solution as only requiring one line of code, but mentions that session state must still be manually copied.
+Renewing the session identifier is not automatically done on each authentication state change in RoR. There is, however, a supported way of implementing this: invalidating the SID can be done by adding \texttt{reset\_session} to the \texttt{SessionsController\#create} action \cite{Webers2008}. The official documentation advertises this solution as only requiring one line of code, but mentions that session state must still be manually copied.
 
 RoR supports only cookie-based session management by default. If the web developer wants to use URL rewriting instead, he needs to specifically enable this \cite{McMahon2010}.
 
@@ -157,15 +157,15 @@ To use secure connections, PHP must be compiled with the \texttt{--with-openssl}
 
 Drupal\footnote{More information about Drupal is available on its website: \url{http://drupal.org/}.} is a complete content management system written in PHP. It powers the websites of The Economist, Symantec, and even The White House \cite{DrupalCases,DrupalWhiteHouse}.
 
-Drupal automatically renews the session identifier when the user's authentication state changes \cite{DrupalAuth}. It does this by calling PHP's \texttt{session\_regenerate\_id()} function \cite{DrupalRegenerate}. While this has always been the default behavior of Drupal, some bugs were still present in versions preceding Drupal 5.9 \cite{DrupalBug}.
+Drupal automatically renews the session identifier when the user's authentication state changes \cite{DrupalAuth}. It does this by calling PHP's \texttt{session\_regenerate\_id()} function \cite{DrupalRegenerate}. While this has always been the default behavior of Drupal, some bugs were still present in versions preceding Drupal 5.9 and 6.3 \cite{DrupalBug}.
 
+Drupal makes sure that PHP's underlying session mechanism will only accept session IDs via cookies. It does this by calling the previously described \texttt{ini\_set()} function with the relevant parameters during initialization \cite{DrupalSettings}. Unfortunately, some problems are still known to occur for some web hosts, where the relevant parameters should be added to PHP's \texttt{.htaccess} file manually \cite{DrupalSIDurl}.
 
+Secure connections and secure cookies in Drupal are handled via PHP's mechanisms. However, Drupal's `Secure Login' module can be used to force certain pages to be loaded via HTTPS \cite{DrupalSecureLogin}. To make sure that every cookie set over HTTPS has the \texttt{secure} flag enabled, this module also sets the \texttt{session.cookie\_secure} flag to \texttt{true} since Drupal 7.
 
-% TODO
+\subsubsection{Overview}
 
-% Tabelletje met overzicht: default renewing, GET/POST or cookies, easy SSL
-% Conclusie dat meeste populaire frameworks het goed doen, met een heriteratie over dat frameworks altijd een goed idee zijn om te gebruiken \ref
-% Opmerking over configureren van frameworks.
+An summary of session security in the discussed web application frameworks is given in Table \ref{tab:frameworks}. As we can see, the popular high-level frameworks in our list (RoR, Drupal, Django) provide pretty good protection against session attacks, which reinforces our recommendation to use a high-level framework whenever possible (see section \ref{use-framework}). However, care must be taken that the framework is configured correctly.
 
 \begin{table}[ht]
 	\centering
@@ -173,16 +173,16 @@ Drupal automatically renews the session identifier when the user's authenticatio
 		& Renews SID & Only accepts & \texttt{secure} flag for\\
 		& on auth & cookie-based SIDs & SSL session cookies\\
 		\hline
-		Tomcat & since version 6 & configurable & default\\
-		Alfresco & no & configurable & default\\
+		Tomcat & since version 6 & implementable & default\\
+		Alfresco & no & implementable & default\\
 		RoR & configurable & yes & configurable\\
 		Django & yes & yes & configurable\\
 		CherryPy & no & yes & configurable\\
 		PHP & no & configurable & configurable\\
-		Drupal & & &\\
+		Drupal & since version 5.9/6.3 & yes & via module\\
 	\end{tabular}
 	\caption{Different methods for forcing a browser to make a request}
-	\label{tab:forcing-request}
+	\label{tab:frameworks}
 \end{table}
 
 \subsection{Stand-alone server countermeasures}\label{standalone-server}

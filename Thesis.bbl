@@ -1,4 +1,4 @@
-\begin{thebibliography}{10}
+\begin{thebibliography}{100}
 
 \bibitem{Adida2008}
 Ben Adida.
@@ -153,16 +153,47 @@ T.~Dierks and E.~Rescorla.
   \url{http://code.djangoproject.com/browser/django/trunk/django/contrib/sessi%
 ons/backends/base.py}.
 
+\bibitem{DrupalBug}
+{Drupal Developers}.
+\newblock {Security Advisory SA-2008-046 - Drupal core - Session fixation},
+  2008.
+\newblock Available from: \url{http://drupal.org/node/286417}.
+
+\bibitem{DrupalRegenerate}
+{Drupal Developers}.
+\newblock sess\_regenerate, 2010.
+\newblock Available from:
+  \url{http://api.drupal.org/api/drupal/includes--session.inc/function/sess\_r%
+egenerate/6}.
+
 \bibitem{DrupalCases}
 {Drupal Developers}.
 \newblock {Success Stories}, 2010.
 \newblock Available from: \url{http://drupal.org/success-stories}.
+
+\bibitem{DrupalSettings}
+{Drupal Developers}.
+\newblock settings.php, 2011.
+\newblock Available from:
+  \url{http://api.drupal.org/api/drupal/sites--default--settings.php/5/source}.
+
+\bibitem{DrupalAuth}
+{Drupal Developers}.
+\newblock user\_authenticate\_finalize, 2011.
+\newblock Available from:
+  \url{http://api.drupal.org/api/drupal/modules--user--user.module/function/us%
+er\_authenticate\_finalize/6}.
 
 \bibitem{rfc4086}
 D.~{Eastlake 3rd}, J.~Schiller, and S.~Crocker.
 \newblock {Randomness Requirements for Security}.
 \newblock RFC 4086 (Best Current Practice), June 2005.
 \newblock Available from: \url{http://www.ietf.org/rfc/rfc4086.txt}.
+
+\bibitem{DrupalSIDurl}
+Jeremy Epstein.
+\newblock {PHP session id showing in url}, 2005.
+\newblock Available from: \url{http://drupal.org/node/25852}.
 
 \bibitem{Fairs2007}
 Dan Fairs.
@@ -193,6 +224,11 @@ J.~Franks, P.~Hallam-Baker, J.~Hostetler, S.~Lawrence, P.~Leach, A.~Luotonen,
 \newblock {HTTP Authentication: Basic and Digest Access Authentication}.
 \newblock RFC 2617 (Draft Standard), June 1999.
 \newblock Available from: \url{http://www.ietf.org/rfc/rfc2617.txt}.
+
+\bibitem{DrupalSecureLogin}
+Alexander Frolkin.
+\newblock {Secure Login}, 2007.
+\newblock Available from: \url{http://drupal.org/project/securelogin}.
 
 \bibitem{Fu2001}
 Kevin Fu, Emil Sit, Kendra Smith, and Nick Feamster.

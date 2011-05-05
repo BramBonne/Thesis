@@ -98,6 +98,6 @@ Fortunately, the user does not have to re-authenticate every time he gets a new 
 	\item Invalidate the old session identifier.
 \end{enumerate}
 
-\subsection{Using a session management framework}
+\subsection{Using a session management framework}\label{use-framework}
 
 Problems occur in lots of web applications because they implement their own session management. As we will see in section \ref{frameworks}, lots of web frameworks have thoroughly tested session management already built-in. Because it is very easy to make mistakes when providing security, it is recommended to make use of an existing session management framework. Using such a framework does not completely relieve the web developer of all tasks associated with session management: he must still make sure that the framework is configured correctly, and that other channels (for example, JavaScript) don't pose any security issues.
