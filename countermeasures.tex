@@ -103,7 +103,7 @@ Secure connections can be managed managed by either the JSSE or the APR \gls{ssl
 
 \subsubsection{Alfresco}
 
-Alfresco\footnote{More information about Alfresco is available on its website: \url{http://www.alfresco.com/}.} is a complete content management system that runs on an application server like Tomcat \cite{TomcatPoweredBy}. It is used by companies like France AirForce, Cisco, Fox and KLM \cite{AlfrescoPoweredBy}.
+Alfresco\footnote{More information about Alfresco is available on its website: \url{http://www.alfresco.com/}.} is a complete content management system that runs on a J2EE application server like Tomcat \cite{TomcatPoweredBy}. It is used by companies like France AirForce, Cisco, Fox and KLM \cite{AlfrescoPoweredBy}.
 
 Alfresco neglects to renew a user's session identifier when he logs in. We tested the behavior using Alfresco's demo server\footnote{An account for the demo server can be obtained from \url{http://www.alfresco.com/try/}.} and found that a session fixation attack is, indeed, possible. Further investigation showed that a bug which addresses this issue was already reported \cite{AlfrescoSessionFixation}. Unfortunately, the bug already dates from October 2008 and has not been solved since. Requesting more information about session management in Alfresco on IRC or the forums proved fruitless.
 
@@ -137,7 +137,7 @@ Secure connections are handled by the underlying web server, and configuring cer
 
 CherryPy\footnote{More information about CherryPy is available on its website: \url{http://cherrypy.org/}.} is another web framework built using Python. It tries to make building web applications as similar as possible to developing any other object-oriented Python program.
 
-Although the CherryPy documentation claims that CherryPy provides protection against session fixation attacks \cite{CherryPySessions}, our experiments show that it is still possible to fixate a session identifier for another user.% TODO
+The CherryPy documentation claims that CherryPy provides protection against session fixation attacks \cite{CherryPySessions}. However, in reality, only crafted session identifiers are prevented. Indeed, it is still possible for an attacker to establish a session himself, and to impose this session on a victim. To execute a successful login session fixation attack, the only thing required is that some data is tied to the attacker's session. The fact that CherryPy is vulnerable to session fixation attacks was already discovered by Schrank et al. \cite{Schrank2010}
 
 CherryPy manages session exclusively via cookies \cite{CherryPySessions}. As a consequence, session identifiers will not be accepted as GET or POST parameters.
 
@@ -155,8 +155,13 @@ To use secure connections, PHP must be compiled with the \texttt{--with-openssl}
 
 \subsubsection{Drupal}
 
-% TODO
+Drupal\footnote{More information about Drupal is available on its website: \url{http://drupal.org/}.} is a complete content management system written in PHP. It powers the websites of The Economist, Symantec, and even The White House \cite{DrupalCases,DrupalWhiteHouse}.
 
+Drupal automatically renews the session identifier when the user's authentication state changes \cite{DrupalAuth}. It does this by calling PHP's \texttt{session\_regenerate\_id()} function \cite{DrupalRegenerate}. While this has always been the default behavior of Drupal, some bugs were still present in versions preceding Drupal 5.9 \cite{DrupalBug}.
+
+
+
+% TODO
 
 % Tabelletje met overzicht: default renewing, GET/POST or cookies, easy SSL
 % Conclusie dat meeste populaire frameworks het goed doen, met een heriteratie over dat frameworks altijd een goed idee zijn om te gebruiken \ref
@@ -164,20 +169,18 @@ To use secure connections, PHP must be compiled with the \texttt{--with-openssl}
 
 \begin{table}[ht]
 	\centering
-	\begin{tabular*}{0.75\textwidth}{|r|ccc|}
-		\hline
+	\begin{tabular}{r|ccc}
 		& Renews SID & Only accepts & \texttt{secure} flag for\\
 		& on auth & cookie-based SIDs & SSL session cookies\\
 		\hline
-		Tomcat & since version 6.0 & configurable & default\\
+		Tomcat & since version 6 & configurable & default\\
 		Alfresco & no & configurable & default\\
 		RoR & configurable & yes & configurable\\
 		Django & yes & yes & configurable\\
 		CherryPy & no & yes & configurable\\
 		PHP & no & configurable & configurable\\
 		Drupal & & &\\
-		\hline
-	\end{tabular*}
+	\end{tabular}
 	\caption{Different methods for forcing a browser to make a request}
 	\label{tab:forcing-request}
 \end{table}

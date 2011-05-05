@@ -153,6 +153,11 @@ T.~Dierks and E.~Rescorla.
   \url{http://code.djangoproject.com/browser/django/trunk/django/contrib/sessi%
 ons/backends/base.py}.
 
+\bibitem{DrupalCases}
+{Drupal Developers}.
+\newblock {Success Stories}, 2010.
+\newblock Available from: \url{http://drupal.org/success-stories}.
+
 \bibitem{rfc4086}
 D.~{Eastlake 3rd}, J.~Schiller, and S.~Crocker.
 \newblock {Randomness Requirements for Security}.
@@ -463,10 +468,26 @@ Joon~S. Park and Ravi Sandhu.
 \newblock Available from:
   \url{http://php.net/manual/en/function.session-set-cookie-params.php}.
 
+\bibitem{DrupalWhiteHouse}
+Associated Press.
+\newblock {White House opens Web site coding to public}, 2009.
+\newblock Available from:
+  \url{http://www.msnbc.msn.com/id/33463174/ns/technology\_and\_science-intern%
+et/}.
+
 \bibitem{RailsApps}
 {Ruby on Rails developers}.
 \newblock {Real applications live in the wild}, 2011.
 \newblock Available from: \url{http://rubyonrails.org/applications}.
+
+\bibitem{Schrank2010}
+Micha\"{e}l Schrank, Bastian Braun, Martin Johns, and Joachim Posegga.
+\newblock {Session Fixation – the Forgotten Vulnerability?}
+\newblock In {\em ISSE/SICHERHEIT 2010 : Information Security Solutions Europe
+  - Sicherheit, Schutz und Zuverl\"{a}ssigkeit}, pages 341--352, Bonn, 2010.
+  Gesellschaft f\"{u}r Informatik.
+\newblock Available from:
+  \url{http://subs.emis.de/LNI/Proceedings/Proceedings170/P-170.pdf\#page=358}.
 
 \bibitem{Schreiber2004}
 T~Schreiber.
