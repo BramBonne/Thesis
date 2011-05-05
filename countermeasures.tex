@@ -160,15 +160,22 @@ To use secure connections, PHP must be compiled with the \texttt{--with-openssl}
 
 % Tabelletje met overzicht: default renewing, GET/POST or cookies, easy SSL
 % Conclusie dat meeste populaire frameworks het goed doen, met een heriteratie over dat frameworks altijd een goed idee zijn om te gebruiken \ref
+% Opmerking over configureren van frameworks.
 
 \begin{table}[ht]
 	\centering
-	\begin{tabular}{r|ccc}
-		& Renews SID on auth & Does not accept SID via GET/POST & \texttt{secure} flag for SSL session cookies\\
+	\begin{tabular*}{0.75\textwidth}{r|ccc}
+		& Renews SID & Only accepts & \texttt{secure} flag for\\
+		& on auth & cookie-based SIDs & SSL session cookies\\
 		\hline
 		Tomcat & since version 6.0 & configurable & default\\
-		
-	\end{tabular}
+		Alfresco & no & configurable & default\\
+		RoR & configurable & yes & configurable\\
+		Django & yes & yes & configurable\\
+		CherryPy & no & yes & configurable\\
+		PHP & no & configurable & configurable\\
+		Drupal & & &\\
+	\end{tabular*}
 	\caption{Different methods for forcing a browser to make a request}
 	\label{tab:forcing-request}
 \end{table}

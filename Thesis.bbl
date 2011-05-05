@@ -75,6 +75,12 @@ Eric Butler.
 \newblock {Firesheep}, 2010.
 \newblock Available from: \url{http://codebutler.com/firesheep}.
 
+\bibitem{CherryPySessions}
+{CherryPy Team}.
+\newblock cherrypy.lib.sessions, 2010.
+\newblock Available from:
+  \url{http://docs.cherrypy.org/dev/refman/lib/sessions.html}.
+
 \bibitem{ChromiumWishlist}
 {Chromium Developers}.
 \newblock {API Wish List}.
@@ -336,6 +342,12 @@ M~Kol\v{s}ek.
 \newblock {\em Acros Security}, pages 1--16, 2002.
 \newblock Available from:
   \url{www.acrossecurity.com/papers/session\_fixation.pdfWmxxW5Ow}.
+
+\bibitem{AlfrescoSessionFixation}
+Max Kononovich.
+\newblock security issue: login mechanism subject to "session fixation"
+  attacks, 2008.
+\newblock Available from: \url{http://issues.alfresco.com/jira/browse/ALF-465}.
 
 \bibitem{rfc2109}
 D.~Kristol and L.~Montulli.
