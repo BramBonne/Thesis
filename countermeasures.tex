@@ -164,7 +164,8 @@ To use secure connections, PHP must be compiled with the \texttt{--with-openssl}
 
 \begin{table}[ht]
 	\centering
-	\begin{tabular*}{0.75\textwidth}{r|ccc}
+	\begin{tabular*}{0.75\textwidth}{|r|ccc|}
+		\hline
 		& Renews SID & Only accepts & \texttt{secure} flag for\\
 		& on auth & cookie-based SIDs & SSL session cookies\\
 		\hline
@@ -175,6 +176,7 @@ To use secure connections, PHP must be compiled with the \texttt{--with-openssl}
 		CherryPy & no & yes & configurable\\
 		PHP & no & configurable & configurable\\
 		Drupal & & &\\
+		\hline
 	\end{tabular*}
 	\caption{Different methods for forcing a browser to make a request}
 	\label{tab:forcing-request}
