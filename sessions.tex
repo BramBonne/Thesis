@@ -56,7 +56,7 @@ To be unguessable, a session identifier should appear like it could be any rando
 	\item[low correlation] If SIDs are correlated, an attacker is able to derive (part of) SIDs that will be generated from SIDs which were already generated. As a consequence, an attacker would be able to predict a victim's session ID from his own session ID.
 	\item[a high number of possible values] This is related to both high entropy, and to sufficient length (which will be discussed shortly hereafter).
 \end{description}
-It must also be noted that it is not sufficient for session IDs to be only statistically random: they have to be cryptographically random \cite{Fu2001}. This means that more than just an \gls{lcg} %TODO: Citation naar cursus Modellering&Simulatie!
+It must also be noted that it is not sufficient for session IDs to be only statistically random: they have to be cryptographically random \cite{Fu2001}. This means that more than just a \gls{lcg} \cite{Cools2010}
 is needed to generate the SIDs.
 
 \subsubsection{Sufficient length}
@@ -82,7 +82,7 @@ A third way of making sessions more secure is to ensure that they have a limited
 	\item In case the attacker was able to capture the SID, the lifetime of the SID determines how long the attacker is able to use it for impersonating the victim.
 \end{itemize}
 
-Additionally, limiting the lifetime of a session identifier makes sure that a user will be logged out eventually. This is convenient in case a user forgets to log out when he stops using the web application \cite{OWASP2009a}. %TODO: better citation needed
+Additionally, limiting the lifetime of a session identifier makes sure that a user will be logged out eventually. This is convenient in case a user forgets to log out when he stops using the web application \cite{OWASP2009a}.
 
 \subsubsection{Limiting the SID's lifetime}\label{limiting-lifetime}
 The lifetime of a cookie can be limited by using the \texttt{expires} attribute when setting the cookie. However, care must be taken that the session is also invalidated at the server side, because the attacker could otherwise still use the cookie after it expired at the victim's browser \cite{Kolsek2002}.

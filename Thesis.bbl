@@ -7,6 +7,11 @@ Ben Adida.
   Web}, pages 517--524. ACM, 2008.
 \newblock Available from: \url{http://portal.acm.org/citation.cfm?id=1367568}.
 
+\bibitem{AlfrescoPoweredBy}
+{Alfresco Software}.
+\newblock {Alfresco Customer Overview}, 2011.
+\newblock Available from: \url{http://www.alfresco.com/customers/}.
+
 \bibitem{Arana2006}
 Paul Arana.
 \newblock {Benefits and Vulnerabilities of Wi-Fi Protected Access 2 (WPA2)},
@@ -82,6 +87,11 @@ Craig Condit.
 \newblock {JSESSIONID considered harmful}, 2006.
 \newblock Available from:
   \url{http://randomcoder.org/articles/jsessionid-considered-harmful}.
+
+\bibitem{Cools2010}
+Ronald Cools and Wim Michiels.
+\newblock {\em {Modellering en simulatie}}.
+\newblock 2010.
 
 \bibitem{DeRyck2010}
 Philippe {De Ryck}, Lieven Desmet, Thomas Heyman, Frank Piessens, and Wouter
@@ -437,7 +447,7 @@ Joon~S. Park and Ravi Sandhu.
 
 \bibitem{PHPsessionCookieParams}
 {PHP Developers}.
-\newblock session\_set\_cookie\_params, 2011.
+\newblock session\_set\_cookie\_params(), 2011.
 \newblock Available from:
   \url{http://php.net/manual/en/function.session-set-cookie-params.php}.
 
@@ -571,7 +581,7 @@ Heiko Webers.
 
 \bibitem{Whitten1999}
 Alma Whitten and J.D. Tygar.
-\newblock {Why Johnny can’t encrypt: A usability evaluation of PGP 5.0}.
+\newblock {Why Johnny can't encrypt: A usability evaluation of PGP 5.0}.
 \newblock In {\em Proceedings of the 8th USENIX Security Symposium}, pages
   169--184. Citeseer, 1999.
 \newblock Available from:

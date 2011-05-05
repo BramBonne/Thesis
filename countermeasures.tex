@@ -103,7 +103,11 @@ Secure connections can be managed managed by either the JSSE or the APR \gls{ssl
 
 \subsubsection{Alfresco}
 
-\cite{TomcatPoweredBy} % TODO
+Alfresco\footnote{More information about Alfresco is available on its website: \url{http://www.alfresco.com/}.} is a complete content management system that runs on an application server like Tomcat \cite{TomcatPoweredBy}. It is used by companies like France AirForce, Cisco, Fox and KLM \cite{AlfrescoPoweredBy}.
+
+Alfresco neglects to renew a user's session identifier when he logs in. We tested the behavior using Alfresco's demo server\footnote{An account for the demo server can be obtained from \url{http://www.alfresco.com/try/}.} and found that a session fixation attack is, indeed, possible. Further investigation showed that a bug which addresses this issue was already reported \cite{AlfrescoSessionFixation}. Unfortunately, the bug already dates from October 2008 and has not been solved since. Requesting more information about session management in Alfresco on IRC or the forums proved fruitless.
+
+If Alfresco is deployed on top of Tomcat, session management and secure connections work in much the same way as they do in Tomcat.
 
 \subsubsection{Ruby on Rails}
 
@@ -131,7 +135,13 @@ Secure connections are handled by the underlying web server, and configuring cer
 
 \subsubsection{CherryPy}
 
-% TODO
+CherryPy\footnote{More information about CherryPy is available on its website: \url{http://cherrypy.org/}.} is another web framework built using Python. It tries to make building web applications as similar as possible to developing any other object-oriented Python program.
+
+Although the CherryPy documentation claims that CherryPy provides protection against session fixation attacks \cite{CherryPySessions}, our experiments show that it is still possible to fixate a session identifier for another user.% TODO
+
+CherryPy manages session exclusively via cookies \cite{CherryPySessions}. As a consequence, session identifiers will not be accepted as GET or POST parameters.
+
+As with Django, secure connections are handled by the underlying web server. By default, CherryPy does not set the \texttt{secure} flag for any cookies. To enable this flag for all session cookies, the session object should be initialized (by calling \texttt{cherrypy.lib.sessions.init()} with the \texttt{secure} parameter set to \texttt{True} \cite{CherryPySessions}.
 
 \subsubsection{PHP}
 
@@ -147,7 +157,21 @@ To use secure connections, PHP must be compiled with the \texttt{--with-openssl}
 
 % TODO
 
+
 % Tabelletje met overzicht: default renewing, GET/POST or cookies, easy SSL
+% Conclusie dat meeste populaire frameworks het goed doen, met een heriteratie over dat frameworks altijd een goed idee zijn om te gebruiken \ref
+
+\begin{table}[ht]
+	\centering
+	\begin{tabular}{r|ccc}
+		& Renews SID on auth & Does not accept SID via GET/POST & \texttt{secure} flag for SSL session cookies\\
+		\hline
+		Tomcat & since version 6.0 & configurable & default\\
+		
+	\end{tabular}
+	\caption{Different methods for forcing a browser to make a request}
+	\label{tab:forcing-request}
+\end{table}
 
 \subsection{Stand-alone server countermeasures}\label{standalone-server}
 
