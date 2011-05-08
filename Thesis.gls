@@ -24,15 +24,17 @@
 		\setentrycounter{page}\glsnumberformat{7}\delimN 
 		\setentrycounter{page}\glsnumberformat{19}\delimN 
 		\setentrycounter{page}\glsnumberformat{26\delimN 27}\delimN 
-		\setentrycounter{page}\glsnumberformat{35}}}%
+		\setentrycounter{page}\glsnumberformat{34}\delimN 
+		\setentrycounter{page}\glsnumberformat{39}}}%
 \glossaryentryfield{https}{\glsnamefont{HTTPS}}{HyperText Transfer Protocol Secure, a secure variant of \gls {http}, which uses encryption when transmitting data}{\relax }{\glossaryentrynumbers{\relax 
 		\setentrycounter{page}\glsnumberformat{viii}\delimN 
-		\setentrycounter{page}\glsnumberformat{38}}}\glsgroupskip
+		\setentrycounter{page}\glsnumberformat{34}\delimN 
+		\setentrycounter{page}\glsnumberformat{42}}}\glsgroupskip
 \glsgroupheading{I}\relax \glsresetentrylist %
 \glossaryentryfield{ip}{\glsnamefont{IP}}{Internet Protocol, the protocol used for routing datagrams over the internet. An IP address identifies a machine on the internet}{\relax }{\glossaryentrynumbers{\relax 
 		\setentrycounter{page}\glsnumberformat{viii}\delimN 
 		\setentrycounter{page}\glsnumberformat{19}\delimN 
-		\setentrycounter{page}\glsnumberformat{27}}}\glsgroupskip
+		\setentrycounter{page}\glsnumberformat{28}}}\glsgroupskip
 \glsgroupheading{L}\relax \glsresetentrylist %
 \glossaryentryfield{lcg}{\glsnamefont{LCG}}{Linear Congruential Generator, a generator for pseudorandom numbers based on recurrence}{\relax }{\glossaryentrynumbers{\relax 
 		\setentrycounter{page}\glsnumberformat{6}}}%
@@ -42,7 +44,8 @@
 \glsgroupheading{M}\relax \glsresetentrylist %
 \glossaryentryfield{mac}{\glsnamefont{MAC}}{Message Authentication Code, a short piece of information providing data integrity and authenticity for a message}{\relax }{\glossaryentrynumbers{\relax 
 		\setentrycounter{page}\glsnumberformat{7}\delimN 
-		\setentrycounter{page}\glsnumberformat{26}}}%
+		\setentrycounter{page}\glsnumberformat{26}\delimN 
+		\setentrycounter{page}\glsnumberformat{34}}}%
 \glossaryentryfield{mitm}{\glsnamefont{MitM}}{Man in the Middle, used to describe an attacker that is able to intercept traffic between the victim and some other principal}{\relax }{\glossaryentrynumbers{\relax 
 		\setentrycounter{page}\glsnumberformat{13}\delimN 
 		\setentrycounter{page}\glsnumberformat{22}\delimN 
@@ -55,11 +58,11 @@
 \glossaryentryfield{session cookie}{\glsnamefont{session cookie}}{A cookie containing a session identifier}{\relax }{\glossaryentrynumbers{\relax 
 		\setentrycounter{page}\glsnumberformat{4}\delimN 
 		\setentrycounter{page}\glsnumberformat{17}\delimN 
-		\setentrycounter{page}\glsnumberformat{36}}}%
+		\setentrycounter{page}\glsnumberformat{40}}}%
 \glossaryentryfield{session fixation}{\glsnamefont{session fixation}}{An attack in which the attacker tries to enforce a \gls {sid} upon the victim, so he is able to take over the session later on}{\relax }{\glossaryentrynumbers{\relax 
 		\setentrycounter{page}\glsnumberformat{vii}\delimN 
 		\setentrycounter{page}\glsnumberformat{19}\delimN 
-		\setentrycounter{page}\glsnumberformat{35}}}%
+		\setentrycounter{page}\glsnumberformat{39}}}%
 \glossaryentryfield{session hijacking}{\glsnamefont{session hijacking}}{An attack in which the attacker tries to capture the victim's \gls {sid}, to be able to take over his session}{\relax }{\glossaryentrynumbers{\relax 
 		\setentrycounter{page}\glsnumberformat{15}\delimN 
 		\setentrycounter{page}\glsnumberformat{19}}}%
@@ -67,7 +70,7 @@
 		\setentrycounter{page}\glsnumberformat{3}\delimN 
 		\setentrycounter{page}\glsnumberformat{12}\delimN 
 		\setentrycounter{page}\glsnumberformat{15}\delimN 
-		\setentrycounter{page}\glsnumberformat{35}}}%
+		\setentrycounter{page}\glsnumberformat{39}}}%
 \glossaryentryfield{sid}{\glsnamefont{SID}}{see `session ID'}{\relax }{\glossaryentrynumbers{\relax 
 		\setentrycounter{page}\glsnumberformat{vii\delimN viii}\delimN 
 		\setentrycounter{page}\glsnumberformat{3}\delimN 
@@ -79,11 +82,11 @@
 \glossaryentryfield{ssl}{\glsnamefont{SSL}}{Secure Socket Layer, used in \gls {https} to encrypt traffic between a client and a server}{\relax }{\glossaryentrynumbers{\relax 
 		\setentrycounter{page}\glsnumberformat{7}\delimN 
 		\setentrycounter{page}\glsnumberformat{19}\delimN 
-		\setentrycounter{page}\glsnumberformat{26}\delimN 
+		\setentrycounter{page}\glsnumberformat{27}\delimN 
 		\setentrycounter{page}\glsnumberformat{30}}}\glsgroupskip
 \glsgroupheading{T}\relax \glsresetentrylist %
 \glossaryentryfield{tld}{\glsnamefont{TLD}}{Top Level Domain, the last part of a \gls {url}, which determines the part of the domain that registered in the name space's root zone. Examples are \texttt {.com}, \texttt {.org} and \texttt {.co.uk}}{\relax }{\glossaryentrynumbers{\relax 
-		\setentrycounter{page}\glsnumberformat{39}}}\glsgroupskip
+		\setentrycounter{page}\glsnumberformat{43}}}\glsgroupskip
 \glsgroupheading{U}\relax \glsresetentrylist %
 \glossaryentryfield{url}{\glsnamefont{URL}}{Uniform Resource Locator, a string that specifies the location of a resource}{\relax }{\glossaryentrynumbers{\relax 
 		\setentrycounter{page}\glsnumberformat{viii}\delimN 
@@ -101,6 +104,7 @@
 		\setentrycounter{page}\glsnumberformat{18}\delimN 
 		\setentrycounter{page}\glsnumberformat{21\delimN 22}\delimN 
 		\setentrycounter{page}\glsnumberformat{26}\delimN 
-		\setentrycounter{page}\glsnumberformat{35}\delimN 
-		\setentrycounter{page}\glsnumberformat{41}}}%
+		\setentrycounter{page}\glsnumberformat{36}\delimN 
+		\setentrycounter{page}\glsnumberformat{39}\delimN 
+		\setentrycounter{page}\glsnumberformat{45}}}%
 \end{theglossary}\glossarypostamble

@@ -25,7 +25,7 @@ To make sure that the session identifier is changed on every authentication chan
 
 Renewing the session identifier regularly is also benefical for preventing session hijacking attacks. As was discussed in section \ref{lifetime}, the shorter the lifetime of a session identifier, the more difficult it will be to capture, and the less useful it will be if it has been captured \cite{Fu2001}.
 
-Keeping in mind the previous discussion, one might assume that it is best to renew a session identifier as often as possible. Consider, however, the case where the session identifier is renewed on each request. In this case, every request would result in a new session cookie being set at the user's browser, with the old session cookie being invalidated. When issuing concurrent requests, the web application would only acknowledge the first request that arrived at the server. The second request would contain the (by then) invalidated session identifier, causing it to be rejected. Because of this, the browser would be allowed to issue only one request at the same time. Similarly, this would pose a problem when browser plugins communicate with the server, as well as with asynchronous requests.
+Keeping in mind the previous discussion, one might assume that it is best to renew a session identifier as often as possible. Consider, however, the case where the session identifier is renewed on each request. In this case, every request would result in a new session cookie being set at the user's browser, with the old session cookie being invalidated. When issuing concurrent requests (for example, when loading the images on a web page), the web application would only acknowledge the first request that arrived at the server. The second request would contain the (by then) invalidated session identifier, causing it to be rejected. Because of this, the browser would be allowed to issue only one request at the same time. Similarly, this would pose a problem when browser plugins communicate with the server, as well as with asynchronous requests. Another drawback of this approach is that web applications making use of multiple servers would have to synchronize their users' SID on every request \cite{Dacosta2011}. Otherwise, a user would have to re-authenticate every time a page is served by a different server. A last problem with this approach is that the server must issue an extra write to the database on every request, in order to update the SID.
 
 \subsubsection{Using HttpOnly cookies}\label{httponly}
 
@@ -35,7 +35,7 @@ Singh et al. have shown that it is sometimes still possible for an attacker to r
 
 \subsubsection{Secure connections}\label{ssl}
 
-Secure connections can be used to make sure that a session identifier can not be intercepted by a passive \gls{mitm} attacker. In this case, as already noted in \ref{secure-flag}, care must be taken that cookies can never be sent over an unsecure connection. This can be done by setting the \texttt{secure} flag for cookies that will be used only over a \gls{ssl} connection.
+Secure (\gls{ssl}) connections \cite{Stallings2011} can be used to make sure that a session identifier can not be intercepted by a passive \gls{mitm} attacker. In this case, as already noted in \ref{secure-flag}, care must be taken that cookies can never be sent over an unsecure connection. This can be done by setting the \texttt{secure} flag for cookies that will be used only over a \gls{ssl} connection.
 
 Recently, some work has been done to make deployment of HTTPS more widespread \cite{Hodges2010,Jackson2008}. Unfortunately, there are still some drawbacks to using HTTPS for every page \cite{Adida2008}. At the server side, HTTPS is very costly: every connection needs computationally intensive SSL operations to be performed. At the client side, browser caching works differently under SSL, and websites have to be completely transmitted before they can be rendered (because the validity is checked for the entire page).
 
@@ -137,7 +137,7 @@ Secure connections are handled by the underlying web server, and configuring cer
 
 CherryPy\footnote{More information about CherryPy is available on its website: \url{http://cherrypy.org/}.} is another web framework built using Python. It tries to make building web applications as similar as possible to developing any other object-oriented Python program.
 
-The CherryPy documentation claims that CherryPy provides protection against session fixation attacks \cite{CherryPySessions}. However, in reality, only crafted session identifiers are prevented. Indeed, it is still possible for an attacker to establish a session himself, and to impose this session on a victim. To execute a successful login session fixation attack, the only thing required is that some data is tied to the attacker's session. The fact that CherryPy is vulnerable to session fixation attacks was already discovered by Schrank et al. \cite{Schrank2010}
+The CherryPy documentation claims that CherryPy provides protection against session fixation attacks \cite{CherryPySessions}. However, in reality, only crafted session identifiers are prevented. Indeed, it is still possible for an attacker to establish a session himself, and to impose this session on a victim. To execute a successful login session fixation attack, the only thing required is that some data is tied to the attacker's session. The fact that CherryPy is vulnerable to session fixation attacks was already discovered earlier by Schrank et al. \cite{Schrank2010}.
 
 CherryPy manages session exclusively via cookies \cite{CherryPySessions}. As a consequence, session identifiers will not be accepted as GET or POST parameters.
 
@@ -181,13 +181,77 @@ An summary of session security in the discussed web application frameworks is gi
 		PHP & no & configurable & configurable\\
 		Drupal & since version 5.9/6.3 & yes & via module\\
 	\end{tabular}
-	\caption{Different methods for forcing a browser to make a request}
+	\caption{Session security in different web application frameworks}
 	\label{tab:frameworks}
 \end{table}
 
 \subsection{Stand-alone server countermeasures}\label{standalone-server}
 
+In this section, we describe some general server-side countermeasures to session hijacking and session fixation which are not part of any web framework.
+
+\subsubsection{One-time cookies}
+
+In a paper written by Dacosta et al. \cite{Dacosta2011}, a solution to session hijacking is proposed wherein session identifiers are replaced by one-time cookies which are renewed on every request. This is done as follows:
+\begin{enumerate}
+	\item The user authentication happens over a secure (\gls{https}) connection. In this authentication, a secret seed and a session secret are generated.
+	\item Subsequent requests are made over an unsecure (\gls{http}) connection. In the $i$-th request, the user's browser attaches the outcome of a hash function  applied $i$ times to the secret seed. Also attached is the current sequence number ($i$, in this case), the user's username, a nonce, and -- most importantly -- a \gls{mac}, generated with the session secret established as part of the authentication, of the triplet \emph{(username, request-URL, hash outcome)}.
+\end{enumerate}
+It is crucial that the server allows only requests containing a sequence number higher than the last one received. This prevents attackers from replaying captured one-time cookie information. Since the attacker does not know how to generate the next one-time cookie from a previously captured one, and because a previous cookie can not be replayed, the approach renders a captured cookie essentially worthless. Moreover, the request-URL is included in the MAC to make sure that a certain one-time cookie can only be used to access one specific resource.
+
+Aside from preventing session hijacking attacks, this approach will also prevent session fixation attacks. Indeed, as soon as the user authenticates, a new session secret and secret seed -- both unknown to the attacker -- are established. This is similar to renewing the SID on every authentication change.
+
+Because the sequence number is part of the request, the server knows how many times the hash function should be applied to the secret seed. Naturally, the server does not need to apply the hash function $i$ times for every request. Indeed, the computational overhead can be greatly reduced by remembering the previous value, and applying the hash function only $i - i'$ times (where $i'$ is the number of times the function was applied to the previous value) to this previous value.
+
+A major advantage of this approach is that, while users use HTTPS to authenticate (and thus never have their password sent in clear text), a secure connection is not required for subsequent requests. This eliminates the biggest drawback associated with using SSL, namely that of high costs (see section \ref{ssl}).
+
+Possible disadvantages of an approach that uses a new SID for every request were already discussed in section \ref{renewing}. However, two of these do not apply to this particular solution. Firstly, because future SIDs don't need to be explicitly issued by the server, problems with concurrent requests can be avoided by equipping every request with a higher sequence number than the previous one. Secondly, server synchronization is less of a problem because servers could be allowed to only check that a received sequence number is higher than the last one they received themselves. Note that this would permit an attacker to replay a one-time cookie, as long as he issues the request to a server different from the one the user issued his request to. Fortunately, the damage is limited by the fact that the one-time cookie can only be used to access one specific resource. If this policy is applied, synchronization between servers would be limited to the moment a user authenticates.
+
+There are also some other disadvantages of one-time cookies. Compared to using regular session IDs over an unencrypted connection, both the client and the server need to perform more computations, and both have to keep more state. However, as is shown in the paper, using secure connections for every request is still much more computationally intensive \cite{Dacosta2011}. Thus, requiring some extra computation compared to using regular session IDs over an unencrypted connection could be considered a minor trade-off to be able to provide secure user authentication.
+
+The paper also describes that in the current implementation, both the server and the client need to be adapted to support one-time cookies. The authors are, however, exploring the idea of modifying one-time cookies to provide a version that does not require a browser extension \cite{Dacosta2011}.
+
+\subsubsection{Deferred loading (SessionSafe)}
+
+SessionSafe is a combination of three solutions to session hijacking (and cross site request forgery) proposed by Johns et al. in 2006 \cite{Johns2006}. We describe the first one in this section, and the other two in the next sections.
+
+The reasoning behind deferred loading is that cookies should be separated from the content of a page, to prevent an attacker from using the page content to steal the cookie. It does this by setting the cookie on a different subdomain (\url{secure.example.org}) than the web page itself (\url{www.example.org}). A page is then requested as follows:
+\begin{enumerate}
+	\item Instead of getting the page directly, the user's browser requests a `page loader' from the server. This page loader is a small HTML page that contains logic which will be executed at the client side to fetch the actual page.
+	\item The page loader makes the browser send the user's cookie to \url{secure.example.org}, and a request for the actual page to \url{www.example.org}. In both requests, the browser includes the same request ID, which was sent by the server as part of the page loader.
+	\item The web server checks that the cookie is correct, and that both requests were issued with the same request ID (and thus by the same page loader). If this is the case, it sends the requested web page as a response, and it invalidates the request ID for future requests.
+	\item The page loader displays the actual web page in the user's browser.
+\end{enumerate}
+Because cookies are set for a different domain than the one web pages are served from, script code which is included in a web page on \url{www.example.com} has no access to cookies stored on the \url{secure.example.com} domain. This prevents attackers from injecting script code (via a \gls{xss} attack) which steals a user's cookie.
+
+Note that this approach does not prevent the attacker from executing a session fixation attack. Indeed, although script code is unable to access cookies stored in a different subdomain, it \emph{is} able to set cookies for its parent domain, as was discussed in section \ref{subdomain-setting}. This allows an attacker to inject script code in a page hosted on \url{www.example.org} that sets a cookie for the domain \url{example.org}. Since \url{secure.example.org} is also a subdomain of \url{example.org}, requests made to this domain will contain the injected cookie.
+
+\subsubsection{One-time URLs (SessionSafe)}
+
+The second solution proposed by Johns et al. \cite{Johns2006} is that of one-time URLs (not to be confused with one-time cookies described earlier). In this approach, cookies are stored as private variables of JavaScript objects. This makes them unavailable to attackers using JavaScript.
+
+\subsubsection{Subdomain switching (SessionSafe)}
+
+\subsubsection{SessionShield}
+
+\cite{Nikiforakis2010}
+
+\subsubsection{SessionLock}
+
+\cite{Adida2008}
+
+\subsubsection{Session fixation solution by Johns et al.}
+
+\cite{Johns2011}
+
 \section{Client-side countermeasures}
+
+\subsection{SessionShield}\label{sessionshield}
+
+\cite{Nikiforakis2010}
+
+\subsection{Noxes}
+
+\cite{Kirda2006}
 
 \section{Cross site scripting countermeasures}\label{xss-countermeasures}
 % Check referrer

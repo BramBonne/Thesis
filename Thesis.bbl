@@ -17,8 +17,8 @@ Paul Arana.
 \newblock {Benefits and Vulnerabilities of Wi-Fi Protected Access 2 (WPA2)},
   2006.
 \newblock Available from:
-  \url{http://cs.gmu.edu/\~{}yhwang1/INFS612/Sample\_Projects/Fall\_06\_GPN\_6%
-\_Final\_Report.pdf}.
+  \url{http://cs.gmu.edu/~yhwang1/INFS612/Sample\_Projects/Fall\_06\_GPN\_6\_F%
+inal\_Report.pdf}.
 
 \bibitem{Barbaro2006}
 Michael Barbaro and Tom {Zeller Jr.}
@@ -57,6 +57,12 @@ Constantin Bejenaru.
 \newblock {Disable session IDs passed via URL}.
 \newblock Available from:
   \url{http://www.frozenminds.com/disable-sessionid.html}.
+
+\bibitem{Bonne2011}
+Bram Bonn\'{e}, Philippe {De Ryck}, Nick Nikiforakis, Lieven Desmet, and Frank
+  Piessens.
+\newblock {Client-Side Protection against Session Fixation Attacks}.
+\newblock In {\em W2SP 2011 (rejected)}, Oakland, CA, 2011.
 
 \bibitem{Bontrager2005}
 Will Bontrager.
@@ -98,6 +104,13 @@ Craig Condit.
 Ronald Cools and Wim Michiels.
 \newblock {\em {Modellering en simulatie}}.
 \newblock 2010.
+
+\bibitem{Dacosta2011}
+Italo Dacosta, Saurabh Chakradeo, Mustaque Ahamad, and Patrick Traynor.
+\newblock {One-Time Cookies: Preventing Session Hijacking Attacks with
+  Disposable Credentials}.
+\newblock {\em Information Security}, 2011.
+\newblock Available from: \url{http://smartech.gatech.edu/handle/1853/37000}.
 
 \bibitem{DeRyck2010}
 Philippe {De Ryck}, Lieven Desmet, Thomas Heyman, Frank Piessens, and Wouter
@@ -666,7 +679,8 @@ lication\_frameworks}.
 
 \bibitem{Williams2010}
 Jeff Williams and Dave Wichers.
-\newblock {OWASP top 10}, 2010.
+\newblock {OWASP top 10}.
+\newblock Technical report, 2010.
 
 \bibitem{Zalewski2006}
 Michal Zalewski.

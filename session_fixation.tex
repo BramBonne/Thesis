@@ -1,6 +1,8 @@
 \chapter{A client-side solution to session fixation}\label{fixation-solution}
 % TODO: maak dit algemeen voor session fixation en session hijacking
-In this chapter\footnote{This chapter is based on a paper that was submitted to W2SP 2011.}, we propose a client-side solution to the \gls{session fixation} attack described in section \ref{fixation}. To our knowledge, there exists no other practical client-side solution to this attack.
+In this chapter, we propose a client-side solution to the \gls{session fixation} attack described in section \ref{fixation}. The reason for developing a solution at the client side is that the user incentive for using a web application that is secure is often larger than the web developer incentive for creating one \cite{Johns2011}. To our knowledge, there exists no other practical client-side solution to this attack.
+
+The solution proposed in this chapter was also submitted as a paper to the W2SP 2011 conference, co-authored by Philippe De Ryck, Nick Nikiforakis, Lieven Desmet and Frank Piessens \cite{Bonne2011}. This chapter includes some of their wordings and data.  %TODO: correct citations!
 
 Out of the methods for injecting a \gls{session id} described in section \ref{injecting-sid}, we consider \gls{xss} and \texttt{<meta>}-tag injection the most important. These injection attacks have a high severity rating \cite{Williams2010} and lots of websites are vulnerable \cite{Brown2010}. Ideally, these problems would be solved by finding a complete solution to XSS attacks. Unfortunately, as we saw in section \ref{xss-countermeasures}, solutions to XSS are often lacking. Other attack vectors, such as URL rewriting, subdomain cookie setting and response splitting are considered out of scope because either a client-side solution would be unable to distinguish between legitimate SIDs and forged SIDs, or because they exploit a bug at the browser or proxy level.
 
@@ -83,7 +85,7 @@ These capabilities are provided by the following Firefox components:
 \begin{itemize}
 	\item The \texttt{http-on-examine-response} observer allows us to intercept HTTP responses before they are processed. Whenever a response is received, this object's \texttt{observe()} method is executed \cite{MozillaObservers}.
 	\item The \texttt{http-on-modify-request} observer allows us to intercept and modify HTTP requests before they are sent. Whenever a response is received, this object's \texttt{observe()} method is executed \cite{MozillaObservers}.
-	\item The \texttt{storageService} allows us to persistently store data in a SQLite database \cite{MozillaStorage}. This service is also used by Firefox internally to store data on the local machine.
+	\item The \texttt{storageService} allows us to persistently store data in a SQLite database \cite{MozillaStorage}. This service is also used by Firefox internally to store data on the local machine \cite{Bonne2011}.
 \end{itemize}
 
 Additionally, Firefox provides an interface that examines a hostname and determines the longest portion that should be treated as though it were a top-level domain (\gls{tld}) \cite{MozillaDevelopers2010}. This is convenient when checking whether a cookie is being set for an allowed domain.
@@ -114,27 +116,17 @@ An evaluation of the add-on's impact on the user experience is difficult to auto
 
 From the log files, we found that in a considerable fraction (19.53\%) of the requests, session cookies were stripped. We would assume that, with such statistics, the extension leads to a severely degraded user experience. Surprisingly, the only problems that were mentioned by the testers had other causes such as malfunctioning websites or other poorly written add-ons. Not a single problem mentioned in these 20 weeks was due to the policy applied by our add-on. We will discuss the causes for this behavior in section \ref{discussion}.
 
-Because of the very little real-world impact of this solution, it would even make sense for Firefox to implement the described policy by default. In the past, the Firefox team has already taken bold steps to increase security, even though some websites might have been broken afterwards. \cite{Singh2010,MozillaXmlHttp}
+Because of the very little real-world impact of this solution, it would even make sense for Firefox to implement the described policy by default. In the past, the Firefox team has already taken bold steps to increase security, even though some websites might have been broken afterwards. \cite{Singh2010,MozillaXmlHttp,Bonne2011}
 
 \subsection{Performance}\label{performance}
 
-%TODO: mag hier de evaluatie uit ingediende paper gebruikt worden?
-%To evaluate the add-on's performance, 
+The user experience can also be negatively impacted by a large overhead induced by client-side protection mechanisms \cite{Bonne2011}. We quantify this performance overhead by performing two experiments.
+
+The first experiment consisted of timing the delays that were introduced by the add-on during an everyday web browsing session. For this, timers were added to the add-on code. We measured that the average delays for requests (where it is checked whether a cookie is allowed) and responses (where cookies are set) were 1.25ms and 0.25ms, respectively.
+
+The second experiment\footnote{This experiment was performed by Nick Nikiforakis \cite{Bonne2011}.} that was performed compares the \emph{page} load times in Firefox with and without the add-on enabled for the top 1000 most visited pages on the internet, according to Alexa \cite{Alexa1000}. For this experiment, we used a setup similar to the one used to evaluate SessionShield \cite{Nikiforakis2010}, where the network inconsistencies are eliminated by hosting all the pages locally \cite{Bonne2011}. A fake local DNS server and fake local web server are used to serve the captured pages. For additional resources (e.g. images, scripts), the local web server responds with a 404 `page not found' status code. The actual experiment consists of using the ChickenFoot add-on \cite{ChickenFoot} to start a timer, instruct Firefox to load a page, and stop the timer. This scenario is repeated three times for every web page, both with and without the add-on enabled.
 
 \begin{comment}
-The user experience can also be negatively impacted by a
-large overhead induced by client-side protection mechanisms.
-We quantify this performance overhead by comparing the page
-load times in Firefox with and without the add-on enabled.
-We used a similar setup as for SessionShield [3], where the
-network inconsistencies are eliminated by hosting all the pages
-locally. A fake local DNS server and fake local web server
-are used to serve the captured pages. Since the SessionShield
-evaluation used wget, the loading of additional resources (e.g.
-images, scripts) was irrelevant. In this experiment however,
-Firefox will attempt to load these resources. For any request
-except for the original page, the local web server consistently
-responds with a 404 status code.
 Using the ChickenFoot add-on [19], we start a timer, instruct
 Firefox to load a page, and stop the timer. The experiment is
 repeated three times, both with and without the add-on. The
@@ -148,21 +140,28 @@ loading times on the Internet, that are around 0.5 seconds [20].
 
 \section{Discussion}\label{discussion}
 
-Our client-side countermeasure against session fixation is very effective with no impact on the user experience and a minimal impact on the site’s behavior in the form of false positives. In this section, we describe why the add-on blocks so many cookies, and why this does not affect the web application's behavior or the user experience.
+Our client-side countermeasure against session fixation is very effective with no impact on the user experience and a minimal impact on the site's behavior in the form of false positives \cite{Bonne2011}. In this section, we describe why the add-on blocks so many cookies, and why this does not affect the web application's behavior or the user experience.
 
 One reason is that a web application might not need cookies that are set via JavaScript to be available in HTTP requests. Indeed, when a cookie is set via JavaScript, chances are quite high that this cookie will afterwards only be accessed via JavaScript.  However, a JavaScript cookie will also always be sent over HTTP, and thus stripped by the add-on. The reason that this does not impede a web application's behavior is that when the web application tries to access such a cookie using JavaScript, it is allowed to do so by our policy. Thus, a web application accessing untrusted cookies via JavaScript only will keep working as expected.
 
-Another reason for the stripped cookies is that the add-on also exhibits some false positives. False positives are cookies that should be allowed to be sent over HTTP, but which were erroneously stripped from the request. The cookies that we discovered to be false positives when implementing and evaluating the add-on were all related to web analytics services. Web analytics services provide a way for web developers to gather statistics about their website. Two examples of web analytics services are Google Analytics\footnote{An overview of the features available in Google Analytics can be found on \url{http://www.google.com/analytics/features.html}.} and Yahoo! Web Analytics\footnote{An overview of the features available in Yahoo! Web Analytics can be found on \url{http://web.analytics.yahoo.com/features}.}. To be able to track a visitor's behavior on a website, these services set cookies to measure the time spent on the website, and to uniquely identify a visitor \cite{Tappenden2009,GoogleAnalytics}. This last category of cookies often has a value that is random, and because the web analytics code is embedded as JavaScript code within the developer's web page, this type of cookie is set via JavaScript. Hence, these cookies will be marked as `untrusted' by the add-on, and will as such be stripped from all HTTP requests. Stripping these cookies only affects the web developer, which is why none of the add-on testers noticed a degraded user experience.
+Another reason for the stripped cookies is that the add-on also exhibits some false positives \cite{Bonne2011}. False positives are cookies that should be allowed to be sent over HTTP, but which were erroneously stripped from the request. The cookies that we discovered to be false positives when implementing and evaluating the add-on were all related to web analytics services. Web analytics services provide a way for web developers to gather statistics about their website. Two examples of web analytics services are Google Analytics\footnote{An overview of the features available in Google Analytics can be found on \url{http://www.google.com/analytics/features.html}.} and Yahoo! Web Analytics\footnote{An overview of the features available in Yahoo! Web Analytics can be found on \url{http://web.analytics.yahoo.com/features}.}. To be able to track a visitor's behavior on a website, these services set cookies to measure the time spent on the website, and to uniquely identify a visitor \cite{Tappenden2009,GoogleAnalytics}. This last category of cookies often has a value that is random, and because the web analytics code is embedded as JavaScript code within the developer's web page, this type of cookie is set via JavaScript. Hence, these cookies will be marked as `untrusted' by the add-on, and will as such be stripped from all HTTP requests. Stripping these cookies only affects the web developer, which is why none of the add-on testers noticed a degraded user experience.
 
-If we want our policy to be widely adopted, we should make sure that the previously mentioned false positives are accounted for, even if they don't impede the user experience. Because of this, we also provide a whitelist of cookies that shouldn't be stripped in the add-on.
+If we want our policy to be widely adopted, we should make sure that the previously mentioned false positives are accounted for, even if they don't impede the user experience. Because of this, we also provide a whitelist of cookies that should not be stripped in the add-on.
 
 \section{Extending with session hijacking protection}
 
 The add-on was also extended with a solution to the session hijacking attack. To do this, we made an even stronger distinction between HTTP cookies and JavaScript cookies: in our extended policy, session cookies that are set via HTTP are not allowed to be accessed by JavaScript. This prevents session cookies from being stolen via \gls{xss} attacks.
 
-The policy extension is implemented in our add-on by adding the \texttt{HttpOnly} flag to every incoming HTTP cookie which is marked as a session cookie. When this flag is enabled, the browser will only allow the cookie to be read via HTTP (see section \ref{httponly} for more information). Thus, we let the browser handle the blocking of HTTP session cookies over JavaScript.
+The policy extension is implemented in our add-on by adding the \texttt{HttpOnly} flag to every incoming HTTP cookie which is marked as a session cookie. When this flag is enabled, the browser will only allow the cookie to be read via HTTP (see section \ref{httponly} for more information). Thus, we let the browser handle the blocking of HTTP session cookies over JavaScript. Figure \ref{fig:clientside-httponly} shows the adapted version of Figure \ref{fig:clientside-request}, with the solution extended to provide session hijacking protection.
 
-The extension to our policy is related to the session hijacking solution proposed by Nikiforakis et al. \cite{Nikiforakis2010} (which will be discussed in section \ref{sessionshield}), where HTTP cookies are kept in a separate cookie store, outside of the browser. The difference lies in the fact that our add-on \emph{does} allow the browser access to the cookies. The only access our extended policy prevents is from JavaScript to session cookies.
+\begin{figure}[ht]
+	\centering
+	\includegraphics[width=.7\textwidth]{img/clientside-proxy-3.png}
+	\caption{Client-side solution to session fixation and session hijacking}
+	\label{fig:clientside-httponly}
+\end{figure}
+
+The extension to our policy is related to the session hijacking solution proposed by Nikiforakis et al. \cite{Nikiforakis2010} (which was be discussed in section \ref{sessionshield}), where HTTP cookies are kept in a separate cookie store, outside of the browser. The difference lies in the fact that our add-on \emph{does} allow the browser access to the cookies. The only access our extended policy prevents is from JavaScript to session cookies.
 
 \section{Comparison with other session attack countermeasures}\label{related-work}%TODO
 
@@ -174,5 +173,11 @@ HttpOnly cookies, as described in section \ref{httponly}, are cookies that are o
 
 Moreover, even if the web server is able to set the session cookie before the attacker does, the attacker is often still able to set a cookie with the same name as the session cookie for the parent domain, as we described in section \ref{subdomain-setting}. This causes the browser to send both the parent domain cookie and the subdomain cookie when a page on the subdomain is accessed. Since the \texttt{domain} attribute isn't attached to cookies in the request, the server has no way of distinguishing between both cookies. Thus, although it is recommended to set the \texttt{HttpFlag} on cookies whenever possible, this will not completely solve the session fixation attack.
 
-\subsection{SessionShield}\label{sessionshield}
+\subsection{One-time cookies}
+
+% Het belang van scheiden van authenticatie cookies en andere cookies
+% Om deze reden OTC niet beschikbaar via JS.
+% Moet aan server kant geïmplementeerd worden
+
+\subsection{SessionShield}
 % Kritisch: hoe lost dit javascript cookies op?
