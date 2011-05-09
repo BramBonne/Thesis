@@ -2,7 +2,7 @@
 % TODO: maak dit algemeen voor session fixation en session hijacking
 In this chapter, we propose a client-side solution to the \gls{session fixation} attack described in section \ref{fixation}. The reason for developing a solution at the client side is that the user incentive for using a web application that is secure is often larger than the web developer incentive for creating one \cite{Johns2011}. To our knowledge, there exists no other practical client-side solution to this attack.
 
-The solution proposed in this chapter was also submitted as a paper to the W2SP 2011 conference, co-authored by Philippe De Ryck, Nick Nikiforakis, Lieven Desmet and Frank Piessens \cite{Bonne2011}. This chapter includes some of their wordings and data.  %TODO: correct citations!
+The solution proposed in this chapter was also submitted as a paper to the W2SP 2011 conference, co-authored by Philippe De Ryck, Nick Nikiforakis, Lieven Desmet and Frank Piessens \cite{Bonne2011}. This chapter includes some of their wordings and data.
 
 Out of the methods for injecting a \gls{session id} described in section \ref{injecting-sid}, we consider \gls{xss} and \texttt{<meta>}-tag injection the most important. These injection attacks have a high severity rating \cite{Williams2010} and lots of websites are vulnerable \cite{Brown2010}. Ideally, these problems would be solved by finding a complete solution to XSS attacks. Unfortunately, as we saw in section \ref{xss-countermeasures}, solutions to XSS are often lacking. Other attack vectors, such as URL rewriting, subdomain cookie setting and response splitting are considered out of scope because either a client-side solution would be unable to distinguish between legitimate SIDs and forged SIDs, or because they exploit a bug at the browser or proxy level.
 
@@ -122,21 +122,9 @@ Because of the very little real-world impact of this solution, it would even mak
 
 The user experience can also be negatively impacted by a large overhead induced by client-side protection mechanisms \cite{Bonne2011}. We quantify this performance overhead by performing two experiments.
 
-The first experiment consisted of timing the delays that were introduced by the add-on during an everyday web browsing session. For this, timers were added to the add-on code. We measured that the average delays for requests (where it is checked whether a cookie is allowed) and responses (where cookies are set) were 1.25ms and 0.25ms, respectively.
+The first experiment consisted of timing the delays that were introduced by the add-on during an everyday web browsing session. For this, timers were added to the add-on code. We measured that the average delays for requests (where it is checked whether a cookie is allowed) and responses (where cookies are set) were 1.25\ ms and 0.25\ ms, respectively.
 
-The second experiment\footnote{This experiment was performed by Nick Nikiforakis \cite{Bonne2011}.} that was performed compares the \emph{page} load times in Firefox with and without the add-on enabled for the top 1000 most visited pages on the internet, according to Alexa \cite{Alexa1000}. For this experiment, we used a setup similar to the one used to evaluate SessionShield \cite{Nikiforakis2010}, where the network inconsistencies are eliminated by hosting all the pages locally \cite{Bonne2011}. A fake local DNS server and fake local web server are used to serve the captured pages. For additional resources (e.g. images, scripts), the local web server responds with a 404 `page not found' status code. The actual experiment consists of using the ChickenFoot add-on \cite{ChickenFoot} to start a timer, instruct Firefox to load a page, and stop the timer. This scenario is repeated three times for every web page, both with and without the add-on enabled.
-
-\begin{comment}
-Using the ChickenFoot add-on [19], we start a timer, instruct
-Firefox to load a page, and stop the timer. The experiment is
-repeated three times, both with and without the add-on. The
-average page-load times for the top 1000 pages (as reported by
-Alexa.com) without session-fixation protection is 195.407
-ms. When our add-on is enabled, the overhead is 198.242 ms.
-The overhead induced by our countermeasure is approximately
-3 milliseconds which is negligible when compared to average
-loading times on the Internet, that are around 0.5 seconds [20].
-\end{comment}
+The second experiment\footnote{This experiment was performed by Nick Nikiforakis \cite{Bonne2011}.} that was performed compares the \emph{page} load times in Firefox with and without the add-on enabled for the top 1000 most visited pages on the internet, according to Alexa \cite{Alexa1000}. For this experiment, we used a setup similar to the one used to evaluate SessionShield \cite{Nikiforakis2010}, where the network inconsistencies are eliminated by hosting all the pages locally. A fake local DNS server and fake local web server are used to serve the captured pages. For additional resources (e.g. images, scripts), the local web server responds with a 404 `page not found' status code. The actual experiment consists of using the ChickenFoot add-on \cite{ChickenFoot} to automate the process of starting a timer, instructing Firefox to load a page, and stopping the timer. This scenario is repeated three times for every web page, both with and without the add-on enabled. The average page-load time without session fixation protection is 195.407\ ms. When our add-on is enabled, the average page-load time is 198.242\ ms \cite{Bonne2011}. Thus, the average overhead introduced by our add-on is approximately 3\ milliseconds, which is negligible compared to the more than 0.5\ seconds average loading time for pages on the internet \cite{Webmetrics}.
 
 \section{Discussion}\label{discussion}
 

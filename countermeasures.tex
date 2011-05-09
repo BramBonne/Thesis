@@ -189,6 +189,37 @@ An summary of session security in the discussed web application frameworks is gi
 
 In this section, we describe some general server-side countermeasures to session hijacking and session fixation which are not part of any web framework.
 
+\subsubsection{Deferred loading (SessionSafe)}
+
+SessionSafe is a combination of different solutions to session attacks proposed by Johns et al. in 2006 \cite{Johns2006}. One of these, called `deferred loading', was created specifically for session hijacking.
+
+The reasoning behind deferred loading is that cookies should be separated from the content of a page, to prevent an attacker from using the page content to steal the cookie. It does this by setting the cookie on a different subdomain (\url{secure.example.org}) than the web page itself (\url{www.example.org}). A page is then requested as follows:
+\begin{enumerate}
+	\item Instead of getting the page directly, the user's browser requests a `page loader' from the server. This page loader is a small HTML page that contains logic which will be executed at the client side to fetch the actual page.
+	\item The page loader makes the browser send the user's cookie to \url{secure.example.org}, and a request for the actual page to \url{www.example.org}. In both requests, the browser includes the same request ID, which was sent by the server as part of the page loader.
+	\item The web server checks that the cookie is correct, and that both requests were issued with the same request ID (and thus by the same page loader). If this is the case, it sends the requested web page as a response, and it invalidates the request ID for future requests.
+	\item The page loader displays the actual web page in the user's browser.
+\end{enumerate}
+Because cookies are set for a different domain than the one web pages are served from, script code which is included in a web page on \url{www.example.com} has no access to cookies stored on the \url{secure.example.com} domain. This prevents attackers from injecting script code (via a \gls{xss} attack) which steals a user's cookie.
+
+Note that this approach does not prevent the attacker from executing a session fixation attack. Indeed, although script code is unable to access cookies stored in a different subdomain, it \emph{is} able to set cookies for its parent domain, as was discussed in section \ref{subdomain-setting}. This allows an attacker to inject script code in a page hosted on \url{www.example.org} that sets a cookie for the domain \url{example.org}. Since \url{secure.example.org} is also a subdomain of \url{example.org}, requests made to this domain will contain the injected cookie.
+
+\subsubsection{SessionLock}%TODO
+
+SessionLock (proposed by Adida et al. in 2008 \cite{Adida2008}) tries to solve session hijacking by making session identifiers only available at the client side. For this purpose, fragment identifiers are used.
+
+Fragment identifiers are included in the URL specification \cite{rfc3986} as a means for making the user's web browser scroll to a certain part of a web page. The fragment identifier is included in the URL as the part that follows the \texttt{\#} character. For example, the URL \url{http://www.example.org/document.html#paragraph4} has \texttt{paragraph4} as its fragment identifier. Loading this URL in the browser will cause the browser to request \emph{document.html} from the web server, and to jump to the element on that page which is identified by the string \texttt{paragraph4}. If no such element is available on the page, the web browser will simply ignore the fragment identifier part of the URL. Fragment identifiers are not sent to the web server on a request, but are available to client-side JavaScript via the \texttt{document.location.hash} \gls{dom} element.
+
+It is in such a fragment identifier that the user's SID will be stored. Interaction between the user's browser and the server happens in the following steps:
+\begin{enumerate}
+	\item The user authentication happens over a secure (\gls{https}) connection. When the authentication is successful, the web server redirects the user to a URL that includes the SID as its fragment identifier.
+	\item Subsequent requests are made over an unsecure (\gls{http}) connection. In every request, the user's browser attaches a \gls{mac}, generated with the (secret) SID, of the tuple \emph{(request-URL, timestamp)}. To avoid having to modify the browser, this is achieved by including a small piece of JavaScript code in the page which intercepts all user requests. The JavaScript code then attaches a timestamp and MAC to every request before it is forwarded to the server.
+\end{enumerate}
+
+%By doing this, a \gls{mitm} attacker is not able to capture the session identifier since it is never sent over any connection. Note that it is important that the authentication happens over a secure connection, since the SID would otherwise still be visible on the network when it was set. Although solution in paper which doesn't require SSL, requires Diffie-Hellman [5]
+
+To make sure that the SID is remembered at the client side, JavaScript code is included in every page returned by the server. This code rewrites every URL on the page to include the SID as a fragment identifier. Note that the server cannot rewrite these URLs itself, because then the SID would be visible on the network when the page is returned to the client.
+
 \subsubsection{One-time cookies}
 
 In a paper written by Dacosta et al. \cite{Dacosta2011}, a solution to session hijacking is proposed wherein session identifiers are replaced by one-time cookies which are renewed on every request. This is done as follows:
@@ -210,40 +241,11 @@ There are also some other disadvantages of one-time cookies. Compared to using r
 
 The paper also describes that in the current implementation, both the server and the client need to be adapted to support one-time cookies. The authors are, however, exploring the idea of modifying one-time cookies to provide a version that does not require a browser extension \cite{Dacosta2011}.
 
-\subsubsection{Deferred loading (SessionSafe)}
-
-SessionSafe is a combination of three solutions to session hijacking (and cross site request forgery) proposed by Johns et al. in 2006 \cite{Johns2006}. We describe the first one in this section, and the other two in the next sections.
-
-The reasoning behind deferred loading is that cookies should be separated from the content of a page, to prevent an attacker from using the page content to steal the cookie. It does this by setting the cookie on a different subdomain (\url{secure.example.org}) than the web page itself (\url{www.example.org}). A page is then requested as follows:
-\begin{enumerate}
-	\item Instead of getting the page directly, the user's browser requests a `page loader' from the server. This page loader is a small HTML page that contains logic which will be executed at the client side to fetch the actual page.
-	\item The page loader makes the browser send the user's cookie to \url{secure.example.org}, and a request for the actual page to \url{www.example.org}. In both requests, the browser includes the same request ID, which was sent by the server as part of the page loader.
-	\item The web server checks that the cookie is correct, and that both requests were issued with the same request ID (and thus by the same page loader). If this is the case, it sends the requested web page as a response, and it invalidates the request ID for future requests.
-	\item The page loader displays the actual web page in the user's browser.
-\end{enumerate}
-Because cookies are set for a different domain than the one web pages are served from, script code which is included in a web page on \url{www.example.com} has no access to cookies stored on the \url{secure.example.com} domain. This prevents attackers from injecting script code (via a \gls{xss} attack) which steals a user's cookie.
-
-Note that this approach does not prevent the attacker from executing a session fixation attack. Indeed, although script code is unable to access cookies stored in a different subdomain, it \emph{is} able to set cookies for its parent domain, as was discussed in section \ref{subdomain-setting}. This allows an attacker to inject script code in a page hosted on \url{www.example.org} that sets a cookie for the domain \url{example.org}. Since \url{secure.example.org} is also a subdomain of \url{example.org}, requests made to this domain will contain the injected cookie.
-
-\subsubsection{One-time URLs (SessionSafe)}
-
-The second solution proposed by Johns et al. \cite{Johns2006} is that of one-time URLs (not to be confused with one-time cookies described earlier). In this approach, cookies are stored as private variables of JavaScript objects. This makes them unavailable to attackers using JavaScript.
-
-\subsubsection{Subdomain switching (SessionSafe)}
-
-\subsubsection{SessionShield}
-
-\cite{Nikiforakis2010}
-
-\subsubsection{SessionLock}
-
-\cite{Adida2008}
-
-\subsubsection{Session fixation solution by Johns et al.}
+\subsubsection{Session fixation solution by Johns et al.}%TODO
 
 \cite{Johns2011}
 
-\section{Client-side countermeasures}
+\section{Client-side countermeasures}%TODO
 
 \subsection{SessionShield}\label{sessionshield}
 
@@ -256,3 +258,10 @@ The second solution proposed by Johns et al. \cite{Johns2006} is that of one-tim
 \section{Cross site scripting countermeasures}\label{xss-countermeasures}
 % Check referrer
 % Use asynch requests XDomainRequest, CORS, PostMessage
+% \subsubsection{Subdomain switching (SessionSafe)}%TODO
+\begin{comment}
+\section{Cross site request forgery countermeasures}
+\subsubsection{One-time URLs (SessionSafe)}
+
+The second solution proposed by Johns et al. \cite{Johns2006} is that of one-time URLs (not to be confused with one-time cookies described earlier). In this approach, cookies are stored as private variables of JavaScript objects. This makes them unavailable to attackers using JavaScript.
+\end{comment}

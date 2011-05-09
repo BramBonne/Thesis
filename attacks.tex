@@ -61,7 +61,7 @@ There are multiple ways in which script code can be included in a web page. Sinc
 	\item[between \texttt{<script>} tags] This is the most obvious way of including JavaScript in a web page. All code between these tags will be executed as soon as the browser encounters it.
 	\item[using the \texttt{<script>} tag's \texttt{src} parameter] This parameter can be set to point to an external piece of JavaScript. As such, an attacker is able to make a website load JavaScript code from another domain. This method of injecting script code gives the attacker the advantage that the actual injected string is shorter, bypassing message length limits. An even more important advantage for an attacker using this method is described in section \ref{xss-problem}.
 	\item[as the URL of the background image] An attacker can insert a tag similar to \texttt{<div style="background-image: url(javascript:alert('XSS');" />} or \texttt{<style>.bar\{background-image:url("javascript:alert('XSS');");\}</style>} (where \texttt{bar} is the class of an object in the page) to make the browser execute JavaScript, thinking it is loading the background image.
-	\item[using JavaScript handlers for page elements] It is possible to specify a JavaScript that should be triggered when a certain action occurs on an element in a web page. For example, the \texttt{onload} parameter of the \texttt{<body>} tag is used to specify JavaScript code that should be run when once the browser has completed loading the page. Another example is the \texttt{onblur} parameter, which can be specified for different kinds of tags, with \texttt{<p>} (which indicates a paragraph) and \texttt{<a>} (which indicates a link) being two examples. This parameter specifies, for a certain object on the page, the JavaScript function to be executed when the object loses focus.
+	\item[using JavaScript handlers for page elements] It is possible to specify a JavaScript that should be triggered when a certain action occurs on an element in a web page. For example, the \texttt{onload} parameter of the \texttt{<body>} tag is used to specify JavaScript code that should be run when once the browser has completed loading the page. Two other examples are the \texttt{onclick} and \texttt{onblur} parameter, which can be specified for different kinds of tags, with \texttt{<p>} (which indicates a paragraph) and \texttt{<a>} (which indicates a link) being two possibilities. These parameters specify, for a certain object on the page, the JavaScript function to be executed when the object is clicked, and the function to be executed when the object loses focus, respectively.
 \end{description}
 
 It must also be noted that attackers can use different possible encodings to inject JavaScript, so as to circumvent server-side JavaScript checkers, while still being able to execute at the client side \cite{Jim2007}. For example, the encoding of (parts of) a web page can be changed using the \texttt{encoding} and \texttt{charset} attributes of various \gls{html} tags \cite{Ishida2010}. Some browsers also allow strings to contain JavaScript that is split over multiple lines \cite{Jim2007}. Lastly, JavaScript can be split over multiple  \texttt{<![CDATA[\dots]]>} tags, making it much harder to detect.
@@ -235,7 +235,7 @@ As was the case with the previous attacks, there are several possibilities to ex
 
 An attacker can also abuse the \texttt{<img>} \gls{html} tag for issuing requests. The \texttt{<img>} tag is normally used for including images in a web page. To download an image from the server where it is stored, the client's web browser has to issue a request. However, instead of providing the URL to an actual image, the attacker can provide a request URL containing GET parameters, causing the victim's browser to issue the request when trying to load the image \cite{Johns2006b}. If the attacker is able to insert images into a trusted website (as is often the case in bulletin boards), he can make a victim issue the request when he visits the trusted page containing the image \cite{Barth2008}. Similarly to the previous method, this method can only be used for requests that contain GET parameters.
 
-\subsubsection{Via cascading style sheets}% TODO
+\subsubsection{Via cascading style sheets}
 
 Cascading style sheets (or \gls{css}) are used for defining the appearance of a web page. They include the colors, fonts, and placements for elements on a web page. Similar to using the \texttt{<img>} tag for issuing requests, the \texttt{<link>} tag, which is used to load external CSS stylesheets can be used to issue requests \cite{Huang2010}. For this, the attacker sets the URL of the stylesheet to the request URL containing the GET parameters. This will cause the victim's browser to issue the request when it tries to load the stylesheet for the page.
 
@@ -273,7 +273,7 @@ In this section, we describe some other methods an attacker can use to make a vi
 
 The simplest method for an attacker to make a victim's browser issue a request is to trick the victim into clicking a crafted an \gls{url} containing the desired request and its GET parameters. When the victim clicks the URL, the browser will automatically issue the request together with its parameters. Tricking the user into clicking the URL can be done either by phishing \cite{Barth2008}, or by embedding the URL in a trusted web page in a manner similar to the \gls{xss} attack described in section \ref{xss}. Because URLs can only hold GET parameters, this method can not be used for issuing requests that contain POST parameters.
 
-\subsection{Via asynchronous requests}
+\subsection{Via asynchronous requests}\label{asynch}
 
 If the attacker is able to perform a \gls{xss} attack, he can inject JavaScript code which uses the \texttt{XMLHttpRequest} object to perform an asynchronous HTTP request. The complete specification of this object is available at \cite{Kesteren:09:X}. We only provide the following small example of its use \cite{Binny2010}:
 \begin{lstlisting}[language=HTML,breaklines=true]
@@ -297,7 +297,7 @@ If the connection between the client and the server is not encrypted, an active 
 		& GET requests & POST requests\\
 		\hline
 		\texttt{<img>} tag & X & \\
-		CSS & X & \\ %TODO
+		CSS & X & \\
 		Form &  & X \\
 		Link & X & \\
 		Async. request & X & X \\

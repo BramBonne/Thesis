@@ -7,6 +7,12 @@ Ben Adida.
   Web}, pages 517--524. ACM, 2008.
 \newblock Available from: \url{http://portal.acm.org/citation.cfm?id=1367568}.
 
+\bibitem{Alexa1000}
+{Alexa Internet}.
+\newblock {Alexa top 1,000,000 sites}, 2011.
+\newblock Available from:
+  \url{http://s3.amazonaws.com/alexa-static/top-1m.csv.zip}.
+
 \bibitem{AlfrescoPoweredBy}
 {Alfresco Software}.
 \newblock {Alfresco Customer Overview}, 2011.
@@ -57,6 +63,15 @@ Constantin Bejenaru.
 \newblock {Disable session IDs passed via URL}.
 \newblock Available from:
   \url{http://www.frozenminds.com/disable-sessionid.html}.
+
+\bibitem{ChickenFoot}
+Michael Bolin, Matthew Webber, Philip Rha, Tom Wilson, and Robert~C. Miller.
+\newblock {Automation and customization of rendered web pages}.
+\newblock In {\em UIST '05 Proceedings of the 18th annual ACM symposium on User
+  interface software and technology}, New York, NY, 2005. ACM.
+\newblock Available from: \url{http://portal.acm.org/citation.cfm?id=1095062},
+  \href {http://dx.doi.org/10.1145/1095034.1095062}
+  {\path{doi:10.1145/1095034.1095062}}.
 
 \bibitem{Bonne2011}
 Bram Bonn\'{e}, Philippe {De Ryck}, Nick Nikiforakis, Lieven Desmet, and Frank
@@ -477,6 +492,13 @@ ssions-in-ruby-on-rails}.
 \newblock {Storage}, 2010.
 \newblock Available from: \url{https://developer.mozilla.org/en/storage}.
 
+\bibitem{Webmetrics}
+Neustar.
+\newblock {Enterprise Platform: Benchmarking}, 2011.
+\newblock Available from:
+  \url{http://www.webmetrics.com/Monitoring-Services/Enterprise-Monitoring/Pla%
+tform-Features/Benchmarking}.
+
 \bibitem{Nikiforakis2010}
 Nick Nikiforakis, Wannes Meert, Yves Younan, Martin Johns, and Wouter Joosen.
 \newblock {SessionShield: Lightweight Protection against Session Hijacking}.
@@ -575,6 +597,12 @@ Michael Slater.
 \newblock Available from:
   \url{http://www.buildingwebapps.com/articles/6401-using-ssl-in-rails-applica%
 tions}.
+
+\bibitem{Stallings2011}
+William Stallings.
+\newblock {\em {Network Security Essentials: Applications and Standards}},
+  chapter~5, pages 153--188.
+\newblock Pearson International, 4th edition, 2011.
 
 \bibitem{Tappenden2009}
 Andrew~F. Tappenden and James Miller.

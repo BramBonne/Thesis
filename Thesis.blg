@@ -8,45 +8,45 @@ Warning--empty publisher in Cools2010
 Warning--there's a number but no volume in Farrell2011
 Warning--there's a number but no volume in Klein2002
 Warning--empty institution in Williams2010
-You've used 102 entries,
+You've used 106 entries,
             2760 wiz_defined-function locations,
-            1243 strings with 23565 characters,
-and the built_in function-call counts, 37912 in all, are:
-= -- 4126
-> -- 1165
-< -- 17
-+ -- 472
-- -- 370
-* -- 1638
-:= -- 5422
-add.period$ -- 356
-call.type$ -- 102
-change.case$ -- 492
+            1271 strings with 24383 characters,
+and the built_in function-call counts, 39575 in all, are:
+= -- 4309
+> -- 1214
+< -- 19
++ -- 492
+- -- 386
+* -- 1719
+:= -- 5653
+add.period$ -- 370
+call.type$ -- 106
+change.case$ -- 512
 chr.to.int$ -- 0
-cite$ -- 106
-duplicate$ -- 1181
-empty$ -- 3897
-format.name$ -- 370
-if$ -- 9850
+cite$ -- 110
+duplicate$ -- 1238
+empty$ -- 4066
+format.name$ -- 386
+if$ -- 10283
 int.to.chr$ -- 0
-int.to.str$ -- 102
-missing$ -- 37
-newline$ -- 554
-num.names$ -- 204
-pop$ -- 1235
+int.to.str$ -- 106
+missing$ -- 40
+newline$ -- 575
+num.names$ -- 212
+pop$ -- 1287
 preamble$ -- 1
-purify$ -- 389
+purify$ -- 405
 quote$ -- 0
-skip$ -- 2703
+skip$ -- 2817
 stack$ -- 0
-substring$ -- 968
-swap$ -- 232
-text.length$ -- 17
+substring$ -- 1020
+swap$ -- 248
+text.length$ -- 19
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 402
+type$ -- 416
 warning$ -- 4
-while$ -- 254
-width$ -- 105
-write$ -- 1141
+while$ -- 265
+width$ -- 109
+write$ -- 1188
 (There were 4 warnings)
