@@ -12,7 +12,8 @@
 \glossaryentryfield{dom}{\glsnamefont{DOM}}{Document Object Model, used by programming languages like JavaScript to access elements in an XML document or on a web page}{\relax }{\glossaryentrynumbers{\relax 
 		\setentrycounter{page}\glsnumberformat{viii}\delimN 
 		\setentrycounter{page}\glsnumberformat{5}\delimN 
-		\setentrycounter{page}\glsnumberformat{14}}}\glsgroupskip
+		\setentrycounter{page}\glsnumberformat{14}\delimN 
+		\setentrycounter{page}\glsnumberformat{35}}}\glsgroupskip
 \glsgroupheading{H}\relax \glsresetentrylist %
 \glossaryentryfield{html}{\glsnamefont{HTML}}{HyperText Markup Language, the language used to structure web pages}{\relax }{\glossaryentrynumbers{\relax 
 		\setentrycounter{page}\glsnumberformat{12}\delimN 
@@ -24,11 +25,11 @@
 		\setentrycounter{page}\glsnumberformat{7}\delimN 
 		\setentrycounter{page}\glsnumberformat{19}\delimN 
 		\setentrycounter{page}\glsnumberformat{26\delimN 27}\delimN 
-		\setentrycounter{page}\glsnumberformat{34}\delimN 
+		\setentrycounter{page}\glsnumberformat{35\delimN 36}\delimN 
 		\setentrycounter{page}\glsnumberformat{39}}}%
 \glossaryentryfield{https}{\glsnamefont{HTTPS}}{HyperText Transfer Protocol Secure, a secure variant of \gls {http}, which uses encryption when transmitting data}{\relax }{\glossaryentrynumbers{\relax 
 		\setentrycounter{page}\glsnumberformat{viii}\delimN 
-		\setentrycounter{page}\glsnumberformat{34}\delimN 
+		\setentrycounter{page}\glsnumberformat{35\delimN 36}\delimN 
 		\setentrycounter{page}\glsnumberformat{42}}}\glsgroupskip
 \glsgroupheading{I}\relax \glsresetentrylist %
 \glossaryentryfield{ip}{\glsnamefont{IP}}{Internet Protocol, the protocol used for routing datagrams over the internet. An IP address identifies a machine on the internet}{\relax }{\glossaryentrynumbers{\relax 
@@ -45,15 +46,19 @@
 \glossaryentryfield{mac}{\glsnamefont{MAC}}{Message Authentication Code, a short piece of information providing data integrity and authenticity for a message}{\relax }{\glossaryentrynumbers{\relax 
 		\setentrycounter{page}\glsnumberformat{7}\delimN 
 		\setentrycounter{page}\glsnumberformat{26}\delimN 
-		\setentrycounter{page}\glsnumberformat{34}}}%
+		\setentrycounter{page}\glsnumberformat{35\delimN 36}}}%
 \glossaryentryfield{mitm}{\glsnamefont{MitM}}{Man in the Middle, used to describe an attacker that is able to intercept traffic between the victim and some other principal}{\relax }{\glossaryentrynumbers{\relax 
 		\setentrycounter{page}\glsnumberformat{13}\delimN 
 		\setentrycounter{page}\glsnumberformat{22}\delimN 
 		\setentrycounter{page}\glsnumberformat{26}\delimN 
-		\setentrycounter{page}\glsnumberformat{29}}}\glsgroupskip
+		\setentrycounter{page}\glsnumberformat{29}\delimN 
+		\setentrycounter{page}\glsnumberformat{35}}}\glsgroupskip
 \glsgroupheading{N}\relax \glsresetentrylist %
 \glossaryentryfield{nat}{\glsnamefont{NAT}}{Network Address Translation, often used for allowing internet access to multiple machines via the same \gls {ip} address}{\relax }{\glossaryentrynumbers{\relax 
 		\setentrycounter{page}\glsnumberformat{28}}}\glsgroupskip
+\glsgroupheading{P}\relax \glsresetentrylist %
+\glossaryentryfield{psid}{\glsnamefont{PSID}}{Proxy Session Identifier, a second \gls {session identifier} which is attached and checked by a proxy to counter session fixation attacks}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter{page}\glsnumberformat{37}}}\glsgroupskip
 \glsgroupheading{S}\relax \glsresetentrylist %
 \glossaryentryfield{session cookie}{\glsnamefont{session cookie}}{A cookie containing a session identifier}{\relax }{\glossaryentrynumbers{\relax 
 		\setentrycounter{page}\glsnumberformat{4}\delimN 
@@ -104,7 +109,7 @@
 		\setentrycounter{page}\glsnumberformat{18}\delimN 
 		\setentrycounter{page}\glsnumberformat{21\delimN 22}\delimN 
 		\setentrycounter{page}\glsnumberformat{26}\delimN 
-		\setentrycounter{page}\glsnumberformat{36}\delimN 
+		\setentrycounter{page}\glsnumberformat{35\delimN 36}\delimN 
 		\setentrycounter{page}\glsnumberformat{39}\delimN 
 		\setentrycounter{page}\glsnumberformat{46}}}%
 \end{theglossary}\glossarypostamble

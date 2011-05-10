@@ -193,18 +193,36 @@ In this section, we describe some general server-side countermeasures to session
 
 SessionSafe is a combination of different solutions to session attacks proposed by Johns et al. in 2006 \cite{Johns2006}. One of these, called `deferred loading', was created specifically for session hijacking.
 
-The reasoning behind deferred loading is that cookies should be separated from the content of a page, to prevent an attacker from using the page content to steal the cookie. It does this by setting the cookie on a different subdomain (\url{secure.example.org}) than the web page itself (\url{www.example.org}). A page is then requested as follows:
+The reasoning behind deferred loading is that cookies should be separated from the content of a page, to prevent an attacker from using the page content to steal the cookie. It does this by setting the cookie on a different subdomain (\url{secure.example.org}) than the web page itself (\url{www.example.org}). A page is then requested as follows (see Figure \ref{sessionsafe-deferred-get}):
 \begin{enumerate}
 	\item Instead of getting the page directly, the user's browser requests a `page loader' from the server. This page loader is a small HTML page that contains logic which will be executed at the client side to fetch the actual page.
 	\item The page loader makes the browser send the user's cookie to \url{secure.example.org}, and a request for the actual page to \url{www.example.org}. In both requests, the browser includes the same request ID, which was sent by the server as part of the page loader.
 	\item The web server checks that the cookie is correct, and that both requests were issued with the same request ID (and thus by the same page loader). If this is the case, it sends the requested web page as a response, and it invalidates the request ID for future requests.
 	\item The page loader displays the actual web page in the user's browser.
 \end{enumerate}
+
+\begin{figure}[ht]
+	\centering
+	\subfloat[persistent]{
+		\label{fig:sessionsafe-deferred-get}
+		\includegraphics[width=.45\textwidth]{img/sessionsafe-deferred-get.png}
+		\caption{Requesting a page}
+	}
+	\subfloat[reflected]{
+		\label{fig:sessionsafe-deferred-set}
+		\includegraphics[width=0.45\textwidth]{img/sessionsafe-deferred-set.png}
+		\caption{Setting the cookie}
+	}
+	\caption{Deferred loading of a cookie}
+\end{figure}
+
+Because the cookie needs to be set for a different subdomain than the one the page is served from, it can not simply be included in the \texttt{Set-cookie} header of the HTTP response. Instead, an `image' is included on the returned page, which is served from the domain \url{secure.example.org}. When the user's browser requests the image from this domain, the server is able to set the cookie in the response. The process of setting a cookie is depicted graphically in Figure \ref{sessionsafe-deferred-set}.
+
 Because cookies are set for a different domain than the one web pages are served from, script code which is included in a web page on \url{www.example.com} has no access to cookies stored on the \url{secure.example.com} domain. This prevents attackers from injecting script code (via a \gls{xss} attack) which steals a user's cookie.
 
 Note that this approach does not prevent the attacker from executing a session fixation attack. Indeed, although script code is unable to access cookies stored in a different subdomain, it \emph{is} able to set cookies for its parent domain, as was discussed in section \ref{subdomain-setting}. This allows an attacker to inject script code in a page hosted on \url{www.example.org} that sets a cookie for the domain \url{example.org}. Since \url{secure.example.org} is also a subdomain of \url{example.org}, requests made to this domain will contain the injected cookie.
 
-\subsubsection{SessionLock}%TODO
+\subsubsection{SessionLock}
 
 SessionLock (proposed by Adida et al. in 2008 \cite{Adida2008}) tries to solve session hijacking by making session identifiers only available at the client side. For this purpose, fragment identifiers are used.
 
@@ -212,13 +230,15 @@ Fragment identifiers are included in the URL specification \cite{rfc3986} as a m
 
 It is in such a fragment identifier that the user's SID will be stored. Interaction between the user's browser and the server happens in the following steps:
 \begin{enumerate}
-	\item The user authentication happens over a secure (\gls{https}) connection. When the authentication is successful, the web server redirects the user to a URL that includes the SID as its fragment identifier.
-	\item Subsequent requests are made over an unsecure (\gls{http}) connection. In every request, the user's browser attaches a \gls{mac}, generated with the (secret) SID, of the tuple \emph{(request-URL, timestamp)}. To avoid having to modify the browser, this is achieved by including a small piece of JavaScript code in the page which intercepts all user requests. The JavaScript code then attaches a timestamp and MAC to every request before it is forwarded to the server.
+	\item The user authentication happens over a secure (\gls{https}) connection. When the authentication is successful, the web server sets the SID as a \emph{secure} cookie, and redirects the user to a URL that includes the SID as its fragment identifier.
+	\item Subsequent requests are made over an unsecure (\gls{http}) connection, and thus do not include the cookie set in the previous step. In every request, the user's browser attaches a \gls{mac}, generated with the (secret) SID, of the tuple \emph{(request-URL, timestamp)}. To avoid having to modify the browser, this is achieved by including a small piece of JavaScript code in the page which intercepts all user requests. The JavaScript code then attaches a timestamp and MAC to every request before it is forwarded to the server.
 \end{enumerate}
 
-%By doing this, a \gls{mitm} attacker is not able to capture the session identifier since it is never sent over any connection. Note that it is important that the authentication happens over a secure connection, since the SID would otherwise still be visible on the network when it was set. Although solution in paper which doesn't require SSL, requires Diffie-Hellman [5]
+By making session identifiers only available at the client side, a \gls{mitm} attacker is not able to capture the SID since it is never sent over the network. The authentication happens over a secure connection because otherwise, the SID would still be sent over an unencrypted channel when it is set by the server. A variant which uses the Diffie-Hellman protocol \cite{Diffie1976} instead of encrypted connections when authenticating is also presented in the paper \cite{Adida2008}.
 
-To make sure that the SID is remembered at the client side, JavaScript code is included in every page returned by the server. This code rewrites every URL on the page to include the SID as a fragment identifier. Note that the server cannot rewrite these URLs itself, because then the SID would be visible on the network when the page is returned to the client.
+To make sure that the SID is remembered at the client side, JavaScript code is included in every page returned by the server. This code rewrites all URLs on the page to include the SID as a fragment identifier. Note that the server cannot rewrite these URLs itself, because then the SID would be visible on the network when the page is returned to the client. In case the SID does get lost, JavaScript can still recover it by opening an invisible iframe which loads the URL \url{https://example.org/login/recover} over a secure connection. Within this secure connection, the secure cookie which was set in step 1 will be available. Thus, all the JavaScript code has to do is get the SID value from this cookie, and reload the current page with the SID appended as the fragment identifier.
+
+It is important to note that this session hijacking countermeasure only protects against passive MitM attacks, and against the SID leaking via the \texttt{Referer} header. It does \emph{not} protect the user from accidentally leaking his SID by forwarding a URL \cite{Adida2008}. Moreover, it does \emph{not} protect the user from active attacks. Indeed, since the SID is stored in a way which makes it available to JavaScript, an attacker performing a \gls{xss} attack will still be able to access the SID \cite{Dacosta2011}. This is also the reason that the proposed countermeasure does not protect against session fixation either.
 
 \subsubsection{One-time cookies}
 
@@ -243,7 +263,11 @@ The paper also describes that in the current implementation, both the server and
 
 \subsubsection{Session fixation solution by Johns et al.}%TODO
 
-\cite{Johns2011}
+Johns et al. \cite{Johns2011} present a solution to session fixation in the form of a server-side reverse proxy. This allows web applications that have already been deployed in the past to be patched against session fixation afterwards.
+
+The proxy introduces a second session identifier, called the `proxy session identifier' (or \gls{psid}). This PSID is tightly secured against session fixation, by renewing it on every authentication change. Whenever a request is received by the proxy, it checks whether the attached PSID is valid for the attached SID. If it is, the PSID is stripped, and the request is forwarded to the web server. If the PSID is not valid, both the PSID and the server's SID are stripped from the request before it is forwarded. This causes the request to have no attached authentication data when it arrives at the server. Because the PSID is secured against session fixation attacks, an attacker is not able to force a PSID upon a victim's browser. This makes him unable to send requests containing authentication data to the web server.
+
+% How to know when authentication changed
 
 \section{Client-side countermeasures}%TODO
 

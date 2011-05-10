@@ -64,6 +64,12 @@ Constantin Bejenaru.
 \newblock Available from:
   \url{http://www.frozenminds.com/disable-sessionid.html}.
 
+\bibitem{rfc3986}
+T.~Berners-Lee, R.~Fielding, and L.~Masinter.
+\newblock {Uniform Resource Identifier (URI): Generic Syntax}.
+\newblock RFC 3986 (Standard), January 2005.
+\newblock Available from: \url{http://www.ietf.org/rfc/rfc3986.txt}.
+
 \bibitem{ChickenFoot}
 Michael Bolin, Matthew Webber, Philip Rha, Tom Wilson, and Robert~C. Miller.
 \newblock {Automation and customization of rendered web pages}.
@@ -118,7 +124,7 @@ Craig Condit.
 \bibitem{Cools2010}
 Ronald Cools and Wim Michiels.
 \newblock {\em {Modellering en simulatie}}.
-\newblock 2010.
+\newblock Cursusdienst VTK, 2010.
 
 \bibitem{Dacosta2011}
 Italo Dacosta, Saurabh Chakradeo, Mustaque Ahamad, and Patrick Traynor.
@@ -154,6 +160,15 @@ T.~Dierks and E.~Rescorla.
 \newblock RFC 4346 (Proposed Standard), April 2006.
 \newblock Obsoleted by RFC 5246, updated by RFCs 4366, 4680, 4681, 5746, 6176.
 \newblock Available from: \url{http://www.ietf.org/rfc/rfc4346.txt}.
+
+\bibitem{Diffie1976}
+Whitfield Diffie and Martin~E. Hellman.
+\newblock {New directions in cryptography}.
+\newblock {\em IEEE Transactions on Information Theory}, IT-22(6):644--654,
+  1976.
+\newblock Available from:
+  \url{http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.93.494\&rep=re%
+p1\&type=pdf}.
 
 \bibitem{DjangoPoweredBy}
 {Django Developers}.
@@ -234,7 +249,7 @@ ation-with}.
 \bibitem{Farrell2011}
 Stephen Farrell.
 \newblock {Leaky or Guessable Session Identifiers}.
-\newblock {\em IEEE Internet Computing}, (December 2009):88--91, 2011.
+\newblock {\em IEEE Internet Computing}, 15(December 2009):88--91, 2011.
 \newblock Available from:
   \url{http://www.computer.org/portal/web/csdl/doi/10.1109/MIC.2011.12}.
 
@@ -391,7 +406,7 @@ Engin Kirda, Christopher Kruegel, Giovanni Vigna, and Nenad Jovanovic.
 \bibitem{Klein2002}
 Amit Klein.
 \newblock {Cross site scripting explained}.
-\newblock {\em Whitepaper, Sanctum Inc.}, (June), 2002.
+\newblock {\em Whitepaper, Sanctum Inc.}, 2002.
 \newblock Available from:
   \url{http://scholar.google.com/scholar?hl=en\&btnG=Search\&q=intitle:Cross+S%
 ite+Scripting+Explained\#0}.
@@ -708,7 +723,7 @@ lication\_frameworks}.
 \bibitem{Williams2010}
 Jeff Williams and Dave Wichers.
 \newblock {OWASP top 10}.
-\newblock Technical report, 2010.
+\newblock Technical report, OWASP, 2010.
 
 \bibitem{Zalewski2006}
 Michal Zalewski.
