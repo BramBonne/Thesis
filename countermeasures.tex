@@ -1,6 +1,6 @@
 \chapter{Session attack countermeasures}
 
-In this chapter, some general countermeasures to the session hijacking and session fixation attacks are discussed. We also briefly describe some solutions to cross site scripting attacks, because of their importance in session attacks.
+In this chapter, some general countermeasures to the session hijacking and session fixation attacks are discussed. We also briefly describe some solutions to cross site scripting attacks, because of their importance in session attacks. We do not consider solutions to cross site request forgery here, since these would lead us too far. For more information about cross site request countermeasures, the reader is directed to \cite{DeRyck2010,Zeller2008,Johns2006,Mao2009}.
 
 \section{Server-side countermeasures}
 
@@ -345,7 +345,7 @@ This approach is obviously very cumbersome: the user will have to explicitly all
 	\item[Requests to the same domain] When the base domains of the request and the page the request originated from are the same, information leakage to another domain is not possible. Noxes checks whether a request originated from the same domain by comparing the \texttt{Referer} HTTP header of the request to the domain of the requested web page.
 	\item[Static links] When links do not contain dynamic components, an attacker is unable to embed the victim's SID as part of the URL. Indeed, an attacker can only create the URL after he has read the domain's cookie value, which then has to be dynamically included in the URL.
 \end{description}
-Static links do not completely prevent a SID from leaking to another domain. Because of this, Noxes includes two exceptions to the second `safe rule'. Firstly, consider the scenario where an attacker includes in the web page a static link to his own domain for every possible character\footnote{The paper itself only talks about links containing the \emph{bits} of the SID. It is, however, much more efficient for an attacker to use characters, since this greatly reduces the amount of requests that need to be made to the attacker's server.}. He is then able to use JavaScript to load the links that correspond to the individual characters in the SID, one by one (see Figure \ref{Noxes-attack}). Because of this, Noxes allows maximally $k$ static links to the same external domain, where $k$ is a customizable threshold.
+Static links do not completely prevent a SID from leaking to another domain. Because of this, Noxes includes two exceptions to the second `safe rule'. Firstly, consider the scenario where an attacker includes in the web page a static link to his own domain for every possible character\footnote{The paper itself only talks about links containing the \emph{bits} of the SID. It is, however, much more efficient for an attacker to use characters, since this greatly reduces the amount of requests that need to be made to the attacker's server, at the cost of some extra HTML code that needs to be injected}. He is then able to use JavaScript to load the links that correspond to the individual characters in the SID, one by one (see Figure \ref{Noxes-attack}). Because of this, Noxes allows maximally $k$ static links to the same external domain, where $k$ is a customizable threshold.
 
 \begin{figure}
 \begin{lstlisting}[language=HTML]
@@ -359,12 +359,13 @@ Static links do not completely prevent a SID from leaking to another domain. Bec
 <img src="http://attacker.com/b_char1.jpg">
 ...
 <script>
-	for [i=0 to 20] {
-		if (cookie char i == 'a')
-			<contact http://attacker.com/a_char0.jpg>
-		else if (cookie char i == 'b')
-			<contact http://attacker.com/b_char0.jpg>
-		...
+    for [i=0 to 20] {
+        if (cookie char i == 'a')
+            <contact http://attacker.com/a_char0.jpg>
+        else if (cookie char i == 'b')
+            <contact http://attacker.com/b_char0.jpg>
+        ...
+    }
 </script>
 </html>
 \end{lstlisting}
@@ -373,16 +374,12 @@ Static links do not completely prevent a SID from leaking to another domain. Bec
 
 A second exception to the second `safe rule' is made for pop-up and pop-under windows to a different domain. Using these, an attacker can open a window containing a static link to a page on his own domain, only to afterwards set the window's title to the value of the victim's cookie. This makes him able to read the cookie value from within his own page, by using JavaScript on his own page to access the value of the \texttt{document.title} attribute. Because of this, Noxes presents an alert message to the user when it detects that a pop-up or pop-under window to a different domain is opened, regardless of the link being static.
 
-Unfortunately, 
-%Probleem wanneer attacker gewoon meerdere pagina's van eigen domein laadt (vb refresh), en dan telkens k chars doorstuurt.
+Unfortunately, Noxes' complete policy still allows an attacker to leak the victim's SID to his own domain. Indeed, as Nikiforakis already noted \cite{Nikiforakis2010}, an attacker can create a XSS attack which, instead of \texttt{<script>} tags, injects an HTML-tag which statically references a URL to the attackers domain including the SID value. Furthermore, an attacker is able to make the victim's browser load multiple pages of the originating domain, with every page sending maximally $k$ characters ($k$ being the maximum of allowed outgoing links to an external domain) of the victim's SID to the attacker's server.
+
+Another problem with Noxes is that it uses the \texttt{Referer} header to check whether a request comes from a different domain than the one of the requested web page. As we saw in section \ref{leaking-via-referer}, the \texttt{Referer} header is often stripped \cite{Barth2008}. This will cause Noxes to present an alert even for some requests that go to the same domain as the one they originated from.
+
+It can be concluded that Noxes is too complex to be considered a long-time solution against session hijacking attacks. Firstly, user interaction is needed for many requests, which is often cumbersome for the user. Moreover, less technically inclined users will not be able to judge whether a request is safe or not. Secondly, as can be seen from the `safe rule' exceptions, lots of possible attack vectors will have to be accounted for by the firewall. This will cause Noxes to be often lacking in security.
 
 \section{Cross site scripting countermeasures}\label{xss-countermeasures}
-% Check referrer
-% Use asynch requests XDomainRequest, CORS, PostMessage
 % \subsubsection{Subdomain switching (SessionSafe)}%TODO
 \begin{comment}
-\section{Cross site request forgery countermeasures}
-\subsubsection{One-time URLs (SessionSafe)}
-
-The second solution proposed by Johns et al. \cite{Johns2006} is that of one-time URLs (not to be confused with one-time cookies described earlier). In this approach, cookies are stored as private variables of JavaScript objects. This makes them unavailable to attackers using JavaScript.
-\end{comment}

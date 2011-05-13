@@ -92,7 +92,7 @@
 \contentsline {section}{\numberline {4.2}Client-side countermeasures}{40}{section.4.2}
 \contentsline {subsection}{\numberline {4.2.1}SessionShield}{40}{subsection.4.2.1}
 \contentsline {subsection}{\numberline {4.2.2}Noxes}{42}{subsection.4.2.2}
-\contentsline {section}{\numberline {4.3}Cross site scripting countermeasures}{43}{section.4.3}
+\contentsline {section}{\numberline {4.3}Cross site scripting countermeasures}{44}{section.4.3}
 \contentsline {chapter}{\chapternumberline {5}A client-side solution to session fixation}{45}{chapter.5}
 \contentsline {section}{\numberline {5.1}Principle}{45}{section.5.1}
 \contentsline {section}{\numberline {5.2}Identifying session identifiers}{47}{section.5.2}
