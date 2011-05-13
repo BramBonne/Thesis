@@ -22,7 +22,7 @@ In a persistent attack, the attacker makes the web application store the script 
 
 This attack variant is graphically illustrated in Figure \ref{fig:persistent-xss}.
 
-\begin{figure}[ht]
+\begin{figure}[htb]
 	\centering
 	\subfloat[persistent]{
 		\label{fig:persistent-xss}
@@ -89,10 +89,10 @@ The session hijacking attack works as follows \cite{Nikiforakis2010}:
 
 These steps are graphically illustrated in Figure \ref{fig:hijacking}.
 
-\begin{figure}[ht]
+\begin{figure}[htb]
 	\centering
 	\includegraphics[width=0.50\textwidth]{img/hijacking.png}
-	\caption{The session hijacking attack for a web application that uses cookies}
+	\caption[The session hijacking attack]{The session hijacking attack for a web application that uses cookies}
 	\label{fig:hijacking}
 \end{figure}
 
@@ -144,10 +144,10 @@ SID to the response. Some servers also accept crafted SIDs\footnote{By crafted S
 
 These steps are graphically illustrated in Figure \ref{fig:fixation}.
 
-\begin{figure}[ht]
+\begin{figure}[htb]
 	\centering
 	\includegraphics[width=0.50\textwidth]{img/fixation.png}
-	\caption{The session fixation attack for a web application that uses cookies}
+	\caption[The session fixation attack]{The session fixation attack for a web application that uses cookies}
 	\label{fig:fixation}
 \end{figure}
 
@@ -220,7 +220,7 @@ The CSRF attack is made up out of the following steps (assuming that the victim 
 
 The different steps of the CSRF attack are graphically illustrated in Figure \ref{fig:csrf}.
 
-\begin{figure}[ht]
+\begin{figure}[htb]
 	\centering
 	\includegraphics[width=0.50\textwidth]{img/csrf.png}
 	\caption{The cross site request forgery attack}
@@ -247,7 +247,7 @@ An attacker can create a form containing elements that have the desired values. 
 
 Tricking the victim into submitting the form can be relatively easy: all the attacker has to do is assure that the victim clicks the submit button. This can be achieved by hiding all form elements except for the submit button, pretending that the button serves some other purpose. This approach is taken even further by Mao et al. \cite{Mao2009}: they noticed that, even when it is required that the \emph{actual} submit button of the legitimate site is pressed (as is the case when some CSRF countermeasures \cite{Jovanovic2006,Johns2006} are in place), a victim can still be tricked into triggering a request it didn't want the browser to perform. This is done by including an iframe in which only part of the original form is visible into the attacker's website. The hiding of elements on the legitimate page is possible because iframe parents have access to all elements in the child iframes, irrespective their origins \cite{Singh2010}. Their result can be seen in Figure \ref{fig:mao2009}.
 
-\begin{figure}[ht]
+\begin{figure}[htb]
 	\centering
 	\subfloat[the original form]{
 		\includegraphics{img/mao2009a.png}
@@ -255,7 +255,7 @@ Tricking the victim into submitting the form can be relatively easy: all the att
 	\subfloat[a malicious page including only parts of the form in an iframe, trying to trick a user into clicking the button]{
 		\includegraphics{img/mao2009b.png}
 	}
-	\caption{Tricking a user into submitting a form \cite{Mao2009}}
+	\caption[Tricking a user into submitting a form]{Tricking a user into submitting a form \cite{Mao2009}}
 	\label{fig:mao2009}
 \end{figure}
 
@@ -291,7 +291,7 @@ Creating an asynchronous GET request is similar. Differences are that the parame
 
 If the connection between the client and the server is not encrypted, an active network attacker (or `active \gls{mitm}') does not need the victim's browser to submit the request: he can simply modify any request sent by the victim to contain the URL and parameters he wants \cite{Barth2008}.
 
-\begin{table}[ht]
+\begin{table}[htb]
 	\centering
 	\begin{tabular}{r|cc}
 		& GET requests & POST requests\\
@@ -303,7 +303,7 @@ If the connection between the client and the server is not encrypted, an active 
 		Async. request & X & X \\
 		Active attack & X & X
 	\end{tabular}
-	\caption{Different methods for forcing a browser to make a request}
+	\caption{Comparison of different methods for forcing a browser to make a request}
 	\label{tab:forcing-request}
 \end{table}
 

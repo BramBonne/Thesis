@@ -628,6 +628,12 @@ Andrew~F. Tappenden and James Miller.
   {http://dx.doi.org/10.1145/1541822.1541824}
   {\path{doi:10.1145/1541822.1541824}}.
 
+\bibitem{TerLouw2007}
+Mike {Ter Louw}, Jin~Soon Lim, and V.N. Venkatakrishnan.
+\newblock {Extensible Web Browser Security}.
+\newblock In {\em 4th International Conference on Detection of Intrusions,
+  Malware, and Vulnerability Assesment (DIMVA)}, 2007.
+
 \bibitem{TomcatCookie}
 {Tomcat Developers}.
 \newblock {Class Cookie}.

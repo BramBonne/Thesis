@@ -1,6 +1,6 @@
 \chapter{Session attack countermeasures}
 
-In this chapter, we discuss some general countermeasures to the session hijacking and session fixation attacks. We also briefly describe some solutions to cross site scripting attacks, because of their importance in session attacks. The discussion of more specific countermeasures is deferred to section \ref{related-work}, where we talk about countermeasures related to our own solution. % TODO: check of dit nog overeenkomt met uiteindelijke lay-out
+In this chapter, some general countermeasures to the session hijacking and session fixation attacks are discussed. We also briefly describe some solutions to cross site scripting attacks, because of their importance in session attacks.
 
 \section{Server-side countermeasures}
 
@@ -167,7 +167,7 @@ Secure connections and secure cookies in Drupal are handled via PHP's mechanisms
 
 An summary of session security in the discussed web application frameworks is given in Table \ref{tab:frameworks}. As we can see, the popular high-level frameworks in our list (RoR, Drupal, Django) provide pretty good protection against session attacks, which reinforces our recommendation to use a high-level framework whenever possible (see section \ref{use-framework}). However, care must be taken that the framework is configured correctly.
 
-\begin{table}[ht]
+\begin{table}[htb]
 	\centering
 	\begin{tabular}{r|ccc}
 		& Renews SID & Only accepts & \texttt{secure} flag for\\
@@ -181,7 +181,7 @@ An summary of session security in the discussed web application frameworks is gi
 		PHP & no & configurable & configurable\\
 		Drupal & since version 5.9/6.3 & yes & via module\\
 	\end{tabular}
-	\caption{Session security in different web application frameworks}
+	\caption{Comparison of session security in different web application frameworks}
 	\label{tab:frameworks}
 \end{table}
 
@@ -193,7 +193,7 @@ In this section, we describe some general server-side countermeasures to session
 
 SessionSafe is a combination of different solutions to session attacks proposed by Johns et al. in 2006 \cite{Johns2006}. One of these, called `deferred loading', was created specifically for session hijacking.
 
-The reasoning behind deferred loading is that cookies should be separated from the content of a page, to prevent an attacker from using the page content to steal the cookie. It does this by setting the cookie on a different subdomain (\url{secure.example.org}) than the web page itself (\url{www.example.org}). A page is then requested as follows (see Figure \ref{sessionsafe-deferred-get}):
+The reasoning behind deferred loading is that cookies should be separated from the content of a page, to prevent an attacker from using the page content to steal the cookie. It does this by setting the cookie on a different subdomain (\url{secure.example.org}) than the web page itself (\url{www.example.org}). A page is then requested as follows (see Figure \ref{fig:sessionsafe-deferred-get}):
 \begin{enumerate}
 	\item Instead of getting the page directly, the user's browser requests a `page loader' from the server. This page loader is a small HTML page that contains logic which will be executed at the client side to fetch the actual page.
 	\item The page loader makes the browser send the user's cookie to \url{secure.example.org}, and a request for the actual page to \url{www.example.org}. In both requests, the browser includes the same request ID, which was sent by the server as part of the page loader.
@@ -201,20 +201,20 @@ The reasoning behind deferred loading is that cookies should be separated from t
 	\item The page loader displays the actual web page in the user's browser.
 \end{enumerate}
 
-\begin{figure}[ht]
+\begin{figure}[htb]
 	\centering
 	\subfloat[Requesting a page]{
 		\label{fig:sessionsafe-deferred-get}
-		\includegraphics[width=.45\textwidth]{img/sessionsafe-deferred-get.png}
+		\includegraphics[width=.45\textwidth]{img/sessionsafe-deferred-get2.png}
 	}
 	\subfloat[Setting the cookie]{
 		\label{fig:sessionsafe-deferred-set}
-		\includegraphics[width=0.45\textwidth]{img/sessionsafe-deferred-set.png}
+		\includegraphics[width=0.45\textwidth]{img/sessionsafe-deferred-set2.png}
 	}
-	\caption{Deferred loading of a cookie}
+	\caption[Deferred loading of a cookie]{Deferred loading of a cookie \cite{Johns2006}}
 \end{figure}
 
-Because the cookie needs to be set for a different subdomain than the one the page is served from, it can not simply be included in the \texttt{Set-cookie} header of the HTTP response. Instead, an `image' is included on the returned page, which is served from the domain \url{secure.example.org}. When the user's browser requests the image from this domain, the server is able to set the cookie in the response. The process of setting a cookie is depicted graphically in Figure \ref{sessionsafe-deferred-set}.
+Because the cookie needs to be set for a different subdomain than the one the page is served from, it can not simply be included in the \texttt{Set-cookie} header of the HTTP response. Instead, an `image' is included on the returned page, which is served from the domain \url{secure.example.org}. When the user's browser requests the image from this domain, the server is able to set the cookie in the response. The process of setting a cookie is graphically depicted in Figure \ref{fig:sessionsafe-deferred-set}.
 
 Because cookies are set for a different domain than the one web pages are served from, script code which is included in a web page on \url{www.example.com} has no access to cookies stored on the \url{secure.example.com} domain. This prevents attackers from injecting script code (via a \gls{xss} attack) which steals a user's cookie.
 
@@ -226,17 +226,26 @@ SessionLock (proposed by Adida et al. in 2008 \cite{Adida2008}) tries to solve s
 
 Fragment identifiers are included in the URL specification \cite{rfc3986} as a means for making the user's web browser scroll to a certain part of a web page. The fragment identifier is included in the URL as the part that follows the \texttt{\#} character. For example, the URL \url{http://www.example.org/document.html#paragraph4} has \texttt{paragraph4} as its fragment identifier. Loading this URL in the browser will cause the browser to request \emph{document.html} from the web server, and to jump to the element on that page which is identified by the string \texttt{paragraph4}. If no such element is available on the page, the web browser will simply ignore the fragment identifier part of the URL. Fragment identifiers are not sent to the web server on a request, but are available to client-side JavaScript via the \texttt{document.location.hash} \gls{dom} element.
 
-It is in such a fragment identifier that the user's SID will be stored. Interaction between the user's browser and the server happens in the following steps:
+It is in such a fragment identifier that the user's SID will be stored. Interaction between the user's browser and the server happens in the following steps (also depicted in Figure \ref{fig:sessionlock}):
 \begin{enumerate}
 	\item The user authentication happens over a secure (\gls{https}) connection. When the authentication is successful, the web server sets the SID as a \emph{secure} cookie, and redirects the user to a URL that includes the SID as its fragment identifier.
-	\item Subsequent requests are made over an unsecure (\gls{http}) connection, and thus do not include the cookie set in the previous step. In every request, the user's browser attaches a \gls{mac}, generated with the (secret) SID, of the tuple \emph{(request-URL, timestamp)}. To avoid having to modify the browser, this is achieved by including a small piece of JavaScript code in the page which intercepts all user requests. The JavaScript code then attaches a timestamp and MAC to every request before it is forwarded to the server.
+	\item Subsequent requests are made over an unsecure (\gls{http}) connection, and thus do not include the cookie set in the previous step. Instead, the user's browser attaches to every request a \gls{mac}, generated with the (secret) SID, of the tuple \emph{(request-URL, timestamp)}. To avoid having to modify the user's browser to execute these steps, a small piece of JavaScript code is included in the page. This JavaScript code intercepts all user requests, and attaches a timestamp and MAC to every request before it is forwarded to the server.
 \end{enumerate}
+
+\begin{figure}[htb]
+	\centering
+	\includegraphics[width=\textwidth]{img/sessionlock.png}
+	\caption[The SessionLock protocol]{The SessionLock protocol, with SSL data indicated in green \cite{Adida2008}. Note how the use of the fragment identifier effectively creates a client-only channel from one page to the next.}
+	\label{fig:sessionlock}
+\end{figure}
 
 By making session identifiers only available at the client side, a \gls{mitm} attacker is not able to capture the SID since it is never sent over the network. The authentication happens over a secure connection because otherwise, the SID would still be sent over an unencrypted channel when it is set by the server. A variant which uses the Diffie-Hellman protocol \cite{Diffie1976} instead of encrypted connections when authenticating is also presented in the paper \cite{Adida2008}.
 
 To make sure that the SID is remembered at the client side, JavaScript code is included in every page returned by the server. This code rewrites all URLs on the page to include the SID as a fragment identifier. Note that the server cannot rewrite these URLs itself, because then the SID would be visible on the network when the page is returned to the client. In case the SID does get lost, JavaScript can still recover it by opening an invisible iframe which loads the URL \url{https://example.org/login/recover} over a secure connection. Within this secure connection, the secure cookie which was set in step 1 will be available. Thus, all the JavaScript code has to do is get the SID value from this cookie, and reload the current page with the SID appended as the fragment identifier.
 
-It is important to note that this session hijacking countermeasure only protects against passive MitM attacks, and against the SID leaking via the \texttt{Referer} header. It does \emph{not} protect the user from accidentally leaking his SID by forwarding a URL \cite{Adida2008}. Moreover, it does \emph{not} protect the user from active attacks. Indeed, since the SID is stored in a way which makes it available to JavaScript, an attacker performing a \gls{xss} attack will still be able to access the SID \cite{Dacosta2011}. This is also the reason that the proposed countermeasure does not protect against session fixation either.
+It is important to note that this session hijacking countermeasure only protects against passive MitM attacks, and against the SID leaking via the \texttt{Referer} header. It does \emph{not} protect the user from accidentally leaking his SID by forwarding a URL \cite{Adida2008}. Moreover, it does \emph{not} protect the user from active attacks. Indeed, since the SID is stored in a way which makes it available to JavaScript, an attacker performing a \gls{xss} attack will still be able to access the SID \cite{Dacosta2011}. For the same reason, the proposed countermeasure does not protect against session fixation either.
+
+Another disadvantage of this approach is that it is only usable for URLs that can be rewritten using JavaScript. Indeed, when binary objects (i.e. Flash) are used to generate dynamic links, URL rewriting will not work \cite{Dacosta2011}.
 
 \subsubsection{One-time cookies}
 
@@ -259,23 +268,113 @@ There are also some other disadvantages of one-time cookies. Compared to using r
 
 The paper also describes that in the current implementation, both the server and the client need to be adapted to support one-time cookies. The authors are, however, exploring the idea of modifying one-time cookies to provide a version that does not require a browser extension \cite{Dacosta2011}.
 
-\subsubsection{Session fixation solution by Johns et al.}%TODO
+\subsubsection{Session fixation solution by Johns et al.}
 
-Johns et al. \cite{Johns2011} present a solution to session fixation in the form of a server-side reverse proxy. This allows web applications that have already been deployed in the past to be patched against session fixation afterwards.
+Johns et al. \cite{Johns2011} present a solution to \gls{login session fixation} attacks in the form of a server-side reverse proxy. This allows web applications that have already been deployed in the past to be patched against session fixation afterwards. The proxy works by introducing a second session identifier, called the `proxy session identifier' (or \gls{psid}), which is tightly secured against login session fixation. The proxy works as follows (see Figure \ref{fig:johnsfixation}):
+\begin{enumerate}
+	\item When a request without a PSID is received by the proxy, it is regarded as the user's first request. In this case, the proxy strips all authentication data from the request and generates a new PSID value. This value is then attached to the server's response via the \texttt{Set-cookie} header.
+	\item When a cookie is set by the server (via the \texttt{Set-cookie} header), the proxy associates the PSID that was sent in the request (or the new PSID, if no PSID was present in the request) with the new SID from the server.
+	\item When a request containing a SID is received by the proxy, it checks whether the attached PSID is valid for the attached SID. If it is, the PSID is stripped, and the request is forwarded to the web server. If the PSID is not valid, or if no PSID is present, both the PSID and the server's SID are stripped from the request before it is forwarded. This causes the request to be void of any authentication data when it arrives at the server.
+	\item To make sure that the PSID is secure against login session fixation attacks, a new PSID is generated -- and sent to the user --- whenever the user changes its authentication state. Note that `changing the authentication state' is not the same as `receiving a new SID from the server', since it is possible that the server does not correctly renew the SID on every authentication state change.
+\end{enumerate}
 
-The proxy introduces a second session identifier, called the `proxy session identifier' (or \gls{psid}). This PSID is tightly secured against session fixation, by renewing it on every authentication change. Whenever a request is received by the proxy, it checks whether the attached PSID is valid for the attached SID. If it is, the PSID is stripped, and the request is forwarded to the web server. If the PSID is not valid, both the PSID and the server's SID are stripped from the request before it is forwarded. This causes the request to have no attached authentication data when it arrives at the server. Because the PSID is secured against session fixation attacks, an attacker is not able to force a PSID upon a victim's browser. This makes him unable to send requests containing authentication data to the web server.
+\begin{figure}[htb]
+	\centering
+	\subfloat[Introducing the PSID]{
+		\label{fig:johnsfixation-set}
+		\includegraphics[width=.7\textwidth]{img/johnsfixation-set.png}
+	}\\
+	\subfloat[Verifying the PSID]{
+		\label{fig:johnsfixation-verify}
+		\includegraphics[width=0.7\textwidth]{img/johnsfixation-verify.png}
+	}
+	\caption[Protecting against login session fixation with a server-side proxy]{\label{fig:johnsfixation}Protecting against login session fixation with a server-side proxy \cite{Johns2011}}
+\end{figure}
 
-% How to know when authentication changed
+To see why this solution protects against login session fixation, consider the scenario where the attacker was able to successfully force a SID and PSID upon the victim's browser. As soon as the victim logs in, his PSID is changed by the proxy. When the attacker subsequently tries to make a request using the victim's SID, he is only able to include the old PSID into the request. Because the association between the SID and the old PSID has been invalidated, the proxy will strip the SID from the request before forwarding it to the server. This causes the attacker's request to behave as if it was an unauthenticated request, and prevents the attacker from taking over the victim's session.
 
-\section{Client-side countermeasures}%TODO
+To allow the proxy to detect when a user's authentication state changes, the web developer has to configure the proxy with the names of GET and POST parameters that contain password data. When such a parameter is present in a request, the proxy considers it as an authentication request and renews the user's PSID.
 
-\subsection{SessionShield}\label{sessionshield}
+The same solution could also be applied at the framework level, where it is often known which parameters contain password data. The disadvantage of such an approach would be that the solution is then tied to a specific framework, instead of universally deployable. Moreover, if the framework provides session management, a much better solution is to make it renew the SID on every authentication state change itself, instead of introducing a second SID (the PSID).
 
-\cite{Nikiforakis2010}
+\section{Client-side countermeasures}
 
-\subsection{Noxes}
+In this section, we focus on session hijacking countermeasures at the client side. The advantage that these approaches have over server-side countermeasures is that they do not require all web application to be secured against this attack. Because of this, it is the \emph{user} who can make sure that he is protected against session hijacking attacks, without having to rely on the web developer of all web applications he uses to implement session hijacking protection. Client-side countermeasures to session \emph{fixation} attacks were, to our knowledge, non-existent at the time of writing \cite{Bonne2011}.
 
-\cite{Kirda2006}
+\subsection{SessionShield}\label{sessionshield} %TODO
+
+SessionShield is a client-side proxy providing protection against session hijacking attacks. It was proposed by Nikiforakis et al. in 2010 \cite{Nikiforakis2010}. SessionShield is based on the idea that session identifiers should not be available to script code running in a user's browser.
+
+The proxy keeps session cookies unavailable to script code by separating them from the browser. It does this as follows (see Figure \ref{fig:nikiforakis}):
+\begin{enumerate}
+	\item When a session cookie is set by the server (via the \texttt{Set-cookie} header), the proxy stores this cookie in his internal database, and strips it from the response before it is sent to the client.
+	\item On every outgoing request, the proxy queries its internal database using the domain of the request as the key and adds to the outgoing request all cookies for this domain that are present in the database.
+\end{enumerate}
+
+\begin{figure}[htb]
+	\centering
+	\subfloat[An incoming response containing a new SID.]{
+		\includegraphics[width=.7\textwidth]{img/nikiforakis-set.png}
+		\label{fig:clientside-request}
+	}\\
+	\subfloat[An outgoing request by the browser does not contain any cookies. The proxy attaches the cookies for this domain that were stored in the database.]{
+		\label{fig:clientside-response}
+		\includegraphics[width=0.7\textwidth]{img/nikiforakis-get.png}
+	}
+	\caption{Protecting against session hijacking with a client-side proxy}
+	\label{fig:nikiforakis}
+\end{figure}
+
+To identify which cookies are session cookies, SessionShield uses a sophisticated SID detection algorithm. This algorithm considers a cookie to be a session cookie in one of the following cases:
+\begin{itemize}
+	\item The name of the cookie is in a list of known session identifiers, such as \texttt{phpsessid}, \texttt{aspsessionid} and \texttt{jspsession}.
+	\item The name of the cookie contains the substring ``sess'', and the value is more than 10 characters long.
+	\item The value of the cookie passes a `SID probability check', which consists of checking the string's information entropy, its correlation with the uniform distribution, and the number of dictionary words contained in it.
+\end{itemize}
+
+SessionShield works in much the same way as \texttt{HttpOnly} cookies, but takes it one step further: it makes sure that cookies will never be visible in the browser, preventing an attacker from reading cookies even if he is able to seize control over the victim's browser in any way. This not only prevents session hijacking via \gls{xss} attacks, it also prevents rogue browser extensions from capturing a user's session cookie \cite{TerLouw2007}. Another advantage SessionShield has over HttpOnly is that it works at the client side, allowing the user to be secure even when the web application fails to set the \texttt{HttpOnly} flag for all session cookies.
+
+A disadvantage of implementing SessionShield as a proxy occurs when different browsers are using SessionShield at the same time. In this case, the proxy will attach cookies that were set for one browser to the other browser's outgoing requests, causing the user to be authenticated in both browsers when he has only explicitly logged in with one of them. Moreover, clearing private data in the browser, or using the browser's `private browsing' functionality, has no effect on SessionShield, causing the user to be authenticated even when he expects not to be. We will discuss other advantages and disadvantages of implementing such a policy as a browser extension instead of a proxy in the next chapter.
+
+\subsection{Noxes}\label{noxes}
+
+Noxes, developed by by Kirda et al. in 2006, is a client-side solution to mitigate cross site scripting attacks, developed specifically to prevent information leakage from one domain to another \cite{Kirda2006}. It works similar to a personal firewall like ZoneAlarm\footnote{ZoneAlarm is available from \url{http://www.zonealarm.com/}.} or Windows Firewall\footnote{Windows Firewall is included by default on every version of Microsoft Windows since Windows XP Service Pack 2. More information is available on \url{http://technet.microsoft.com/en-us/network/bb545423.aspx}.}. However, instead of controlling the connections for all processes running on a user's machine, it only handles requests made by the user's browser. This allows Noxes to offer more fine-grained controls which are specifically tailored to web applications. For example, whenever a JavaScript request is trying to send information to a domain that is not known by Noxes, the user is presented with a prompt that asks for user confirmation. The user is able to accept or deny the request, and to create a firewall rule for similar future requests.
+
+This approach is obviously very cumbersome: the user will have to explicitly allow every request that is made to a different domain. Because of this, Noxes includes a list of safe scenarios. When such a scenario occurs, the request is allowed without consulting the user. The following scenarios are considered safe:
+\begin{description}
+	\item[Requests to the same domain] When the base domains of the request and the page the request originated from are the same, information leakage to another domain is not possible. Noxes checks whether a request originated from the same domain by comparing the \texttt{Referer} HTTP header of the request to the domain of the requested web page.
+	\item[Static links] When links do not contain dynamic components, an attacker is unable to embed the victim's SID as part of the URL. Indeed, an attacker can only create the URL after he has read the domain's cookie value, which then has to be dynamically included in the URL.
+\end{description}
+Static links do not completely prevent a SID from leaking to another domain. Because of this, Noxes includes two exceptions to the second `safe rule'. Firstly, consider the scenario where an attacker includes in the web page a static link to his own domain for every possible character\footnote{The paper itself only talks about links containing the \emph{bits} of the SID. It is, however, much more efficient for an attacker to use characters, since this greatly reduces the amount of requests that need to be made to the attacker's server.}. He is then able to use JavaScript to load the links that correspond to the individual characters in the SID, one by one (see Figure \ref{Noxes-attack}). Because of this, Noxes allows maximally $k$ static links to the same external domain, where $k$ is a customizable threshold.
+
+\begin{figure}
+\begin{lstlisting}[language=HTML]
+<html>
+...
+<img src="http://attacker.com/a_char0.jpg">
+<img src="http://attacker.com/b_char0.jpg">
+<img src="http://attacker.com/c_char0.jpg">
+...
+<img src="http://attacker.com/a_char1.jpg">
+<img src="http://attacker.com/b_char1.jpg">
+...
+<script>
+	for [i=0 to 20] {
+		if (cookie char i == 'a')
+			<contact http://attacker.com/a_char0.jpg>
+		else if (cookie char i == 'b')
+			<contact http://attacker.com/b_char0.jpg>
+		...
+</script>
+</html>
+\end{lstlisting}
+	\caption[Using static links to transmit the SID to an attacker's domain]{\label{Noxes-attack}Pseudo code for a JavaScript-based attack that transmits the SID to an attacker's domain using only static links (based on \cite{Kirda2006})}
+\end{figure}
+
+A second exception to the second `safe rule' is made for pop-up and pop-under windows to a different domain. Using these, an attacker can open a window containing a static link to a page on his own domain, only to afterwards set the window's title to the value of the victim's cookie. This makes him able to read the cookie value from within his own page, by using JavaScript on his own page to access the value of the \texttt{document.title} attribute. Because of this, Noxes presents an alert message to the user when it detects that a pop-up or pop-under window to a different domain is opened, regardless of the link being static.
+
+Unfortunately, 
+%Probleem wanneer attacker gewoon meerdere pagina's van eigen domein laadt (vb refresh), en dan telkens k chars doorstuurt.
 
 \section{Cross site scripting countermeasures}\label{xss-countermeasures}
 % Check referrer

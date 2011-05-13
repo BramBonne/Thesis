@@ -45,7 +45,7 @@ For SIDs that make use of URL rewriting, the situation at the server side is dif
 
 It is important to ensure that a session identifier can only be known by the web server and the client that is identified by it. If an attacker is able to know a client's SID, he can use it to impersonate the client in the web application. One example is a webmail application\footnote{Examples of widely-used webmail applications are Google's GMail (\url{http://mail.google.com}) and Microsoft's Hotmail (\url{http://www.hotmail.com}).}, where an attacker could use the SID to be able to read and send e-mail on behalf of the client. Another example is the online shop, where an attacker could fill the client's virtual shopping cart with unwanted items. To prevent an attacker from knowing a client's SID, the SID should possess some properties. We describe these properties in this section.
 
-\subsection{Unguessable by an attacker}
+\subsection{Unguessable by an attacker}\label{unguessable}
 
 An attacker should not be able to guess the value of a user's session ID. For this, the following properties are necessary:
 

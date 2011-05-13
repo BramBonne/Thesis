@@ -4,44 +4,44 @@ The style file: plainurl.bst
 Database file #1: /home/bram/Documenten/library.bib
 Database file #2: /home/bram/Documenten/rfc.bib
 Database file #3: /home/bram/Documenten/extra.bib
-You've used 108 entries,
+You've used 109 entries,
             2760 wiz_defined-function locations,
-            1289 strings with 24795 characters,
-and the built_in function-call counts, 40420 in all, are:
-= -- 4408
-> -- 1245
+            1294 strings with 25011 characters,
+and the built_in function-call counts, 40799 in all, are:
+= -- 4443
+> -- 1263
 < -- 19
-+ -- 504
-- -- 396
-* -- 1758
-:= -- 5780
-add.period$ -- 378
-call.type$ -- 108
-change.case$ -- 523
++ -- 511
+- -- 402
+* -- 1776
+:= -- 5838
+add.period$ -- 381
+call.type$ -- 109
+change.case$ -- 529
 chr.to.int$ -- 0
-cite$ -- 108
-duplicate$ -- 1260
-empty$ -- 4146
-format.name$ -- 396
-if$ -- 10499
+cite$ -- 109
+duplicate$ -- 1274
+empty$ -- 4184
+format.name$ -- 402
+if$ -- 10593
 int.to.chr$ -- 0
-int.to.str$ -- 108
-missing$ -- 41
-newline$ -- 587
-num.names$ -- 216
-pop$ -- 1306
+int.to.str$ -- 109
+missing$ -- 42
+newline$ -- 592
+num.names$ -- 218
+pop$ -- 1320
 preamble$ -- 1
-purify$ -- 414
+purify$ -- 419
 quote$ -- 0
-skip$ -- 2875
+skip$ -- 2897
 stack$ -- 0
-substring$ -- 1055
-swap$ -- 250
+substring$ -- 1060
+swap$ -- 252
 text.length$ -- 19
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 424
+type$ -- 428
 warning$ -- 0
-while$ -- 271
-width$ -- 111
-write$ -- 1214
+while$ -- 273
+width$ -- 112
+write$ -- 1224
