@@ -728,4 +728,1061 @@ Package: supertabular 2004/02/20 v4.1e the supertabular environment
 Package: glossary-tree 2009/01/14 v1.01 (NLCT)
 \glstreeindent=\skip190
 ))
-\glo@main@fil
+\glo@main@file=\write5
+\openout5 = `Thesis.glo'.
+
+Package glossaries Info: Writing glossary file Thesis.glo on input line 30.
+
+No file Thesis.aux.
+\openout1 = `Thesis.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 32.
+LaTeX Font Info:    ... okay on input line 32.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 32.
+LaTeX Font Info:    ... okay on input line 32.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 32.
+LaTeX Font Info:    ... okay on input line 32.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 32.
+LaTeX Font Info:    ... okay on input line 32.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 32.
+LaTeX Font Info:    ... okay on input line 32.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 32.
+LaTeX Font Info:    ... okay on input line 32.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 32.
+LaTeX Font Info:    ... okay on input line 32.
+LaTeX Font Info:    Try loading font information for T1+lmr on input line 32.
+(/usr/share/texmf/tex/latex/lm/t1lmr.fd
+File: t1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
+)
+(/usr/share/texmf-texlive/tex/context/base/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count169
+\scratchdimen=\dimen179
+\scratchbox=\box35
+\nofMPsegments=\count170
+\nofMParguments=\count171
+\everyMPshowfont=\toks31
+\MPscratchCnt=\count172
+\MPscratchDim=\dimen180
+\MPnumerator=\count173
+\everyMPtoPDFconversion=\toks32
+)
+
+******************************************************
+Stock height and width: 845.04684pt by 597.50787pt
+Top and edge trims: 0.0pt and 0.0pt
+Page height and width: 845.04684pt by 597.50787pt
+Text height and width: 609.40027pt by 398.0pt
+Spine and edge margins: 79.6665pt and 119.50279pt
+Upper and lower margins: 106.09436pt and 129.55222pt
+Headheight and headsep: 13.6pt and 19.8738pt
+Footskip: 27.46295pt
+Columnsep and columnseprule: 10.0pt and 0.0pt
+Marginparsep and marginparwidth: 16.31996pt and 56.0pt
+Sidecapsep and sidecapwidth: 7.0pt and 101.0pt
+Sidebarhsep and sidebarwidth: 7.0pt and 101.0pt
+Sidebarvsep and sidebartopsep: 13.6pt and 0.0pt
+Sidebarheight: 594.32022pt
+******************************************************
+
+<sedes.pdf, id=1, 310.15875pt x 521.95pt>
+File: sedes.pdf Graphic file (type pdf)
+ <use sedes.pdf>
+<logokulbw.pdf, id=2, 170.7178pt x 56.90298pt>
+File: logokulbw.pdf Graphic file (type pdf)
+ <use logokulbw.pdf>
+<logoengbw.pdf, id=3, 142.26149pt x 56.90298pt>
+File: logoengbw.pdf Graphic file (type pdf)
+ <use logoengbw.pdf> [-1
+
+\openout4 = `Thesis.ist'.
+
+
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./sedes.pdf> <./logokulbw.
+pdf> <./logoengbw.pdf>]
+LaTeX Font Info:    Try loading font information for OMS+lmr on input line 32.
+ (/usr/share/texmf/tex/latex/lm/omslmr.fd
+File: omslmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
+)
+LaTeX Font Info:    Try loading font information for OMS+lmsy on input line 32.
+
+
+(/usr/share/texmf/tex/latex/lm/omslmsy.fd
+File: omslmsy.fd 2009/10/30 v1.6 Font defs for Latin Modern
+)
+LaTeX Font Info:    Font shape `OMS/lmr/m/n' in size <10.95> not available
+(Font)              Font shape `OMS/lmsy/m/n' tried instead on input line 32.
+LaTeX Font Info:    Try loading font information for T1+lmtt on input line 32.
+
+(/usr/share/texmf/tex/latex/lm/t1lmtt.fd
+File: t1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
+) [0
+
+
+]
+Package caption Info: Begin \AtBeginDocument code.
+Package caption3 Info: subfig package 1.2 or 1.3 is loaded.
+LaTeX Info: Redefining \subref on input line 32.
+Package caption Info: Incompatible package detected (regarding \caption).
+(caption)             \caption = \long macro:->\donemaincaptiontrue \m@moldhypc
+aption .
+
+
+Package caption Warning: \caption will not be redefined since it's already
+(caption)                redefined by a document class or package which is
+(caption)                unknown to the caption package.
+See the caption package documentation for explanation.
+
+Package caption Info: hyperref package is loaded.
+Package caption Info: listings package is loaded.
+Package caption Info: longtable package is loaded.
+(/usr/share/texmf-texlive/tex/latex/caption/ltcaption.sty
+Package: ltcaption 2008/03/28 v1.2 longtable captions (AR)
+)
+Package caption Info: supertabular package is loaded.
+Package caption Info: End \AtBeginDocument code.
+\c@lstlisting=\count174
+LaTeX Info: Redefining \microtypecontext on input line 32.
+Package microtype Info: Generating PDF output.
+Package microtype Info: Character protrusion enabled (level 2).
+Package microtype Info: Using default protrusion set `alltext'.
+Package microtype Info: Automatic font expansion enabled (level 2),
+(microtype)             stretch: 20, shrink: 20, step: 1, non-selected.
+Package microtype Info: Using default expansion set `basictext'.
+Package microtype Info: No tracking.
+Package microtype Info: No adjustment of interword spacing.
+Package microtype Info: No adjustment of character kerning.
+
+(/usr/share/texmf-texlive/tex/latex/microtype/mt-cmr.cfg
+File: mt-cmr.cfg 2008/02/29 v1.9a microtype config. file: Computer Modern Roman
+ (RS)
+)
+pdfTeX warning (font expansion): font should be expanded before its first use
+Package hyperref Info: Link coloring ON on input line 32.
+(/usr/share/texmf-texlive/tex/latex/hyperref/nameref.sty
+Package: nameref 2007/05/29 v2.31 Cross-referencing by name of section
+
+(/usr/share/texmf-texlive/tex/latex/oberdiek/refcount.sty
+Package: refcount 2008/08/11 v3.1 Data extraction from references (HO)
+)
+\c@section@level=\count175
+)
+LaTeX Info: Redefining \ref on input line 32.
+LaTeX Info: Redefining \pageref on input line 32.
+ (./Thesis.out)
+(./Thesis.out)
+\@outlinefile=\write6
+\openout6 = `Thesis.out'.
+
+\AtBeginShipoutBox=\box36
+
+Redoing nameref's sectioning
+Redoing nameref's label
+
+(/usr/share/texmf-texlive/tex/latex/glossaries/dict/glossaries-dictionary-Engli
+sh.dict
+Dictionary: glossaries-dictionary, Language: English 
+) [1
+
+
+
+]
+
+Package hyperref Warning: old toc file detected, not used; run LaTeX again.
+
+\tf@toc=\write7
+\openout7 = `Thesis.toc'.
+
+[2
+
+
+] [3
+
+] [4
+
+
+]
+
+Package hyperref Warning: old lof file detected, not used; run LaTeX again.
+
+\tf@lof=\write8
+\openout8 = `Thesis.lof'.
+
+
+Package hyperref Warning: old lot file detected, not used; run LaTeX again.
+
+\tf@lot=\write9
+\openout9 = `Thesis.lot'.
+
+(./abbreviations.tex) (./Thesis.gls [5
+
+
+] [6
+
+] [7
+
+])
+Package microtype Info: Character `029' is missing
+(microtype)             in font `T1/lmr/m/sc/10.95'.
+(microtype)             Ignoring protrusion settings for this character.
+ [8] (./introduction.tex
+
+LaTeX Warning: Citation `Williams2010' on page 1 undefined on input line 7.
+
+) (./sessions.tex [1
+
+
+] [2
+
+]
+
+LaTeX Warning: Citation `Kurose2008' on page 3 undefined on input line 7.
+
+
+LaTeX Warning: Citation `Jovanovic2006' on page 3 undefined on input line 15.
+
+
+LaTeX Warning: Citation `Kristol2001' on page 3 undefined on input line 15.
+
+
+LaTeX Warning: Citation `Park2000' on page 3 undefined on input line 15.
+
+LaTeX Font Info:    Try loading font information for OT1+lmr on input line 15.
+(/usr/share/texmf/tex/latex/lm/ot1lmr.fd
+File: ot1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
+)
+LaTeX Font Info:    Try loading font information for OML+lmm on input line 15.
+
+(/usr/share/texmf/tex/latex/lm/omllmm.fd
+File: omllmm.fd 2009/10/30 v1.6 Font defs for Latin Modern
+)
+LaTeX Font Info:    Try loading font information for OMX+lmex on input line 15.
+
+
+(/usr/share/texmf/tex/latex/lm/omxlmex.fd
+File: omxlmex.fd 2009/10/30 v1.6 Font defs for Latin Modern
+)
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <10.95> on input line 15.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <8> on input line 15.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <6> on input line 15.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <9> on input line 15.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <5> on input line 15.
+
+
+LaTeX Warning: Reference `access-control' on page 3 undefined on input line 15.
+
+
+
+LaTeX Warning: Reference `fig:sessions-cookies' on page 3 undefined on input li
+ne 15.
+
+[3] <img/Sessions.png, id=248, 803.47235pt x 508.72412pt>
+File: img/Sessions.png Graphic file (type png)
+
+<use img/Sessions.png>
+<img/url-rewriting.png, id=249, 803.47235pt x 508.72412pt>
+File: img/url-rewriting.png Graphic file (type png)
+
+<use img/url-rewriting.png>
+
+LaTeX Warning: Reference `fig:url-rewriting' on page 4 undefined on input line 
+30.
+
+
+LaTeX Warning: Citation `Johns2006' on page 4 undefined on input line 32.
+
+[4 <./img/Sessions.png (PNG copy)> <./img/url-rewriting.png (PNG copy)>]
+
+LaTeX Warning: Citation `Singh2010' on page 5 undefined on input line 40.
+
+
+LaTeX Warning: Citation `Singh2010' on page 5 undefined on input line 40.
+
+
+LaTeX Warning: Citation `Nikiforakis2010' on page 5 undefined on input line 53.
+
+
+
+LaTeX Warning: Citation `Farrell2011' on page 5 undefined on input line 53.
+
+
+LaTeX Warning: Citation `rfc4086' on page 5 undefined on input line 53.
+
+[5]
+
+LaTeX Warning: Citation `Fu2001' on page 6 undefined on input line 59.
+
+
+LaTeX Warning: Citation `Cools2010' on page 6 undefined on input line 59.
+
+
+LaTeX Warning: Citation `OWASP2009a' on page 6 undefined on input line 63.
+
+
+LaTeX Warning: Citation `OWASP2009a' on page 6 undefined on input line 69.
+
+
+LaTeX Warning: Reference `general-security' on page 6 undefined on input line 7
+2.
+
+
+LaTeX Warning: Citation `Stallings2011' on page 6 undefined on input line 74.
+
+
+LaTeX Warning: Citation `rfc4346' on page 6 undefined on input line 74.
+
+
+LaTeX Warning: Citation `Fu2001' on page 6 undefined on input line 74.
+
+
+LaTeX Warning: Citation `rfc2965' on page 6 undefined on input line 74.
+
+[6]
+
+LaTeX Warning: Citation `Nikiforakis2010' on page 7 undefined on input line 76.
+
+
+
+LaTeX Warning: Citation `Fu2001' on page 7 undefined on input line 79.
+
+
+LaTeX Warning: Citation `OWASP2009a' on page 7 undefined on input line 85.
+
+
+LaTeX Warning: Citation `Kolsek2002' on page 7 undefined on input line 88.
+
+
+LaTeX Warning: Citation `Fu2001' on page 7 undefined on input line 90.
+
+[7]
+
+LaTeX Warning: Citation `Wasser2007' on page 8 undefined on input line 96.
+
+
+LaTeX Warning: Reference `frameworks' on page 8 undefined on input line 103.
+
+) (./attacks.tex [8]
+
+LaTeX Warning: Citation `DiLucca2005' on page 9 undefined on input line 7.
+
+[9
+
+]
+
+LaTeX Warning: Reference `fig:persistent-xss' on page 10 undefined on input lin
+e 23.
+
+<img/persistent-xss.png, id=312, 802.0553pt x 522.8947pt>
+File: img/persistent-xss.png Graphic file (type png)
+
+<use img/persistent-xss.png>
+<img/nonpersistent-xss.png, id=313, 802.0553pt x 522.8947pt>
+File: img/nonpersistent-xss.png Graphic file (type png)
+
+<use img/nonpersistent-xss.png>
+
+LaTeX Warning: Reference `fig:nonpersistent-xss' on page 10 undefined on input 
+line 52.
+
+
+LaTeX Warning: Citation `Vogt2007' on page 10 undefined on input line 54.
+
+[10 <./img/persistent-xss.png (PNG copy)> <./img/nonpersistent-xss.png (PNG cop
+y)>]
+
+LaTeX Warning: Citation `Kirda2006' on page 11 undefined on input line 56.
+
+
+LaTeX Warning: Citation `Jim2007' on page 11 undefined on input line 59.
+
+LaTeX Font Info:    Font shape `T1/lmtt/bx/n' in size <10.95> not available
+(Font)              Font shape `T1/lmtt/b/n' tried instead on input line 61.
+
+LaTeX Warning: Reference `xss-problem' on page 11 undefined on input line 62.
+
+
+Overfull \hbox (2.17833pt too wide) in paragraph at lines 63--64
+\T1/lmtt/m/n/10.95 <div style="background-image: url(javascript:alert('XSS');" 
+/> \T1/lmr/m/n/10.95 (-20) or
+ []
+
+
+Overfull \hbox (29.48691pt too wide) in paragraph at lines 63--64
+\T1/lmtt/m/n/10.95 <style>.bar{background-image:url("javascript:alert('XSS');")
+;}</style>
+ []
+
+
+Overfull \hbox (11.86288pt too wide) in paragraph at lines 64--65
+[]\T1/lmr/m/n/10.95 (-20) It is pos-si-ble to spec-ify a JavaScript
+ []
+
+[11]
+
+LaTeX Warning: Citation `Jim2007' on page 12 undefined on input line 67.
+
+
+LaTeX Warning: Citation `Ishida2010' on page 12 undefined on input line 67.
+
+
+LaTeX Warning: Citation `Jim2007' on page 12 undefined on input line 67.
+
+
+LaTeX Warning: Reference `sop' on page 12 undefined on input line 73.
+
+
+LaTeX Warning: Citation `Klein2002' on page 12 undefined on input line 73.
+
+
+LaTeX Warning: Citation `Klein2002' on page 12 undefined on input line 73.
+
+
+LaTeX Warning: Citation `Nikiforakis2010' on page 12 undefined on input line 82
+.
+
+[12]
+
+LaTeX Warning: Reference `capturing' on page 13 undefined on input line 86.
+
+
+LaTeX Warning: Reference `general-security' on page 13 undefined on input line 
+87.
+
+
+LaTeX Warning: Reference `fig:hijacking' on page 13 undefined on input line 90.
+
+
+<img/hijacking.png, id=344, 802.0553pt x 522.8947pt>
+File: img/hijacking.png Graphic file (type png)
+ <use img/hijacking.png>
+
+LaTeX Warning: Citation `Arana2006' on page 13 undefined on input line 105.
+
+
+LaTeX Warning: Reference `secure-flag' on page 13 undefined on input line 107.
+
+
+LaTeX Warning: Citation `Adida2008' on page 13 undefined on input line 107.
+
+[13 <./img/hijacking.png (PNG copy)>]
+
+LaTeX Warning: Citation `Graham2007' on page 14 undefined on input line 109.
+
+
+LaTeX Warning: Citation `Butler2010' on page 14 undefined on input line 109.
+
+
+LaTeX Warning: Reference `xss' on page 14 undefined on input line 113.
+
+
+LaTeX Warning: Reference `xss-problem' on page 14 undefined on input line 113.
+
+
+LaTeX Warning: Citation `Klein2002' on page 14 undefined on input line 113.
+
+
+LaTeX Warning: Citation `rfc2616' on page 14 undefined on input line 117.
+
+
+LaTeX Warning: Citation `Fu2001' on page 14 undefined on input line 117.
+
+
+LaTeX Warning: Citation `Barth2008' on page 14 undefined on input line 121.
+
+
+LaTeX Warning: Citation `Johnston2004' on page 14 undefined on input line 125.
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [14]
+
+LaTeX Warning: Reference `url-vs-cookies' on page 15 undefined on input line 12
+7.
+
+
+LaTeX Warning: Reference `hijacking' on page 15 undefined on input line 131.
+
+
+LaTeX Warning: Citation `Kolsek2002' on page 15 undefined on input line 135.
+
+
+LaTeX Warning: Citation `Shiflett2004' on page 15 undefined on input line 139.
+
+
+LaTeX Warning: Reference `injecting-sid' on page 15 undefined on input line 140
+.
+
+
+LaTeX Warning: Reference `fig:fixation' on page 15 undefined on input line 145.
+
+
+<img/fixation.png, id=365, 801.394pt x 570.13pt>
+File: img/fixation.png Graphic file (type png)
+ <use img/fixation.png>
+[15]
+
+LaTeX Warning: Reference `session-management' on page 16 undefined on input lin
+e 160.
+
+
+LaTeX Warning: Citation `Johns2011' on page 16 undefined on input line 160.
+
+
+LaTeX Warning: Citation `rfc2616' on page 16 undefined on input line 160.
+
+
+LaTeX Warning: Citation `Shiflett2004' on page 16 undefined on input line 160.
+
+
+Overfull \hbox (12.8222pt too wide) in paragraph at lines 160--161
+\T1/lmr/m/n/10.95 (-20) craft a link of the form [][]$\T1/lmtt/m/n/10.95 http :
+ / / www . target . com / login . php ? PHPSESSID = d9qX4zKbg35$[][]\T1/lmr/m/n
+/10.95 (-20) ,
+ []
+
+
+LaTeX Warning: Reference `forms' on page 16 undefined on input line 162.
+
+
+LaTeX Warning: Citation `Kolsek2002' on page 16 undefined on input line 162.
+
+
+LaTeX Warning: Citation `Bontrager2005' on page 16 undefined on input line 162.
+
+
+
+LaTeX Warning: Citation `PHPURLrewriting' on page 16 undefined on input line 16
+4.
+
+
+LaTeX Warning: Citation `Condit2006' on page 16 undefined on input line 164.
+
+
+LaTeX Warning: Citation `Holovaty2008' on page 16 undefined on input line 164.
+
+
+LaTeX Warning: Reference `injecting-script' on page 16 undefined on input line 
+168.
+
+
+LaTeX Warning: Citation `Kolsek2002' on page 16 undefined on input line 168.
+
+
+LaTeX Warning: Citation `Johns2011' on page 16 undefined on input line 168.
+
+[16 <./img/fixation.png>]
+(/usr/share/texmf-texlive/tex/latex/listings/lstlang1.sty
+File: lstlang1.sty 2004/09/05 1.3 listings language file
+)
+(/usr/share/texmf-texlive/tex/latex/listings/lstmisc.sty
+File: lstmisc.sty 2007/02/22 1.4 (Carsten Heinz)
+)
+
+LaTeX Warning: Citation `Kolsek2002' on page 17 undefined on input line 176.
+
+
+LaTeX Warning: Citation `Klein2004' on page 17 undefined on input line 180.
+
+
+LaTeX Warning: Citation `Johns2011' on page 17 undefined on input line 180.
+
+
+LaTeX Warning: Reference `access-control' on page 17 undefined on input line 18
+4.
+
+
+LaTeX Warning: Citation `rfc2109' on page 17 undefined on input line 186.
+
+
+LaTeX Warning: Citation `Kolsek2002' on page 17 undefined on input line 186.
+
+[17]
+
+LaTeX Warning: Citation `rfc2965' on page 18 undefined on input line 194.
+
+
+LaTeX Warning: Citation `Barth2008' on page 18 undefined on input line 198.
+
+
+LaTeX Warning: Citation `Barbaro2006' on page 18 undefined on input line 200.
+
+
+LaTeX Warning: Citation `Barth2008' on page 18 undefined on input line 201.
+
+
+LaTeX Warning: Reference `fixation-solution' on page 18 undefined on input line
+ 205.
+
+[18]
+
+LaTeX Warning: Citation `Schreiber2004' on page 19 undefined on input line 213.
+
+
+
+LaTeX Warning: Reference `forcing-request' on page 19 undefined on input line 2
+16.
+
+
+LaTeX Warning: Citation `Johns2006b' on page 19 undefined on input line 217.
+
+
+LaTeX Warning: Citation `Zeller2008' on page 19 undefined on input line 217.
+
+
+LaTeX Warning: Reference `fig:csrf' on page 19 undefined on input line 221.
+
+<img/csrf.png, id=415, 611.28375pt x 421.575pt>
+File: img/csrf.png Graphic file (type png)
+ <use img/csrf.png>
+
+LaTeX Warning: Reference `other-browser-requests' on page 19 undefined on input
+ line 232.
+
+
+LaTeX Warning: Citation `Johns2006b' on page 19 undefined on input line 236.
+
+
+LaTeX Warning: Citation `Barth2008' on page 19 undefined on input line 236.
+
+[19]
+
+LaTeX Warning: Citation `Huang2010' on page 20 undefined on input line 240.
+
+
+LaTeX Warning: Citation `Mao2009' on page 20 undefined on input line 248.
+
+
+LaTeX Warning: Citation `Jovanovic2006' on page 20 undefined on input line 248.
+
+
+
+LaTeX Warning: Citation `Johns2006' on page 20 undefined on input line 248.
+
+
+LaTeX Warning: Citation `Singh2010' on page 20 undefined on input line 248.
+
+
+LaTeX Warning: Reference `fig:mao2009' on page 20 undefined on input line 248.
+
+[20 <./img/csrf.png (PNG copy)>]
+<img/mao2009a.png, id=434, 131.5314pt x 158.994pt>
+File: img/mao2009a.png Graphic file (type png)
+ <use img/mao2009a.png>
+<img/mao2009b.png, id=435, 131.5314pt x 158.994pt>
+File: img/mao2009b.png Graphic file (type png)
+ <use img/mao2009b.png>
+
+LaTeX Warning: Citation `Mao2009' on page 21 undefined on input line 258.
+
+
+LaTeX Warning: Citation `Mao2009' on page 21 undefined on input line 258.
+
+
+LaTeX Warning: Reference `xss' on page 21 undefined on input line 262.
+
+
+LaTeX Warning: Citation `Jovanovic2006' on page 21 undefined on input line 262.
+
+
+
+LaTeX Warning: Reference `sop' on page 21 undefined on input line 266.
+
+
+LaTeX Warning: Citation `DeRyck2010' on page 21 undefined on input line 266.
+
+[21 <./img/mao2009a.png> <./img/mao2009b.png>]
+
+LaTeX Warning: Citation `Barth2008' on page 22 undefined on input line 274.
+
+
+LaTeX Warning: Reference `xss' on page 22 undefined on input line 274.
+
+
+LaTeX Warning: Citation `Kesteren:09:X' on page 22 undefined on input line 278.
+
+
+
+LaTeX Warning: Citation `Binny2010' on page 22 undefined on input line 278.
+
+
+LaTeX Warning: Citation `Barth2008' on page 22 undefined on input line 292.
+
+
+LaTeX Warning: Reference `tab:forcing-request' on page 22 undefined on input li
+ne 310.
+
+
+LaTeX Warning: Reference `get-or-post' on page 22 undefined on input line 310.
+
+
+LaTeX Warning: Citation `Zeller2008' on page 22 undefined on input line 310.
+
+) (./countermeasures.tex [22] [23] [24
+
+]
+
+LaTeX Warning: Reference `renewing-sid' on page 25 undefined on input line 15.
+
+
+LaTeX Warning: Citation `PHPregenerate' on page 25 undefined on input line 15.
+
+
+LaTeX Warning: Citation `Johns2011' on page 25 undefined on input line 15.
+
+(/usr/share/texmf-texlive/tex/latex/listings/lstlang1.sty
+File: lstlang1.sty 2004/09/05 1.3 listings language file
+)
+(/usr/share/texmf-texlive/tex/latex/listings/lstlang2.sty
+File: lstlang2.sty 2004/09/05 1.3 listings language file
+)
+
+LaTeX Warning: Citation `Fu2001' on page 25 undefined on input line 24.
+
+[25]
+
+LaTeX Warning: Reference `lifetime' on page 26 undefined on input line 26.
+
+
+LaTeX Warning: Citation `Fu2001' on page 26 undefined on input line 26.
+
+
+LaTeX Warning: Citation `Dacosta2011' on page 26 undefined on input line 28.
+
+
+LaTeX Warning: Citation `HttpOnly' on page 26 undefined on input line 32.
+
+
+LaTeX Warning: Citation `Singh2010' on page 26 undefined on input line 36.
+
+
+LaTeX Warning: Reference `subdomain-setting' on page 26 undefined on input line
+ 38.
+
+[26]
+
+LaTeX Warning: Citation `Stallings2011' on page 27 undefined on input line 42.
+
+
+LaTeX Warning: Reference `secure-flag' on page 27 undefined on input line 42.
+
+
+LaTeX Warning: Citation `Hodges2010' on page 27 undefined on input line 44.
+
+
+LaTeX Warning: Citation `Jackson2008' on page 27 undefined on input line 44.
+
+
+LaTeX Warning: Citation `Adida2008' on page 27 undefined on input line 44.
+
+
+LaTeX Warning: Reference `cookie-header' on page 27 undefined on input line 48.
+
+
+
+LaTeX Warning: Citation `rfc2616' on page 27 undefined on input line 48.
+
+
+LaTeX Warning: Citation `ShiflettHijacking' on page 27 undefined on input line 
+52.
+
+
+LaTeX Warning: Citation `ShiflettHijacking' on page 27 undefined on input line 
+52.
+
+[27]
+
+LaTeX Warning: Citation `Johns2011' on page 28 undefined on input line 60.
+
+
+LaTeX Warning: Reference `session-management' on page 28 undefined on input lin
+e 66.
+
+
+LaTeX Warning: Reference `leaking-via-user' on page 28 undefined on input line 
+68.
+
+
+LaTeX Warning: Citation `Johnston2004' on page 28 undefined on input line 68.
+
+
+LaTeX Warning: Citation `Fu2001' on page 28 undefined on input line 68.
+
+
+LaTeX Warning: Reference `get-or-post' on page 28 undefined on input line 70.
+
+[28]
+
+LaTeX Warning: Citation `Johnston2004' on page 29 undefined on input line 72.
+
+
+LaTeX Warning: Citation `Zhong2006' on page 29 undefined on input line 74.
+
+
+LaTeX Warning: Citation `Vamosi2006' on page 29 undefined on input line 74.
+
+
+LaTeX Warning: Reference `xss-countermeasures' on page 29 undefined on input li
+ne 74.
+
+
+LaTeX Warning: Citation `Jovanovic2006' on page 29 undefined on input line 74.
+
+
+LaTeX Warning: Citation `Johns2006' on page 29 undefined on input line 74.
+
+
+LaTeX Warning: Citation `Webers2008' on page 29 undefined on input line 81.
+
+
+LaTeX Warning: Citation `rfc2617' on page 29 undefined on input line 84.
+
+
+LaTeX Warning: Citation `Adida2008' on page 29 undefined on input line 84.
+
+[29]
+
+LaTeX Warning: Citation `rfc2617' on page 30 undefined on input line 87.
+
+
+LaTeX Warning: Reference `ssl' on page 30 undefined on input line 90.
+
+
+LaTeX Warning: Citation `Park2000' on page 30 undefined on input line 90.
+
+
+LaTeX Warning: Citation `Whitten1999' on page 30 undefined on input line 90.
+
+
+LaTeX Warning: Citation `Schwartz2010' on page 30 undefined on input line 94.
+
+
+LaTeX Warning: Citation `FrameworksComparison' on page 30 undefined on input li
+ne 96.
+
+
+LaTeX Warning: Citation `TomcatPoweredBy' on page 30 undefined on input line 10
+0.
+
+
+LaTeX Warning: Citation `TomcatAuthentication6' on page 30 undefined on input l
+ine 102.
+
+
+LaTeX Warning: Citation `TomcatAuthentication5' on page 30 undefined on input l
+ine 102.
+
+
+LaTeX Warning: Citation `Condit2006' on page 30 undefined on input line 104.
+
+[30]
+
+LaTeX Warning: Citation `TomcatSSL' on page 31 undefined on input line 106.
+
+
+LaTeX Warning: Citation `TomcatCookie' on page 31 undefined on input line 106.
+
+
+LaTeX Warning: Citation `Funk2004' on page 31 undefined on input line 106.
+
+
+LaTeX Warning: Citation `TomcatPoweredBy' on page 31 undefined on input line 11
+0.
+
+
+LaTeX Warning: Citation `AlfrescoPoweredBy' on page 31 undefined on input line 
+110.
+
+
+LaTeX Warning: Citation `AlfrescoSessionFixation' on page 31 undefined on input
+ line 112.
+
+
+LaTeX Warning: Citation `RailsApps' on page 31 undefined on input line 118.
+
+
+LaTeX Warning: Citation `Webers2008' on page 31 undefined on input line 120.
+
+
+LaTeX Warning: Citation `McMahon2010' on page 31 undefined on input line 122.
+
+
+LaTeX Warning: Citation `Slater2008' on page 31 undefined on input line 124.
+
+[31]
+
+LaTeX Warning: Citation `DjangoPoweredBy' on page 32 undefined on input line 12
+8.
+
+
+LaTeX Warning: Citation `DjangoLoginCode' on page 32 undefined on input line 13
+0.
+
+
+LaTeX Warning: Citation `DjangoSessionsCode' on page 32 undefined on input line
+ 133.
+
+
+LaTeX Warning: Citation `DjangoSessions' on page 32 undefined on input line 136
+.
+
+
+LaTeX Warning: Citation `Fairs2007' on page 32 undefined on input line 136.
+
+
+LaTeX Warning: Citation `Barnham2009' on page 32 undefined on input line 138.
+
+
+LaTeX Warning: Citation `Holovaty2008' on page 32 undefined on input line 138.
+
+
+LaTeX Warning: Citation `CherryPySessions' on page 32 undefined on input line 1
+44.
+
+
+LaTeX Warning: Citation `Schrank2010' on page 32 undefined on input line 144.
+
+
+LaTeX Warning: Citation `CherryPySessions' on page 32 undefined on input line 1
+46.
+
+
+LaTeX Warning: Citation `CherryPySessions' on page 32 undefined on input line 1
+48.
+
+
+LaTeX Warning: Citation `ServerSurvey' on page 32 undefined on input line 152.
+
+[32]
+
+LaTeX Warning: Reference `renewing' on page 33 undefined on input line 154.
+
+
+LaTeX Warning: Citation `Holovaty2008' on page 33 undefined on input line 156.
+
+
+LaTeX Warning: Citation `PHPdisableURL' on page 33 undefined on input line 156.
+
+
+
+LaTeX Warning: Citation `PHPsessionCookieParams' on page 33 undefined on input 
+line 158.
+
+
+LaTeX Warning: Citation `DrupalCases' on page 33 undefined on input line 162.
+
+
+LaTeX Warning: Citation `DrupalWhiteHouse' on page 33 undefined on input line 1
+62.
+
+
+LaTeX Warning: Citation `DrupalAuth' on page 33 undefined on input line 164.
+
+
+LaTeX Warning: Citation `DrupalRegenerate' on page 33 undefined on input line 1
+64.
+
+
+LaTeX Warning: Citation `DrupalBug' on page 33 undefined on input line 164.
+
+
+LaTeX Warning: Citation `DrupalSettings' on page 33 undefined on input line 166
+.
+
+
+LaTeX Warning: Citation `DrupalSIDurl' on page 33 undefined on input line 166.
+
+
+LaTeX Warning: Citation `DrupalSecureLogin' on page 33 undefined on input line 
+168.
+
+
+LaTeX Warning: Reference `tab:frameworks' on page 33 undefined on input line 17
+2.
+
+
+LaTeX Warning: Reference `use-framework' on page 33 undefined on input line 172
+.
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [33]
+
+LaTeX Warning: Citation `Johns2006' on page 34 undefined on input line 198.
+
+
+LaTeX Warning: Reference `fig:sessionsafe-deferred-get' on page 34 undefined on
+ input line 200.
+
+[34] <img/sessionsafe-deferred-get2.png, id=575, 705.63625pt x 925.4575pt>
+File: img/sessionsafe-deferred-get2.png Graphic file (type png)
+
+<use img/sessionsafe-deferred-get2.png>
+<img/sessionsafe-deferred-set2.png, id=576, 704.6325pt x 925.4575pt>
+File: img/sessionsafe-deferred-set2.png Graphic file (type png)
+
+<use img/sessionsafe-deferred-set2.png>
+
+LaTeX Warning: Citation `Johns2006' on page 35 undefined on input line 218.
+
+
+LaTeX Warning: Citation `Johns2006' on page 35 undefined on input line 218.
+
+
+LaTeX Warning: Reference `fig:sessionsafe-deferred-set' on page 35 undefined on
+ input line 221.
+
+
+LaTeX Warning: Reference `subdomain-setting' on page 35 undefined on input line
+ 225.
+
+
+LaTeX Warning: Citation `Adida2008' on page 35 undefined on input line 229.
+
+[35 <./img/sessionsafe-deferred-get2.png> <./img/sessionsafe-deferred-set2.png>
+]
+
+LaTeX Warning: Citation `rfc3986' on page 36 undefined on input line 231.
+
+
+LaTeX Warning: Reference `fig:sessionlock' on page 36 undefined on input line 2
+33.
+
+<img/sessionlock.png, id=599, 749.199pt x 466.18121pt>
+File: img/sessionlock.png Graphic file (type png)
+
+<use img/sessionlock.png>
+
+LaTeX Warning: Citation `Adida2008' on page 36 undefined on input line 242.
+
+
+LaTeX Warning: Citation `Adida2008' on page 36 undefined on input line 242.
+
+
+LaTeX Warning: Citation `Diffie1976' on page 36 undefined on input line 246.
+
+
+LaTeX Warning: Citation `Adida2008' on page 36 undefined on input line 246.
+
+
+LaTeX Warning: Citation `Adida2008' on page 36 undefined on input line 250.
+
+
+LaTeX Warning: Citation `Dacosta2011' on page 36 undefined on input line 250.
+
+[36]
+
+LaTeX Warning: Citation `Dacosta2011' on page 37 undefined on input line 252.
+
+
+LaTeX Warning: Citation `Dacosta2011' on page 37 undefined on input line 256.
+
+[37 <./img/sessionlock.png (PNG copy)>]
+
+LaTeX Warning: Reference `ssl' on page 38 undefin
