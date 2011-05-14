@@ -1,6 +1,6 @@
 \chapter{Session attack countermeasures}
 
-In this chapter, some general countermeasures to the session hijacking and session fixation attacks are discussed. We also briefly describe some solutions to cross site scripting attacks, because of their importance in session attacks. We do not consider solutions to cross site request forgery here, since these would lead us too far. For more information about cross site request countermeasures, the reader is directed to \cite{DeRyck2010,Zeller2008,Johns2006,Mao2009}.
+In this chapter, different countermeasures to the session hijacking and session fixation attacks are discussed, together with a detailed analysis of their shortcomings. We also briefly describe some solutions to cross site scripting attacks, because of their importance in session attacks. We do not consider solutions to cross site request forgery here, since these would lead us too far.
 
 \section{Server-side countermeasures}
 
@@ -29,9 +29,13 @@ Keeping in mind the previous discussion, one might assume that it is best to ren
 
 \subsubsection{Using HttpOnly cookies}\label{httponly}
 
-When setting a cookie in the user's browser, a web server can use the cookie's \texttt{HttpOnly} flag to indicate that the browser should only allow access to this cookie via \gls{http}. As a consequence, script code will not be able to access or edit the value for such cookie, and \gls{xss} attacks can be prevented \cite{HttpOnly}.
+When setting a cookie in the user's browser, a web server can use the cookie's \texttt{HttpOnly} flag to indicate that the browser should only allow access to this cookie via \gls{http}. As a consequence, script code will not be able to access or edit the value for such cookie, and session hijacking via \gls{xss} attacks can be prevented \cite{HttpOnly}.
 
-Singh et al. have shown that it is sometimes still possible for an attacker to read or manipulate a HttpOnly cookie via JavaScript \cite{Singh2010}. Fortunately, our experiments show that the issue of Firefox allowing cookie writes to HttpOnly cookies has since been solved. However, as we will describe in section \ref{httponlyremark}, we have discovered yet other techniques which allow an attacker to circumvent these browser policies. As such, we must conclude that, while marking a cookie as HttpOnly does prevent an attacker from accessing the cookie via JavaScript, it does not prevent him from using XSS to inject a chosen value for this cookie into the victim's browser.
+Session fixation, on the other hand, is \emph{not} solved by using \texttt{HttpOnly} cookies. Indeed, when the attacker sets the cookie before the web server does, \emph{he} is the one who can decide whether the \texttt{HttpOnly} flag is set. Thus, the web developer would have to make sure that a cookie is always set before an attacker can set it.
+
+Moreover, even if the web server is able to set the session cookie before the attacker does, the attacker is still able to perform a successful session fixation attack via XSS. As Singh et al. have shown, it is sometimes still possible for an attacker to read or manipulate a HttpOnly cookie via JavaScript after it has been set \cite{Singh2010}. Fortunately, our experiments show that the issue of Firefox allowing cookie writes to HttpOnly cookies has since been solved.
+
+Nevertheless, we discovered yet another technique which allows an attacker to circumvent the \texttt{HttpOnly} browser policy. As we described in section \ref{subdomain-setting}, the attacker is often still able to set a cookie with the same name as the session cookie for the parent domain. This causes the browser to send both the parent domain cookie and the subdomain cookie when a page on the subdomain is accessed. Since the \texttt{domain} attribute isn't attached to cookies in the request, the server has no way of distinguishing between the injected and the legitimate cookie. As such, we must conclude that, while marking a cookie as \texttt{HttpOnly} does prevent an attacker from accessing the cookie via JavaScript (thus mitigating the session hijacking attack via XSS for these cookies), it does not prevent him from using XSS to inject a chosen value for this cookie into the victim's browser.
 
 \subsubsection{Secure connections}\label{ssl}
 
@@ -381,4 +385,14 @@ Another problem with Noxes is that it uses the \texttt{Referer} header to check 
 It can be concluded that Noxes is too complex to be considered a long-time solution against session hijacking attacks. Firstly, user interaction is needed for many requests, which is often cumbersome for the user. Moreover, less technically inclined users will not be able to judge whether a request is safe or not. Secondly, as can be seen from the `safe rule' exceptions, lots of possible attack vectors will have to be accounted for by the firewall. This will cause Noxes to be often lacking in security.
 
 \section{Cross site scripting countermeasures}\label{xss-countermeasures}
-% \subsubsection{Subdomain switching (SessionSafe)}%TODO
+
+Over the years, different solutions to \gls{xss} have been proposed, both at the server and at the client side. In this section, we describe the general principles behind these approaches, without going into too much details.
+
+\subsection{Server-side countermeasures}
+
+At the server side, two general categories of XSS countermeasures exist. The first one is that of \emph{input validation}, or \emph{filtering}, as is available in solutions like Sanctum's AppShield \cite{Klein2002}. In such an approach, all script code is stripped from user input, in order to prevent any user-submitted executable code to be sent to the browser. This is done either by removing certain substrings (e.g. \texttt{<script>} tags), or by replacing characters with their HTML-safe counterparts (e.g. replacing \texttt{\<} by \texttt{&lt;} and \texttt{\>} by \texttt{&gt;}), which will be converted back to the original character once they are rendered by the browser. A difficulty of such an approach is that it has to be able to recognize all different ways in which script code can be injected \cite{Jim2007}, including all possible encodings and taking into account browser quirks for different browsers \cite{Bisht2008}.
+
+A second category of server-side XSS countermeasures compares a version of the web page that does not contain user input to a version that does, and makes sure that the script code in both versions is the same. For example, XSS-Guard, developed by Bisht et al. \cite{Bisht2008}
+
+\subsection{Client-side countermeasures}
+% Vertellen dat geen van de oplossingen voldoende zijn om volledig te beschermen tegen XSS aanvallen
