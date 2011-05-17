@@ -399,9 +399,9 @@ Unfortunately, several hidden channels that can be used to transmit sensitive in
 
 % TODO: conclusie en comparison-tabel. Zeg ook iets dat session fixation bijina nooit solved is, en dat voor de oplossingen waarvoor eht wel zo is server moet aangepast worden.
 
-\begin{longtable}[htbp]
+\begin{longtable}{r|cccc}[htbp]
 	%\centering
-	\begin{tabular}{r|cccc}
+	%\begin{tabular}{r|cccc}
 		& Needs & Prevents & Prevents\\
 		& modification & session hijacking & session fixation\\
 		\hline
@@ -412,7 +412,7 @@ Unfortunately, several hidden channels that can be used to transmit sensitive in
 		SessionShield & client & &\\
 		Noxes & & &\\
 		Dynamic tainting & & &\\
-	\end{tabular}
+	%\end{tabular}
 	\caption{Comparison of different session attack countermeasures}
 	\label{tab:countermeasures}
 \end{longtable}
