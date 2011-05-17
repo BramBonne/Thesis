@@ -8,11 +8,11 @@
 \select@language {dutch}
 \select@language {english}
 \contentsline {chapter}{Preface}{i}{chapter*.1}
-\contentsline {chapter}{Abstract}{iii}{chapter*.2}
+\contentsline {chapter}{Abstract}{iv}{chapter*.2}
 \select@language {dutch}
-\contentsline {chapter}{Samenvatting}{iv}{chapter*.3}
+\contentsline {chapter}{Samenvatting}{v}{chapter*.3}
 \select@language {english}
-\contentsline {chapter}{List of Figures and Tables}{v}{chapter*.4}
+\contentsline {chapter}{List of Figures and Tables}{vi}{chapter*.4}
 \contentsline {chapter}{Glossary}{vii}{section*.7}
 \contentsline {chapter}{\chapternumberline {1}Introduction}{1}{chapter.1}
 \contentsline {chapter}{\chapternumberline {2}About web sessions}{3}{chapter.2}
@@ -62,41 +62,40 @@
 \contentsline {subsection}{\numberline {3.5.2}Via asynchronous requests}{22}{subsection.3.5.2}
 \contentsline {subsection}{\numberline {3.5.3}Via active network attacks}{23}{subsection.3.5.3}
 \contentsline {chapter}{\chapternumberline {4}Session attack countermeasures}{25}{chapter.4}
-\contentsline {section}{\numberline {4.1}Server-side countermeasures}{25}{section.4.1}
-\contentsline {subsection}{\numberline {4.1.1}General security measures}{25}{subsection.4.1.1}
-\contentsline {subsubsection}{Renewing the session identifier}{25}{section*.27}
-\contentsline {subsubsection}{Using HttpOnly cookies}{26}{section*.28}
-\contentsline {subsubsection}{Secure connections}{27}{section*.29}
-\contentsline {subsubsection}{Checking other request headers}{27}{section*.30}
-\contentsline {subsubsection}{Checking the IP address}{28}{section*.31}
-\contentsline {subsubsection}{Cookies vs. URL rewriting and form elements}{28}{section*.32}
-\contentsline {subsubsection}{Using an alternative to web sessions}{29}{section*.33}
-\contentsline {paragraph}{Logging in for every request}{29}{section*.34}
-\contentsline {paragraph}{HTTP-Auth}{29}{section*.35}
-\contentsline {paragraph}{HTTP-Digest}{30}{section*.36}
-\contentsline {paragraph}{SSL client certificates}{30}{section*.37}
-\contentsline {subsection}{\numberline {4.1.2}Session security in web application frameworks}{30}{subsection.4.1.2}
-\contentsline {subsubsection}{Tomcat}{30}{section*.38}
-\contentsline {subsubsection}{Alfresco}{31}{section*.39}
-\contentsline {subsubsection}{Ruby on Rails}{31}{section*.40}
-\contentsline {subsubsection}{Django}{32}{section*.41}
-\contentsline {subsubsection}{CherryPy}{32}{section*.42}
-\contentsline {subsubsection}{PHP}{33}{section*.43}
-\contentsline {subsubsection}{Drupal}{33}{section*.44}
-\contentsline {subsubsection}{Overview}{34}{section*.45}
-\contentsline {subsection}{\numberline {4.1.3}Stand-alone server countermeasures}{34}{subsection.4.1.3}
-\contentsline {subsubsection}{Deferred loading (SessionSafe)}{34}{section*.46}
-\contentsline {subsubsection}{SessionLock}{36}{section*.47}
-\contentsline {subsubsection}{One-time cookies}{37}{section*.48}
-\contentsline {subsubsection}{Session fixation solution by Johns et al.}{39}{section*.49}
-\contentsline {section}{\numberline {4.2}Client-side countermeasures}{40}{section.4.2}
-\contentsline {subsection}{\numberline {4.2.1}SessionShield}{41}{subsection.4.2.1}
-\contentsline {subsection}{\numberline {4.2.2}Noxes}{42}{subsection.4.2.2}
-\contentsline {subsection}{\numberline {4.2.3}Dynamic tainting and static analysis}{44}{subsection.4.2.3}
-\contentsline {section}{\numberline {4.3}Script injection countermeasures}{45}{section.4.3}
-\contentsline {subsection}{\numberline {4.3.1}Server-side countermeasures}{45}{subsection.4.3.1}
-\contentsline {subsection}{\numberline {4.3.2}Client-side countermeasures}{46}{subsection.4.3.2}
-\contentsline {subsection}{\numberline {4.3.3}Hybrid approaches}{47}{subsection.4.3.3}
+\contentsline {section}{\numberline {4.1}General security measures}{25}{section.4.1}
+\contentsline {subsection}{\numberline {4.1.1}Renewing the session identifier}{25}{subsection.4.1.1}
+\contentsline {subsection}{\numberline {4.1.2}Using HttpOnly cookies}{26}{subsection.4.1.2}
+\contentsline {subsection}{\numberline {4.1.3}Secure connections}{27}{subsection.4.1.3}
+\contentsline {subsubsection}{Checking other request headers}{27}{section*.27}
+\contentsline {subsection}{\numberline {4.1.4}Checking the IP address}{28}{subsection.4.1.4}
+\contentsline {subsection}{\numberline {4.1.5}Cookies vs. URL rewriting and form elements}{28}{subsection.4.1.5}
+\contentsline {subsection}{\numberline {4.1.6}Using an alternative to web sessions}{29}{subsection.4.1.6}
+\contentsline {subsubsection}{Logging in for every request}{29}{section*.28}
+\contentsline {subsubsection}{HTTP-Auth}{29}{section*.29}
+\contentsline {subsubsection}{HTTP-Digest}{30}{section*.30}
+\contentsline {subsubsection}{SSL client certificates}{30}{section*.31}
+\contentsline {section}{\numberline {4.2}Session security in web application frameworks}{30}{section.4.2}
+\contentsline {subsection}{\numberline {4.2.1}Tomcat}{30}{subsection.4.2.1}
+\contentsline {subsection}{\numberline {4.2.2}Alfresco}{31}{subsection.4.2.2}
+\contentsline {subsection}{\numberline {4.2.3}Ruby on Rails}{31}{subsection.4.2.3}
+\contentsline {subsection}{\numberline {4.2.4}Django}{32}{subsection.4.2.4}
+\contentsline {subsection}{\numberline {4.2.5}CherryPy}{32}{subsection.4.2.5}
+\contentsline {subsection}{\numberline {4.2.6}PHP}{33}{subsection.4.2.6}
+\contentsline {subsection}{\numberline {4.2.7}Drupal}{33}{subsection.4.2.7}
+\contentsline {subsection}{\numberline {4.2.8}Overview}{34}{subsection.4.2.8}
+\contentsline {section}{\numberline {4.3}Server-side countermeasures}{34}{section.4.3}
+\contentsline {subsection}{\numberline {4.3.1}Deferred loading (SessionSafe)}{34}{subsection.4.3.1}
+\contentsline {subsection}{\numberline {4.3.2}SessionLock}{36}{subsection.4.3.2}
+\contentsline {subsection}{\numberline {4.3.3}One-time cookies}{38}{subsection.4.3.3}
+\contentsline {subsection}{\numberline {4.3.4}Session fixation solution by Johns et al.}{39}{subsection.4.3.4}
+\contentsline {section}{\numberline {4.4}Client-side countermeasures}{40}{section.4.4}
+\contentsline {subsection}{\numberline {4.4.1}SessionShield}{41}{subsection.4.4.1}
+\contentsline {subsection}{\numberline {4.4.2}Noxes}{42}{subsection.4.4.2}
+\contentsline {subsection}{\numberline {4.4.3}Dynamic tainting and static analysis}{44}{subsection.4.4.3}
+\contentsline {section}{\numberline {4.5}Script injection countermeasures}{45}{section.4.5}
+\contentsline {subsection}{\numberline {4.5.1}Server-side countermeasures}{45}{subsection.4.5.1}
+\contentsline {subsection}{\numberline {4.5.2}Client-side countermeasures}{47}{subsection.4.5.2}
+\contentsline {subsection}{\numberline {4.5.3}Hybrid approaches}{48}{subsection.4.5.3}
 \contentsline {chapter}{\chapternumberline {5}A client-side solution to session fixation and session hijacking}{49}{chapter.5}
 \contentsline {section}{\numberline {5.1}Principle}{49}{section.5.1}
 \contentsline {section}{\numberline {5.2}Identifying session identifiers}{51}{section.5.2}
@@ -111,12 +110,13 @@
 \contentsline {section}{\numberline {5.5}Discussion}{55}{section.5.5}
 \contentsline {section}{\numberline {5.6}Extending with session hijacking protection}{56}{section.5.6}
 \contentsline {section}{\numberline {5.7}Comparison to other session attack countermeasures}{57}{section.5.7}
-\contentsline {subsection}{\numberline {5.7.1}HttpOnly}{57}{subsection.5.7.1}
-\contentsline {subsection}{\numberline {5.7.2}One-time cookies}{57}{subsection.5.7.2}
-\contentsline {subsubsection}{Session fixation solution by Johns et al.}{57}{section*.50}
-\contentsline {subsection}{\numberline {5.7.3}SessionShield}{57}{subsection.5.7.3}
+\contentsline {subsection}{\numberline {5.7.1}Renewing the session identifier}{57}{subsection.5.7.1}
+\contentsline {subsection}{\numberline {5.7.2}HttpOnly}{57}{subsection.5.7.2}
+\contentsline {subsection}{\numberline {5.7.3}Deferred loading (SessionSafe)}{57}{subsection.5.7.3}
+\contentsline {subsection}{\numberline {5.7.4}One-time cookies}{57}{subsection.5.7.4}
+\contentsline {subsection}{\numberline {5.7.5}SessionShield}{57}{subsection.5.7.5}
 \contentsline {chapter}{\chapternumberline {6}Conclusion}{59}{chapter.6}
-\contentsline {chapter}{Bibliography}{61}{section*.52}
+\contentsline {chapter}{Bibliography}{61}{section*.33}
 \select@language {dutch}
 \select@language {english}
 \select@language {dutch}

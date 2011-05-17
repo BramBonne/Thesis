@@ -165,7 +165,7 @@ Secure connections and secure cookies in Drupal are handled via PHP's mechanisms
 
 \subsection{Overview}
 
-An summary of session security in the discussed web application frameworks is given in Table \ref{tab:frameworks}. As we can see, the popular high-level frameworks in our list (RoR, Drupal, Django) provide pretty good protection against session attacks, which reinforces our recommendation to use a high-level framework whenever possible (see section \ref{use-framework}). However, care must be taken that the framework is configured correctly.
+A summary of session security in the discussed web application frameworks is given in Table \ref{tab:frameworks}. As we can see, the popular high-level frameworks in our list (RoR, Drupal, Django) provide pretty good protection against session attacks, which reinforces our recommendation to use a high-level framework whenever possible (see section \ref{use-framework}). However, care must be taken that the framework is configured correctly.
 
 \begin{table}[htb]
 	\centering
@@ -185,7 +185,7 @@ An summary of session security in the discussed web application frameworks is gi
 	\label{tab:frameworks}
 \end{table}
 
-\section{Stand-alone server countermeasures}\label{standalone-server}
+\section{Server-side countermeasures}\label{standalone-server}
 
 In this section, we describe some general server-side countermeasures to session hijacking and session fixation which are not part of any web framework.
 
@@ -262,7 +262,7 @@ Because the sequence number is part of the request, the server knows how many ti
 
 A major advantage of this approach is that, while users use HTTPS to authenticate (and thus never have their password sent in clear text), a secure connection is not required for subsequent requests. This eliminates the biggest drawback associated with using SSL, namely that of high costs (see section \ref{ssl}).
 
-Possible disadvantages of an approach that uses a new SID for every request were already discussed in section \ref{renewing}. However, two of these do not apply to this particular solution. Firstly, because future SIDs don't need to be explicitly issued by the server, problems with concurrent requests can be avoided by equipping every request with a higher sequence number than the previous one. Secondly, server synchronization is less of a problem because servers could be allowed to only check that a received sequence number is higher than the last one they received themselves. Note that this would permit an attacker to replay a one-time cookie, as long as he issues the request to a server different from the one the user issued his request to. Fortunately, the damage is limited by the fact that the one-time cookie can only be used to access one specific resource. If this policy is applied, synchronization between servers would be limited to the moment a user authenticates.
+Possible disadvantages of an approach that uses a new SID for every request were already discussed in section \ref{renewing}. However, two of these do not apply to this particular solution. Firstly, because future SIDs do not need to be explicitly issued by the server, problems with concurrent requests can be avoided by equipping every request with a higher sequence number than the previous one. Secondly, server synchronization is less of a problem because the policy of the servers could be relaxed by allowing any sequence number, as long as it is higher than the last one they received. In this case, subsequent requests by a client could be made to different servers, while synchronization between servers would be limited to the moments a user authenticates. Note that this policy would permit an attacker to replay a one-time cookie, as long as he issues the request to a server different from the one the user issued his request to. Fortunately, the damage is limited by the fact that the one-time cookie can only be used to access one specific resource.
 
 There are also some other disadvantages of one-time cookies. Compared to using regular session IDs over an unencrypted connection, both the client and the server need to perform more computations, and both have to keep more state. However, as is shown in the paper, using secure connections for every request is still much more computationally intensive \cite{Dacosta2011}. Thus, requiring some extra computation compared to using regular session IDs over an unencrypted connection could be considered a minor trade-off to be able to provide secure user authentication.
 
@@ -295,7 +295,7 @@ To see why this solution protects against login session fixation, consider the s
 
 To allow the proxy to detect when a user's authentication state changes, the web developer has to configure the proxy with the names of GET and POST parameters that contain password data. When such a parameter is present in a request, the proxy considers it as an authentication request and renews the user's PSID.
 
-The same solution could also be applied at the framework level, where it is often known which parameters contain password data. The disadvantage of such an approach would be that the solution is then tied to a specific framework, instead of universally deployable. Moreover, if the framework provides session management, a much better solution is to make it renew the SID on every authentication state change itself, instead of introducing a second SID (the PSID).
+The paper mentions that the same solution could also be applied at the framework level, where it is often known which parameters contain password data. The disadvantage of such an approach would be that the solution is then tied to a specific framework, instead of universally deployable. Moreover, if the framework provides session management, a much better solution is to make it renew the SID on every authentication state change itself, instead of introducing a second SID (the PSID).
 
 \section{Client-side countermeasures}
 
@@ -397,6 +397,26 @@ When it is detected that a web page tries to send tainted data to a third party,
 
 Unfortunately, several hidden channels that can be used to transmit sensitive information remain undetected by this solution \cite{Nikiforakis2010}. Moreover, Russo et al. described how the protection technique can be circumvented by both encoding secret information into the structure of the \gls{dom} tree and exploiting tree navigation \cite{Russo2009}. Another disadvantage of this solution stems from the fact that it needs to ask for user confirmation. This leads to the problems which were already discussed when describing Noxes.
 
+% TODO: conclusie en comparison-tabel. Zeg ook iets dat session fixation bijina nooit solved is, en dat voor de oplossingen waarvoor eht wel zo is server moet aangepast worden.
+
+\begin{table}[htbp]
+	\centering
+	\begin{tabular}{r|cccc}
+		& Needs & Prevents & Prevents\\
+		& modification & session hijacking & session fixation\\
+		\hline
+		Deferred loading & server & via JavaScript & no\\
+		SessionLock & server & via MitM \& \texttt{Referer} & no\\
+		One-time cookies & server \& client & yes\tnote{When using the same server for every request, session hijacking is prevented entirely. When using different servers, an attacker is prevented from accessing a resource different from the one the victim used the SID for.} & yes\\
+		Johns et al. & server & no & yes\\
+		SessionShield & client & &\\
+		Noxes & & &\\
+		Dynamic tainting & & &\\
+	\end{tabular}
+	\caption{Comparison of different session attack countermeasures}
+	\label{tab:countermeasures}
+\end{table}
+
 \section{Script injection countermeasures}\label{xss-countermeasures}
 
 Over the years, different solutions to \gls{xss} have been proposed, both at the server and at the client side. In this section, we describe the general principles behind these approaches, without going into too much details.
@@ -436,23 +456,3 @@ Hybrid approaches mitigate XSS attacks by letting the server define a policy, wh
 
 Another hybrid approach is that of `Browser Enforced Embedded Policies' (or BEEP for short), developed by Jim et al. in 2007 \cite{Jim2007}. Here, the server includes an additional JavaScript function in the response, which will enable the browser to check that the page it is included in does not include injected code. Whenever a browser that enforces BEEP encounters a script while rendering a page, it invokes this special function with an identifier of the JavaScript code as its argument. If the function returns \texttt{true} then the script is deemed acceptable and will be executed; otherwise it will be ignored. The browser describes two possible policies that can be implemented in such a JavaScript function: \emph{whitelisting}, in which the function returns \texttt{true} if the SHA1 hash of its argument corresponds with one of the `safe hashes' included in a whitelist, and \emph{\gls{dom} sandboxing}, in which parts of the web page that include user content are marked by setting their \texttt{class} attribute to \texttt{noexecute}. In this second policy, the function checks that its argument is not part of such a sandbox, and returns \texttt{false} if it is, preventing execution of the JavaScript code.
 
-
-% TODO: conclusie en comparison-tabel
-
-\begin{table}[htb]
-	\centering
-	\begin{tabular}{r|cccc}
-		& Server-side & Client-side & Session hijacking protection & Session fixation protection\\
-		& on auth & cookie-based SIDs & SSL session cookies\\
-		\hline
-		Tomcat & since version 6 & implementable & default\\
-		Alfresco & no & implementable & default\\
-		RoR & configurable & yes & configurable\\
-		Django & yes & yes & configurable\\
-		CherryPy & no & yes & configurable\\
-		PHP & no & configurable & configurable\\
-		Drupal & since version 5.9/6.3 & yes & via module\\
-	\end{tabular}
-	\caption{Comparison of session security in different web application frameworks}
-	\label{tab:countermeasures}
-\end{table}

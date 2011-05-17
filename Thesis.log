@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2011.4.11)  17 MAY 2011 10:38
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2011.4.11)  17 MAY 2011 11:16
 entering extended mode
  %&-line parsing enabled.
 **/home/bram/School/Masterproef/Thesis/Thesis.tex
@@ -461,6 +461,22 @@ File: listings.cfg 2007/02/22 1.4 listings configuration
 ))
 Package: listings 2007/02/22 1.4 (Carsten Heinz)
 
+(/usr/share/texmf-texlive/tex/latex/rotating/rotating.sty
+Package: rotating 2009/03/28 v2.16a rotated objects in LaTeX
+
+(/usr/share/texmf-texlive/tex/latex/base/ifthen.sty
+Package: ifthen 2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
+)
+\c@r@tfl@t=\count153
+\rotFPtop=\skip178
+\rotFPbot=\skip179
+\rot@float@box=\box30
+\rot@mess@toks=\toks24
+)
+(/usr/share/texmf-texlive/tex/latex/ltxmisc/threeparttable.sty
+Package: threeparttable 2003/06/13  v 3.0
+\@tempboxb=\box31
+)
 (/usr/share/texmf-texlive/tex/latex/base/fontenc.sty
 Package: fontenc 2005/09/27 v1.99g Standard LaTeX package
 
@@ -505,11 +521,11 @@ LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
 )
 (/usr/share/texmf-texlive/tex/latex/microtype/microtype.sty
 Package: microtype 2009/03/27 v2.3d Micro-typography with pdfTeX (RS)
-\MT@toks=\toks24
-\MT@count=\count153
+\MT@toks=\toks25
+\MT@count=\count154
 LaTeX Info: Redefining \lsstyle on input line 1608.
 LaTeX Info: Redefining \lslig on input line 1608.
-\MT@outer@space=\skip178
+\MT@outer@space=\skip180
 LaTeX Info: Redefining \textls on input line 1616.
 \MT@outer@kern=\dimen162
 LaTeX Info: Redefining \textmicrotypecontext on input line 2167.
@@ -533,8 +549,8 @@ O)
 Package: xcolor-patch 2009/10/02 xcolor patch
 ))
 \@linkdim=\dimen163
-\Hy@linkcounter=\count154
-\Hy@pagecounter=\count155
+\Hy@linkcounter=\count155
+\Hy@pagecounter=\count156
 
 (/usr/share/texmf-texlive/tex/latex/hyperref/pd1enc.def
 File: pd1enc.def 2009/10/09 v6.79a Hyperref: PDFDocEncoding definition (HO)
@@ -598,10 +614,10 @@ Package pdftexcmds Info: LuaTeX not detected.
 Package pdftexcmds Info: \pdf@primitive is available.
 Package pdftexcmds Info: \pdf@ifprimitive is available.
 )))
-\Fld@menulength=\count156
+\Fld@menulength=\count157
 \Field@Width=\dimen164
 \Fld@charsize=\dimen165
-\Field@toks=\toks25
+\Field@toks=\toks26
 Package hyperref Info: Hyper figures OFF on input line 4377.
 Package hyperref Info: Link nesting OFF on input line 4382.
 Package hyperref Info: Hyper index ON on input line 4385.
@@ -613,32 +629,29 @@ Package hyperref Info: PDF/A mode OFF on input line 4407.
 (/usr/share/texmf-texlive/tex/generic/oberdiek/atbegshi.sty
 Package: atbegshi 2008/07/31 v1.9 At begin shipout hook (HO)
 )
-\Hy@abspage=\count157
-\c@Item=\count158
+\Hy@abspage=\count158
+\c@Item=\count159
 )
 (/usr/share/texmf-texlive/tex/latex/memoir/memhfixc.sty
 Package: memhfixc 2009/02/06 v1.12 nameref/hyperref package fixes for memoir cl
 ass
-\c@memhycontfloat=\count159
+\c@memhycontfloat=\count160
 )
 *hyperref using default driver hpdftex*
 (/usr/share/texmf-texlive/tex/latex/hyperref/hpdftex.def
 File: hpdftex.def 2009/10/09 v6.79a Hyperref driver for pdfTeX
-\Fld@listcount=\count160
+\Fld@listcount=\count161
 )
 (/usr/share/texmf-texlive/tex/latex/glossaries/base/glossaries.sty
 Package: glossaries 2009/09/23 v2.03 (NLCT)
 
-(/usr/share/texmf-texlive/tex/latex/base/ifthen.sty
-Package: ifthen 2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
-)
 (/usr/share/texmf-texlive/tex/latex/xkeyval/xkeyval.sty
 Package: xkeyval 2008/08/13 v2.6a package option processing (HA)
 
 (/usr/share/texmf-texlive/tex/generic/xkeyval/xkeyval.tex
-\XKV@toks=\toks26
-\XKV@tempa@toks=\toks27
-\XKV@depth=\count161
+\XKV@toks=\toks27
+\XKV@tempa@toks=\toks28
+\XKV@depth=\count162
 File: xkeyval.tex 2008/08/13 v2.6a key=value parser (HA)
 ))
 (/usr/share/texmf-texlive/tex/latex/glossaries/base/mfirstuc.sty
@@ -649,7 +662,7 @@ Package: xfor 2009/02/05 v1.05 (NLCT)
 )
 (/usr/share/texmf-texlive/tex/latex/amsmath/amsgen.sty
 File: amsgen.sty 1999/11/30 v2.0
-\@emptytoks=\toks28
+\@emptytoks=\toks29
 \ex@=\dimen166
 )
 (/usr/share/texmf-texlive/tex/latex/translator/translator.sty
@@ -660,9 +673,9 @@ Package: translator 2007/03/11 ver 1.00
 
 Package glossaries Warning: overriding \glossarymark on input line 321.
 
-\gls@level=\count162
-\@gls@tmpb=\toks29
-\gls@tmplen=\skip179
+\gls@level=\count163
+\@gls@tmpb=\toks30
+\gls@tmplen=\skip181
 \istfile=\write4
 
 Package glossaries Warning: Overriding \printglossary on input line 2118.
@@ -676,56 +689,41 @@ Package: glossary-hypernav 2007/07/04 v1.01 (NLCT)
 )
 (/usr/share/texmf-texlive/tex/latex/glossaries/styles/glossary-list.sty
 Package: glossary-list 2009/05/30 v2.01 (NLCT)
-\glslistdottedwidth=\skip180
+\glslistdottedwidth=\skip182
 )
 (/usr/share/texmf-texlive/tex/latex/glossaries/styles/glossary-long.sty
 Package: glossary-long 2009/05/30 v2.01 (NLCT)
 
 (/usr/share/texmf-texlive/tex/latex/tools/longtable.sty
 Package: longtable 2004/02/01 v4.11 Multi-page Table package (DPC)
-\LTleft=\skip181
-\LTright=\skip182
-\LTpre=\skip183
-\LTpost=\skip184
-\LTchunksize=\count163
+\LTleft=\skip183
+\LTright=\skip184
+\LTpre=\skip185
+\LTpost=\skip186
+\LTchunksize=\count164
 \LTcapwidth=\dimen167
-\LT@head=\box30
-\LT@firsthead=\box31
-\LT@foot=\box32
-\LT@lastfoot=\box33
-\LT@cols=\count164
-\LT@rows=\count165
-\c@LT@tables=\count166
-\c@LT@chunks=\count167
-\LT@p@ftn=\toks30
+\LT@head=\box32
+\LT@firsthead=\box33
+\LT@foot=\box34
+\LT@lastfoot=\box35
+\LT@cols=\count165
+\LT@rows=\count166
+\c@LT@tables=\count167
+\c@LT@chunks=\count168
+\LT@p@ftn=\toks31
 )
-\glsdescwidth=\skip185
-\glspagelistwidth=\skip186
+\glsdescwidth=\skip187
+\glspagelistwidth=\skip188
 )
 (/usr/share/texmf-texlive/tex/latex/glossaries/styles/glossary-super.sty
 Package: glossary-super 2009/05/30 v2.01 (NLCT)
 
 (/usr/share/texmf-texlive/tex/latex/supertabular/supertabular.sty
 Package: supertabular 2004/02/20 v4.1e the supertabular environment
-\c@tracingst=\count168
+\c@tracingst=\count169
 \ST@wd=\dimen168
-\ST@rightskip=\skip187
-\ST@leftskip=\skip188
-\ST@parfillskip=\skip189
+\ST@rightskip=\skip189
+\ST@leftskip=\skip190
+\ST@parfillskip=\skip191
 \ST@pageleft=\dimen169
 \ST@headht=\dimen170
-\ST@tailht=\dimen171
-\ST@pagesofar=\dimen172
-\ST@pboxht=\dimen173
-\ST@lineht=\dimen174
-\ST@stretchht=\dimen175
-\ST@prevht=\dimen176
-\ST@toadd=\dimen177
-\ST@dimen=\dimen178
-\ST@pbox=\box34
-))
-(/usr/share/texmf-texlive/tex/latex/glossaries/styles/glossary-tree.sty
-Package: glossary-tree 2009/01/14 v1.01 (NLCT)
-\glstreeindent=\skip190
-))
-\glo@main@fil

@@ -19,6 +19,7 @@
 \contentsline {table}{\numberline {3.1}{\ignorespaces Comparison of different methods for forcing a browser to make a request}}{23}{table.3.1}
 \addvspace {10pt}
 \contentsline {table}{\numberline {4.1}{\ignorespaces Comparison of session security in different web application frameworks}}{34}{table.4.1}
+\contentsline {table}{\numberline {4.2}{\ignorespaces Comparison of different session attack countermeasures}}{45}{table.4.2}
 \addvspace {10pt}
 \contentsline {table}{\numberline {5.1}{\ignorespaces The client-side policy for preventing session fixation}}{51}{table.5.1}
 \addvspace {10pt}
