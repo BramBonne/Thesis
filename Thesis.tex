@@ -31,6 +31,21 @@
 
 \begin{document}
 
+\lstdefinelanguage{JavaScript} {
+    morekeywords={
+        break,const,continue,delete,do,while,export,for,in,function,
+        if,else,import,in,instanceOf,label,let,new,return,switch,this,
+        throw,try,catch,typeof,var,void,with,yield,
+        },
+    sensitive=false,
+    morecomment=[l]{//},
+    morecomment=[s]{/*}{*/},
+    morestring=[b]",
+    morestring=[d]',
+    alsoletter={.}
+}
+
+
 \begin{preface}
 I'd like to thank Lieven Desmet and Frank Piessens, my promotors, and Philippe De Ryck and Nick Nikiforakis, my supervisors, for suggestions and feedback. Lastly, thanks go out to all people who tested the extension.
 \end{preface}

@@ -4,44 +4,46 @@ The style file: plainurl.bst
 Database file #1: /home/bram/Documenten/library.bib
 Database file #2: /home/bram/Documenten/rfc.bib
 Database file #3: /home/bram/Documenten/extra.bib
-You've used 109 entries,
+Warning--empty note in FlashJSattack
+You've used 119 entries,
             2760 wiz_defined-function locations,
-            1294 strings with 25011 characters,
-and the built_in function-call counts, 40799 in all, are:
-= -- 4443
-> -- 1263
-< -- 19
-+ -- 511
-- -- 402
-* -- 1776
-:= -- 5838
-add.period$ -- 381
-call.type$ -- 109
-change.case$ -- 529
+            1356 strings with 26799 characters,
+and the built_in function-call counts, 44902 in all, are:
+= -- 4903
+> -- 1382
+< -- 23
++ -- 559
+- -- 440
+* -- 1955
+:= -- 6412
+add.period$ -- 417
+call.type$ -- 119
+change.case$ -- 578
 chr.to.int$ -- 0
-cite$ -- 109
-duplicate$ -- 1274
-empty$ -- 4184
-format.name$ -- 402
-if$ -- 10593
+cite$ -- 120
+duplicate$ -- 1413
+empty$ -- 4586
+format.name$ -- 440
+if$ -- 11659
 int.to.chr$ -- 0
-int.to.str$ -- 109
-missing$ -- 42
-newline$ -- 592
-num.names$ -- 218
-pop$ -- 1320
+int.to.str$ -- 119
+missing$ -- 46
+newline$ -- 646
+num.names$ -- 238
+pop$ -- 1435
 preamble$ -- 1
-purify$ -- 419
+purify$ -- 458
 quote$ -- 0
-skip$ -- 2897
+skip$ -- 3188
 stack$ -- 0
-substring$ -- 1060
-swap$ -- 252
-text.length$ -- 19
+substring$ -- 1217
+swap$ -- 292
+text.length$ -- 23
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 428
-warning$ -- 0
-while$ -- 273
-width$ -- 112
-write$ -- 1224
+type$ -- 468
+warning$ -- 1
+while$ -- 305
+width$ -- 122
+write$ -- 1337
+(There was 1 warning)

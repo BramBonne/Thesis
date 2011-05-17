@@ -56,12 +56,13 @@ An example of this is a search form, where a website returns the query the user 
 Another example of a scenario where a web application might return data present in the URL is the `Page not found' error page \cite{Kirda2006}. Here, the name of the page that could not be found is often included as part of the error message. Thus, an attacker can craft a link wherein a page with name \texttt{<script>alert("XSS succeeded");</script>} is requested. The browser of a client opening this link will then execute the JavaScript code.
 
 \subsection{Including the script code}\label{injecting-script}
-There are multiple ways in which script code can be included in a web page. Since all of these can be leveraged by an attacker to inject his code, it is important that web developers are aware of all of them. T. Jim et al. give a good overview of different approaches to including JavaScript code \cite{Jim2007}. We describe the most important ones here:
+There are multiple ways in which script code can be included in a web page. Since all of these can be leveraged by an attacker to inject his code, it is important that web developers are aware of all of them. T. Jim et al. give a good overview of different approaches to including JavaScript code \cite{Jim2007}. We describe the most important ones, including one that wasn't presented in \cite{Jim2007}, here:
 \begin{description}
 	\item[between \texttt{<script>} tags] This is the most obvious way of including JavaScript in a web page. All code between these tags will be executed as soon as the browser encounters it.
 	\item[using the \texttt{<script>} tag's \texttt{src} parameter] This parameter can be set to point to an external piece of JavaScript. As such, an attacker is able to make a website load JavaScript code from another domain. This method of injecting script code gives the attacker the advantage that the actual injected string is shorter, bypassing message length limits. An even more important advantage for an attacker using this method is described in section \ref{xss-problem}.
 	\item[as the URL of the background image] An attacker can insert a tag similar to \texttt{<div style="background-image: url(javascript:alert('XSS');" />} or \texttt{<style>.bar\{background-image:url("javascript:alert('XSS');");\}</style>} (where \texttt{bar} is the class of an object in the page) to make the browser execute JavaScript, thinking it is loading the background image.
 	\item[using JavaScript handlers for page elements] It is possible to specify a JavaScript that should be triggered when a certain action occurs on an element in a web page. For example, the \texttt{onload} parameter of the \texttt{<body>} tag is used to specify JavaScript code that should be run when once the browser has completed loading the page. Two other examples are the \texttt{onclick} and \texttt{onblur} parameter, which can be specified for different kinds of tags, with \texttt{<p>} (which indicates a paragraph) and \texttt{<a>} (which indicates a link) being two possibilities. These parameters specify, for a certain object on the page, the JavaScript function to be executed when the object is clicked, and the function to be executed when the object loses focus, respectively.
+	\item[via binary objects] If an attacker is able to include a binary object into the page, he can use this object to execute JavaScript code \cite{Bisht2008}. For example, Flash applets allow running JavaScript code by using either the \texttt{getURL()} or the \texttt{fscommand()} function \cite{FlashJSattack,FlashJS,FlashCookie}.
 \end{description}
 
 It must also be noted that attackers can use different possible encodings to inject JavaScript, so as to circumvent server-side JavaScript checkers, while still being able to execute at the client side \cite{Jim2007}. For example, the encoding of (parts of) a web page can be changed using the \texttt{encoding} and \texttt{charset} attributes of various \gls{html} tags \cite{Ishida2010}. Some browsers also allow strings to contain JavaScript that is split over multiple lines \cite{Jim2007}. Lastly, JavaScript can be split over multiple  \texttt{<![CDATA[\dots]]>} tags, making it much harder to detect.
@@ -202,7 +203,7 @@ It seems that the only benefit an attacker has from performing a session fixatio
 \end{itemize}
 A distinction must be made between the previously described scenario, wherein an attacker tricks the user into logging in with a predefined SID, and the scenarios described in this section. We will use the term \emph{\gls{login session fixation}} to refer to the first variation, while using just \emph{session fixation} to refer to the general class of session fixation attacks.
 
-As we can see, the session fixation attack is more venomous than would be expected when first looked upon. A partial client-side solution to session fixation is described in chapter \ref{fixation-solution}.
+As we can see, the session fixation attack is more venomous than would be expected when first looked upon. Because of this, we propose a client-side solution to the session fixation attack in chapter \ref{fixation-solution}.
 
 \section{Cross Site Request Forgery}\label{csrf}
 
@@ -276,7 +277,7 @@ The simplest method for an attacker to make a victim's browser issue a request i
 \subsection{Via asynchronous requests}\label{asynch}
 
 If the attacker is able to perform a \gls{xss} attack, he can inject JavaScript code which uses the \texttt{XMLHttpRequest} object to perform an asynchronous HTTP request. The complete specification of this object is available at \cite{Kesteren:09:X}. We only provide the following small example of its use \cite{Binny2010}:
-\begin{lstlisting}[language=HTML,breaklines=true]
+\begin{lstlisting}[language=JavaScript,breaklines=true]
 var client = new XMLHttpRequest();
 client.open("POST", "transfer.php");
 params = "to=attacker&amount=50000";

@@ -1,10 +1,10 @@
-\chapter{A client-side solution to session fixation}\label{fixation-solution}
+\chapter{A client-side solution to session fixation and session hijacking}\label{fixation-solution}
 % TODO: maak dit algemeen voor session fixation en session hijacking
 In this chapter, we propose a client-side solution to the \gls{session fixation} attack described in section \ref{fixation}. This proposed solution was also submitted as a paper, co-authored by Philippe De Ryck, Nick Nikiforakis, Lieven Desmet and Frank Piessens, to the W2SP 2011 conference \cite{Bonne2011}. This chapter includes some of their wordings and data.
 
-The reason for developing a solution at the client side is that the user incentive for using a web application that is secure is often larger than the web developer incentive for creating one \cite{Johns2011}. To our knowledge, there exists no other practical client-side solution to this attack.
+The reason for developing a solution at the client side is that the user incentive for using a web application that is secure is often larger than the web developer incentive for creating one \cite{Johns2011}. To our knowledge, there exists no other practical client-side solution to this attack \cite{Bonne2011}.
 
-Out of the methods for injecting a \gls{session id} described in section \ref{injecting-sid}, we consider \gls{xss} and \texttt{<meta>}-tag injection the most important. These injection attacks have a high severity rating \cite{Williams2010} and lots of websites are vulnerable \cite{Brown2010}. Ideally, these problems would be solved by finding a complete solution to XSS attacks. Unfortunately, as we saw in section \ref{xss-countermeasures}, solutions to XSS are often lacking. Other attack vectors, such as URL rewriting, subdomain cookie setting and response splitting are considered out of scope because either a client-side solution would be unable to distinguish between legitimate SIDs and forged SIDs, or because they exploit a bug at the browser or proxy level.
+Out of the methods for injecting a \gls{session id} described in section \ref{injecting-sid}, we consider \gls{xss} and \texttt{<meta>}-tag injection the most important. These injection attacks have a high severity rating \cite{Williams2010} and lots of websites are vulnerable \cite{Brown2010}. Ideally, these problems would be solved by finding a complete solution to XSS attacks. Unfortunately, as we saw in section \ref{xss-countermeasures}, solutions to XSS are often lacking, and few have been developed that work exclusively at the client side. Other attack vectors, such as URL rewriting, subdomain cookie setting and response splitting are considered out of scope because either a client-side solution would be unable to distinguish between legitimate SIDs and forged SIDs, or because they exploit a bug at the browser or proxy level.
 
 We first discuss the client-side policy that was developed to counter session fixation. Afterwards, we implement this policy as a Firefox add-on, and we provide a thorough evaluation. Lastly, we describe how the add-on was extended to also provide a solution to the session hijacking attack.
 
@@ -155,9 +155,19 @@ The policy extension is implemented in our add-on by adding the \texttt{HttpOnly
 
 In this section, we compare our solution to some of the countermeasures from the previous chapter. Afterwards, we give an overview of the countermeasures, and which scenarios they protect against. %TODO
 
+\subsection{Renewing the session identifier}
+
+% Hier Johns et al. vermelden
+% Stellen voor om proxy ook aan client-side toe te passen in paper, gaat niet zie onze paper
+% Configureren van elke server is niet haalbaar voor client-side solution, dus: heuristieken (wordt ook in de paper voorgesteld)
+
 \subsection{HttpOnly}\label{httponlyremark}
 
 %TODO: verwijzen naar \ref{httponly}
+
+\subsection{Deferred loading (SessionSafe)}
+
+% Belang van session cookies unavailable maken voor JavaScript
 
 \subsection{One-time cookies}
 
@@ -165,10 +175,6 @@ In this section, we compare our solution to some of the countermeasures from the
 % Om deze reden OTC niet beschikbaar via JS.
 % Moet aan server kant geïmplementeerd worden
 
-\subsubsection{Session fixation solution by Johns et al.}
-
-% Stellen voor om proxy ook aan client-side toe te passen in paper, gaat niet zie onze paper
-% Configureren van elke server is niet haalbaar voor client-side solution, dus: heuristieken (wordt ook in de paper voorgesteld)
 
 \subsection{SessionShield}
 % Kritisch: hoe lost dit javascript cookies op?

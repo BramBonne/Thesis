@@ -6,6 +6,6 @@ More than in the past, these web applications deal with sensitive personal infor
 
 User authentication is handled in most web applications via the concept of web sessions. These allow users to use a web application without having to enter their login credentials for every action. Unfortunately, sessions have many security weaknesses. OWASP, a leading organization in the field of web application security, rates `Broken Authentication and Session Management' as the third most important web application security risk \cite{Williams2010}.
 
-In this thesis, the security of sessions in web applications is examined.
+In this thesis, the security of sessions in web applications is examined. For this, we first study some well-known, and some lesser known methods in which user sessions can be abused by an attacker. We then present some generalized methods for protecting against these attacks. Afterwards, we conduct a thorough examiniation of the application of these protections in web frameworks and in more specific attack countermeasures. We conclude by developing a client-side solution to the session fixation attack. This is, to our knowledge, the first attempt to solving session fixation at the client side.
 
 % Johns2011 provides the first work about session fixation solution, and acknowledges its importance. We created the first client-side countermeasure against session fixation.

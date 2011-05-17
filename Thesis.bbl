@@ -70,6 +70,15 @@ T.~Berners-Lee, R.~Fielding, and L.~Masinter.
 \newblock RFC 3986 (Standard), January 2005.
 \newblock Available from: \url{http://www.ietf.org/rfc/rfc3986.txt}.
 
+\bibitem{Bisht2008}
+Prithvi Bisht and V.N. Venkatakrishnan.
+\newblock {XSS-GUARD: precise dynamic prevention of cross-site scripting
+  attacks}.
+\newblock {\em Detection of Intrusions and Malware, and Vulnerability
+  Assessment}, pages 23--43, 2008.
+\newblock Available from:
+  \url{http://www.springerlink.com/index/8561322615176852.pdf}.
+
 \bibitem{ChickenFoot}
 Michael Bolin, Matthew Webber, Philip Rha, Tom Wilson, and Robert~C. Miller.
 \newblock {Automation and customization of rendered web pages}.
@@ -471,6 +480,11 @@ Ziqing Mao, Ninghui Li, and Ian Molloy.
 \newblock Available from:
   \url{http://www.springerlink.com/index/f0507054g3r6630h.pdf}.
 
+\bibitem{NoScript}
+Giorgio Maone.
+\newblock {NoScript: Features}, 2011.
+\newblock Available from: \url{http://noscript.net/features}.
+
 \bibitem{McMahon2010}
 Paul McMahon.
 \newblock {Enabling url parameter based sessions in Ruby on Rails}, 2010.
@@ -521,11 +535,31 @@ Nick Nikiforakis, Wannes Meert, Yves Younan, Martin Johns, and Wouter Joosen.
 \newblock Available from:
   \url{http://www.securitee.org/files/sshield\_essos2011.pdf}.
 
+\bibitem{Nikiforakis2010a}
+Nick Nikiforakis, Yves Younan, and Wouter Joosen.
+\newblock {HProxy: client-side detection of SSL stripping attacks}.
+\newblock {\em Detection of Intrusions and Malware, and Vulnerability
+  Assessment}, pages 200--218, 2010.
+\newblock Available from:
+  \url{http://www.springerlink.com/index/2h213654j1u56680.pdf}.
+
+\bibitem{FlashJSattack}
+{Obscure (EyeOnSecurity)}.
+\newblock {Bypassing JavaScript Filters -- the Flash! Attack}.
+\newblock 2002.
+\newblock Available from: \url{http://eyeonsecurity.org/papers/flash-xss.htm}.
+
 \bibitem{OWASP2009a}
 OWASP.
 \newblock {Insufficient Session-ID Length}, 2009.
 \newblock Available from:
   \url{https://www.owasp.org/index.php/Insufficient\_Session-ID\_Length}.
+
+\bibitem{NoScriptCriticism}
+Wladimir Palant.
+\newblock {Adblock Plus and (a little) more}, 2009.
+\newblock Available from:
+  \url{http://adblockplus.org/blog/attention-noscript-users}.
 
 \bibitem{Park2000}
 Joon~S. Park and Ravi Sandhu.
@@ -536,6 +570,12 @@ Joon~S. Park and Ravi Sandhu.
   \href {http://dx.doi.org/10.1109/4236.865085}
   {\path{doi:10.1109/4236.865085}}.
 
+\bibitem{FlashCookie}
+F.~Permadi.
+\newblock {Reading and writing cookie}.
+\newblock Available from:
+  \url{http://www.permadi.com/tutorial/flashCookie/index.html}.
+
 \bibitem{PHPURLrewriting}
 {PHP Developers}.
 \newblock {Passing the Session ID}, 2011.
@@ -545,8 +585,8 @@ Joon~S. Park and Ravi Sandhu.
 \bibitem{PHPregenerate}
 {PHP Developers}.
 \newblock session\_regenerate\_id(), 2011.
-\newblock Available from: \url{http://www.php.net/
-  manual/de/function.session-regenerate-id.php}.
+\newblock Available from:
+  \url{http://www.php.net/manual/en/function.session-regenerate-id.php}.
 
 \bibitem{PHPsessionCookieParams}
 {PHP Developers}.
@@ -565,6 +605,18 @@ et/}.
 {Ruby on Rails developers}.
 \newblock {Real applications live in the wild}, 2011.
 \newblock Available from: \url{http://rubyonrails.org/applications}.
+
+\bibitem{SignedScripts}
+Jesse Ruderman.
+\newblock {Signed Scripts in Mozilla}, 2011.
+
+\bibitem{Russo2009}
+Alejandro Russo, Andrei Sabelfeld, and Andrey Chudnov.
+\newblock {Tracking information flow in dynamic tree structures}.
+\newblock In {\em 14th European Symposium on Research in Computer Security
+  (ESORICS’09)}, pages 86--103. Springer, 2009.
+\newblock Available from:
+  \url{http://www.springerlink.com/index/d536t14243q50512.pdf}.
 
 \bibitem{Schrank2010}
 Micha\"{e}l Schrank, Bastian Braun, Martin Johns, and Joachim Posegga.
@@ -618,6 +670,11 @@ William Stallings.
 \newblock {\em {Network Security Essentials: Applications and Standards}},
   chapter~5, pages 153--188.
 \newblock Pearson International, 4th edition, 2011.
+
+\bibitem{FlashJS}
+Adobe Systems.
+\newblock {Coding data exchange between JavaScript and Flash Player}, 2010.
+\newblock Available from: \url{http://kb2.adobe.com/cps/156/tn\_15683.html}.
 
 \bibitem{Tappenden2009}
 Andrew~F. Tappenden and James Miller.
@@ -730,6 +787,16 @@ lication\_frameworks}.
 Jeff Williams and Dave Wichers.
 \newblock {OWASP top 10}.
 \newblock Technical report, OWASP, 2010.
+
+\bibitem{Wurzinger2009}
+Peter Wurzinger, Christian Platzer, Christian Ludl, Engin Kirda, and
+  Christopher Kruegel.
+\newblock {SWAP: Mitigating XSS attacks using a reverse proxy}.
+\newblock In {\em 2009 ICSE Workshop on Software Engineering for Secure
+  Systems}, pages 33--39, Vancouver, BC, 2009. IEEE.
+\newblock Available from:
+  \url{http://www.computer.org/portal/web/csdl/doi/10.1109/IWSESS.2009.5068456%
+}.
 
 \bibitem{Zalewski2006}
 Michal Zalewski.
