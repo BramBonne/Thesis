@@ -334,6 +334,8 @@ To identify which cookies are session cookies, SessionShield uses a sophisticate
 
 SessionShield works in much the same way as \texttt{HttpOnly} cookies, but takes it one step further: it makes sure that cookies will never be visible in the browser, preventing an attacker from reading cookies even if he is able to seize control over the victim's browser in any way. This not only prevents session hijacking via \gls{xss} attacks, it also prevents rogue browser extensions from capturing a user's session cookie \cite{TerLouw2007}. Another advantage SessionShield has over HttpOnly is that it works at the client side, allowing the user to be secure even when the web application fails to set the \texttt{HttpOnly} flag for all session cookies.
 
+Note that SessionShield does not protect against session fixation attacks. Indeed, while SessionShield attaches additional cookies from his own cookie store, it does not strip any cookies it received from the browser. Because of this, an attacker is still able to inject a cookie in the user's browser, which will then be forwarded via SessionShield to the web server.
+
 A disadvantage of implementing SessionShield as a proxy occurs when different browsers are using SessionShield at the same time. In this case, the proxy will attach cookies that were set for one browser to the other browser's outgoing requests, causing the user to be authenticated in both browsers when he has only explicitly logged in with one of them. Moreover, clearing private data in the browser, or using the browser's `private browsing' functionality, has no effect on SessionShield, causing the user to be authenticated even when he expects not to be. We will discuss other advantages and disadvantages of implementing such a policy as a browser extension instead of a proxy in the next chapter.
 
 \subsection{Noxes}\label{noxes}
@@ -401,7 +403,8 @@ Unfortunately, several hidden channels that can be used to transmit sensitive in
 
 \begin{table}[htbp]
 	\centering
-	\begin{tabularx}{\textwidth}{r|cccc}
+	\begin{minipage}{\textwidth}
+	\begin{tabular}{r|cccc}
 		& Needs & Prevents & Prevents\\
 		& modification & session hijacking & session fixation\\
 		\hline
@@ -409,10 +412,11 @@ Unfortunately, several hidden channels that can be used to transmit sensitive in
 		SessionLock & server & via MitM \& \texttt{Referer} & no\\
 		One-time cookies & server \& client & yes\footnote{When using the same server for every request, session hijacking is prevented entirely. When using different servers, an attacker is prevented from accessing a resource different from the one the victim used the SID for.} & yes\\
 		Johns et al. & server & no & yes\\
-		SessionShield & client & &\\
-		Noxes & & &\\
-		Dynamic tainting & & &\\
-	\end{tabularx}
+		SessionShield & client & via the browser & no\\
+		Noxes & client & via JavaScript (incomplete) & no\\
+		Dynamic tainting & client & via JavaScript (incomplete) & no\\
+	\end{tabular}
+	\end{minipage}
 	\caption{Comparison of different session attack countermeasures}
 	\label{tab:countermeasures}
 \end{table}
