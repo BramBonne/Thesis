@@ -8,7 +8,7 @@ Out of the methods for injecting a \gls{session id} described in section \ref{in
 
 We first discuss the client-side policy that was developed to counter session fixation. Afterwards, we implement this policy as a Firefox add-on, and we provide a thorough evaluation. Lastly, we describe how the add-on was extended to also provide a solution to the session hijacking attack.
 
-\section{Principle}
+\section{Principle}\label{principle}
 
 The reasoning behind the client-side solution developed is that session IDs will never be set over an untrusted channel, only to be requested over a trusted channel later on. We consider \gls{http} to be trusted, since this channel is controlled entirely by the web server. As an untrusted channel we consider elements in the web page itself, such as JavaScript and \texttt{<meta>} tags, because they often contain user input. The assumption made is thus that most websites will set their session identifiers via HTTP, and that websites that don't will never request the SID via this channel. As we will see in section \ref{evaluation}, this assumption is valid for all practical use.
 
@@ -30,12 +30,14 @@ The solution has the form of a proxy that is located at the client-side. As a ba
 
 We want to apply the policy only to \glspl{session cookie}, instead of all cookies. To see why, consider the scenario where a user can set the theme of the current web page by clicking a button\footnote{The website \url{http://www.last.fm}, for example, allows a logged in user to set his theme by clicking the `paint it black' link at the top of the site.}. Because this theme can immediately be applied (by changing the page's css style on the fly), there is no need to send an extra HTTP request to refresh the page. To make this style change persistent, a cookie has to be set in the user's browser. To avoid the need for another HTTP request and response, this cookie is set using JavaScript. Subsequent requests will however send this cookie over HTTP, to make sure that the returned page is using the correct style. If no distinction is made between session cookies and other cookies, sending this cookie over HTTP would not be allowed by our policy. Correctly identifying which cookies are session cookies is the subject of the next section.
 
+Similarly, the policy is only applied to session cookies set via an untrusted channel, that are sent over a trusted channel afterwards. Although we assume that cookies which are requested over a trusted channel will never be set over an untrusted channel, cookies can still be set over an untrusted channel and be requested over this channel afterwards. Because we don't want to break web applications which set cookies via JavaScript and subsequently request them via JavaScript, we allow this type of behavior.
+
 The proposed policy effectively mitigates the attack vectors we considered to be in scope. Cookies set from JavaScript are marked as untrusted, which mitigates the cross-site scripting attack vector, both within one domain as for sites sharing cookies across subdomains. A second attack vector is the injection of cookies through the \texttt{<meta>}-tag. Since these cookies do not come from a \texttt{Set-Cookie} header, they too are considered untrusted. As with the cross-site scripting attack vector, attacks within one domain and across subdomains are mitigated. In section \ref{evaluation}, we show that dismissing untrusted session cookies has no impact on the user experience. The complete policy is summarized in table \ref{tab:nofix-policy}.
 
 \begin{table}[htb]
 	\centering
 	\begin{tabular}{r|cc}
-		& Normal Cookie & Session Cookie\\
+		& Regular Cookie & Session Cookie\\
 		\hline
 		Trusted Channel & Allowed & Allowed\\
 		Untrusted Channel & Allowed & Not Allowed\\
@@ -55,7 +57,7 @@ Because there is no standardized way of doing session management (see section \r
 
 \section{Implementation}
 
-The solution was first prototyped as a lightweight HTTP proxy written in Python, and later implemented as an add-on for Mozilla Firefox\footnote{This add-on is available for download at \url{https://spideroak.com/share/IJZGC3I/pub/home/bram/Openbaar/NoFix.xpi}.}. We first discuss the advantages and disadvantages of an implementation as a browser extension. Afterwards, we discuss the relevant parts of the Firefox architecture. We conclude with the specifics about the implementation itself.
+The solution was first prototyped as a lightweight HTTP proxy written in Python, and later implemented as an add-on for Mozilla Firefox\footnote{This add-on is available for download at \url{https://spideroak.com/share/IJZGC3I/pub/home/bram/Openbaar/NoFix.xpi}. It can also be tested by booting the live CD included with this thesis.}. We first discuss the advantages and disadvantages of an implementation as a browser extension. Afterwards, we discuss the relevant parts of the Firefox architecture. We conclude with the specifics about the implementation itself.
 
 \subsection{HTTP proxy or browser extension?}\label{proxy-or-extension}
 
@@ -69,7 +71,7 @@ Lastly, installing a browser extension -- and especially a Firefox add-on -- is 
 
 There are also some disadvantages a browser extension has compared to a proxy. The most obvious one is that a particular extension implementation will only be usable by at most a few browsers, while a proxy can protect all HTTP traffic that passes through. Moreover, some browsers do not provide support for extensions at all.
 
-Secondly, on some browsers, extensions are able to interfere with one another. In Firefox, for example, all extensions share the same namespace. This allows rogue browser extensions to thwart security extensions \cite{Barth2010,TerLouw2007}.
+A second disadvantage is that, on some browsers, extensions are able to interfere with one another. In Firefox, for example, all extensions share the same namespace. This allows rogue browser extensions to thwart security extensions \cite{Barth2010,TerLouw2007}.
 
 \subsection{The Firefox architecture}
 
@@ -128,7 +130,7 @@ The second experiment\footnote{This experiment was performed by Nick Nikiforakis
 
 \section{Discussion}\label{discussion}
 
-Our client-side countermeasure against session fixation is very effective with no impact on the user experience and a minimal impact on the site's behavior in the form of false positives (i.e., regular cookies which are incorrectly marked as SID) \cite{Bonne2011}. In this section, we describe why the add-on blocks so many cookies, and why this does not affect the web application's behavior or the user experience.
+Our client-side countermeasure against session fixation is very effective with no impact on the user experience and a minimal impact on the site's behavior in the form of false positives (i.e., regular cookies which are incorrectly marked as session cookies) \cite{Bonne2011}. In this section, we describe why the add-on blocks so many cookies, and why this does not affect the web application's behavior or the user experience.
 
 One reason is that a web application might not need cookies that are set via JavaScript to be available in HTTP requests. Indeed, when a cookie is set via JavaScript, chances are quite high that this cookie will afterwards only be accessed via JavaScript.  However, a JavaScript cookie will also always be sent over HTTP, and thus stripped by the add-on. The reason that this does not impede a web application's behavior is that when the web application tries to access such a cookie using JavaScript, it is allowed to do so by our policy. Thus, a web application accessing untrusted cookies via JavaScript only will keep working as expected.
 
@@ -151,31 +153,46 @@ The policy extension is implemented in our add-on by adding the \texttt{HttpOnly
 	\label{fig:clientside-httponly}
 \end{figure}
  
-\section{Comparison to other session attack countermeasures}\label{related-work}%TODO
+\section{Comparison to other session attack countermeasures}\label{related-work}
 
 In this section, we compare our solution to some of the countermeasures from the previous chapter. Afterwards, we give an overview of the countermeasures, and which scenarios they protect against. %TODO
 
 \subsection{Renewing the session identifier}
 
+Renewing the session identifier was mooted in the previous session to be the best solution against session fixation attacks. Unfortunately, this solution can only be implemented at the server side. Because of this, Johns et al. suggest that their proxy protecting against session fixation could also be implemented at the client side \cite{Johns2011}. It would then be expected that the proxy makes sure that an attacker can not take over a victim's session, since he does not know the victim's PSID. Unfortunately, this is not the case. To see why, consider the scenario depicted in Figure \ref{fig:johns-clientside}.
+
+\begin{figure}[htb]
+	\centering
+	\includegraphics[width=\textwidth]{img/johns-attack.png}
+	\caption[Attack on a client-side implementation of Johns et al.]{The attack on a client-side implementation of the proxy proposed by Johns et al.}
+	\label{fig:johns-clientside}
+\end{figure}
+
+
 % Hier Johns et al. vermelden
-% Stellen voor om proxy ook aan client-side toe te passen in paper, gaat niet zie onze paper
+% Stellen voor om proxy ook aan client-side toe te passen in paper, gaat niet zie onze paper. Vermelden dat ons ding basically hetzelfde werkt als dat van hun wanneer je dat aan de client-side zou zetten.
 % Configureren van elke server is niet haalbaar voor client-side solution, dus: heuristieken (wordt ook in de paper voorgesteld)
 
 \subsection{HttpOnly}\label{httponlyremark}
 
 %TODO: verwijzen naar \ref{httponly}
+% Onze oplossing is het 'duale' van HttpOnly: doet ook scheiding JavaScript & HTTP, maar dan omgekeerd
+% Onze oplossing werkt AUTOMATISCH
 
-\subsection{Deferred loading (SessionSafe)}
+\subsection{Deferred loading and one-time cookies}
 
-% Belang van session cookies unavailable maken voor JavaScript
-
-\subsection{One-time cookies}
-
-% Het belang van scheiden van authenticatie cookies en andere cookies
-% Om deze reden OTC niet beschikbaar via JS.
-% Moet aan server kant geïmplementeerd worden
-
+In the deferred loading approach, proposed by Johns et al. \cite{Johns2006} it is reasoned that cookies should be kept separate from the page content, to prevent an attacker from stealing a cookie by altering the page. Similarly, one-time cookies \cite{Dacosta2011} are never made available to JavaScript. Our approach is similar in that it keeps session cookies unavailable to JavaScript. A difference is that our approach identifies session cookies after they have been issued by the web server, and thus does not require cooperation of the server.
 
 \subsection{SessionShield}
-% Kritisch: hoe lost dit javascript cookies op?
-The policy extension, wherein the default policy was augmented with session hijacking protection, is closely related to the session hijacking solution proposed by Nikiforakis et al. \cite{Nikiforakis2010}. In this solution, HTTP session cookies are kept in a separate cookie store, outside of the browser. The difference lies in the fact that our add-on \emph{does} allow the browser access to the cookies: it only prevents JavaScript from accessing session cookies. As was discussed in section \ref{proxy-or-extension}, an implementation in the form of a browser extension makes sure that different browsers will not be able to use each other's cookies. This solves the problem that the SessionShield proxy has when it is used by different browsers, which was addressed in section \ref{sessionshield}.
+
+The policy extension, wherein the default policy was augmented with session hijacking protection, is closely related to the session hijacking solution proposed by Nikiforakis et al. \cite{Nikiforakis2010}. In this solution, HTTP session cookies are kept in a separate cookie store, outside of the browser. The difference lies in the fact that our add-on \emph{does} allow the browser access to the cookies: it only prevents non-HTTP channels from accessing session cookies. As was discussed in section \ref{proxy-or-extension}, an implementation in the form of a browser extension makes sure that different browsers will not be able to use each other's cookies. This solves the problem that the SessionShield proxy has when it is used by different browsers.
+
+Similarly to our solution, SessionShield does allow untrusted cookies to be accessed via untrusted channels afterwards. This is because SessionShield only intercepts HTTP traffic, and does not notice JavaScript and \texttt{<meta>} cookies being set. This allows JavaScript cookies to keep functioning correctly.
+
+As we already noted in the previous chapter, SessionShield does not protect against session fixation. However, it would be relatively easy to extend SessionShield with our policy preventing session fixation. This can be done by blocking session cookies that SessionShield receives from the browser. Indeed, since SessionShield only intercepts HTTP traffic, it keeps in its cookie store only cookies that are set via HTTP. Thus, when a cookie that SessionShield does not know of is received from the browser, it can conclude that this cookie was set over an untrusted channel. All SessionShield has to do then is use its SID detection algorithm (which it shares with our solution) to check whether the cookie is a session cookie. If it is, SessionShield can block the cookie, thus mitigating session fixation attacks.
+
+\subsection{Noxes and dynamic tainting}
+% Ook proberend XSS aanvallen via hijacking tegen te gaan. Verschil is dat onze aanpak volledig geautomatiseerd werkt en in plaats van stelen via JS probeert tegen te gaan (hetgeen bijna niet haalbaar is owv verschillende attack vectors), effectief de SID onbeschikbaar maakt.
+
+\section{Future work}
+% Zie paper

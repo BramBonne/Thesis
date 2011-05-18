@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2011.4.11)  17 MAY 2011 11:57
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2011.4.11)  18 MAY 2011 14:37
 entering extended mode
  %&-line parsing enabled.
 **/home/bram/School/Masterproef/Thesis/Thesis.tex
@@ -401,71 +401,6 @@ LaTeX Font Info:    Redeclaring font encoding T1 on input line 43.
 File: ot1enc.def 2005/09/27 v1.99g Standard LaTeX file
 LaTeX Font Info:    Redeclaring font encoding OT1 on input line 43.
 )))
-(/usr/share/texmf-texlive/tex/latex/subfig/subfig.sty
-Package: subfig 2005/06/28 ver: 1.3 subfig package
-
-
-Class memoir Warning: You are using the caption package with the memoir 
-(memoir)              class. This may cause unexpected or inconsistent 
-(memoir)              results if you use any of memoir's captioning facilities.
-
-
-(/usr/share/texmf-texlive/tex/latex/caption/caption.sty
-Package: caption 2009/10/09 v3.1k Customizing captions (AR)
-
-(/usr/share/texmf-texlive/tex/latex/caption/caption3.sty
-Package: caption3 2009/10/09 v3.1k caption3 kernel (AR)
-\captionmargin=\dimen151
-\captionmargin@=\dimen152
-\captionwidth=\dimen153
-\caption@indent=\dimen154
-\caption@parindent=\dimen155
-\caption@hangindent=\dimen156
-)
-\c@ContinuedFloat=\count139
-)
-\c@KVtest=\count140
-\sf@farskip=\skip173
-\sf@captopadj=\dimen157
-\sf@capskip=\skip174
-\sf@nearskip=\skip175
-\c@subfigure=\count141
-\c@subfigure@save=\count142
-\c@subtable=\count143
-\c@subtable@save=\count144
-\sf@top=\skip176
-\sf@bottom=\skip177
-)
-(/usr/share/texmf-texlive/tex/latex/listings/listings.sty
-\lst@mode=\count145
-\lst@gtempboxa=\box28
-\lst@token=\toks23
-\lst@length=\count146
-\lst@currlwidth=\dimen158
-\lst@column=\count147
-\lst@pos=\count148
-\lst@lostspace=\dimen159
-\lst@width=\dimen160
-\lst@newlines=\count149
-\lst@lineno=\count150
-\lst@maxwidth=\dimen161
-
-(/usr/share/texmf-texlive/tex/latex/listings/lstmisc.sty
-File: lstmisc.sty 2007/02/22 1.4 (Carsten Heinz)
-\c@lstnumber=\count151
-\lst@skipnumbers=\count152
-\lst@framebox=\box29
-)
-(/usr/share/texmf-texlive/tex/latex/listings/listings.cfg
-File: listings.cfg 2007/02/22 1.4 listings configuration
-))
-Package: listings 2007/02/22 1.4 (Carsten Heinz)
-
-(/usr/share/texmf-texlive/tex/latex/mdwtools/footnote.sty
-Package: footnote 1997/01/28 1.13 Save footnotes around boxes
-\fn@notes=\box30
-\fn@width=\dimen162
-)
 (/usr/share/texmf-texlive/tex/latex/base/fontenc.sty
 Package: fontenc 2005/09/27 v1.99g Standard LaTeX package
 
@@ -510,19 +445,84 @@ LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
 )
 (/usr/share/texmf-texlive/tex/latex/microtype/microtype.sty
 Package: microtype 2009/03/27 v2.3d Micro-typography with pdfTeX (RS)
-\MT@toks=\toks24
-\MT@count=\count153
+\MT@toks=\toks23
+\MT@count=\count139
 LaTeX Info: Redefining \lsstyle on input line 1608.
 LaTeX Info: Redefining \lslig on input line 1608.
-\MT@outer@space=\skip178
+\MT@outer@space=\skip173
 LaTeX Info: Redefining \textls on input line 1616.
-\MT@outer@kern=\dimen163
+\MT@outer@kern=\dimen151
 LaTeX Info: Redefining \textmicrotypecontext on input line 2167.
 Package microtype Info: Loading configuration file microtype.cfg.
 
 (/usr/share/texmf-texlive/tex/latex/microtype/microtype.cfg
 File: microtype.cfg 2009/03/27 v2.3d microtype main configuration file (RS)
 ))
+(/usr/share/texmf-texlive/tex/latex/subfig/subfig.sty
+Package: subfig 2005/06/28 ver: 1.3 subfig package
+
+
+Class memoir Warning: You are using the caption package with the memoir 
+(memoir)              class. This may cause unexpected or inconsistent 
+(memoir)              results if you use any of memoir's captioning facilities.
+
+
+(/usr/share/texmf-texlive/tex/latex/caption/caption.sty
+Package: caption 2009/10/09 v3.1k Customizing captions (AR)
+
+(/usr/share/texmf-texlive/tex/latex/caption/caption3.sty
+Package: caption3 2009/10/09 v3.1k caption3 kernel (AR)
+\captionmargin=\dimen152
+\captionmargin@=\dimen153
+\captionwidth=\dimen154
+\caption@indent=\dimen155
+\caption@parindent=\dimen156
+\caption@hangindent=\dimen157
+)
+\c@ContinuedFloat=\count140
+)
+\c@KVtest=\count141
+\sf@farskip=\skip174
+\sf@captopadj=\dimen158
+\sf@capskip=\skip175
+\sf@nearskip=\skip176
+\c@subfigure=\count142
+\c@subfigure@save=\count143
+\c@subtable=\count144
+\c@subtable@save=\count145
+\sf@top=\skip177
+\sf@bottom=\skip178
+)
+(/usr/share/texmf-texlive/tex/latex/listings/listings.sty
+\lst@mode=\count146
+\lst@gtempboxa=\box28
+\lst@token=\toks24
+\lst@length=\count147
+\lst@currlwidth=\dimen159
+\lst@column=\count148
+\lst@pos=\count149
+\lst@lostspace=\dimen160
+\lst@width=\dimen161
+\lst@newlines=\count150
+\lst@lineno=\count151
+\lst@maxwidth=\dimen162
+
+(/usr/share/texmf-texlive/tex/latex/listings/lstmisc.sty
+File: lstmisc.sty 2007/02/22 1.4 (Carsten Heinz)
+\c@lstnumber=\count152
+\lst@skipnumbers=\count153
+\lst@framebox=\box29
+)
+(/usr/share/texmf-texlive/tex/latex/listings/listings.cfg
+File: listings.cfg 2007/02/22 1.4 listings configuration
+))
+Package: listings 2007/02/22 1.4 (Carsten Heinz)
+
+(/usr/share/texmf-texlive/tex/latex/mdwtools/footnote.sty
+Package: footnote 1997/01/28 1.13 Save footnotes around boxes
+\fn@notes=\box30
+\fn@width=\dimen163
+)
 (/usr/share/texmf-texlive/tex/latex/hyperref/hyperref.sty
 Package: hyperref 2009/10/09 v6.79a Hypertext links for LaTeX
 

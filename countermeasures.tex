@@ -256,6 +256,8 @@ In a paper written by Dacosta et al. \cite{Dacosta2011}, a solution to session h
 \end{enumerate}
 It is crucial that the server allows only requests containing a sequence number higher than the last one received. This prevents attackers from replaying captured one-time cookie information. Since the attacker does not know how to generate the next one-time cookie from a previously captured one, and because a previous cookie can not be replayed, the approach renders a captured cookie essentially worthless. Moreover, the request-URL is included in the MAC to make sure that a certain one-time cookie can only be used to access one specific resource.
 
+To prevent the session seed and session secret from leaking via \gls{xss} attacks, they are made inaccessible for JavaScript code. This is viable for two reasons: firstly, the client modification that is needed for one-time cookies to work is implemented as a browser extension, which makes it able to separate its information from the page itself. Secondly, because one-time cookies will be exclusively used for authentication purposes, other cookies that need to be accessible via JavaScript\footnote{We will give an example of such a cookie in section \ref{principle}.} can still be used in the regular way.
+
 Aside from preventing session hijacking attacks, this approach will also prevent session fixation attacks. Indeed, as soon as the user authenticates, a new session secret and secret seed -- both unknown to the attacker -- are established. This is similar to renewing the SID on every authentication change.
 
 Because the sequence number is part of the request, the server knows how many times the hash function should be applied to the secret seed. Naturally, the server does not need to apply the hash function $i$ times for every request. Indeed, the computational overhead can be greatly reduced by remembering the previous value, and applying the hash function only $i - i'$ times (where $i'$ is the number of times the function was applied to the previous value) to this previous value.
@@ -301,7 +303,7 @@ The paper mentions that the same solution could also be applied at the framework
 
 In this section, we focus on session hijacking countermeasures at the client side. The advantage that these approaches have over server-side countermeasures is that they do not require all web application to be secured against this attack. Because of this, it is the \emph{user} who can make sure that he is protected against session hijacking attacks, without having to rely on the web developer of all web applications he uses to implement session hijacking protection. Client-side countermeasures to session \emph{fixation} attacks were, to our knowledge, non-existent at the time of writing \cite{Bonne2011}.
 
-\subsection{SessionShield}\label{sessionshield} %TODO
+\subsection{SessionShield}\label{sessionshield}
 
 SessionShield is a client-side proxy providing protection against session hijacking attacks. It was proposed by Nikiforakis et al. in 2010 \cite{Nikiforakis2010}. SessionShield is based on the idea that session identifiers should not be available to script code running in a user's browser.
 
@@ -397,9 +399,11 @@ Because \texttt{document.cookie} is tainted, \texttt{arr} will be tainted as soo
 
 When it is detected that a web page tries to send tainted data to a third party, the user is asked to allow or deny the actual transmission of this data, much in the same way as was the case with Noxes. Sending of tainted data to a third party can be achieved in many ways. Some examples of the methods the countermeasure detects are changing the location of the current web page, changing the source of an image, and automatically submitting a form \cite{Vogt2007}.
 
-Unfortunately, several hidden channels that can be used to transmit sensitive information remain undetected by this solution \cite{Nikiforakis2010}. Moreover, Russo et al. described how the protection technique can be circumvented by both encoding secret information into the structure of the \gls{dom} tree and exploiting tree navigation \cite{Russo2009}. Another disadvantage of this solution stems from the fact that it needs to ask for user confirmation. This leads to the problems which were already discussed when describing Noxes.
+Unfortunately, several hidden channels that can be used to transmit sensitive information remain undetected by this solution \cite{Nikiforakis2010}. Moreover, Russo et al. described how the protection technique can be circumvented by both encoding secret information into the structure of the \gls{dom} tree and exploiting tree navigation \cite{Russo2009}. Another disadvantage of this solution stems from the fact that it needs to ask for user confirmation. This leads to the problems which were already discussed when describing Noxes.\\
 
-% TODO: conclusie en comparison-tabel. Zeg ook iets dat session fixation bijina nooit solved is, en dat voor de oplossingen waarvoor eht wel zo is server moet aangepast worden.
+\subsection{Overview}
+
+In Table \ref{tab:countermeasures}, an overview of the different server-side and client-side session attack countermeasures is given. From this table, we can draw two conclusions: firstly, while lots of work has been done to mitigate session hijacking attacks, the session fixation attack is often overlooked. Secondly, none of the discussed countermeasures handle session fixation attacks entirely at the client side. In fact, we do not know of any countermeasure to session fixation that only requires modifications to be made at the client side \cite{Bonne2011}.
 
 \begin{table}[htbp]
 	\centering
@@ -460,3 +464,4 @@ Hybrid approaches mitigate XSS attacks by letting the server define a policy, wh
 
 Another hybrid approach is that of `Browser Enforced Embedded Policies' (or BEEP for short), developed by Jim et al. in 2007 \cite{Jim2007}. Here, the server includes an additional JavaScript function in the response, which will enable the browser to check that the page it is included in does not include injected code. Whenever a browser that enforces BEEP encounters a script while rendering a page, it invokes this special function with an identifier of the JavaScript code as its argument. If the function returns \texttt{true} then the script is deemed acceptable and will be executed; otherwise it will be ignored. The browser describes two possible policies that can be implemented in such a JavaScript function: \emph{whitelisting}, in which the function returns \texttt{true} if the SHA1 hash of its argument corresponds with one of the `safe hashes' included in a whitelist, and \emph{\gls{dom} sandboxing}, in which parts of the web page that include user content are marked by setting their \texttt{class} attribute to \texttt{noexecute}. In this second policy, the function checks that its argument is not part of such a sandbox, and returns \texttt{false} if it is, preventing execution of the JavaScript code.
 
+% TODO: conclusion: XSS protection very hard
