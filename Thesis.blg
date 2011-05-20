@@ -4,46 +4,44 @@ The style file: plainurl.bst
 Database file #1: /home/bram/Documenten/library.bib
 Database file #2: /home/bram/Documenten/rfc.bib
 Database file #3: /home/bram/Documenten/extra.bib
-Warning--empty note in FlashJSattack
 You've used 119 entries,
             2760 wiz_defined-function locations,
-            1356 strings with 26799 characters,
-and the built_in function-call counts, 44902 in all, are:
-= -- 4903
+            1357 strings with 26794 characters,
+and the built_in function-call counts, 44940 in all, are:
+= -- 4907
 > -- 1382
 < -- 23
 + -- 559
 - -- 440
 * -- 1955
-:= -- 6412
+:= -- 6416
 add.period$ -- 417
 call.type$ -- 119
 change.case$ -- 578
 chr.to.int$ -- 0
-cite$ -- 120
-duplicate$ -- 1413
-empty$ -- 4586
+cite$ -- 119
+duplicate$ -- 1417
+empty$ -- 4593
 format.name$ -- 440
-if$ -- 11659
+if$ -- 11671
 int.to.chr$ -- 0
 int.to.str$ -- 119
-missing$ -- 46
+missing$ -- 47
 newline$ -- 646
 num.names$ -- 238
-pop$ -- 1435
+pop$ -- 1437
 preamble$ -- 1
 purify$ -- 458
 quote$ -- 0
-skip$ -- 3188
+skip$ -- 3192
 stack$ -- 0
 substring$ -- 1217
-swap$ -- 292
+swap$ -- 293
 text.length$ -- 23
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 468
-warning$ -- 1
+warning$ -- 0
 while$ -- 305
 width$ -- 122
-write$ -- 1337
-(There was 1 warning)
+write$ -- 1338

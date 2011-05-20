@@ -544,9 +544,9 @@ Nick Nikiforakis, Yves Younan, and Wouter Joosen.
   \url{http://www.springerlink.com/index/2h213654j1u56680.pdf}.
 
 \bibitem{FlashJSattack}
-{Obscure (EyeOnSecurity)}.
+Obscure.
 \newblock {Bypassing JavaScript Filters -- the Flash! Attack}.
-\newblock 2002.
+\newblock {\em EyeOnSecurity}, 2002.
 \newblock Available from: \url{http://eyeonsecurity.org/papers/flash-xss.htm}.
 
 \bibitem{OWASP2009a}
