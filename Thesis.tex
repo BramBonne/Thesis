@@ -1,0 +1,83 @@
+\documentclass[master=cws,masteroption=english]{kulemt}
+%\usepackage[english]{babel}
+%\selectlanguage{english}
+\setup{title={Improving session security in web applications},
+  author={Bram Bonn\'e},
+  promotor={dr.\ L. Desmet \and Prof.\,dr.\ F. Piessens},
+  assessor={Ir.\,P. Philippaerts \and G. Poulisse},
+  assistant={\ P. De\ Ryck \and N. Nikiforakis}}
+\setup{filingcard,
+  translatedtitle={Verhoogde veiligheid van sessies in webapplicaties},
+  udc=004.4,
+  shortabstract={%TODO
+    Hier komt een heel bondig abstract van hooguit 500
+    woorden.
+   }}
+\setup{font=lm}
+
+\usepackage{graphicx}
+\usepackage{subfig}
+\usepackage{listings}
+\lstset{breaklines=true}
+\usepackage{footnote}
+\usepackage[pdfusetitle,colorlinks,plainpages=false]{hyperref}
+\usepackage[toc]{glossaries}
+\makeglossaries
+
+\begin{document}
+
+\lstdefinelanguage{JavaScript} {
+    morekeywords={
+        break,const,continue,delete,do,while,export,for,in,function,
+        if,else,import,in,instanceOf,label,let,new,return,switch,this,
+        throw,try,catch,typeof,var,void,with,yield,
+        },
+    sensitive=false,
+    morecomment=[l]{//},
+    morecomment=[s]{/*}{*/},
+    morestring=[b]",
+    morestring=[d]',
+    alsoletter={.}
+}
+
+\lstdefinelanguage{conf} {
+    morekeywords={
+        php_flag,off,
+        },
+    sensitive=false,
+}
+
+
+\begin{preface}
+I'd like to thank Lieven Desmet and Frank Piessens, my promotors, and Philippe De Ryck and Nick Nikiforakis, my supervisors, for suggestions and feedback. Many thanks also to my family and friends, who supported me during my study. Lastly, thanks go out to the people who tested the Firefox add-on.
+\end{preface}
+
+\tableofcontents*
+
+\begin{abstract}
+The \texttt{abstract} environment contains a more extensive overview of
+the work. But it should be limited to one page.
+\end{abstract}
+
+\begin{abstract*}
+Nederlandstalig abstract
+\end{abstract*}
+
+\listoffiguresandtables
+\input{abbreviations}
+\printglossaries
+
+\mainmatter
+\input{introduction}
+\input{sessions}
+\input{attacks}
+\input{countermeasures}
+\input{session_fixation}
+\input{conclusion}
+
+\backmatter
+\bibliography{/home/bram/Documenten/library,/home/bram/Documenten/rfc,/home/bram/Documenten/extra}\bibliographystyle{plainurl}
+
+\end{document}
+
+
