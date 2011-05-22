@@ -1,0 +1,32 @@
+\BOOKMARK [0][-]{chapter*.1}{Preface}{}
+\BOOKMARK [0][-]{chapter*.2}{Abstract}{}
+\BOOKMARK [0][-]{chapter*.3}{Abstract}{}
+\BOOKMARK [0][-]{chapter*.4}{List of Figures and Tables}{}
+\BOOKMARK [0][-]{section*.7}{Glossary}{}
+\BOOKMARK [0][-]{chapter.1}{Introduction}{}
+\BOOKMARK [0][-]{chapter.2}{About web sessions}{}
+\BOOKMARK [1][-]{section.2.1}{How web sessions work}{chapter.2}
+\BOOKMARK [1][-]{section.2.2}{Accessibility of session identifiers}{chapter.2}
+\BOOKMARK [1][-]{section.2.3}{Keeping web sessions secure}{chapter.2}
+\BOOKMARK [0][-]{chapter.3}{Session attacks}{}
+\BOOKMARK [1][-]{section.3.1}{Background: cross-site scripting}{chapter.3}
+\BOOKMARK [1][-]{section.3.2}{Session hijacking}{chapter.3}
+\BOOKMARK [1][-]{section.3.3}{Session fixation}{chapter.3}
+\BOOKMARK [1][-]{section.3.4}{Cross Site Request Forgery}{chapter.3}
+\BOOKMARK [0][-]{chapter.4}{Session attack countermeasures}{}
+\BOOKMARK [1][-]{section.4.1}{General security measures}{chapter.4}
+\BOOKMARK [1][-]{section.4.2}{Session security in web application frameworks}{chapter.4}
+\BOOKMARK [1][-]{section.4.3}{Server-side countermeasures}{chapter.4}
+\BOOKMARK [1][-]{section.4.4}{Client-side countermeasures}{chapter.4}
+\BOOKMARK [1][-]{section.4.5}{Script injection countermeasures}{chapter.4}
+\BOOKMARK [0][-]{chapter.5}{A client-side solution to session fixation and session hijacking}{}
+\BOOKMARK [1][-]{section.5.1}{Principle}{chapter.5}
+\BOOKMARK [1][-]{section.5.2}{Identifying session identifiers}{chapter.5}
+\BOOKMARK [1][-]{section.5.3}{Implementation}{chapter.5}
+\BOOKMARK [1][-]{section.5.4}{Evaluation}{chapter.5}
+\BOOKMARK [1][-]{section.5.5}{Discussion}{chapter.5}
+\BOOKMARK [1][-]{section.5.6}{Extending with session hijacking protection}{chapter.5}
+\BOOKMARK [1][-]{section.5.7}{Comparison to other session attack countermeasures}{chapter.5}
+\BOOKMARK [1][-]{section.5.8}{Future work}{chapter.5}
+\BOOKMARK [0][-]{chapter.6}{Conclusion}{}
+\BOOKMARK [0][-]{section*.37}{Bibliography}{}

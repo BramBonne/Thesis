@@ -151,6 +151,17 @@ Philippe {De Ryck}, Lieven Desmet, Thomas Heyman, Frank Piessens, and Wouter
 \newblock Available from:
   \url{http://www.springerlink.com/index/m684ml6389715317.pdf}.
 
+\bibitem{Dhamija2006}
+Rachna Dhamija, J.~D. Tygar, and Marti Hearst.
+\newblock {Why phishing works}.
+\newblock In {\em Proceedings of the SIGCHI conference on Human Factors in
+  computing systems - CHI '06}, number November 2005, page 581, New York, New
+  York, USA, 2006. ACM Press.
+\newblock Available from:
+  \url{http://portal.acm.org/citation.cfm?doid=1124772.1124861}, \href
+  {http://dx.doi.org/10.1145/1124772.1124861}
+  {\path{doi:10.1145/1124772.1124861}}.
+
 \bibitem{DiLucca2005}
 Giuseppe~A. {Di Lucca}, Anna~Rita Fasolino, M.~Mastroianni, and Porfirio
   Tramontana.
@@ -581,6 +592,12 @@ F.~Permadi.
 \newblock {Passing the Session ID}, 2011.
 \newblock Available from:
   \url{http://www.php.net/manual/en/session.idpassing.php}.
+
+\bibitem{PHPsessionsecure}
+{PHP Developers}.
+\newblock {Runtime Configuration}, 2011.
+\newblock Available from:
+  \url{http://www.php.net/manual/en/session.configuration.php}.
 
 \bibitem{PHPregenerate}
 {PHP Developers}.

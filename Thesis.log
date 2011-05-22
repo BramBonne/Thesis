@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2011.4.11)  20 MAY 2011 09:45
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2011.4.11)  22 MAY 2011 09:26
 entering extended mode
  %&-line parsing enabled.
 **/home/bram/School/Masterproef/Thesis/Thesis.tex
@@ -738,7 +738,20 @@ Package: glossary-tree 2009/01/14 v1.01 (NLCT)
 
 Package glossaries Info: Writing glossary file Thesis.glo on input line 24.
 
-(./Thesis.aux)
+(./Thesis.aux
+
+LaTeX Warning: Label `fig:clientside-request' multiply defined.
+
+
+LaTeX Warning: Label `sub@fig:clientside-request' multiply defined.
+
+
+LaTeX Warning: Label `fig:clientside-response' multiply defined.
+
+
+LaTeX Warning: Label `sub@fig:clientside-response' multiply defined.
+
+)
 \openout1 = `Thesis.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 26.
@@ -833,4 +846,425 @@ Package microtype Info: Automatic font expansion enabled (level 2),
 (microtype)             stretch: 20, shrink: 20, step: 1, non-selected.
 Package microtype Info: Using default expansion set `basictext'.
 Package microtype Info: No tracking.
-Package microtype Info: No 
+Package microtype Info: No adjustment of interword spacing.
+Package microtype Info: No adjustment of character kerning.
+
+(/usr/share/texmf-texlive/tex/latex/microtype/mt-cmr.cfg
+File: mt-cmr.cfg 2008/02/29 v1.9a microtype config. file: Computer Modern Roman
+ (RS)
+)
+pdfTeX warning (font expansion): font should be expanded before its first use
+Package caption Info: Begin \AtBeginDocument code.
+Package caption3 Info: subfig package 1.2 or 1.3 is loaded.
+LaTeX Info: Redefining \subref on input line 26.
+Package caption Info: Incompatible package detected (regarding \caption).
+(caption)             \caption = \long macro:->\donemaincaptiontrue \m@moldhypc
+aption .
+
+Package caption Warning: \caption will not be redefined since it's already
+(caption)                redefined by a document class or package which is
+(caption)                unknown to the caption package.
+See the caption package documentation for explanation.
+
+Package caption Info: hyperref package is loaded.
+Package caption Info: listings package is loaded.
+Package caption Info: longtable package is loaded.
+(/usr/share/texmf-texlive/tex/latex/caption/ltcaption.sty
+Package: ltcaption 2008/03/28 v1.2 longtable captions (AR)
+)
+Package caption Info: supertabular package is loaded.
+Package caption Info: End \AtBeginDocument code.
+\c@lstlisting=\count174
+Package hyperref Info: Link coloring ON on input line 26.
+
+(/usr/share/texmf-texlive/tex/latex/hyperref/nameref.sty
+Package: nameref 2007/05/29 v2.31 Cross-referencing by name of section
+
+(/usr/share/texmf-texlive/tex/latex/oberdiek/refcount.sty
+Package: refcount 2008/08/11 v3.1 Data extraction from references (HO)
+)
+\c@section@level=\count175
+)
+LaTeX Info: Redefining \ref on input line 26.
+LaTeX Info: Redefining \pageref on input line 26.
+ (./Thesis.out)
+(./Thesis.out)
+\@outlinefile=\write6
+\openout6 = `Thesis.out'.
+
+\AtBeginShipoutBox=\box37
+
+Redoing nameref's sectioning
+Redoing nameref's label
+
+(/usr/share/texmf-texlive/tex/latex/glossaries/dict/glossaries-dictionary-Engli
+sh.dict
+Dictionary: glossaries-dictionary, Language: English 
+) [1
+
+
+
+] (./Thesis.toc
+LaTeX Font Info:    Try loading font information for OT1+lmr on input line 8.
+ (/usr/share/texmf/tex/latex/lm/ot1lmr.fd
+File: ot1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
+)
+LaTeX Font Info:    Try loading font information for OML+lmm on input line 8.
+
+(/usr/share/texmf/tex/latex/lm/omllmm.fd
+File: omllmm.fd 2009/10/30 v1.6 Font defs for Latin Modern
+)
+LaTeX Font Info:    Try loading font information for OMX+lmex on input line 8.
+
+(/usr/share/texmf/tex/latex/lm/omxlmex.fd
+File: omxlmex.fd 2009/10/30 v1.6 Font defs for Latin Modern
+)
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <10.95> on input line 8.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <8> on input line 8.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <6> on input line 8.
+) [2
+
+
+]
+Package microtype Info: Character `029' is missing
+(microtype)             in font `T1/lmr/m/sc/10.95'.
+(microtype)             Ignoring protrusion settings for this character.
+ [3] [4
+
+] [5
+
+
+] (./Thesis.lof)
+(./Thesis.lot) (./abbreviations.tex) (./Thesis.gls [6
+
+
+] [7
+
+
+]) [8]
+(./introduction.tex) (./sessions.tex [1
+
+
+] [2
+
+]
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <9> on input line 15.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <5> on input line 15.
+ [3]
+<img/Sessions.png, id=468, 803.47235pt x 508.72412pt>
+File: img/Sessions.png Graphic file (type png)
+ <use img/Sessions.png>
+<img/url-rewriting.png, id=469, 803.47235pt x 508.72412pt>
+File: img/url-rewriting.png Graphic file (type png)
+
+<use img/url-rewriting.png> [4 <./img/Sessions.png (PNG copy)> <./img/url-rewri
+ting.png (PNG copy)>] [5] [6] [7]) (./attacks.tex [8] [9] [10
+
+] [11]
+<img/persistent-xss.png, id=578, 802.0553pt x 522.8947pt>
+File: img/persistent-xss.png Graphic file (type png)
+
+<use img/persistent-xss.png>
+<img/nonpersistent-xss.png, id=579, 802.0553pt x 522.8947pt>
+File: img/nonpersistent-xss.png Graphic file (type png)
+
+<use img/nonpersistent-xss.png> [12 <./img/persistent-xss.png (PNG copy)> <./im
+g/nonpersistent-xss.png (PNG copy)>]
+LaTeX Font Info:    Font shape `T1/lmtt/bx/n' in size <10.95> not available
+(Font)              Font shape `T1/lmtt/b/n' tried instead on input line 63.
+
+Overfull \hbox (2.17833pt too wide) in paragraph at lines 65--66
+\T1/lmtt/m/n/10.95 <div style="background-image: url(javascript:alert('XSS');" 
+/> \T1/lmr/m/n/10.95 (-20) or
+ []
+
+
+Overfull \hbox (29.48691pt too wide) in paragraph at lines 65--66
+\T1/lmtt/m/n/10.95 <style>.bar{background-image:url("javascript:alert('XSS');")
+;}</style>
+ []
+
+[13] [14] <img/hijacking.png, id=639, 802.0553pt x 522.8947pt>
+File: img/hijacking.png Graphic file (type png)
+
+<use img/hijacking.png> [15] [16 <./img/hijacking.png (PNG copy)>] [17]
+<img/fixation.png, id=690, 801.394pt x 570.13pt>
+File: img/fixation.png Graphic file (type png)
+ <use img/fixation.png>
+Overfull \hbox (12.8222pt too wide) in paragraph at lines 162--163
+\T1/lmr/m/n/10.95 (-20) craft a link of the form [][]$\T1/lmtt/m/n/10.95 http :
+ / / www . target . com / login . php ? PHPSESSID = d9qX4zKbg35$[][]\T1/lmr/m/n
+/10.95 (-20) ,
+ []
+
+[18 <./img/fixation.png>]
+(/usr/share/texmf-texlive/tex/latex/listings/lstlang1.sty
+File: lstlang1.sty 2004/09/05 1.3 listings language file
+)
+(/usr/share/texmf-texlive/tex/latex/listings/lstmisc.sty
+File: lstmisc.sty 2007/02/22 1.4 (Carsten Heinz)
+) [19] [20] [21]
+<img/csrf.png, id=774, 611.28375pt x 421.575pt>
+File: img/csrf.png Graphic file (type png)
+ <use img/csrf.png> [22 <./img/csrf.png (PNG copy)>] <img/mao2009a.png, id=797,
+ 131.5314pt x 158.994pt>
+File: img/mao2009a.png Graphic file (type png)
+
+<use img/mao2009a.png> <img/mao2009b.png, id=798, 131.5314pt x 158.994pt>
+File: img/mao2009b.png Graphic file (type png)
+
+<use img/mao2009b.png> [23] [24 <./img/mao2009a.png> <./img/mao2009b.png>])
+(./countermeasures.tex [25] [26]
+(/usr/share/texmf-texlive/tex/latex/listings/lstlang1.sty
+File: lstlang1.sty 2004/09/05 1.3 listings language file
+)
+(/usr/share/texmf-texlive/tex/latex/listings/lstlang2.sty
+File: lstlang2.sty 2004/09/05 1.3 listings language file
+) [27
+
+] [28] [29]
+[30] [31] [32] [33] [34]
+Overfull \hbox (58.73659pt too wide) in paragraph at lines 166--167
+\T1/lmr/m/n/10.95 (-20) should be added to the \T1/lmtt/m/n/10.95 php.ini \T1/l
+mr/m/n/10.95 (-20) con-fig file [[]]. Al-ter-na-tively, the \T1/lmtt/m/n/10.95 
+session_set_cookie_params()
+ []
+
+[35] [36]
+<img/sessionsafe-deferred-get2.png, id=1081, 705.63625pt x 925.4575pt>
+File: img/sessionsafe-deferred-get2.png Graphic file (type png)
+
+<use img/sessionsafe-deferred-get2.png>
+<img/sessionsafe-deferred-set2.png, id=1082, 704.6325pt x 925.4575pt>
+File: img/sessionsafe-deferred-set2.png Graphic file (type png)
+
+<use img/sessionsafe-deferred-set2.png> [37] [38 <./img/sessionsafe-deferred-ge
+t2.png> <./img/sessionsafe-deferred-set2.png>]
+<img/sessionlock.png, id=1124, 749.199pt x 466.18121pt>
+File: img/sessionlock.png Graphic file (type png)
+
+<use img/sessionlock.png> [39 <./img/sessionlock.png (PNG copy)>] [40] [41]
+<img/johnsfixation-set.png, id=1165, 1247.66125pt x 370.38374pt>
+File: img/johnsfixation-set.png Graphic file (type png)
+
+<use img/johnsfixation-set.png>
+<img/johnsfixation-verify.png, id=1166, 1247.66125pt x 369.38pt>
+File: img/johnsfixation-verify.png Graphic file (type png)
+
+<use img/johnsfixation-verify.png> [42] [43 <./img/johnsfixation-set.png> <./im
+g/johnsfixation-verify.png>]
+<img/nikiforakis-set.png, id=1189, 806.01125pt x 202.7575pt>
+File: img/nikiforakis-set.png Graphic file (type png)
+
+<use img/nikiforakis-set.png>
+<img/nikiforakis-get.png, id=1190, 806.01125pt x 201.75375pt>
+File: img/nikiforakis-get.png Graphic file (type png)
+
+<use img/nikiforakis-get.png> [44 <./img/nikiforakis-set.png (PNG copy)> <./img
+/nikiforakis-get.png (PNG copy)>] [45] [46] [47]
+Underfull \hbox (badness 10000) in paragraph at lines 416--417
+
+ []
+
+
+Overfull \hbox (8.13168pt too wide) in paragraph at lines 425--437
+[][] 
+ []
+
+[48]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [49]
+[50]
+Underfull \hbox (badness 10000) in paragraph at lines 479--480
+
+ []
+
+) (./session_fixation.tex [51] [52
+
+] [53]
+<img/clientside-proxy-1.png, id=1326, 1137.89824pt x 286.24588pt>
+File: img/clientside-proxy-1.png Graphic file (type png)
+
+<use img/clientside-proxy-1.png>
+<img/clientside-proxy-2.png, id=1327, 1137.89824pt x 286.24588pt>
+File: img/clientside-proxy-2.png Graphic file (type png)
+
+<use img/clientside-proxy-2.png> [54 <./img/clientside-proxy-1.png> <./img/clie
+ntside-proxy-2.png>] [55]
+Underfull \vbox (badness 7116) has occurred while \output is active []
+
+ [56]
+[57] [58] [59] [60]
+<img/clientside-proxy-3.png, id=1430, 806.01125pt x 202.7575pt>
+File: img/clientside-proxy-3.png Graphic file (type png)
+
+<use img/clientside-proxy-3.png>
+<img/johns-attack.png, id=1434, 903.375pt x 388.45125pt>
+File: img/johns-attack.png Graphic file (type png)
+
+<use img/johns-attack.png> [61 <./img/clientside-proxy-3.png (PNG copy)>]
+[62 <./img/johns-attack.png (PNG copy)>] [63]) (./conclusion.tex [64]) [65
+
+]
+[66
+
+] (./Thesis.bbl
+bibitemlist
+[67
+
+] [68]
+Underfull \hbox (badness 1755) in paragraph at lines 226--231
+[]\T1/lmr/m/n/10.95 (+20) Drupal De-vel-op-ers.  sess_regenerate, 2010.  Avail-
+able from: [][]$\T1/lmtt/m/n/10.95 http :
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 226--231
+\T1/lmtt/m/n/10.95 / / api . drupal . org / api / drupal / includes-[]-[]sessio
+n . inc / function / sess _
+ []
+
+[69]
+Underfull \hbox (badness 10000) in paragraph at lines 244--249
+[][]$\T1/lmtt/m/n/10.95 http : / / api . drupal . org / api / drupal / modules-
+[]-[]user-[]-[]user . module /
+ []
+
+
+Underfull \hbox (badness 2762) in paragraph at lines 262--268
+[]\T1/lmr/m/n/10.95 (+20) Dan Fairs.  Cook-ie-less Django: Ses-sions and au-the
+n-ti-ca-tion with-
+ []
+
+
+Underfull \hbox (badness 4156) in paragraph at lines 311--316
+[]\T1/lmr/m/n/10.95 (+20) Google De-vel-op-ers.  Cook-ies & Google An-a-lyt-ics
+, 2011.  Avail-
+ []
+
+
+Underfull \hbox (badness 3590) in paragraph at lines 311--316
+\T1/lmr/m/n/10.95 (+20) able from: [][]$\T1/lmtt/m/n/10.95 https : / / code . g
+oogle . com / intl / nl / apis / analytics / docs /
+ []
+
+[70]
+Underfull \hbox (badness 5908) in paragraph at lines 347--352
+[]\T1/lmr/m/n/10.95 (+20) Richard Ishida.  Declar-ing char-ac-ter en-cod-ings i
+n HTML, 2010.
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 347--352
+\T1/lmr/m/n/10.95 (+20) Avail-able from: [][]$\T1/lmtt/m/n/10.95 http : / / www
+ . w3 . org / International / questions /
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 394--400
+[]\T1/lmr/m/n/10.95 (+20) Paul John-ston.  Au-then-ti-ca-tion and Ses-sion Man-
+age-ment on
+ []
+
+
+Underfull \hbox (badness 3439) in paragraph at lines 394--400
+\T1/lmr/m/n/10.95 (+20) the Web.  \T1/lmr/m/it/10.95 (+20) SANS In-sti-tute In-
+foSec Read-ing Room\T1/lmr/m/n/10.95 (+20) , 2004.  Avail-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 394--400
+\T1/lmr/m/n/10.95 (+20) able from: [][]$\T1/lmtt/m/n/10.95 www . sans . org / r
+eading _ room / whitepapers / webservers /
+ []
+
+[71] [72]
+Underfull \hbox (badness 10000) in paragraph at lines 536--541
+\T1/lmtt/m/n/10.95 / / www . webmetrics . com / Monitoring-[]Services / Enterpr
+ise-[]Monitoring /
+ []
+
+[73]
+Underfull \hbox (badness 4291) in paragraph at lines 576--583
+\T1/lmtt/m/n/10.95 ieee . org / lpdocs / epic03 / wrapper . htm ? arnumber = 86
+5085$[][]\T1/lmr/m/n/10.95 (+20) , [][]$\T1/lmtt/m/n/10.95 doi : 10 . 1109 /
+ []
+
+[74]
+Underfull \hbox (badness 10000) in paragraph at lines 679--684
+[]\T1/lmr/m/n/10.95 (+20) Michael Slater.  Us-ing SSL in Rails Ap-pli-ca-tions,
+ 2008.
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 679--684
+\T1/lmr/m/n/10.95 (+20) Avail-able from: [][]$\T1/lmtt/m/n/10.95 http : / / www
+ . buildingwebapps . com / articles /
+ []
+
+[75]
+Underfull \hbox (badness 5133) in paragraph at lines 754--759
+[]\T1/lmr/m/n/10.95 (+20) Anne van Kesteren.  XML-HttpRe-quest.  Last call WD, 
+W3C,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 754--759
+\T1/lmr/m/n/10.95 (+20) Novem-ber 2009.  Avail-able from: [][]$\T1/lmtt/m/n/10.
+95 http : / / www . w3 . org / TR / 2009 /
+ []
+
+[76]) [77] [78
+
+]
+\tf@toc=\write7
+\openout7 = `Thesis.toc'.
+
+\tf@lof=\write8
+\openout8 = `Thesis.lof'.
+
+\tf@lot=\write9
+\openout9 = `Thesis.lot'.
+
+ (./Thesis.aux)
+
+LaTeX Warning: There were multiply-defined labels.
+
+ ) 
+Here is how much of TeX's memory you used:
+ 17118 strings out of 495061
+ 261020 string characters out of 1182621
+ 763715 words of memory out of 3000000
+ 19357 multiletter control sequences out of 15000+50000
+ 99802 words of font info for 146 fonts, out of 3000000 for 9000
+ 28 hyphenation exceptions out of 8191
+ 47i,17n,86p,1592b,2829s stack positions out of 5000i,500n,10000p,200000b,50000s
+{/usr/share/texmf/fonts/enc/dvips/lm/lm-ec.enc}{/usr/share/texmf/fonts/enc/dv
+ips/lm/lm-mathsy.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/s
+hare/texmf/fonts/enc/dvips/lm/lm-rm.enc}{/usr/share/texmf-texlive/fonts/enc/dvi
+ps/base/8r.enc}</usr/share/texmf/fonts/type1/public/lm/lmbx10.pfb></usr/share/t
+exmf/fonts/type1/public/lm/lmbx12.pfb></usr/share/texmf/fonts/type1/public/lm/l
+mcsc10.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi10.pfb></usr/share/texmf
+/fonts/type1/public/lm/lmmi8.pfb></usr/share/texmf/fonts/type1/public/lm/lmr10.
+pfb></usr/share/texmf/fonts/type1/public/lm/lmr12.pfb></usr/share/texmf/fonts/t
+ype1/public/lm/lmr6.pfb></usr/share/texmf/fonts/type1/public/lm/lmr8.pfb></usr/
+share/texmf/fonts/type1/public/lm/lmr9.pfb></usr/share/texmf/fonts/type1/public
+/lm/lmri10.pfb></usr/share/texmf/fonts/type1/public/lm/lmri7.pfb></usr/share/te
+xmf/fonts/type1/public/lm/lmri8.pfb></usr/share/texmf/fonts/type1/public/lm/lms
+y10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy8.pfb></usr/share/texmf/fon
+ts/type1/public/lm/lmtk10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt10.pf
+b></usr/share/texmf/fonts/type1/public/lm/lmtt9.pfb></usr/share/texmf-texlive/f
+onts/type1/urw/helvetic/uhvb8a.pfb></usr/share/texmf-texlive/fonts/type1/urw/he
+lvetic/uhvr8a.pfb>
+Output written on Thesis.pdf (88 pages, 1807556 bytes).
+PDF statistics:
+ 1910 PDF objects out of 2073 (max. 8388607)
+ 468 named destinations out of 1000 (max. 500000)
+ 23924 words of extra memory for PDF output out of 24883 (max. 10000000)
+

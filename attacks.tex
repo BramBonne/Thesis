@@ -55,30 +55,29 @@ An example of a web page returning user input is a search form which displays th
 
 Another example of a scenario where a web application might return data present in the URL is the `Page not found' error page \cite{Kirda2006}. Here, the name of the page that could not be found is often included as part of the error message. Thus, an attacker can craft a link wherein a page with name \texttt{<script>alert("XSS succeeded");</script>} is requested. The browser of a client opening this link will then execute the JavaScript code provided by the attacker.
 
-Tricking a user into clicking a link can be achieved by executing a \gls{phishing} attack \cite{Dhamija2006}. In such an attack, the victim is tricked into thinking that the attacker is a trusted party %TODO
+Tricking a user into clicking a link can be achieved by executing a \gls{phishing} attack \cite{Dhamija2006}. In such an attack, the victim is lead on to believe that the attacker is a known trusted party (e.g. the victim's bank). The attacker, can then ask the victim to click a link under a false premise. Because the victim thinks he can trust the source of the link, he will be inclined to click it. If the link contains malicious data (as is the case in a reflected XSS attack), the victim will unknowingly send this data to the server.
 
 \subsection{Including the script code}\label{injecting-script}
 There are multiple ways in which script code can be included in a web page. Since all of these can be leveraged by an attacker to inject his code, it is important that web developers are aware of all of them. T. Jim et al. give a good overview of different approaches to including JavaScript code \cite{Jim2007}. We describe the most important ones, including one that wasn't presented in \cite{Jim2007}, here:
 \begin{description}
 	\item[between \texttt{<script>} tags] This is the most obvious way of including JavaScript in a web page. All code between these tags will be executed as soon as the browser encounters it.
-	\item[using the \texttt{<script>} tag's \texttt{src} parameter] This parameter can be set to point to an external piece of JavaScript. As such, an attacker is able to make a website load JavaScript code from another domain. This method of injecting script code gives the attacker the advantage that the actual injected string is shorter, bypassing message length limits. An even more important advantage for an attacker using this method is described in section \ref{xss-problem}.
-	\item[as the URL of the background image] An attacker can insert a tag similar to \texttt{<div style="background-image: url(javascript:alert('XSS');" />} or \texttt{<style>.bar\{background-image:url("javascript:alert('XSS');");\}</style>} (where \texttt{bar} is the class of an object in the page) to make the browser execute JavaScript, thinking it is loading the background image.
-	\item[using JavaScript handlers for page elements] It is possible to specify a JavaScript that should be triggered when a certain action occurs on an element in a web page. For example, the \texttt{onload} parameter of the \texttt{<body>} tag is used to specify JavaScript code that should be run when once the browser has completed loading the page. Two other examples are the \texttt{onclick} and \texttt{onblur} parameter, which can be specified for different kinds of tags, with \texttt{<p>} (which indicates a paragraph) and \texttt{<a>} (which indicates a link) being two possibilities. These parameters specify, for a certain object on the page, the JavaScript function to be executed when the object is clicked, and the function to be executed when the object loses focus, respectively.
-	\item[via binary objects] If an attacker is able to include a binary object into the page, he can use this object to execute JavaScript code \cite{Bisht2008}. For example, Flash applets allow running JavaScript code by using either the \texttt{getURL()} or the \texttt{fscommand()} function \cite{FlashJSattack,FlashJS,FlashCookie}.
+	\item[using the \texttt{<script>} tag's \texttt{src} parameter] This parameter can be set to point to an external piece of JavaScript. As such, an attacker is able to make a website load JavaScript code from another domain. This method of injecting script code gives the attacker the advantage that the actual injected string is shorter, bypassing message length limits. Furthermore, because the attacker keeps control over the source of the script code now, he is able to edit this code afterwards.
+	\item[as the URL of the background image] An attacker can insert a tag similar to \texttt{<div style="background-image: url(javascript:alert('XSS');" />} or \texttt{<style>.bar\{background-image:url("javascript:alert('XSS');");\}</style>} (where \texttt{bar} is the class of an object in the page) to make the browser execute JavaScript, thinking it is loading the background image for the particular object.
+	\item[using JavaScript handlers for page elements] It is possible to specify script code that should be triggered when a certain action occurs on an element in a web page. For example, the \texttt{onload} parameter of the \texttt{<body>} tag is used to specify a JavaScript function that should be executed when once the browser has completed loading the page. Two other examples are the \texttt{onclick} and \texttt{onblur} parameters, which can be specified for different kinds of tags, with \texttt{<p>} (which indicates a paragraph) and \texttt{<a>} (which indicates a link) being two possibilities. These parameters specify, for a certain object on the page, respectively the JavaScript function to be executed when the object is clicked, and the function to be executed when the object loses focus.
+	\item[via binary objects] If an attacker is able to include a binary object into the page, he can use this object to execute JavaScript code \cite{Bisht2008}. Flash applets, for example, allow running JavaScript code by using either the \texttt{getURL()} or the \texttt{fscommand()} function \cite{FlashJSattack,FlashJS,FlashCookie}.
 \end{description}
 
 It must also be noted that attackers can use different possible encodings to inject JavaScript, so as to circumvent server-side JavaScript checkers, while still being able to execute at the client side \cite{Jim2007}. For example, the encoding of (parts of) a web page can be changed using the \texttt{encoding} and \texttt{charset} attributes of various \gls{html} tags \cite{Ishida2010}. Some browsers also allow strings to contain JavaScript that is split over multiple lines \cite{Jim2007}. Lastly, JavaScript can be split over multiple  \texttt{<![CDATA[\dots]]>} tags, making it much harder to detect.
 
 \subsection{The danger of cross-site scripting}\label{xss-problem}
 
-One danger of persistent XSS is immediately clear: websites that do not belong to an attacker can still be abused by the attacker to execute malicious code at a user's browser. The user, thinking that a trusted site will only execute trusted code, can fall victim to the attacker without expecting it.
+One danger of persistent XSS is immediately clear: websites which do not belong to an attacker can still be abused by the attacker to execute malicious code at a user's browser. The user, thinking that a trusted site will only execute trusted code, can fall victim to the attacker without expecting it.
 
-There is, however, a bigger problem which applies to both persistent and reflected XSS attacks: the problem of cross-domain interactions. Normally, the attacker's code would be subject to the \gls{sop} (described in section \ref{sop}), making him unable to access elements of a domain that he does not own. However, when the attacker's code is able to execute from within a trusted domain (as is the case in an XSS attack), this code may access the elements belonging to the trusted domain \cite{Klein2002}. This gives the attacker the ability to read information from, and write information to, elements in the trusted domain. To see why this is such a big issue, consider the case where an attacker injects code into a trusted domain that reads information from this domain, and subsequently sends this information to the attacker's web server. Sending this data can be done, for example, by having JavaScript open a window containing a page from the attacker's domain with the data as a GET parameter \cite{Klein2002}. This will be a major attack vector for both the session hijacking and the session fixation attacks, as we will see in the next sections.
+There is, however, a bigger problem which applies to both persistent and reflected XSS attacks: the problem of cross-domain interactions. Normally, the attacker's code would be subject to the \gls{sop} (described in section \ref{sop}), making him unable to access elements of a domain that he does not own. However, when the attacker's code is able to execute from within a trusted domain (as is the case in an XSS attack), the code is allowed to access elements belonging to that domain \cite{Klein2002}. This gives the attacker the ability to read information from, and write information to, elements in the trusted domain. To see why this is such a big issue, consider the case where an attacker injects code into a trusted domain that reads information from this domain, and subsequently sends the information to the attacker's web server. Sending this data can be done, for example, by having JavaScript open a window containing a page from the attacker's domain with the data as a GET parameter \cite{Klein2002}. These cross-domain interactions are a major attack vector for both the session hijacking and the session fixation attacks, as we will see in the next sections.
 
 \section{Session hijacking}\label{hijacking}
 
-In the session hijacking attack, an attacker tries to take over a victim's session by capturing his \gls{session id}. He then uses this SID to act on the server as if he was the victim. This causes him to be able to, for example, read the victim's e-mail in a webmail application, change the victim's information on a social networking website, or acquire the victim's credit card information in an online shop.
-He then uses the SID to make the server think that he is the victim.  First, we describe the attack scenario. Afterwards, we will see how the attacker can capture the victim's session ID.
+In the session hijacking attack, an attacker tries to take over a victim's session by capturing the victim's \gls{session id}. He then uses the SID to make the server think that he is the victim. This causes him to be able to, for example, read the victim's e-mail in a webmail application, change the victim's information on a social networking website, or acquire the victim's credit card information in an on-line shop. First, we describe the attack scenario. Afterwards, we will see how the attacker can capture the victim's session ID.
 
 \subsection{Attack scenario}
 
@@ -86,8 +85,8 @@ The session hijacking attack works as follows \cite{Nikiforakis2010}:
 
 \begin{enumerate}
 	\item The victim establishes a new session at the server. This is done automatically either when he first visits the page or when he logs in (depending on the web application), as described in the previous chapter.
-	\item The attacker captures the session ID that corresponds to the victim's created session by using one of the methods described in section \ref{capturing}.
-	\item The attacker makes a request to the server, attaching the captured session ID as his own. Because the server has no other effective\footnote{We use the term `effective' here because, as we will see in section \ref{general-security}, there are some other -- unsatisfying -- means for distinguishing between different clients.} means of distinguishing between the victim and the attacker, it thinks that it is the victim that made the request. Thus, the attacker is now able to impersonate the victim at the server.
+	\item The attacker captures the session ID that corresponds to the victim's created session. The methods that can be used to do this will be described in the next section.
+	\item The attacker makes a request to the server, attaching the captured session ID as his own. Because the server has no other effective\footnote{We use the term `effective' here because, as we will see in section \ref{general-security}, there are some other -- unsatisfying -- means for distinguishing between different clients.} means of distinguishing between the victim and the attacker, it thinks that it is the victim who made the request. Thus, the attacker is now able to impersonate the victim at the server.
 \end{enumerate}
 
 These steps are graphically illustrated in Figure \ref{fig:hijacking}.
@@ -107,17 +106,17 @@ There are lots of possible ways in which an attacker can capture a victim's sess
 
 In a man-in-the-middle (or \gls{mitm}) attack, an attacker is able to read traffic that passes between the victim and the server. A common example is when the victim and the attacker are sharing the same network hub, or when they are both connected to the same WiFi hotspot without using WPA2 encryption \cite{Arana2006}.
 
-As mentioned in section \ref{secure-flag}, the session identifier is, by default, sent over the network as an unencrypted string of text. This is the case both when using cookies as when making use of URL rewriting. Because of this, an attacker able to read all network traffic can easily extract the SID from the request URL or \texttt{Cookie} header in one of the user's requests, or even from the response page or the \texttt{Set-Cookie} header in the server response setting the cookie \cite{Adida2008}.
+As was mentioned in section \ref{secure-flag}, the session identifier is, by default, sent over the network as an unencrypted string of text. This is the case both when using cookies as when making use of URL rewriting or form elements. Because of this, an attacker able to read all network traffic can easily extract the SID from the \texttt{Cookie} header, request URL or request data in one of the user's requests, or even from the \texttt{Set-Cookie} header or the response page in the server response setting the cookie \cite{Adida2008}.
 
 This problem has been known for some time, and has recently again received some attention thanks to tools like Hamster \cite{Graham2007} and Firesheep \cite{Butler2010}, which make a session hijacking attack almost trivial when the victim is using an insecure network.
 
 \subsubsection{Via cross-site scripting}
 
-The \gls{xss} attack described in section \ref{xss} can also be used to steal a victim's session ID. For this, the attacker uses the \texttt{<script>} tag's \texttt{src} attribute to load script code from his own domain into a web page on the domain he wants to acquire the cookie from. Because the script code is loaded from within a page on the target domain, the attacker has access to both the target domain's cookie via the \texttt{cookie} attribute of the \texttt{domain} \gls{dom} object (for SIDs set in cookies), and to all links on the current page (for SIDs used via URL rewriting). However, the script is also able to send data to the attacker's domain (see section \ref{xss-problem} and \cite{Klein2002} for more information). Because of this, the attacker is able to forward the target domain's cookie, or an URL present on a page of the target domain, to his own domain, effectively capturing the client's SID.
+The \gls{xss} attacks can also be used to steal a victim's session ID. For this, the attacker uses one of the methods described in section \ref{injecting-script} to inject script code into a web page on the domain he wants to acquire the cookie from. Because the script code is loaded from within a page on the target domain, the attacker has access to both the target domain's cookie via the \texttt{cookie} attribute of the \texttt{domain} \gls{dom} object (for SIDs set in cookies), and to all links on the current page (for SIDs used via URL rewriting). However, the script is also able to send data to the attacker's domain (see section \ref{xss-problem} and \cite{Klein2002} for more information). Because of this, the attacker is able to forward the target domain's cookie, or an URL present on a page of the target domain, to his own domain, effectively capturing the client's SID.
 
 \subsubsection{Via the referer header}\label{leaking-via-referer}
 
-If SIDs are included in the URL (as is the case with URL rewriting), the SID can also leak via the HTTP \texttt{referer} header. The \texttt{referer} header is used to transmit the website from which the request-URL was obtained \cite{rfc2616}. When the browser attaches a \texttt{referer} header to requests going to a different domain than the one it originated from, the website receiving the \texttt{referer} header as part of the request can extract the client's SID for the web application that contained the link \cite{Fu2001}.
+If SIDs are included in the URL (as is the case with URL rewriting), the SID can also leak via the HTTP \texttt{referer} header. The \texttt{referer} header is used to transmit the website from which the request-URL was obtained to the web server that the request is issued to \cite{rfc2616}. When the browser attaches a \texttt{referer} header to requests going to a different domain than the one it originated from, the website receiving the \texttt{referer} header as part of the request can extract the client's SID for the web application that contained the link to the requested page \cite{Fu2001}.
 
 If, for example, a social networking website manages sessions via URL rewriting, an attacker could perform a session hijacking attack by sharing a link to his own website. When another user clicks the link, a request is made to the attacker's web server. This request contains the URL of the current page, and thus the user's SID for the social networking website, in the \texttt{referer} header, making it available to the attacker.
 
@@ -131,18 +130,18 @@ This problem, together with the possibility of leaking SIDs via the \texttt{refe
 
 \section{Session fixation}\label{fixation}
 
-In the session fixation attack, as in the \gls{session hijacking} attack (section \ref{hijacking}), an attacker's goal is to be using the same session as a victim. However, instead of capturing the victim's \gls{session id} (as is the case with session hijacking), the attacker forces the victim to use a SID that is known in advance. We will first describe the steps necessary to execute this attack. Afterwards, we list the ways in which the attacker can force a victim to use a certain session ID.
+In the session fixation attack, as in the \gls{session hijacking} attack, an attacker's goal is to be using the same session as a victim. However, instead of capturing the victim's \gls{session id} (as is the case with session hijacking), the attacker forces the victim to use a SID that is known in advance. We will first describe the steps necessary to execute this attack. Afterwards, we list the ways in which the attacker can force a victim to use a certain session ID.
 
-\subsection{Attack scenario}
+\subsection{Attack scenario}\label{fixation-scenario}
 
 The session fixation attack works as follows \cite{Kolsek2002}:
 
 \begin{enumerate}
 	\item The \emph{attacker} establishes a new session at the server. He does this by sending a request that does not include a SID, which will cause the server to attach a newly generated
 SID to the response. Some servers also accept crafted SIDs\footnote{By crafted SIDs, we mean that these SIDs don't need to be generated by the server in advance. A crafted SID can be sent by a user on his first request to make the server `adopt' the SID for this user.} \cite{Shiflett2004}. In this case, the attacker can just make up a new SID, and no request needs to be made.
-	\item The attacker forces the victim to use the newly created session ID. We will see how this can be done in section \ref{injecting-sid}.
-	\item The victim uses his credentials to log in at the server. The SID that was injected at the client's web browser will automatically be attached to the request. There now exists a session at the server, identified by the SID known by the attacker, in which the victim is logged in.
-	\item The attacker makes a request to the server, attaching the captured session ID as his own. This makes the server think that it is the victim that made the request. Thus, the attacker is now able to impersonate the victim at the server.
+	\item The attacker forces the victim to use the newly created session ID. The methods that can be used to do this will be described in the next section.
+	\item The victim uses his credentials to log in at the server. The SID that was injected at the client's web browser will automatically be attached to the request. There now exists a session at the server, identified by the SID known to the attacker, in which the victim is logged in.
+	\item The attacker makes a request to the server, attaching the captured session ID as his own. This makes the server think that it is the victim that made the request. As such, the attacker is able to impersonate the victim at the server.
 \end{enumerate}
 
 These steps are graphically illustrated in Figure \ref{fig:fixation}.
@@ -160,7 +159,7 @@ In this section, we describe the most important attack vectors which can be used
 
 \subsubsection{Via GET or POST parameters}\label{get-or-post}
 
-If the target website accepts session ID's in \glspl{url} (see section \ref{session-management}), the attacker can craft a link of the form \url{http://www.target.com/login.php?PHPSESSID=d9qX4zKbg35}, where he chooses the desired session ID \cite{Johns2011}. He then sends this link to the victim, or places it on the target website as part of a \gls{xss} attack. When the victim clicks the link, the request sent to the target server contains the attacker's SID in the URL, causing the web application to think it is the victim's session ID. Alternatively, the attacker can force the victim to visit the URL by using an HTTP redirect \cite{rfc2616} to make the victim's browser automatically load the page \cite{Shiflett2004}. This requires the attacker to be able to perform a XSS attack, or the victim to visit the attacker's page.
+If the target website accepts session ID's in \glspl{url} (see section \ref{session-management}), the attacker can craft a link of the form \url{http://www.target.com/login.php?PHPSESSID=d9qX4zKbg35}, where he chooses the desired session ID \cite{Johns2011}. He then sends this link to the victim, or places it on the target website as part of an \gls{xss} attack. When the victim clicks the link, the request sent to the target server contains the attacker's SID in the URL, causing the web application to think it is the victim's session ID. Alternatively, the attacker can force the victim to visit the URL by using an HTTP redirect \cite{rfc2616} to make the victim's browser automatically load the page \cite{Shiflett2004}. This requires the victim to visit the attacker's page, or the attacker to be able to perform an XSS attack.
 
 In case the target website uses POST instead of GET parameters for session management, the link can be replaced by an automatically submitting form (as we will see in section \ref{forms}) \cite{Kolsek2002,Bontrager2005}.
 
@@ -182,13 +181,19 @@ where the name and value of the session cookie are chosen by the attacker \cite{
 
 There is another attack which can be used by an attacker to inject a cookie on the victim's machine. In an HTTP response splitting attack, the attacker tricks the victim's browser (or an in-between proxy) into thinking that two HTTP responses were sent by the target server, whereas both are actually part of the same HTTP response \cite{Klein2004}. The interesting part for the attacker is that the contents of one of the two responses can be chosen by himself. Because of this, an attacker is able to insert a \texttt{Set-Cookie} header containing the desired session identifier into the response, effectively injecting the SID into the client's browser \cite{Johns2011}.
 
+\subsubsection{Via an active man-in-the-middle attack}
+
+In an active man-in-the-middle attack, the attacker can not only eavesdrop on the victim's communication with the server, but can also intentionally modify this communication. This is the case, for example, when the attacker is able to take over the victim's gateway to the Internet (e.g. an Internet router or a proxy).
+
+Since an active \gls{mitm} is able to modify responses from the server to the victim, he can alter the \texttt{Set-Cookie} header such that it contains the desired session identifier. The victim's browser will see this as the server issuing a new session cookie, and will store the cookie accordingly.
+
 \subsubsection{Via subdomain cookie setting}\label{subdomain-setting}
 
 Sometimes, an attacker is able to take over a subdomain of the target website because it is more vulnerable than the parent domain, or because he has legitimate access on the subdomain. Normally, setting a cookie on a subdomain would not have any effect on the parent domain. Indeed, as we described in section \ref{access-control}, cookies will only be used for the same domain as the one that set them, or for one of its subdomains. Thus, a cookie set on a subdomain will not be used for its parent domain. This makes it seem like performing a session fixation attack on a parent domain is not possible from within a subdomain.
 
-There is, however, a possibility to set a cookie for a parent domain by using the cookie's \texttt{domain} parameter \cite{Kristol2001}. As an example, consider the case where the attacker was able to take over the domain \texttt{vulnerable.target.com}. He can then use this domain to set a cookie for \texttt{target.com}, and all of its subdomains, by specifying the cookie as \texttt{PHPSESSID=d9qX4zKbg35;domain=.target.com} (notice the `\texttt{.}' preceding \texttt{target.com}). This effectively allows an attacker that has access to a subdomain to execute a session fixation attack on a parent domain \cite{Kolsek2002}.
+There is, however, the possibility to set a cookie for a parent domain by using the cookie's \texttt{domain} parameter \cite{Kristol2001}. As an example, consider the case where the attacker is able to take over the domain \texttt{vulnerable.target.com}. He can then use this domain to set a cookie for \texttt{target.com}, and all of its subdomains, by specifying the cookie as \texttt{PHPSESSID=d9qX4zKbg35;domain=.target.com} (notice the `\texttt{.}' preceding \texttt{target.com}). This effectively allows an attacker that has access to a subdomain to execute a session fixation attack on a parent domain \cite{Kolsek2002}.
 
-A related problem occurs when a cookie with the same name is set for both the parent domain and for subdomain. When the user visits a page on the subdomain, his browser will attach both the cookie for the parent domain and the cookie for the subdomain to the request. Unfortunately, since cookies don't contain the \texttt{domain} attribute when they are sent from the client to the server, the server has no way of distinguishing between these two cookies. What makes matters worse is that the order in which both cookies are sent differs between browsers. We tested the behavior of the Firefox, Opera and Chrome browsers, and found that:
+A related problem occurs when two cookies with the same name are set for both the parent domain and the subdomain. When the user visits a page on the subdomain, his browser will attach both cookies to the request. Unfortunately, since cookies don't contain the \texttt{domain} attribute when they are sent from the client to the server, the server has no way of distinguishing between the parent domain and the subdomain cookie. What makes matters worse is that the order in which both cookies are sent differs between browsers. We tested the behavior of the Firefox, Opera and Chrome browsers, and found that:
 \begin{itemize}
 	\item Firefox sends the subdomain cookie first, and the parent domain cookie second.
 	\item Opera sends the parent domain cookie first, and the subdomain cookie second.
@@ -205,19 +210,17 @@ It seems that the only benefit an attacker has from performing a session fixatio
 \end{itemize}
 A distinction must be made between the previously described scenario, wherein an attacker tricks the user into logging in with a predefined SID, and the scenarios described in this section. We will use the term \emph{\gls{login session fixation}} to refer to the first variation, while using just \emph{session fixation} to refer to the general class of session fixation attacks.
 
-As we can see, the session fixation attack is more venomous than would be expected when first looked upon. Because of this, we propose a client-side solution to the session fixation attack in chapter \ref{fixation-solution}.
-
 \section{Cross Site Request Forgery}\label{csrf}
 
-The cross site request forgery (also called \gls{csrf} or session riding) attack is different from the \gls{session hijacking} and \gls{session fixation} attacks in the sense that the attacker will not try to completely take over a victim's session. Instead, the attack leverages the victim's browser's implicit authentication to make requests in the name of the client. This is accomplished by compelling the victim's browser into issuing the request. A possible threat exists, for example, when the victim is logged in at the website of his bank. In this case, the attacker can use the victim's implicit authentication to transfer money from the victim's account to his own account. Before we see the ways in which the attacker can make a victim's browser issue requests, let us first look at the complete attack scenario.
+The cross site request forgery (also called \gls{csrf} or session riding) attack is different from the \gls{session hijacking} and \gls{session fixation} attacks in the sense that an attacker executing a CSRF attack does not try to completely take over a victim's session. Instead, the attack leverages the victim's browser's implicit authentication to make requests in the name of the client. This is accomplished by compelling the victim's browser into issuing a request. A possible threat exists, for example, when the victim is logged in at the website of his bank. In this case, the attacker can use the victim's implicit authentication to transfer money from the victim's account to his own account. Before we see the ways in which the attacker can make a victim's browser issue requests, let us first look at the complete attack scenario.
 
 \subsection{Attack scenario}
 
 The CSRF attack is made up out of the following steps (assuming that the victim is already authenticated at the target website) \cite{Schreiber2004}:
 
 \begin{enumerate}
-	\item The attacker forces the victim's browser to send a request to the server (we will see how this happens in section \ref{forcing-request}). It is the attacker that chooses the contents of this request.
-	\item The browser, thinking that a legitimate request is performed by the victim, automatically attaches the victim's authentication information. This authentication information can be in the form of a \gls{sid}, \texttt{\gls{http} Auth} credentials, \gls{ssl} information, or even the user's \gls{ip} address \cite{Johns2006b,Zeller2008}.
+	\item The attacker forces the victim's browser to send a request to the server (we will see how this happens in the next section). It is the attacker that chooses the contents of this request.
+	\item The browser, thinking that a legitimate request is performed by the victim, automatically attaches the victim's authentication information. This authentication information can be in the form of a \gls{sid}, \gls{http} \texttt{Auth} credentials, \gls{ssl} information, or even the user's \gls{ip} address \cite{Johns2006b,Zeller2008}.
 	\item The browser sends the request to the target server. This server uses the request's authentication information to determine that the request was made by the victim. Thus, the server executes any action that was requested by the attacker as if the victim requested it.
 \end{enumerate}
 
@@ -232,23 +235,23 @@ The different steps of the CSRF attack are graphically illustrated in Figure \re
 
 \subsection{Forcing the browser to make a request}\label{forcing-request}
 
-As was the case with the previous attacks, there are several possibilities to execute a CSRF attack. We describe the most important methods for executing a CSRF attack in this section. Some other methods which can be used by an attacker to make a victim's browser issue a request, but which are unrelated to the cross site request forgery attack, are discussed in section \ref{other-browser-requests}.
+As was the case with the previous attacks, there are several possibilities to execute a CSRF attack. In this section, we describe the most important methods an attacker can use for compelling the victim's browser into issuing a cross-site request.
 
 \subsubsection{Via the \texttt{<img>} tag}
 
-An attacker can also abuse the \texttt{<img>} \gls{html} tag for issuing requests. The \texttt{<img>} tag is normally used for including images in a web page. To download an image from the server where it is stored, the client's web browser has to issue a request. However, instead of providing the URL to an actual image, the attacker can provide a request URL containing GET parameters, causing the victim's browser to issue the request when trying to load the image \cite{Johns2006b}. If the attacker is able to insert images into a trusted website (as is often the case in bulletin boards), he can make a victim issue the request when he visits the trusted page containing the image \cite{Barth2008}. Similarly to the previous method, this method can only be used for requests that contain GET parameters.
+The \texttt{<img>} \gls{html} tag is normally used for including images in a web page. However, the \texttt{<img>} tag can also be abused by an attacker for issuing cross-site requests. For this, instead of providing the URL to an actual image, the attacker provides a request URL containing GET parameters. This will cause the victim's browser to issue the request when it tries to load the image as part of the current page \cite{Johns2006b}. If the attacker is able to insert images into a trusted website (as is often the case in bulletin boards), he can make a victim issue the request when he visits the trusted page containing the image \cite{Barth2008}. The \texttt{<img>} tag can only be abused by an attacker for issuing requests that contain GET parameters.
 
 \subsubsection{Via cascading style sheets}
 
-Cascading style sheets (or \gls{css}) are used for defining the appearance of a web page. They include the colors, fonts, and placements for elements on a web page. Similar to using the \texttt{<img>} tag for issuing requests, the \texttt{<link>} tag, which is used to load external CSS stylesheets can be used to issue requests \cite{Huang2010}. For this, the attacker sets the URL of the stylesheet to the request URL containing the GET parameters. This will cause the victim's browser to issue the request when it tries to load the stylesheet for the page.
+Cascading style sheets (or \gls{css}, not to be confused with \gls{xss}) are used for defining the appearance of a web page. They include the colors, fonts, and placements for elements on a web page. Similar to using the \texttt{<img>} tag for issuing requests, the \texttt{<link>} tag, which is normally used to load external CSS styles can be used to issue requests \cite{Huang2010}. For this, the attacker sets the URL of the style sheet to the request URL containing the GET parameters. This will cause the victim's browser to issue the request when it tries to load the style sheet for the page. As was the case with the previous method, cascading style sheets can only be abused for issuing requests that contain GET parameters.
 
 \subsubsection{Via forms}\label{forms}
 
-When the target web application uses POST instead of GET parameters, an HTML form can be used to perform the request. When a form is submitted, the browser issues a request containing the form elements and their values as parameters.
+When the target web application uses POST instead of GET parameters for the request the attacker wants to execute, an HTML form can be used to perform the request. When a form is submitted, the browser issues a request containing the form elements with their values as POST parameters.
 
-An attacker can create a form containing elements that have the desired values. He must then force the victim's browser to submit the form, which can be done by either tricking the victim into submitting the form manually, or by submitting the form using JavaScript.
+An attacker can create a form containing elements that have the desired values. He must then force the victim's browser to submit the form, which can be done by either tricking the victim into submitting the form manually, or by having the form submit automatically using JavaScript.
 
-Tricking the victim into submitting the form can be relatively easy: all the attacker has to do is assure that the victim clicks the submit button. This can be achieved by hiding all form elements except for the submit button, pretending that the button serves some other purpose. This approach is taken even further by Mao et al. \cite{Mao2009}: they noticed that, even when it is required that the \emph{actual} submit button of the legitimate site is pressed (as is the case when some CSRF countermeasures \cite{Jovanovic2006,Johns2006} are in place), a victim can still be tricked into triggering a request it didn't want the browser to perform. This is done by including an iframe in which only part of the original form is visible into the attacker's website. The hiding of elements on the legitimate page is possible because iframe parents have access to all elements in the child iframes, irrespective their origins \cite{Singh2010}. Their result can be seen in Figure \ref{fig:mao2009}.
+Tricking the victim into submitting the form can be relatively easy: all the attacker has to do is assure that the victim will click the submit button. This can be achieved by hiding all form elements except for the submit button, and making it seem like the button serves some other purpose. This approach is taken even further by Mao et al. \cite{Mao2009}: they noticed that, even when it is required that the \emph{actual} submit button of the trusted site is pressed (as is the case when some CSRF countermeasures \cite{Jovanovic2006,Johns2006} are in place), a victim can still be tricked into triggering the browser to make a request that he did not want it to perform. This is done by including an iframe\footnote{An iframe is an HTML tag which allows a HTML page to be embedded within a parent HTML document.} containing the original form into the attacker's website, while making only the form's `post' button visible to the victim. The hiding of other parts of the form is achieved by resizing and auto-scrolling the iframe. The result of executing such an attack in order to make a victim unwillingly post something on his own Facebook profile page is shown in Figure \ref{fig:mao2009}.
 
 \begin{figure}[htb]
 	\centering
@@ -262,23 +265,27 @@ Tricking the victim into submitting the form can be relatively easy: all the att
 	\label{fig:mao2009}
 \end{figure}
 
-An attacker can also make the form automatically submit in the victim's browser. For this, he needs JavaScript capabilities on the page where the form is located. An attacker has these capabilities when the form is hosted on the attacker's domain (which then needs to be visited by the victim), or when the form is displayed on a page where the attacker can execute a \gls{xss} attack (see section \ref{xss}). To automatically submit the form, a line of JavaScript similar to \texttt{document.forms[0].submit()} should be inserted in the HTML code of the page \cite{Jovanovic2006}.
+An attacker can also make the form automatically submit in the victim's browser. For this, he needs JavaScript capabilities on the page where the form is located. An attacker has these capabilities when the form is hosted on the attacker's domain (which then needs to be visited by the victim), or when the form is displayed on a page where the attacker can execute an \gls{xss} attack (see section \ref{xss}). To access the form, the attacker can use the \texttt{forms} \gls{dom} element, which contains a list of all forms on the page. Automatically submitting the form can then be done by inserting a line of JavaScript similar to
+\begin{lstlisting}[language=HTML]
+<script> document.forms[0].submit() </script>
+\end{lstlisting}
+into the HTML code of the page \cite{Jovanovic2006}.
 
-\subsection{CSRF and the same origin policy}
+\subsubsection{CSRF and the same origin policy}
 
 The \gls{sop} (described in section \ref{sop}) limits JavaScript access to DOM objects that have the same origin as the page which contains the script. Although this prevents JavaScript from accessing DOM objects from another domain, it does not prevent JavaScript from making requests to another domain \cite{DeRyck2010}. Thus, the same origin policy does not have any effect on CSRF attacks.
 
-\section{Other session security considerations}\label{other-browser-requests}
+\subsection{Other ways of forcing the browser to make a request}\label{other-browser-requests}
 
-In this section, we describe some other methods an attacker can use to make a victim's browser issue a request. Note that, although they can be associated with cross site request forgery attacks, they are technically different, because they do not issue a request from one domain to a different domain.
+Technically, cross site request forgery attacks always automatically issue a request to a different domain. In this section, we describe some other methods an attacker can use to make a victim's browser issue a request. Note that, although these methods can be associated with cross site request forgery attacks, they are technically different, because they do not issue a request from one domain to a different domain, or because they can not be used to issue a request automatically.
 
-\subsection{Via crafted URLs}
+\subsubsection{Via crafted URLs}
 
 The simplest method for an attacker to make a victim's browser issue a request is to trick the victim into clicking a crafted an \gls{url} containing the desired request and its GET parameters. When the victim clicks the URL, the browser will automatically issue the request together with its parameters. Tricking the user into clicking the URL can be done either by \gls{phishing} \cite{Dhamija2006}, or by embedding the URL in a trusted web page in a manner similar to the \gls{xss} attack described in section \ref{xss}. Because URLs can only hold GET parameters, this method can not be used for issuing requests that contain POST parameters.
 
-\subsection{Via asynchronous requests}\label{asynch}
+\subsubsection{Via asynchronous requests}\label{asynch}
 
-If the attacker is able to perform a \gls{xss} attack, he can inject JavaScript code which uses the \texttt{XMLHttpRequest} object to perform an asynchronous HTTP request. The complete specification of this object is available at \cite{Kesteren:09:X}. We only provide the following small example of its use \cite{Binny2010}:
+If the attacker is able to perform an \gls{xss} attack, he can inject JavaScript code which uses the \texttt{XMLHttpRequest} object to perform an asynchronous HTTP request. The complete specification of this object is available at \cite{Kesteren:09:X}. We only provide the following small example of its use \cite{Binny2010}:
 \begin{lstlisting}[language=JavaScript,breaklines=true]
 var client = new XMLHttpRequest();
 client.open("POST", "transfer.php");
@@ -288,26 +295,26 @@ client.setRequestHeader("Content-length", params.length);
 client.setRequestHeader("Connection", "close");
 client.send(params);
 \end{lstlisting}
-Creating an asynchronous GET request is similar. Differences are that the parameters are now appended to the URL instead of passed to the \texttt{send()} function, and that the HTTP headers don't have to be set explicitly.
+An asynchronous GET request can be made in a similar fashion. Differences are that the parameters are now appended to the URL instead of passed to the \texttt{send()} function, and that the HTTP headers don't have to be explicitly set.
 
-\subsection{Via active network attacks}
+\subsubsection{Via an active man-in-the-middle attack}
 
-If the connection between the client and the server is not encrypted, an active network attacker (or `active \gls{mitm}') does not need the victim's browser to submit the request: he can simply modify any request sent by the victim to contain the URL and parameters he wants \cite{Barth2008}.
+An active network attacker (or `active \gls{mitm}') does not need the victim's browser to submit the request: he can simply modify any request sent by the victim to contain the URL and parameters he wants \cite{Barth2008}. However, as we noted when describing the session hijacking and session fixation attacks, an attacker is likely to have better options for attack when he is an active MitM. Indeed, an active attacker will always have the ability to intercept a victim's SID, causing him to be able to issue requests in name of the victim himself. 
 
 \begin{table}[htb]
 	\centering
-	\begin{tabular}{r|cc}
-		& GET requests & POST requests\\
+	\begin{tabular}{r|cccc}
+		& GET requests & POST requests & automatable & cross-domain\\
 		\hline
-		\texttt{<img>} tag & X & \\
-		CSS & X & \\
-		Form &  & X \\
-		Link & X & \\
-		Async. request & X & X \\
-		Active attack & X & X
+		\texttt{<img>} tag & X & & X & X\\
+		CSS & X & & X & X\\
+		Form &  & X & X & X\\
+		Crafted URL & X & & & X\\
+		Async. request & X & X & X &\\
+		Active MitM & X & X & & X
 	\end{tabular}
 	\caption{Comparison of different methods for forcing a browser to make a request}
 	\label{tab:forcing-request}
 \end{table}
 
-Table \ref{tab:forcing-request} summarizes for each of the discussed in this and the previous section whether it can be used to issue GET requests, POST requests, or both. As we noted in section \ref{get-or-post}, however, some websites which normally use one of those two methods also accept requests issued using the other method \cite{Zeller2008}.
+Table \ref{tab:forcing-request} summarizes for each of the methods discussed in this and the previous section whether requests can be automated, and whether cross-domain requests are allowed to be made. The table also lists whether a certain method can be used to issue GET requests, POST requests, or both. As we noted in section \ref{get-or-post}, however, some websites which normally use one of those two methods also accept requests issued using the other method \cite{Zeller2008}.

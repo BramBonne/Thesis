@@ -1,4 +1,4 @@
-\documentclass[master=cws,english]{kulemt}
+\documentclass[master=csw]{kulemt}
 %\usepackage[english]{babel}
 \setup{title={Improving session security in web applications},
   author={Bram Bonn\'e},
@@ -37,6 +37,13 @@
     morestring=[b]",
     morestring=[d]',
     alsoletter={.}
+}
+
+\lstdefinelanguage{conf} {
+    morekeywords={
+        php_flag,off,
+        },
+    sensitive=false,
 }
 
 

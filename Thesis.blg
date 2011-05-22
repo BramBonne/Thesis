@@ -4,44 +4,46 @@ The style file: plainurl.bst
 Database file #1: /home/bram/Documenten/library.bib
 Database file #2: /home/bram/Documenten/rfc.bib
 Database file #3: /home/bram/Documenten/extra.bib
-You've used 119 entries,
+Warning--there's a number but no series in Dhamija2006
+You've used 121 entries,
             2760 wiz_defined-function locations,
-            1357 strings with 26794 characters,
-and the built_in function-call counts, 44940 in all, are:
-= -- 4907
-> -- 1382
-< -- 23
-+ -- 559
-- -- 440
-* -- 1955
-:= -- 6416
-add.period$ -- 417
-call.type$ -- 119
-change.case$ -- 578
+            1370 strings with 27173 characters,
+and the built_in function-call counts, 45831 in all, are:
+= -- 5011
+> -- 1407
+< -- 25
++ -- 569
+- -- 448
+* -- 2001
+:= -- 6537
+add.period$ -- 425
+call.type$ -- 121
+change.case$ -- 588
 chr.to.int$ -- 0
-cite$ -- 119
-duplicate$ -- 1417
-empty$ -- 4593
-format.name$ -- 440
-if$ -- 11671
+cite$ -- 122
+duplicate$ -- 1449
+empty$ -- 4680
+format.name$ -- 448
+if$ -- 11908
 int.to.chr$ -- 0
-int.to.str$ -- 119
-missing$ -- 47
-newline$ -- 646
-num.names$ -- 238
-pop$ -- 1437
+int.to.str$ -- 121
+missing$ -- 48
+newline$ -- 657
+num.names$ -- 242
+pop$ -- 1460
 preamble$ -- 1
-purify$ -- 458
+purify$ -- 466
 quote$ -- 0
-skip$ -- 3192
+skip$ -- 3258
 stack$ -- 0
-substring$ -- 1217
-swap$ -- 293
-text.length$ -- 23
+substring$ -- 1233
+swap$ -- 305
+text.length$ -- 25
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 468
-warning$ -- 0
-while$ -- 305
-width$ -- 122
-write$ -- 1338
+type$ -- 476
+warning$ -- 1
+while$ -- 310
+width$ -- 124
+write$ -- 1365
+(There was 1 warning)
