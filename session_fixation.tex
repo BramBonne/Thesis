@@ -60,7 +60,7 @@ Because there is no standardized way of doing session management (see section \r
 
 \section{Implementation}
 
-The solution was first prototyped as a lightweight HTTP proxy written in Python, and later implemented as an add-on for Mozilla Firefox\footnote{This add-on is available for download at \url{https://spideroak.com/share/IJZGC3I/pub/home/bram/Openbaar/NoFix.xpi}. It can also be tested by booting the live CD included with this thesis.}. We first discuss the advantages and disadvantages of an implementation as a browser extension. Afterwards, we discuss the relevant parts of the Firefox architecture. We conclude with the specifics about the implementation itself.
+The solution was first prototyped as a lightweight HTTP proxy written in Python, and later implemented as an add-on for Mozilla Firefox\footnote{This add-on is available for download at \url{https://spideroak.com/share/IJZGC3I/pub/home/bram/Openbaar/NoFix.xpi}. It can also be tested by booting the live CD included with this thesis, for which the instructions are available in Appendix \ref{manual}}. We first discuss the advantages and disadvantages of an implementation as a browser extension. Afterwards, we discuss the relevant parts of the Firefox architecture. We conclude with the specifics about the implementation itself.
 
 \subsection{HTTP proxy or browser extension?}\label{proxy-or-extension}
 
@@ -177,7 +177,7 @@ It is not possible for a client-side proxy to be configured for every possible w
 
 \subsection{HttpOnly}\label{httponlyremark}
 
-Apart from being used as the mechanism to make our solution able to prevent JavaScript access to HTTP session cookies, HttpOnly greatly influenced the development of our session fixation solution. Indeed, our solution can be seen as the dual of HttpOnly cookies: where the \texttt{HttpOnly} flag makes sure that HTTP cookies are unavailable to untrusted channels, our solution makes these untrusted channels unable to set cookies which will be sent over HTTP.
+Apart from being used as the mechanism to make our solution able to prohibit JavaScript access to HTTP session cookies, HttpOnly greatly influenced the development of our session fixation solution. Indeed, our solution can be seen as the dual of HttpOnly cookies: where the \texttt{HttpOnly} flag makes sure that HTTP cookies are unavailable to untrusted channels, our solution makes these untrusted channels unable to set cookies which will be sent over HTTP.
 
 A difference between HttpOnly and our solution is that the \texttt{HttpOnly} flag must be explicitly set at the server side, whereas our solution reasons autonomously about which cookies should be made unavailable.  Moreover, our policy extension could be seen as a proxy that automatically enforces HttpOnly behavior for cookies that need it.
 
@@ -199,26 +199,16 @@ The goal of both the Noxes and dynamic tainting solutions is very similar to tha
 
 \section{Future work}
 
-While cross-domain cooking \cite{Zalewski2006} can also be used to
-perform a successful session fixation attack, it was largely
-ignored in our solution. Since our Firefox add-on uses Firefox'
-top-level domain list to determine whether a cookie is set for
-a top-level domain, part of this problem is already solved.
-However, a complete client-side solution to cross-domain
-cooking would have to consist of completely prohibiting subdomains from
-setting cookies for their parent domain. Our logs show that,
-when loading each of the homepages of Alexa's top 100
-websites only once, 427 cookies are set for a parent domain.
-Because of this, it is currently not clear how such a solution
-can be implemented without breaking lots of websites.
+While cross-domain cooking \cite{Zalewski2006} can also be used to perform a successful session fixation attack, it was largely ignored in our solution. Since our Firefox add-on uses Firefox' top-level domain list to determine whether a cookie is set for a top-level domain, part of this problem is already solved. However, a complete client-side solution to cross-domain cooking would have to consist of completely prohibiting subdomains from setting cookies for their parent domain. Our logs show that, when loading each of the homepages of Alexa's top 100 websites only once, 427 cookies are set for a parent domain. Because of this, it is currently not clear how such a solution can be implemented without breaking lots of websites.
 
-Other session fixation attacks make use of URL parameters and form fields
-to set the session cookie.
-These were also not considered in the current implementation.
-A simple countermeasure could consist of stripping all SIDs
-from URLs and POST data. Unfortunately, this would break all websites that perform their session management exclusively via URL rewriting.
+Other session fixation attacks make use of URL parameters and form fields to set the session cookie. These were also not considered in the current implementation. A simple countermeasure could consist of stripping all SIDs from URLs and POST data. Unfortunately, this would break all websites that perform their session management exclusively via URL rewriting. Nevertheless, it might be useful to test the real-world impact of such a solution, since statistics gathered from the K.U.Leuven dataset (containing 4.7 million requests to 11848 domains) indicate that only 0.3\% of the URLs contain session information created by a known web framework \cite{DeRyck2010,Bonne2011}.
 
-The current solution was only prototyped as an HTTP proxy
-and implemented as a Firefox extension. Similar extensions
-could be written for other browsers.
-Moreover, as was already described in section \ref{sessionshield-comparison}, SessionShield could easily be extended with our solution. This would yield a proxy with a policy similar to our own, that separates session cookies entirely from the browser.
+The current solution was only prototyped as an HTTP proxy and implemented as a Firefox extension. Similar extensions could be written for other browsers. Moreover, as was already described in section \ref{sessionshield-comparison}, SessionShield could easily be extended with our solution. This would yield a proxy with a policy similar to our own, that separates session cookies entirely from the browser.
+
+\section{Conclusion}
+
+In this chapter, we developed a client-side countermeasure to both session fixation and session hijacking attacks. We reasoned that users are likely to be more willing to protect themselves against session attacks than web developers are to protect their web application, hence the need for a solution at the client side.
+
+The principle of the solution is that a clear separation should be made between HTTP cookies and cookies set via other channels. In this sense, our approach is very similar to that of SessionShield and HttpOnly cookies. However, our approach extends this behavior to make it robust against session fixation attacks.
+
+The solution was implemented as an add-on for the Firefox web browser, which allowed it to be used by testers for a period of 20 weeks. We tested the impact of enforcing a policy that prevents untrusted cookies from being sent over HTTP (the part of the add-on which protects against session fixation), and found that -- even though a considerable amount of cookies is blocked -- enforcing such a policy has no negative effect on the user experience. Moreover, the implementation of this policy has no noticeable impact on web browsing performance.

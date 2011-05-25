@@ -9,7 +9,7 @@ To understand the need for web sessions, we first have to look at how web browse
 Web sessions work as follows:
 \begin{enumerate}
 	\item When the web server receives its first HTTP request from a particular client, it creates a \emph{session identifier} (also called a \gls{session id} or \gls{sid}) that it associates with this client. It then sends the newly generated SID to the client as part of the HTTP response.
-	\item In subsequent communications, every request issued by the client to the server contains the received SID. Because the web server has associated this SID with a particular client, it will know who it is interacting with.
+	\item In subsequent communications, every request issued by the client to the server contains the received SID. Because the web server has associated this SID with a particular client, it will know whom it is interacting with.
 \end{enumerate}
 
 \label{cookie-header}There are three ways in which session identifiers can be attached to requests and responses \cite{Jovanovic2006}. The first one, which is most common, makes use of \glspl{cookie} \cite{Kristol2001, Park2000}. Cookies are strings consisting of multiple name-value pairs which are included in the \texttt{Set-Cookie} header of a HTTP response by the web server. Upon receiving a cookie, the browser stores it for a specified amount of time. It then attaches this cookie to every subsequent request made to the domain\footnote{The actual access control policy is a bit more complicated and will be discussed in section \ref{access-control}.} the cookie was set for. This is done by including the cookie as the value for HTTP's \texttt{Cookie} header. The process is graphically depicted in Figure \ref{fig:sessions-cookies}. It is clear that cookies are a very convenient mechanism for managing session identifiers. Because cookies can also be used for other purposes than session management, we will make a distinction between \emph{cookies} (which can be used for all sorts of state information) and \emph{\glspl{session cookie}} (which are cookies that store a session identifier) in this text.
@@ -103,3 +103,7 @@ Fortunately, the user does not have to re-authenticate every time he gets a new 
 \subsection{Using a session management framework}\label{use-framework}
 
 Problems occur in lots of web applications because they implement their own session management. As we will see in section \ref{frameworks}, lots of web frameworks have thoroughly tested session management already built-in. Because it is very easy to make mistakes when providing security, it is recommended to make use of an existing session management framework. Using such a framework does not completely relieve the web developer of all tasks associated with session management: he must still make sure that the framework is configured correctly, and that channels other than HTTP (for example, JavaScript) do not pose any security issues.
+
+\section{Conclusion} %TODO
+
+In this chapter, we described how session management works. We analyzed three methods of managing web sessions: cookies, URL rewriting and form elements, and we discussed their access policies. We described the properties a secure session identifier should possess, while already touching upon some security issues associated with web sessions. In the next chapter, we will go into more detail about these issues.
