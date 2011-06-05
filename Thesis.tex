@@ -3,14 +3,14 @@
 %\selectlanguage{english}
 \setup{title={Improving session security in web applications},
   author={Bram Bonn\'e},
-  promotor={dr.\ L. Desmet \and Prof.\,dr.\ F. Piessens},
-  assessor={Ir.\,P. Philippaerts \and G. Poulisse},
-  assistant={\ P. De\ Ryck \and N. Nikiforakis}}
+  promotor={Dr.\ ir.\ L. Desmet \and Prof.\ dr.\ ir.\ F. Piessens},
+  assessor={Dr.\ P. Philippaerts \and G. Poulisse},
+  assistant={P. De\ Ryck \and N. Nikiforakis}}
 \setup{filingcard,
   translatedtitle={Verhoogde veiligheid van sessies in webapplicaties},
   udc=004.4,
-  shortabstract={%TODO
-    This thesis discusses the security of web sessions. For this, an overview is given of how web sessions work. Next, known attacks against session management are described, together with an overview of attack vectors that enable them to be executed. Different countermeasures %client, server, framework
+  shortabstract={
+    This thesis discusses the security of web sessions, which are used by web applications to couple state to a particular user. Three session attacks are described: session hijacking, wherein the attacker captures a victim's session secret (or SID); session fixation, wherein the attacker imposes his own SID upon a victim's web browser; and cross site request forgery, wherein the attacker uses a victim's browser to issue requests as if they came from the victim. Even though good server-side countermeasures to these attacks exist and are implemented in most popular web frameworks, web developers often neglect to adequately secure their web applications. To allow a user to be secure even if the web application is vulnerable to session attacks, client-side countermeasures have also been developed. A good countermeasure against session fixation attacks is, however, inexistent. Because of this, we propose our own countermeasure against session fixation and session hijacking which can be deployed at the client side. An evaluation of the countermeasure suggests that it protects a user against session fixation attacks without having a negative effect on the user experience.
    }}
 \setup{font=lm}
 
@@ -19,7 +19,17 @@
 \usepackage{listings}
 \lstset{breaklines=true}
 \usepackage{footnote}
-\usepackage[pdfusetitle,colorlinks,plainpages=false]{hyperref}
+\usepackage{pdfpages}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks,
+    pdfusetitle,
+    %citecolor=black,
+    %filecolor=black,
+    %linkcolor=black,
+    %urlcolor=black,
+    plainpages=false
+}
 \usepackage[toc]{glossaries}
 \makeglossaries
 
@@ -52,36 +62,38 @@ This thesis is the result of work conducted during my graduation year at the K.U
 
 Firstly, thanks go out to Lieven Desmet and Frank Piessens, my promotors, and Philippe De Ryck and Nick Nikiforakis, my supervisors, for suggestions and feedback, and for their contributions to the last chapter of this thesis.
 
+Secondly, I'd like to thank Bart Verstrynge for proofreading parts of this thesis.
+
 Many thanks also to the people who tested the Firefox add-on for extended periods of time. They were generous enough to provide me with feedback and logs on their personal browsing behavior.
 
-Lastly, special thanks go out to my family and friends, who kept supporting me during my studies. Without them, I would not even be studying in the wonderfully interesting field of computer science.
+Lastly, special thanks go out to my family and friends, who kept supporting me during my studies. Without them, I would not be studying in the wonderfully interesting field of computer science.
 \end{preface}
 
 \tableofcontents*
 
 \begin{abstract}
-Many web applications available today make use of some way of session management to be able to couple state to a particular user. This state varies from the user's preferences to user authentication and private information. Unfortunately, it is possible for an attacker to exploit session management in order to impersonate another user at a web application. Attacks that do this, and the ways in which they can be prevented, are the subject of this thesis.
+Many web applications available today make use of some way of session management to be able to couple state to a particular user. This state varies from the user's preferences to user authentication and private information. Unfortunately, it is possible for an attacker to exploit session management in order to impersonate another user at a web application. In this thesis we describe attacks that enable an attacker to impersonate a victim, and the ways in which they can be prevented.
 
-Web sessions work by creating a secret, known as the \emph{SID}, which is shared between a particular user and the web application. On every page request to the web application, the user's browser attaches the SID. This allows the web application to know whom it is interacting with. SIDs are normally available only to servers on the same (sub)domain as the server that issued them. To keep web sessions secure, an SID should be made unguessable and unavailable to an attacker. Furthermore, its lifetime should be limited to mitigate the risk of an attacker capturing the SID. For new web applications, it is advised to use an already existing session management framework, which is often part of a web framework.
+Different attacks abusing session management are known: session hijacking, wherein the attacker captures a victim's session identifier (or SID); session fixation, wherein the attacker imposes his own SID upon a victim's web browser; and cross site request forgery, wherein the attacker uses a victim's browser to issue requests as if they came from the victim. For all three attacks, different attack vectors exist, which allow an attacker to create complex attack scenarios which are difficult to prevent.
 
-Different attacks abusing session management are possible: session hijacking, wherein the attacker captures a victim's SID; session fixation, wherein the attacker imposes his own SID upon a victim's web browser; and cross site request forgery, wherein the attacker uses a victim's browser to issue requests as if they came from the victim. For all three attacks, different attack vectors are available, and all of them should be protected against in order to completely prevent the attacks.
+Over the years, many server-side countermeasures to session hijacking and session fixation have been proposed. While most of these suffer shortcomings, some good server-side countermeasures exist. Moreover, different web frameworks have satisfactory session security already built in. Unfortunately, web application developers often neglect to implement these solutions in their web applications.
 
-Many countermeasures to session fixation and session hijacking are available. Different web frameworks have satisfactory session security already built in. Other sound approaches, both for the client and for the server side are also available, with one exception: that of client-side protection to session fixation attacks.
+Client-side countermeasures to session attacks are also available. However, they are far less numerous than their server-side counterparts. Furthermore, a sound client-side solution to session fixation attacks is inexistent. Because of this, users of a web application are unable to secure themselves if the web application they are using is vulnerable to session fixation attacks.
 
-We propose a client-side solution to session fixation and session hijacking attacks, which is based on the principle that SIDs accessed via JavaScript should not be allowed to interfere with SIDs accessed over HTTP. We implement this solution as an add-on for the Firefox web browser and find that it protects users against the aforementioned attacks, while having little to no impact on the user experience.
+We propose a client-side solution to session fixation and session hijacking attacks, which is based on the principle that SIDs that are managed via JavaScript should not be allowed to interfere with SIDs that are managed over HTTP. We implement our solution as an add-on for the Firefox web browser and find that it protects users against the aforementioned attacks, while having little to no impact on the user experience.
 \end{abstract}
 
 \begin{abstract*}
 %\setlanguage{dutch}
-Veel hedendaagse webapplicaties maken gebruik van sessiebeheer om informatie aan een bepaalde gebruiker te kunnen koppelen. Deze informatie kan gaan van gebruikersvoorkeuren tot het bijhouden van authenticatie- en priv\'e-gegevens van de gebruiker. Het is echter ook mogelijk voor een aanvaller om sessiebeheer te misbruiken, en zich zo voor te doen als een andere gebruiker. Dergelijke aanvallen, en de manieren waarop zij kunnen worden voorkomen, vormen het onderwerp van deze thesis.
+Veel hedendaagse webapplicaties maken gebruik van sessiebeheer om informatie aan een bepaalde gebruiker te kunnen koppelen. Deze informatie kan gaan van het opslaan van gebruikersvoorkeuren tot het bijhouden van authenticatie- en priv\'egegevens van de gebruiker. Het is jammer genoeg ook mogelijk voor een aanvaller om sessiebeheer te misbruiken en zich zo voor te doen als een andere gebruiker. In deze thesis beschrijven we aanvallen waarmee een aanvaller zich kan voordoen als zijn slachtoffer, alsook hoe deze aanvallen kunnen worden voorkomen.
 
-Websessies werken door het aanmaken van een geheime code, de \emph{SID} genaamd, die gedeeld wordt door een bepaalde gebruiker en de webapplicatie. Bij elk webpaginaverzoek bij de webapplicatie voegt de webbrowser van de gebruiker deze SID toe. Zo weet de server van welke gebruiker het verzoek komt. Een SID is normaal gezien enkel beschikbaar voor servers die zich op hetzelfde (sub)domein bevinden als de server waar de SID van afkomstig is. Om web sessies veilig te houden, mag een SID niet te raden of te onderscheppen zijn door een aanvaller. Ook moet de levensduur van de SID beperkt worden om zo het risico van een onderschepte SID te beperken. Voor nieuwe webapplicaties is het raadzaam om gebruik te maken van een reeds bestaand framework voor sessiebeheer. Dit is vaak beschikbaar als onderdeel van een webframework.
+Sessiebeheer kan op verschillende manieren misbruikt worden door een aanvaller: door het kapen van sessies, waarbij een aanvaller de sessie-identiteit (of SID) van het slachtoffer onderschept; door het opleggen van sessies, waarbij een aanvaller ervoor zorgt dat de browser van het slachtoffer de SID van de aanvaller gebruikt; en door het misbruiken van de webbrowser van het slachtoffer om paginaverzoeken te sturen naar een webapplicatie alsof ze van het slachtoffer komen. Alle drie deze aanvallen kunnen op verschillende manieren uitgevoerd worden, hetgeen een aanvaller toelaat om complexe aanvalsscenario's te bedenken die moeilijk te voorkomen zijn door de webontwikkelaar.
 
-Sessiebeheer kan op verschillende manieren misbruikt worden door een aanvaller: door het kapen van sessies, waarbij een aanvaller de SID van het slachtoffer onderschept; door het opleggen van sessies, waarbij een aanvaller ervoor zorgt dat de browser van het slachtoffer de SID van de aanvaller gebruikt; en door het misbruiken van de web browser van het slachtoffer om paginaverzoeken te sturen naar een web applicatie alsof ze van het slachtoffer komen. Alledrie deze aanvallen kunnen op verschillende manieren uitgevoerd worden. Een web ontwikkelaar moet ervoor zorgen dat tegen al deze manieren wordt beveiligd als hij deze aanvallen wil voorkomen.
+Door de jaren heen zijn er verschillende tegenmaatregelen voorgesteld die het kapen en opleggen van sessies moeten voorkomen aan de kant van de server. Ondanks het feit dat veel van deze maatregelen tekort schieten, bestaan er toch enkele degelijke servergerichte oplossingen. Bovendien werd beveiliging tegen sessieaanvallen succesvol ingebouwd in de meeste populaire webframeworks. Jammer genoeg wordt deze bescherming door webontwikkelaars vaak over het hoofd gezien.
 
-Er zijn veel tegenmaatregelen beschikbaar om het kapen en opleggen van sessies te voorkomen. Beveiliging tegen sessieaanvallen is reeds ingebouwd in de meeste webframeworks. Andere aanpakken, zowel aan de kant van de server als aan de kant van de gebruiker, zijn ook beschikbaar, met \'e\'en uitzondering: bescherming tegen het opleggen van sessies aan de kant van de gebruiker is onbestaand.
+Ook aan de kant van de gebruiker zijn er verschillende tegenmaatregelen beschikbaar die sessieaanvallen moeten voorkomen. Deze zijn echter minder talrijk dan de maatregelen aan de kant van de server. Bovendien is een solide gebruikersgerichte oplossing tegen het opleggen van sessies onbestaande. Dit heeft als gevolg dat gebruikers van een webapplicatie niet in staat zijn om zichzelf te beveiligen wanneer de gebruikte webapplicatie kwetsbaar is voor dit soort aanvallen.
 
-We stellen een eigen oplossing voor tegen het kapen en opleggen van sessies. Deze oplossing werkt aan de kant van de gebruiker, en is gebaseerd op het principe dat er een duidelijke scheiding gemaakt moet worden tussen SID's die gebruikt worden via JavaScript en SID's die gebruikt worden via HTTP. We implementeren deze oplossing als een add-on voor de Firefox webbrowser en merken op dat gebruikers van deze add-on beschermd worden tegen de genoemde aanvallen, zonder dat dit een negatieve impact op de gebruikerservaring heeft.
+We stellen een eigen oplossing voor tegen het kapen en opleggen van sessies. Deze oplossing werkt aan de kant van de gebruiker en is gebaseerd op het principe dat er een duidelijke scheiding gemaakt moet worden tussen SID's die beheerd worden via JavaScript en SID's die beheerd worden via HTTP. We implementeren deze oplossing als een add-on voor de Firefox webbrowser en merken op dat gebruikers van de add-on beschermd worden tegen de genoemde aanvallen, met een minimale tot onbestaande impact op de gebruikerservaring.
 %\setlanguage{english}
 \end{abstract*}
 
@@ -99,6 +111,10 @@ We stellen een eigen oplossing voor tegen het kapen en opleggen van sessies. Dez
 
 \appendix
 \include{manual}
+\chapter{Scientific paper}\label{paper}\cleardoublepage
+\includepdf[pages=-]{/home/bram/School/Masterproef/Wetenschappelijkartikel/httpsessionproxy.pdf}
+\chapter{Scientific poster}\label{poster}\cleardoublepage
+\includepdf{/home/bram/School/Masterproef/Poster.pdf}
 
 \backmatter
 \bibliography{/home/bram/Documenten/library,/home/bram/Documenten/rfc,/home/bram/Documenten/extra}\bibliographystyle{plainurl}

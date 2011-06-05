@@ -1,39 +1,47 @@
-\chapter{NoFix live CD instructions}\label{manual}%TODO
+\chapter{NoFix live CD instructions}\label{manual}
 
-Included with this thesis is a live CD which can be used to test the implementation of the session fixation and session hijacking solution proposed in chapter \ref{fixation-solution}. This appendix describes how to use the live CD. It is also available on the live CD itself.
+Included with this thesis is a live CD which can be used to test the implementation of the session fixation and session hijacking solution proposed in chapter \ref{fixation-solution}. This appendix describes how to use the live CD.
 
 \section{Booting the live CD}
 
-The live CD environment kan be started by making sure that the live CD is inserted before booting your computer. If your computer is configured to boot from CD, the live CD will boot automatically. Depending on the computer model, you may have to press a button during boot to access the boot menu.
+The live CD environment can be started by inserting the CD before booting your computer. If your computer is configured to boot from CD, the live CD will boot automatically. Depending on the computer model, you may have to press a button during boot to access the boot menu.
+
+Alternatively, the live CD can also be used from within a VirtualBox\footnote{VirtualBox is virtualization software which is available for all common operating systems. It can be obtained from \url{http://www.virtualbox.org/wiki/Downloads}} environment. The installed VirtualBox additions should provide a seamless experience.
 
 When the CD has booted, a user list is presented. Clicking the `nofix' user will start the NoFix environment.
 
+\section{Connecting to the Internet}
+
+To connect to the Internet, click on the `network' icon in the upper right hand corner of the screen and select the network to connect to. If the network requires a password, you will be asked for the password to the keyring, which is `nofix'. When entering the password, do mind that the default keyboard layout is QWERTY with NumLock turned on.
+
 \section{Testing NoFix}
 
-To see how NoFix works, double-click on the `Firefox without NoFix' icon on the desktop. This will load a web page from a local web server which issues different kinds of cookies. Reload the page to make sure that the cookies are sent back to the web server at least once.
+To see how NoFix works, double-click on the `Firefox without NoFix' icon on the desktop. If you are using the live CD without an Internet connection, uncheck the `work offline' option in Firefox' `File' menu to be able to connect to the locally running web server.
+
+Firefox will load a web page from a local web server which issues different kinds of cookies. Reload the page to make sure that the cookies are sent back to the web server at least once.
 
 The web server will now display a page listing the cookies it received, divided into categories. These categories indicate whether the cookie would be allowed according to our policy or not. Note that some cookies are available to JavaScript, even when they should not be, and that some are available to HTTP, even when they should only be available to JavaScript.
 
 Now double-click on the 'Firefox with NoFix' icon on the desktop. This will load the same page, but this time with NoFix enabled. Be sure to reload the page this time, too.
 
-Upon reloading, it is clear that all cookies are divided into the category they belong to, because NoFix filtered the session cookies from being sent over a different channel than the one that set them.
+Upon reloading, it is clear that all cookies are divided into the category they belong to, because NoFix filtered the session cookies from being sent over a different channel than the one that set them. The cookie named `phpsessid' will not be blocked unless session hijacking protection is enabled. For information on how to do this, see section \ref{settings}.
 
 \section{Testing a real-world attack}
 
-To test the impact of a real-world XSS attack, click on the `vulnerable page' bookmark in the Firefox bookmark bar. This page allows to input text that will be reflected to the browser. When JavaScript is inserted in this way, it is possible to set a cookie. The textbox is pre-filled with JavaScript code that executes an XSS attack. In this attack, a cookie with name PHPSESSID and value i_chose_this is fixated. Click `Reflect my input, please!' to send this text to the server. The server will then reflect the input (and thus, the script code) back to the browser.
+To test the impact of a real-world XSS attack, click on the `vulnerable page' bookmark in the Firefox bookmark bar. This page allows to input text that will be reflected to the browser. When JavaScript is inserted in this way, it is possible to set a cookie. The textbox is pre-filled with JavaScript code that executes an XSS attack. In this attack, a cookie with name \texttt{PHPSESSID} and value \texttt{i\_chose\_this} is fixated. Click `Reflect my input, please!' to send this text to the server. The server will then reflect the input (and thus, the script code) back to the browser.
 
-At the bottom of the page, it is displayed which cookies were sent to the server in the previous HTTP request. Reload the page to make sure that any newly set cookies are sent to the web server. As can be seen, the cookie set via JavaScript appears at the bottom of the page.
+At the bottom of the page, it is displayed which cookies were sent to the server in the previous HTTP request. Reload the page to make sure that any newly set cookies are sent to the web server. When running Firefox without NoFix, the cookie set via JavaScript appears at the bottom of the page.
 
-When running Firefox without NoFix, JavaScript is prevented from setting cookies that will be sent over HTTP, and the session fixation attack is mitigated. You can test this by loading the same page in `Firefox with NoFix', and reloading the page. As can be seen, the session identifier is never sent to the server.
-
-\section{Adjusting NoFix' settings}
-
-The settings for the add-on can be modified through the `Tools$\rightarrow$Add-ons' menu in Firefox. In the settings, it is possible to make NoFix apply its policy to all cookies (instead of only session cookies), or to also enable session hijacking protection.
+When running Firefox with NoFix, JavaScript is prevented from setting cookies that will be sent over HTTP, and the session fixation attack is mitigated. You can test this by loading the same page in `Firefox with NoFix', and reloading the page. As can be seen, the session identifier is never sent to the server.
 
 \section{Testing other pages}
 
-Both versions of the Firefox web browser can also be used to surf the web with and without NoFix being enabled. To see which cookies are blocked in HTTP requests, the JavaScript console (which can be summoned using Ctrl+Shift+J) can be used.
+Both versions of the Firefox web browser can also be used to surf the web. To see which cookies are blocked by NoFix, the JavaScript console (which can be summoned using Ctrl+Shift+J) can be used. This window will show log messages generated by NoFix.
 
-Wireshark is also available to capture complete packets HTTP packets. To start Wireshark, double-click on the Wireshark icon, and enter the password `nofix'. Select capture->interfaces to choose the interface you are connected to the internet with. Wireshark will then start capturing all packets that are sent and received on this interface. To filter out HTTP traffic, type `http' into the text box at the top of the window, and press \texttt{ENTER}. Wireshark can now be used to inspect the complete HTTP packets, and their cookies.
+Wireshark is also available to enable capturing of complete HTTP packets. To start Wireshark, double-click on the Wireshark icon, and enter the password `nofix'. Select capture->interfaces to choose the interface that connects you to the Internet. Wireshark will then start capturing all packets that are sent and received on this interface. To filter out HTTP traffic, type `http' into the text box at the top of the window, and press \texttt{ENTER}. Wireshark can now be used to inspect the complete HTTP packets, and their cookies.
 
 If you want to clear all cookies from Firefox' cookie store, click on `Tools$\rightarrow$Clear recent history within the browser'.
+
+\section{Adjusting NoFix' settings}\label{settings}
+
+The settings for the add-on can be modified through the `Tools$\rightarrow$Add-ons' menu in Firefox. In the settings, it is possible to make NoFix apply its policy to all cookies (instead of only session cookies), or to also enable session hijacking protection.
